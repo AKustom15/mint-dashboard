@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:234776285400:android:19dee2de405bc9d67147ad",
         "android_client_info": {
-          "package_name": "com.akustom15.mint"
+          "package_name": "com.akustom15.mint.dashboard"
         }
       },
       "oauth_client": [],
