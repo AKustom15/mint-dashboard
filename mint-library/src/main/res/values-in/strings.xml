@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mint_icon_request_title">Permintaan Ikon</string>
+    <string name="mint_icon_request_header">Permintaan ikon</string>
+    <string name="mint_icon_request_description">Ajukan permintaan ikon Anda dan pengembang akan mencoba menyertakan ikon yang diminta.</string>
+    <string name="mint_icon_request_total">Total</string>
+    <string name="mint_icon_request_count">%d Permintaan</string>
+    <string name="mint_icon_request_available">Tersedia</string>
+    <string name="mint_icon_request_used">Digunakan</string>
+    <string name="mint_icon_request_request">permintaan</string>
+    <string name="mint_icon_request_send">Kirim</string>
+    <string name="mint_icon_request_already_requested">Sudah diminta</string>
+    <string name="mint_icon_request_no_apps">Semua aplikasi sudah bertema!</string>
+    <string name="mint_icon_request_no_apps_desc">Tidak ada ikon yang hilang</string>
+    <string name="mint_icon_request_loading">Memuat aplikasi…</string>
+    <string name="mint_icon_request_preparing">Menyiapkan permintaan…</string>
+    <string name="mint_icon_request_limit_reached">Batas permintaan tercapai</string>
+    <string name="mint_icon_request_sent">Permintaan terkirim: %d ikon</string>
+    <string name="mint_icon_request_select_all">Pilih semua</string>
+    <string name="mint_icon_request_deselect_all">Batal pilih semua</string>
+
+    <string name="mint_buy_premium">Beli Premium</string>
+    <string name="mint_premium_dialog_title">Permintaan Ikon Premium</string>
+    <string name="mint_premium_dialog_close">Tutup</string>
+    <string name="mint_premium_dialog_buy">Beli</string>
+    <string name="mint_premium_purchase_success">Pembelian berhasil! %d permintaan ditambahkan.</string>
+
+    <string name="mint_settings_title">Pengaturan</string>
+    <string name="mint_settings_appearance">TAMPILAN</string>
+    <string name="mint_settings_theme">Tema</string>
+    <string name="mint_settings_theme_light">Terang</string>
+    <string name="mint_settings_theme_dark">Gelap</string>
+    <string name="mint_settings_theme_system">Sistem</string>
+    <string name="mint_settings_select_theme">Pilih Tema</string>
+    <string name="mint_settings_language">Bahasa</string>
+    <string name="mint_settings_select_language">Pilih Bahasa</string>
+    <string name="mint_settings_data">DATA</string>
+    <string name="mint_settings_clear_cache">Bersihkan cache ikon</string>
+    <string name="mint_settings_clear_cache_desc">Bebaskan memori</string>
+    <string name="mint_settings_clear_cache_confirm">Cache ikon akan dibersihkan. Ikon akan dimuat ulang nanti.</string>
+    <string name="mint_settings_cache_cleared">Cache dibersihkan!</string>
+    <string name="mint_settings_clear">Bersihkan</string>
+    <string name="mint_settings_cancel">Batal</string>
+    <string name="mint_settings_info">INFO</string>
+    <string name="mint_settings_version">Versi</string>
+    <string name="mint_settings_package">Paket</string>
+    <string name="mint_settings_privacy">Kebijakan Privasi</string>
+    <string name="mint_settings_privacy_desc">Lihat kebijakan privasi</string>
+
+    <string name="mint_dashboard_subtitle">Paket ikon kustom untuk perangkat Anda</string>
+    <string name="mint_dashboard_apply_icons">Terapkan Ikon</string>
+    <string name="mint_dashboard_custom_icons">Ikon Kustom</string>
+    <string name="mint_dashboard_request_title">PERMINTAAN IKON</string>
+    <string name="mint_dashboard_total_installed">Total %d aplikasi terinstal</string>
+    <string name="mint_dashboard_themed_apps">%d aplikasi bertema</string>
+    <string name="mint_dashboard_missing_apps">%d aplikasi hilang</string>
+    <string name="mint_dashboard_select_launcher">Pilih Launcher</string>
+    <string name="mint_dashboard_no_launchers">Tidak ada launcher yang kompatibel.</string>
+
+    <string name="mint_tab_icons">Ikon</string>
+    <string name="mint_tab_widgets">Widget</string>
+    <string name="mint_tab_wallpapers">Wallpaper</string>
+    <string name="mint_tab_settings">Pengaturan</string>
+
+    <string name="mint_icons_title">Pratinjau Ikon</string>
+    <string name="mint_icons_search">Cari ikon…</string>
+    <string name="mint_icons_no_favorites">Belum ada favorit</string>
+    <string name="mint_icons_no_results">Tidak ada ikon ditemukan</string>
+    <string name="mint_icons_close">Tutup</string>
+
+    <string name="mint_wallpapers_title">Wallpaper</string>
+    <string name="mint_wallpapers_empty">Tidak ada wallpaper tersedia</string>
+    <string name="mint_wallpapers_empty_hint">Konfigurasi cloudWallpapersUrl di MintConfig</string>
+    <string name="mint_wallpapers_apply">Terapkan</string>
+    <string name="mint_wallpapers_close">Tutup</string>
+    <string name="mint_wallpapers_applied">Wallpaper diterapkan!</string>
+    <string name="mint_wallpapers_failed">Gagal menerapkan wallpaper</string>
+
+    <string name="mint_about_title">Tentang</string>
+    <string name="mint_about_developer">PENGEMBANG</string>
+    <string name="mint_about_social">MEDIA SOSIAL</string>
+    <string name="mint_about_more_apps">Aplikasi Lainnya</string>
+    <string name="mint_about_powered_by">DIDUKUNG OLEH</string>
+    <string name="mint_about_library_name">Mint Library</string>
+    <string name="mint_about_library_desc">Sistem Desain Liquid Glass</string>
+</resources>

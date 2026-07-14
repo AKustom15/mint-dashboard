@@ -1,0 +1,124 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:2:1-60:12
+	package
+		INJECTED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:3:5-51
+	xmlns:android
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:6:5-79
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:6:22-76
+uses-permission#android.permission.SET_WALLPAPER
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:7:5-72
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:7:22-69
+uses-permission#android.permission.VIBRATE
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:8:5-66
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:8:22-63
+uses-permission#android.permission.POST_NOTIFICATIONS
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:9:5-77
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:9:22-74
+queries
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:12:5-21:15
+intent#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:13:9-16:18
+action#android.intent.action.MAIN
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:14:13-65
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:14:21-62
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:15:13-73
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:15:23-70
+package#org.kustom.widget
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:17:9-53
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:17:18-50
+package#org.kustom.widget.pro
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:18:9-57
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:18:18-54
+package#org.kustom.wallpaper
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:19:9-56
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:19:18-53
+package#org.kustom.wallpaper.pro
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:20:9-60
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:20:18-57
+application
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:23:5-58:19
+provider#org.kustom.api.Provider
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:27:9-38:20
+	android:authorities
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:29:13-51
+	android:exported
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:30:13-36
+	tools:ignore
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:31:13-51
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:28:13-51
+intent-filter#action:name:org.kustom.provider.KOMPONENTS+action:name:org.kustom.provider.LOCKSCREENS+action:name:org.kustom.provider.WALLPAPERS+action:name:org.kustom.provider.WIDGETS
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:32:13-37:29
+action#org.kustom.provider.WIDGETS
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:33:17-70
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:33:25-67
+action#org.kustom.provider.WALLPAPERS
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:34:17-73
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:34:25-70
+action#org.kustom.provider.KOMPONENTS
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:35:17-73
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:35:25-70
+action#org.kustom.provider.LOCKSCREENS
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:36:17-74
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:36:25-71
+service#com.akustom15.mint.library.notifications.MintMessagingService
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:42:9-48:19
+	android:exported
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:44:13-37
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:43:13-89
+intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:45:13-47:29
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:46:17-78
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:46:25-75
+meta-data#com.google.firebase.messaging.default_notification_icon
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:50:9-53:48
+	android:resource
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:52:13-62
+	tools:replace
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:53:13-45
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:51:13-83
+meta-data#com.google.firebase.messaging.default_notification_channel_id
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:54:9-57:45
+	tools:replace
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:57:13-42
+	android:value
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:56:13-46
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:55:13-89
+uses-sdk
+INJECTED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml

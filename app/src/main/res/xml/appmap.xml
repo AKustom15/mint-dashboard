@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    APPMAP.XML
+
+    This file maps package names to the appropriate drawable.
+    Useful for launchers or components that don't specify an exact Activity class.
+
+    Example:
+    <item class="com.android.chrome" name="chrome" />
+-->
+<appmap>
+
+</appmap>

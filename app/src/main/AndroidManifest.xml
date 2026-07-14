@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Mint"
+        android:enableOnBackInvokedCallback="true"
+        tools:targetApi="34">
+
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Mint.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+            <!-- Nova Launcher Theme -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.teslacoilsw.launcher.THEME" />
+            </intent-filter>
+
+            <!-- Apex Launcher -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.anddoes.launcher.THEME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- Action Launcher -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.actionlauncher.applytheme" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.actionlauncher.THEME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.actionlauncher.THEME" />
+            </intent-filter>
+
+            <!-- Smart Launcher / ADW -->
+            <intent-filter>
+                <action android:name="org.adw.launcher.THEMES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- Microsoft Launcher -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.microsoft.launcher.THEME" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.microsoft.launcher.action.APPLY_ICON_THEME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- Lawnchair Launcher -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="ch.deletescape.lawnchair.THEME" />
+            </intent-filter>
+
+            <!-- OnePlus Launcher -->
+            <intent-filter>
+                <action android:name="net.oneplus.launcher.icons.ACTION_PICK_ICON" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- GO Launcher -->
+            <intent-filter>
+                <action android:name="com.gau.go.launcherex.theme" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- Poco / MIUI Launcher -->
+            <intent-filter>
+                <action android:name="com.miui.home.launcher.THEME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.mi.android.globallauncher.THEME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- Niagara Launcher -->
+            <intent-filter>
+                <action android:name="bitpit.launcher.THEME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- Solo Launcher -->
+            <intent-filter>
+                <action android:name="com.gau.go.launcherex.theme" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.THEME_SCENE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- ADW.Launcher One -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="org.adwfreak.launcher.THEME" />
+            </intent-filter>
+
+            <!-- TSF Shell -->
+            <intent-filter>
+                <action android:name="com.tsf.shell.themes" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- Google Now Launcher -->
+            <intent-filter>
+                <action android:name="com.google.android.launcher.icons.ACTION_PICK_ICON" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- LG Home Launcher -->
+            <intent-filter>
+                <action android:name="com.lge.launcher2.THEME" />
+                <action android:name="com.lge.launcher3.THEME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- Turbo Launcher -->
+            <intent-filter>
+                <action android:name="com.phonemetra.turbo.launcher.THEMES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- MIUI (Xiaomi) -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.launcher3.THEMES" />
+            </intent-filter>
+
+            <!-- Kustom / Generic Icon Pack -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.anddoes.launcher.THEME" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PICK" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.OPENABLE" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.Mint">
+
+            <!-- Las configuraciones de launcher se movieron a SplashActivity -->
+
+        </activity>
+
+        <!-- Icon Picker Activity (for Nova CUSTOM_ICON_PICKER, Lawnchair, Kustom) -->
+        <activity
+            android:name=".IconPickerActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+
+            <intent-filter android:priority="-1">
+                <action android:name="com.novalauncher.THEME" />
+                <category android:name="com.novalauncher.category.CUSTOM_ICON_PICKER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.teslacoilsw.launcher.action.PICK_ICON" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="ch.deletescape.lawnchair.ICONPACK" />
+                <category android:name="ch.deletescape.lawnchair.PICK" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PICK" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.OPENABLE" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+        <!-- Icon Pack Provider (Kustom KLWP/KWGT, launchers) -->
+        <provider
+            android:name=".IconPackProvider"
+            android:authorities="${applicationId}.iconpack"
+            android:exported="true"
+            android:grantUriPermissions="true" />
+
+        <!-- FileProvider for sharing ZIP attachments (icon requests) -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- Firebase Cloud Messaging is handled by mint-library's
+             MintMessagingService (registered via the library manifest). -->
+
+    </application>
+</manifest>

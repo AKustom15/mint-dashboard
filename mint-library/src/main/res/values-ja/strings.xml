@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mint_icon_request_title">アイコンリクエスト</string>
+    <string name="mint_icon_request_header">アイコンリクエスト</string>
+    <string name="mint_icon_request_description">アイコンリクエストを送信してください。開発者がリクエストされたアイコンを含めるよう試みます。</string>
+    <string name="mint_icon_request_total">合計</string>
+    <string name="mint_icon_request_count">%d リクエスト</string>
+    <string name="mint_icon_request_available">利用可能</string>
+    <string name="mint_icon_request_used">使用済み</string>
+    <string name="mint_icon_request_request">リクエスト</string>
+    <string name="mint_icon_request_send">送信</string>
+    <string name="mint_icon_request_already_requested">リクエスト済み</string>
+    <string name="mint_icon_request_no_apps">すべてのアプリにテーマが適用済み！</string>
+    <string name="mint_icon_request_no_apps_desc">不足しているアイコンはありません</string>
+    <string name="mint_icon_request_loading">アプリを読み込み中…</string>
+    <string name="mint_icon_request_preparing">リクエストを準備中…</string>
+    <string name="mint_icon_request_limit_reached">リクエスト上限に達しました</string>
+    <string name="mint_icon_request_sent">リクエスト送信済み: %d アイコン</string>
+    <string name="mint_icon_request_select_all">すべて選択</string>
+    <string name="mint_icon_request_deselect_all">すべて解除</string>
+
+    <string name="mint_buy_premium">プレミアムを購入</string>
+    <string name="mint_premium_dialog_title">プレミアムアイコンリクエスト</string>
+    <string name="mint_premium_dialog_close">閉じる</string>
+    <string name="mint_premium_dialog_buy">購入</string>
+    <string name="mint_premium_purchase_success">購入成功！%d リクエストが追加されました。</string>
+
+    <string name="mint_settings_title">設定</string>
+    <string name="mint_settings_appearance">外観</string>
+    <string name="mint_settings_theme">テーマ</string>
+    <string name="mint_settings_theme_light">ライト</string>
+    <string name="mint_settings_theme_dark">ダーク</string>
+    <string name="mint_settings_theme_system">システム</string>
+    <string name="mint_settings_select_theme">テーマを選択</string>
+    <string name="mint_settings_language">言語</string>
+    <string name="mint_settings_select_language">言語を選択</string>
+    <string name="mint_settings_data">データ</string>
+    <string name="mint_settings_clear_cache">アイコンキャッシュをクリア</string>
+    <string name="mint_settings_clear_cache_desc">メモリを解放</string>
+    <string name="mint_settings_clear_cache_confirm">アイコンキャッシュがクリアされます。次回再読み込みされます。</string>
+    <string name="mint_settings_cache_cleared">キャッシュクリア完了！</string>
+    <string name="mint_settings_clear">クリア</string>
+    <string name="mint_settings_cancel">キャンセル</string>
+    <string name="mint_settings_info">情報</string>
+    <string name="mint_settings_version">バージョン</string>
+    <string name="mint_settings_package">パッケージ</string>
+    <string name="mint_settings_privacy">プライバシーポリシー</string>
+    <string name="mint_settings_privacy_desc">プライバシーポリシーを表示</string>
+
+    <string name="mint_dashboard_subtitle">デバイス用カスタムアイコンパック</string>
+    <string name="mint_dashboard_apply_icons">アイコンを適用</string>
+    <string name="mint_dashboard_custom_icons">カスタムアイコン</string>
+    <string name="mint_dashboard_request_title">アイコンリクエスト</string>
+    <string name="mint_dashboard_total_installed">合計 %d 個のインストール済みアプリ</string>
+    <string name="mint_dashboard_themed_apps">%d 個のテーマ適用済み</string>
+    <string name="mint_dashboard_missing_apps">%d 個の未対応</string>
+    <string name="mint_dashboard_select_launcher">ランチャーを選択</string>
+    <string name="mint_dashboard_no_launchers">対応ランチャーが見つかりません。</string>
+
+    <string name="mint_tab_icons">アイコン</string>
+    <string name="mint_tab_widgets">ウィジェット</string>
+    <string name="mint_tab_wallpapers">壁紙</string>
+    <string name="mint_tab_settings">設定</string>
+
+    <string name="mint_icons_title">アイコンプレビュー</string>
+    <string name="mint_icons_search">アイコンを検索…</string>
+    <string name="mint_icons_no_favorites">お気に入りなし</string>
+    <string name="mint_icons_no_results">アイコンが見つかりません</string>
+    <string name="mint_icons_close">閉じる</string>
+
+    <string name="mint_wallpapers_title">壁紙</string>
+    <string name="mint_wallpapers_empty">壁紙がありません</string>
+    <string name="mint_wallpapers_empty_hint">MintConfigでcloudWallpapersUrlを設定してください</string>
+    <string name="mint_wallpapers_apply">適用</string>
+    <string name="mint_wallpapers_close">閉じる</string>
+    <string name="mint_wallpapers_applied">壁紙を適用しました！</string>
+    <string name="mint_wallpapers_failed">壁紙の適用に失敗</string>
+
+    <string name="mint_about_title">概要</string>
+    <string name="mint_about_developer">開発者</string>
+    <string name="mint_about_social">ソーシャル</string>
+    <string name="mint_about_more_apps">他のアプリ</string>
+    <string name="mint_about_powered_by">提供</string>
+    <string name="mint_about_library_name">Mint Library</string>
+    <string name="mint_about_library_desc">Liquid Glass デザインシステム</string>
+</resources>

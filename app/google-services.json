@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "234776285400",
+    "project_id": "glasswave-20e7a",
+    "storage_bucket": "glasswave-20e7a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234776285400:android:19dee2de405bc9d67147ad",
+        "android_client_info": {
+          "package_name": "com.akustom15.mint"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkTbK92eGSyaly0GHb6vATG9ir6DfexHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

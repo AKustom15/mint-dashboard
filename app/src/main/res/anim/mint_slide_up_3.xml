@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- slide_up_fade_in_3.xml — tercera palabra: 400ms delay -->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/overshoot_interpolator">
+    <alpha
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0"
+        android:duration="800"
+        android:startOffset="400" />
+    <translate
+        android:fromYDelta="100%p"
+        android:toYDelta="0%p"
+        android:duration="800"
+        android:startOffset="400" />
+</set>

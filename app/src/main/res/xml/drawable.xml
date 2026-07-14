@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    DRAWABLE.XML
+
+    This file categorizes your icons into sections so they show up properly in the 
+    dashboard and launcher icon pickers.
+
+    Example:
+    <category title="Google Apps" />
+    <item drawable="chrome" />
+    <item drawable="youtube" />
+-->
+<version>1</version>

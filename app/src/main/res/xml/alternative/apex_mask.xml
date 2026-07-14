@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<iconmask>
+    <iconback img="icon_back" />
+    <iconmask img="icon_mask" />
+    <iconupon img="icon_upon" />
+    <defaulticon img="icon_base" />
+    <scale factor="1.0" />
+</iconmask>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <string name="ms_launcher_package">com.akustom15.mint</string>
+    <string name="ms_launcher_name">Mint Icons</string>
+    <string name="ms_launcher_label">Mint Icons</string>
+    <string name="ms_launcher_author">Akustom15</string>
+    <string name="ms_launcher_website">https://akustom15.com</string>
+    <string name="ms_launcher_theme_selection">true</string>
+</config>

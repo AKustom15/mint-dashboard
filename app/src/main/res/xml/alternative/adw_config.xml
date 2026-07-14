@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adw>
+    <!-- ADW específico -->
+    <scale factor="1.0" />
+    <iconback img="icon_back" />
+    <iconmask img="icon_mask" />
+    <iconupon img="icon_upon" />
+    <defaulticon img="icon_base" />
+    
+    <!-- Propiedades generales -->
+    <themeName>Mint Icons</themeName>
+    <themeInfo>Mint Icon Pack by Akustom15</themeInfo>
+</adw>

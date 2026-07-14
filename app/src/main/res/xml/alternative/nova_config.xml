@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <!-- Nova specific config -->
+    <bool name="config_nova_support">true</bool>
+    <string name="config_nova_name">Mint Icons</string>
+    <string name="config_nova_author">Akustom15</string>
+    <string name="config_nova_package">com.akustom15.mint</string>
+    <string name="config_nova_maskonfolder">true</string>
+    <string name="config_nova_maskonallapps">true</string>
+    <string name="config_nova_themecfg">appfilter.xml</string>
+    <string name="config_nova_basethemecfg">theme_resources.xml</string>
+    <string name="config_nova_drawablepath">drawable-nodpi</string>
+    <string name="config_nova_drawablepathicon">drawable-nodpi</string>
+    <string name="config_nova_drawabletype">png</string>
+    <string name="config_nova_icondraw">alt</string>
+    <string name="config_nova_backused">true</string>
+    <string name="config_nova_maskused">true</string>
+    <string name="config_nova_uponused">true</string>
+    <!-- Mask Configuration -->
+    <string name="config_nova_back">icon_back</string>
+    <string name="config_nova_mask">icon_mask</string>
+    <string name="config_nova_upon">icon_upon</string>
+    <string name="config_nova_scale">1.0</string>
+</config>

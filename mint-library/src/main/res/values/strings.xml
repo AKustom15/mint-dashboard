@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Icon Request Screen -->
+    <string name="mint_icon_request_title">Icon Request</string>
+    <string name="mint_icon_request_header">Icon Request</string>
+    <string name="mint_icon_request_description">Make your icon request and the developer will try to include the requested icons.</string>
+    <string name="mint_icon_request_total">Total</string>
+    <string name="mint_icon_request_count">%d Request</string>
+    <string name="mint_icon_request_available">Available</string>
+    <string name="mint_icon_request_used">Used</string>
+    <string name="mint_icon_request_request">request</string>
+    <string name="mint_icon_request_send">Send</string>
+    <string name="mint_icon_request_already_requested">Already requested</string>
+    <string name="mint_icon_request_no_apps">All apps are themed!</string>
+    <string name="mint_icon_request_no_apps_desc">No missing icons found</string>
+    <string name="mint_icon_request_loading">Loading apps…</string>
+    <string name="mint_icon_request_preparing">Preparing request…</string>
+    <string name="mint_icon_request_limit_reached">Request limit reached</string>
+    <string name="mint_icon_request_sent">Request sent: %d icons</string>
+    <string name="mint_icon_request_select_all">Select All</string>
+    <string name="mint_icon_request_deselect_all">Deselect All</string>
+
+    <!-- Premium -->
+    <string name="mint_buy_premium">Buy Premium</string>
+    <string name="mint_premium_dialog_title">Premium Icon Requests</string>
+    <string name="mint_premium_dialog_close">Close</string>
+    <string name="mint_premium_dialog_buy">Buy</string>
+    <string name="mint_premium_purchase_success">Purchase successful! %d requests added.</string>
+
+    <!-- Settings -->
+    <string name="mint_settings_title">Settings</string>
+    <string name="mint_settings_appearance">APPEARANCE</string>
+    <string name="mint_settings_theme">Theme</string>
+    <string name="mint_settings_theme_light">Light</string>
+    <string name="mint_settings_theme_dark">Dark</string>
+    <string name="mint_settings_theme_system">System</string>
+    <string name="mint_settings_select_theme">Select Theme</string>
+    <string name="mint_settings_language">Language</string>
+    <string name="mint_settings_select_language">Select Language</string>
+    <string name="mint_settings_data">DATA</string>
+    <string name="mint_settings_clear_cache">Clear Icon Cache</string>
+    <string name="mint_settings_clear_cache_desc">Free up memory</string>
+    <string name="mint_settings_clear_cache_confirm">This will clear the icon cache. Icons will be reloaded next time.</string>
+    <string name="mint_settings_cache_cleared">Cache cleared!</string>
+    <string name="mint_settings_clear">Clear</string>
+    <string name="mint_settings_cancel">Cancel</string>
+    <string name="mint_settings_info">INFO</string>
+    <string name="mint_settings_version">Version</string>
+    <string name="mint_settings_package">Package</string>
+    <string name="mint_settings_privacy">Privacy Policy</string>
+    <string name="mint_settings_privacy_desc">View privacy policy</string>
+    <string name="mint_settings_notifications_section">NOTIFICATIONS</string>
+    <string name="mint_settings_notifications">Push Notifications</string>
+    <string name="mint_settings_notifications_desc">Receive news and updates</string>
+    <string name="mint_settings_check_update">Check for Updates</string>
+    <string name="mint_settings_check_update_desc">Look for a new version</string>
+    <string name="mint_settings_checking_update">Checking for updates...</string>
+    <string name="mint_settings_up_to_date">You have the latest version</string>
+    <string name="mint_settings_update_available">Update available</string>
+    <string name="mint_settings_update_failed">Could not check for updates</string>
+    <string name="mint_settings_whats_new">What\&apos;s New</string>
+
+    <!-- Notifications -->
+    <string name="mint_notifications_title">Notifications</string>
+    <string name="mint_notifications_empty">No notifications yet</string>
+    <string name="mint_notifications_history">Notification history</string>
+
+    <!-- More Apps carousel -->
+    <string name="mint_more_apps_title">MORE APPS</string>
+    <string name="mint_more_apps_install">Install</string>
+
+    <!-- Dashboard -->
+    <string name="mint_dashboard_subtitle">Custom icon pack for your device</string>
+    <string name="mint_dashboard_apply_icons">Apply Icons</string>
+    <string name="mint_dashboard_custom_icons">Custom Icons</string>
+    <string name="mint_dashboard_request_title">ICON REQUEST</string>
+    <string name="mint_dashboard_total_installed">Total %d installed apps</string>
+    <string name="mint_dashboard_themed_apps">%d themed apps</string>
+    <string name="mint_dashboard_missing_apps">%d missing apps</string>
+    <string name="mint_dashboard_select_launcher">Select Launcher</string>
+    <string name="mint_dashboard_no_launchers">No compatible launchers found.</string>
+
+    <!-- Bottom Navigation Tabs -->
+    <string name="mint_tab_icons">Icons</string>
+    <string name="mint_tab_widgets">Widgets</string>
+    <string name="mint_tab_wallpapers">Wallpapers</string>
+    <string name="mint_tab_settings">Settings</string>
+
+    <!-- Widgets -->
+    <string name="mint_widgets_empty">No widgets available</string>
+    <string name="mint_widgets_apply">Apply</string>
+
+    <!-- Icons Preview -->
+    <string name="mint_icons_title">Icons Preview</string>
+    <string name="mint_icons_search">Search icons…</string>
+    <string name="mint_icons_no_favorites">No favorites yet</string>
+    <string name="mint_icons_no_results">No icons found</string>
+    <string name="mint_icons_close">Close</string>
+
+    <!-- Wallpapers -->
+    <string name="mint_wallpapers_title">Wallpapers</string>
+    <string name="mint_wallpapers_empty">No wallpapers available</string>
+    <string name="mint_wallpapers_empty_hint">Configure cloudWallpapersUrl in MintConfig</string>
+    <string name="mint_wallpapers_apply">Apply Wallpaper</string>
+    <string name="mint_wallpapers_close">Close</string>
+    <string name="mint_wallpapers_loading">Loading wallpapers…</string>
+    <string name="mint_wallpapers_retry">Retry</string>
+    <string name="mint_wallpapers_home_screen">Home Screen</string>
+    <string name="mint_wallpapers_lock_screen">Lock Screen</string>
+    <string name="mint_wallpapers_both_screens">Both Screens</string>
+    <string name="mint_wallpapers_applied">Wallpaper applied!</string>
+    <string name="mint_wallpapers_applied_home">Applied to Home Screen</string>
+    <string name="mint_wallpapers_applied_lock">Applied to Lock Screen</string>
+    <string name="mint_wallpapers_applied_both">Applied to Both Screens</string>
+    <string name="mint_wallpapers_failed">Failed to apply wallpaper</string>
+    <string name="mint_wallpapers_not_downloadable">This wallpaper is not downloadable</string>
+    <string name="mint_wallpapers_downloading">Downloading wallpaper…</string>
+    <string name="mint_wallpapers_download_started">Download started</string>
+    <string name="mint_wallpapers_info">Wallpaper Info</string>
+    <string name="mint_wallpapers_name_label">Name</string>
+    <string name="mint_wallpapers_author_label">Author</string>
+    <string name="mint_wallpapers_dimensions_label">Dimensions</string>
+
+    <!-- About (kept for compilation - screen removed from navigation) -->
+    <string name="mint_about_title">About</string>
+    <string name="mint_about_developer">DEVELOPER</string>
+    <string name="mint_about_social">SOCIAL</string>
+    <string name="mint_about_more_apps">More Apps</string>
+    <string name="mint_about_powered_by">POWERED BY</string>
+    <string name="mint_about_library_name">Mint Library</string>
+    <string name="mint_about_library_desc">Liquid Glass Design System</string>
+</resources>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Configuración para masking en Smart Launcher -->
+    <iconback img="icon_back" />
+    <iconmask img="icon_mask" />
+    <iconupon img="icon_upon" />
+    <scale factor="1.0" />
+    
+    <!-- Listado completo de todos los iconos disponibles -->
+    <item drawable="icon_administrador_de_archivos" />
+    <item drawable="icon_calculadora" />
+    <item drawable="icon_calendario" />
+    <item drawable="icon_camara" />
+    <item drawable="icon_chrome" />
+    <item drawable="icon_configuracion" />
+    <item drawable="icon_contactos" />
+    <item drawable="icon_discord" />
+    <item drawable="icon_drive" />
+    <item drawable="icon_email" />
+    <item drawable="icon_evernote" />
+    <item drawable="icon_facebook" />
+    <item drawable="icon_galeria" />
+    <item drawable="icon_gmail" />
+    <item drawable="icon_instagram" />
+    <item drawable="icon_mensaje" />
+    <item drawable="icon_mi_video" />
+    <item drawable="icon_music" />
+    <item drawable="icon_notas" />
+    <item drawable="icon_nova_launcher" />
+    <item drawable="icon_paypal" />
+    <item drawable="icon_playstore" />
+    <item drawable="icon_reddit" />
+    <item drawable="icon_reloj" />
+    <item drawable="icon_telefono" />
+    <item drawable="icon_telegram" />
+    <item drawable="icon_tiktok" />
+    <item drawable="icon_whatsapp" />
+    <item drawable="icon_x" />
+</resources>

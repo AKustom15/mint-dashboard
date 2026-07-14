@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Mint Icons</string>
+    <string name="app_description">Mint Icon Pack by Akustom15</string>
+    <string name="default_notification_channel_id">mint_updates</string>
+</resources>

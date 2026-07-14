@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mint_icon_request_title">图标请求</string>
+    <string name="mint_icon_request_header">图标请求</string>
+    <string name="mint_icon_request_description">提交您的图标请求，开发者将尝试包含所请求的图标。</string>
+    <string name="mint_icon_request_total">总计</string>
+    <string name="mint_icon_request_count">%d 个请求</string>
+    <string name="mint_icon_request_available">可用</string>
+    <string name="mint_icon_request_used">已使用</string>
+    <string name="mint_icon_request_request">请求</string>
+    <string name="mint_icon_request_send">发送</string>
+    <string name="mint_icon_request_already_requested">已请求</string>
+    <string name="mint_icon_request_no_apps">所有应用都已主题化！</string>
+    <string name="mint_icon_request_no_apps_desc">未发现缺失图标</string>
+    <string name="mint_icon_request_loading">正在加载应用…</string>
+    <string name="mint_icon_request_preparing">正在准备请求…</string>
+    <string name="mint_icon_request_limit_reached">已达请求限制</string>
+    <string name="mint_icon_request_sent">请求已发送：%d 个图标</string>
+    <string name="mint_icon_request_select_all">全选</string>
+    <string name="mint_icon_request_deselect_all">取消全选</string>
+
+    <string name="mint_buy_premium">购买高级版</string>
+    <string name="mint_premium_dialog_title">高级图标请求</string>
+    <string name="mint_premium_dialog_close">关闭</string>
+    <string name="mint_premium_dialog_buy">购买</string>
+    <string name="mint_premium_purchase_success">购买成功！已添加 %d 个请求。</string>
+
+    <string name="mint_settings_title">设置</string>
+    <string name="mint_settings_appearance">外观</string>
+    <string name="mint_settings_theme">主题</string>
+    <string name="mint_settings_theme_light">浅色</string>
+    <string name="mint_settings_theme_dark">深色</string>
+    <string name="mint_settings_theme_system">跟随系统</string>
+    <string name="mint_settings_select_theme">选择主题</string>
+    <string name="mint_settings_language">语言</string>
+    <string name="mint_settings_select_language">选择语言</string>
+    <string name="mint_settings_data">数据</string>
+    <string name="mint_settings_clear_cache">清除图标缓存</string>
+    <string name="mint_settings_clear_cache_desc">释放内存</string>
+    <string name="mint_settings_clear_cache_confirm">将清除图标缓存。下次将重新加载图标。</string>
+    <string name="mint_settings_cache_cleared">缓存已清除！</string>
+    <string name="mint_settings_clear">清除</string>
+    <string name="mint_settings_cancel">取消</string>
+    <string name="mint_settings_info">信息</string>
+    <string name="mint_settings_version">版本</string>
+    <string name="mint_settings_package">包名</string>
+    <string name="mint_settings_privacy">隐私政策</string>
+    <string name="mint_settings_privacy_desc">查看隐私政策</string>
+
+    <string name="mint_dashboard_subtitle">为您的设备定制的图标包</string>
+    <string name="mint_dashboard_apply_icons">应用图标</string>
+    <string name="mint_dashboard_custom_icons">自定义图标</string>
+    <string name="mint_dashboard_request_title">图标请求</string>
+    <string name="mint_dashboard_total_installed">共 %d 个已安装应用</string>
+    <string name="mint_dashboard_themed_apps">%d 个已主题化</string>
+    <string name="mint_dashboard_missing_apps">%d 个缺失</string>
+    <string name="mint_dashboard_select_launcher">选择启动器</string>
+    <string name="mint_dashboard_no_launchers">未找到兼容的启动器。</string>
+
+    <string name="mint_tab_icons">图标</string>
+    <string name="mint_tab_widgets">小部件</string>
+    <string name="mint_tab_wallpapers">壁纸</string>
+    <string name="mint_tab_settings">设置</string>
+
+    <string name="mint_icons_title">图标预览</string>
+    <string name="mint_icons_search">搜索图标…</string>
+    <string name="mint_icons_no_favorites">暂无收藏</string>
+    <string name="mint_icons_no_results">未找到图标</string>
+    <string name="mint_icons_close">关闭</string>
+
+    <string name="mint_wallpapers_title">壁纸</string>
+    <string name="mint_wallpapers_empty">暂无壁纸</string>
+    <string name="mint_wallpapers_empty_hint">在 MintConfig 中配置 cloudWallpapersUrl</string>
+    <string name="mint_wallpapers_apply">应用</string>
+    <string name="mint_wallpapers_close">关闭</string>
+    <string name="mint_wallpapers_applied">壁纸已应用！</string>
+    <string name="mint_wallpapers_failed">壁纸应用失败</string>
+
+    <string name="mint_about_title">关于</string>
+    <string name="mint_about_developer">开发者</string>
+    <string name="mint_about_social">社交媒体</string>
+    <string name="mint_about_more_apps">更多应用</string>
+    <string name="mint_about_powered_by">技术支持</string>
+    <string name="mint_about_library_name">Mint Library</string>
+    <string name="mint_about_library_desc">Liquid Glass 设计系统</string>
+</resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mint_icon_request_title">आइकन अनुरोध</string>
+    <string name="mint_icon_request_header">आइकन अनुरोध</string>
+    <string name="mint_icon_request_description">अपना आइकन अनुरोध करें और डेवलपर अनुरोधित आइकन शामिल करने का प्रयास करेगा।</string>
+    <string name="mint_icon_request_total">कुल</string>
+    <string name="mint_icon_request_count">%d अनुरोध</string>
+    <string name="mint_icon_request_available">उपलब्ध</string>
+    <string name="mint_icon_request_used">उपयोग किया गया</string>
+    <string name="mint_icon_request_request">अनुरोध</string>
+    <string name="mint_icon_request_send">भेजें</string>
+    <string name="mint_icon_request_already_requested">पहले से अनुरोधित</string>
+    <string name="mint_icon_request_no_apps">सभी ऐप्स थीम्ड हैं!</string>
+    <string name="mint_icon_request_no_apps_desc">कोई लापता आइकन नहीं मिला</string>
+    <string name="mint_icon_request_loading">ऐप्स लोड हो रहे हैं…</string>
+    <string name="mint_icon_request_preparing">अनुरोध तैयार हो रहा है…</string>
+    <string name="mint_icon_request_limit_reached">अनुरोध सीमा पूरी हुई</string>
+    <string name="mint_icon_request_sent">अनुरोध भेजा गया: %d आइकन</string>
+    <string name="mint_icon_request_select_all">सभी चुनें</string>
+    <string name="mint_icon_request_deselect_all">सभी हटाएं</string>
+
+    <string name="mint_buy_premium">प्रीमियम खरीदें</string>
+    <string name="mint_premium_dialog_title">प्रीमियम आइकन अनुरोध</string>
+    <string name="mint_premium_dialog_close">बंद करें</string>
+    <string name="mint_premium_dialog_buy">खरीदें</string>
+    <string name="mint_premium_purchase_success">खरीद सफल! %d अनुरोध जोड़े गए।</string>
+
+    <string name="mint_settings_title">सेटिंग्स</string>
+    <string name="mint_settings_appearance">दिखावट</string>
+    <string name="mint_settings_theme">थीम</string>
+    <string name="mint_settings_theme_light">लाइट</string>
+    <string name="mint_settings_theme_dark">डार्क</string>
+    <string name="mint_settings_theme_system">सिस्टम</string>
+    <string name="mint_settings_select_theme">थीम चुनें</string>
+    <string name="mint_settings_language">भाषा</string>
+    <string name="mint_settings_select_language">भाषा चुनें</string>
+    <string name="mint_settings_data">डेटा</string>
+    <string name="mint_settings_clear_cache">आइकन कैश साफ़ करें</string>
+    <string name="mint_settings_clear_cache_desc">मेमोरी खाली करें</string>
+    <string name="mint_settings_clear_cache_confirm">आइकन कैश साफ़ हो जाएगा। अगली बार आइकन फिर से लोड होंगे।</string>
+    <string name="mint_settings_cache_cleared">कैश साफ़!</string>
+    <string name="mint_settings_clear">साफ़ करें</string>
+    <string name="mint_settings_cancel">रद्द करें</string>
+    <string name="mint_settings_info">जानकारी</string>
+    <string name="mint_settings_version">संस्करण</string>
+    <string name="mint_settings_package">पैकेज</string>
+    <string name="mint_settings_privacy">गोपनीयता नीति</string>
+    <string name="mint_settings_privacy_desc">गोपनीयता नीति देखें</string>
+
+    <string name="mint_dashboard_subtitle">आपके डिवाइस के लिए कस्टम आइकन पैक</string>
+    <string name="mint_dashboard_apply_icons">आइकन लागू करें</string>
+    <string name="mint_dashboard_custom_icons">कस्टम आइकन</string>
+    <string name="mint_dashboard_request_title">आइकन अनुरोध</string>
+    <string name="mint_dashboard_total_installed">कुल %d ऐप्स इंस्टॉल</string>
+    <string name="mint_dashboard_themed_apps">%d थीम्ड ऐप्स</string>
+    <string name="mint_dashboard_missing_apps">%d गायब ऐप्स</string>
+    <string name="mint_dashboard_select_launcher">लॉन्चर चुनें</string>
+    <string name="mint_dashboard_no_launchers">कोई संगत लॉन्चर नहीं मिला।</string>
+
+    <string name="mint_tab_icons">आइकन</string>
+    <string name="mint_tab_widgets">विजेट</string>
+    <string name="mint_tab_wallpapers">वॉलपेपर</string>
+    <string name="mint_tab_settings">सेटिंग्स</string>
+
+    <string name="mint_icons_title">आइकन प्रीव्यू</string>
+    <string name="mint_icons_search">आइकन खोजें…</string>
+    <string name="mint_icons_no_favorites">अभी तक कोई पसंदीदा नहीं</string>
+    <string name="mint_icons_no_results">कोई आइकन नहीं मिला</string>
+    <string name="mint_icons_close">बंद करें</string>
+
+    <string name="mint_wallpapers_title">वॉलपेपर</string>
+    <string name="mint_wallpapers_empty">कोई वॉलपेपर उपलब्ध नहीं</string>
+    <string name="mint_wallpapers_empty_hint">MintConfig में cloudWallpapersUrl कॉन्फ़िगर करें</string>
+    <string name="mint_wallpapers_apply">लागू करें</string>
+    <string name="mint_wallpapers_close">बंद करें</string>
+    <string name="mint_wallpapers_applied">वॉलपेपर लागू!</string>
+    <string name="mint_wallpapers_failed">वॉलपेपर लागू करने में विफल</string>
+
+    <string name="mint_about_title">जानकारी</string>
+    <string name="mint_about_developer">डेवलपर</string>
+    <string name="mint_about_social">सोशल मीडिया</string>
+    <string name="mint_about_more_apps">अधिक ऐप्स</string>
+    <string name="mint_about_powered_by">द्वारा संचालित</string>
+    <string name="mint_about_library_name">Mint Library</string>
+    <string name="mint_about_library_desc">Liquid Glass डिज़ाइन सिस्टम</string>
+</resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mint_icon_request_title">Запрос иконок</string>
+    <string name="mint_icon_request_header">Запрос иконок</string>
+    <string name="mint_icon_request_description">Отправьте запрос на иконки, и разработчик постарается включить запрошенные иконки.</string>
+    <string name="mint_icon_request_total">Всего</string>
+    <string name="mint_icon_request_count">%d Запрос</string>
+    <string name="mint_icon_request_available">Доступно</string>
+    <string name="mint_icon_request_used">Использовано</string>
+    <string name="mint_icon_request_request">запрос</string>
+    <string name="mint_icon_request_send">Отправить</string>
+    <string name="mint_icon_request_already_requested">Уже запрошено</string>
+    <string name="mint_icon_request_no_apps">Все приложения с темой!</string>
+    <string name="mint_icon_request_no_apps_desc">Отсутствующих иконок не найдено</string>
+    <string name="mint_icon_request_loading">Загрузка приложений…</string>
+    <string name="mint_icon_request_preparing">Подготовка запроса…</string>
+    <string name="mint_icon_request_limit_reached">Лимит запросов достигнут</string>
+    <string name="mint_icon_request_sent">Запрос отправлен: %d иконок</string>
+    <string name="mint_icon_request_select_all">Выбрать все</string>
+    <string name="mint_icon_request_deselect_all">Снять все</string>
+
+    <string name="mint_buy_premium">Купить Премиум</string>
+    <string name="mint_premium_dialog_title">Премиум запросы иконок</string>
+    <string name="mint_premium_dialog_close">Закрыть</string>
+    <string name="mint_premium_dialog_buy">Купить</string>
+    <string name="mint_premium_purchase_success">Покупка успешна! Добавлено %d запросов.</string>
+
+    <string name="mint_settings_title">Настройки</string>
+    <string name="mint_settings_appearance">ОФОРМЛЕНИЕ</string>
+    <string name="mint_settings_theme">Тема</string>
+    <string name="mint_settings_theme_light">Светлая</string>
+    <string name="mint_settings_theme_dark">Тёмная</string>
+    <string name="mint_settings_theme_system">Системная</string>
+    <string name="mint_settings_select_theme">Выбрать тему</string>
+    <string name="mint_settings_language">Язык</string>
+    <string name="mint_settings_select_language">Выбрать язык</string>
+    <string name="mint_settings_data">ДАННЫЕ</string>
+    <string name="mint_settings_clear_cache">Очистить кэш иконок</string>
+    <string name="mint_settings_clear_cache_desc">Освободить память</string>
+    <string name="mint_settings_clear_cache_confirm">Кэш иконок будет очищен. Иконки будут загружены заново.</string>
+    <string name="mint_settings_cache_cleared">Кэш очищен!</string>
+    <string name="mint_settings_clear">Очистить</string>
+    <string name="mint_settings_cancel">Отмена</string>
+    <string name="mint_settings_info">ИНФОРМАЦИЯ</string>
+    <string name="mint_settings_version">Версия</string>
+    <string name="mint_settings_package">Пакет</string>
+    <string name="mint_settings_privacy">Политика конфиденциальности</string>
+    <string name="mint_settings_privacy_desc">Просмотреть политику конфиденциальности</string>
+
+    <string name="mint_dashboard_subtitle">Пользовательский набор иконок для вашего устройства</string>
+    <string name="mint_dashboard_apply_icons">Применить иконки</string>
+    <string name="mint_dashboard_custom_icons">Пользовательские иконки</string>
+    <string name="mint_dashboard_request_title">ЗАПРОС ИКОНОК</string>
+    <string name="mint_dashboard_total_installed">Всего %d установленных приложений</string>
+    <string name="mint_dashboard_themed_apps">%d с темой</string>
+    <string name="mint_dashboard_missing_apps">%d отсутствующих</string>
+    <string name="mint_dashboard_select_launcher">Выберите лаунчер</string>
+    <string name="mint_dashboard_no_launchers">Совместимые лаунчеры не найдены.</string>
+
+    <string name="mint_tab_icons">Иконки</string>
+    <string name="mint_tab_widgets">Виджеты</string>
+    <string name="mint_tab_wallpapers">Обои</string>
+    <string name="mint_tab_settings">Настройки</string>
+
+    <string name="mint_icons_title">Превью иконок</string>
+    <string name="mint_icons_search">Поиск иконок…</string>
+    <string name="mint_icons_no_favorites">Нет избранных</string>
+    <string name="mint_icons_no_results">Иконки не найдены</string>
+    <string name="mint_icons_close">Закрыть</string>
+
+    <string name="mint_wallpapers_title">Обои</string>
+    <string name="mint_wallpapers_empty">Нет доступных обоев</string>
+    <string name="mint_wallpapers_empty_hint">Настройте cloudWallpapersUrl в MintConfig</string>
+    <string name="mint_wallpapers_apply">Применить</string>
+    <string name="mint_wallpapers_close">Закрыть</string>
+    <string name="mint_wallpapers_applied">Обои применены!</string>
+    <string name="mint_wallpapers_failed">Не удалось применить обои</string>
+
+    <string name="mint_about_title">О приложении</string>
+    <string name="mint_about_developer">РАЗРАБОТЧИК</string>
+    <string name="mint_about_social">СОЦСЕТИ</string>
+    <string name="mint_about_more_apps">Ещё приложения</string>
+    <string name="mint_about_powered_by">РАБОТАЕТ НА</string>
+    <string name="mint_about_library_name">Mint Library</string>
+    <string name="mint_about_library_desc">Система дизайна Liquid Glass</string>
+</resources>

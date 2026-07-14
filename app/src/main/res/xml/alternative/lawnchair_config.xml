@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lawnchair>
+    <iconpack 
+        package="com.akustom15.mint"
+        name="Mint Icons"
+        author="Akustom15"
+        version="1.0"
+        iconpack="true" />
+</lawnchair>

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.akustom15.mint.library.mint-library-release-73:/xml/com_android_billingclient_phenotype.xml",
+        "source": "com.akustom15.mint.library.mint-library-jetified-billing-7.1.1-37:/xml/com_android_billingclient_phenotype.xml"
+    },
+    {
+        "merged": "com.akustom15.mint.library.mint-library-release-73:/xml/ga_ad_services_config.xml",
+        "source": "com.akustom15.mint.library.mint-library-jetified-play-services-measurement-api-22.1.2-50:/xml/ga_ad_services_config.xml"
+    }
+]

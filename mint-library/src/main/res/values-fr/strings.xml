@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mint_icon_request_title">Demande d\'icônes</string>
+    <string name="mint_icon_request_header">Demande d\'icônes</string>
+    <string name="mint_icon_request_description">Faites votre demande d\'icônes et le développeur essaiera d\'inclure les icônes demandées.</string>
+    <string name="mint_icon_request_total">Total</string>
+    <string name="mint_icon_request_count">%d Demande</string>
+    <string name="mint_icon_request_available">Disponible</string>
+    <string name="mint_icon_request_used">Utilisé</string>
+    <string name="mint_icon_request_request">demande</string>
+    <string name="mint_icon_request_send">Envoyer</string>
+    <string name="mint_icon_request_already_requested">Déjà demandé</string>
+    <string name="mint_icon_request_no_apps">Toutes les apps ont un thème !</string>
+    <string name="mint_icon_request_no_apps_desc">Aucune icône manquante trouvée</string>
+    <string name="mint_icon_request_loading">Chargement des apps…</string>
+    <string name="mint_icon_request_preparing">Préparation de la demande…</string>
+    <string name="mint_icon_request_limit_reached">Limite de demandes atteinte</string>
+    <string name="mint_icon_request_sent">Demande envoyée : %d icônes</string>
+    <string name="mint_icon_request_select_all">Tout sélectionner</string>
+    <string name="mint_icon_request_deselect_all">Tout désélectionner</string>
+
+    <string name="mint_buy_premium">Acheter Premium</string>
+    <string name="mint_premium_dialog_title">Demandes Premium</string>
+    <string name="mint_premium_dialog_close">Fermer</string>
+    <string name="mint_premium_dialog_buy">Acheter</string>
+    <string name="mint_premium_purchase_success">Achat réussi ! %d demandes ajoutées.</string>
+
+    <string name="mint_settings_title">Paramètres</string>
+    <string name="mint_settings_appearance">APPARENCE</string>
+    <string name="mint_settings_theme">Thème</string>
+    <string name="mint_settings_theme_light">Clair</string>
+    <string name="mint_settings_theme_dark">Sombre</string>
+    <string name="mint_settings_theme_system">Système</string>
+    <string name="mint_settings_select_theme">Choisir le thème</string>
+    <string name="mint_settings_language">Langue</string>
+    <string name="mint_settings_select_language">Choisir la langue</string>
+    <string name="mint_settings_data">DONNÉES</string>
+    <string name="mint_settings_clear_cache">Vider le cache des icônes</string>
+    <string name="mint_settings_clear_cache_desc">Libérer de la mémoire</string>
+    <string name="mint_settings_clear_cache_confirm">Le cache sera vidé. Les icônes seront rechargées la prochaine fois.</string>
+    <string name="mint_settings_cache_cleared">Cache vidé !</string>
+    <string name="mint_settings_clear">Vider</string>
+    <string name="mint_settings_cancel">Annuler</string>
+    <string name="mint_settings_info">INFORMATIONS</string>
+    <string name="mint_settings_version">Version</string>
+    <string name="mint_settings_package">Paquet</string>
+    <string name="mint_settings_privacy">Politique de confidentialité</string>
+    <string name="mint_settings_privacy_desc">Voir la politique de confidentialité</string>
+
+    <string name="mint_dashboard_subtitle">Pack d\'icônes personnalisé pour votre appareil</string>
+    <string name="mint_dashboard_apply_icons">Appliquer les icônes</string>
+    <string name="mint_dashboard_custom_icons">Icônes personnalisées</string>
+    <string name="mint_dashboard_request_title">DEMANDE D\'ICÔNES</string>
+    <string name="mint_dashboard_total_installed">Total %d apps installées</string>
+    <string name="mint_dashboard_themed_apps">%d apps thématisées</string>
+    <string name="mint_dashboard_missing_apps">%d apps manquantes</string>
+    <string name="mint_dashboard_select_launcher">Sélectionner le launcher</string>
+    <string name="mint_dashboard_no_launchers">Aucun launcher compatible trouvé.</string>
+
+    <string name="mint_tab_icons">Icônes</string>
+    <string name="mint_tab_widgets">Widgets</string>
+    <string name="mint_tab_wallpapers">Fonds</string>
+    <string name="mint_tab_settings">Paramètres</string>
+
+    <string name="mint_icons_title">Aperçu des icônes</string>
+    <string name="mint_icons_search">Rechercher…</string>
+    <string name="mint_icons_no_favorites">Pas encore de favoris</string>
+    <string name="mint_icons_no_results">Aucune icône trouvée</string>
+    <string name="mint_icons_close">Fermer</string>
+
+    <string name="mint_wallpapers_title">Fonds d\'écran</string>
+    <string name="mint_wallpapers_empty">Aucun fond disponible</string>
+    <string name="mint_wallpapers_empty_hint">Configurez cloudWallpapersUrl dans MintConfig</string>
+    <string name="mint_wallpapers_apply">Appliquer</string>
+    <string name="mint_wallpapers_close">Fermer</string>
+    <string name="mint_wallpapers_applied">Fond appliqué !</string>
+    <string name="mint_wallpapers_failed">Échec de l\'application</string>
+
+    <string name="mint_about_title">À propos</string>
+    <string name="mint_about_developer">DÉVELOPPEUR</string>
+    <string name="mint_about_social">RÉSEAUX SOCIAUX</string>
+    <string name="mint_about_more_apps">Plus d\'apps</string>
+    <string name="mint_about_powered_by">PROPULSÉ PAR</string>
+    <string name="mint_about_library_name">Mint Library</string>
+    <string name="mint_about_library_desc">Système de Design Liquid Glass</string>
+</resources>

@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.akustom15.mint.library.mint-library-release-73:/values-w600dp-land-v13/values-w600dp-land-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\cea242cb64df5026d91c055526950c59\\transformed\\material-1.12.0\\res\\values-w600dp-land-v13\\values-w600dp-land-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "54",
+                        "endOffsets": "105"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-71:/values-w600dp-land-v13/values-w600dp-land-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\cea242cb64df5026d91c055526950c59\\transformed\\material-1.12.0\\res\\values-w600dp-land-v13\\values-w600dp-land-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "54",
+                        "endOffsets": "105"
+                    }
+                }
+            ]
+        }
+    ]
+}

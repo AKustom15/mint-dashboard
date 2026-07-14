@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <version>1</version>
+    <packageName>com.akustom15.mint</packageName>
+    <themeName>@string/app_name</themeName>
+    <themeInfo>@string/app_description</themeInfo>
+    
+    <!-- Sistema de máscara, formato unificado con appfilter.xml -->
+    <iconback img="icon_back" />
+    <iconmask img="icon_mask" />
+    <iconupon img="icon_upon" />
+    <scale factor="1.0" />
+    
+    <!-- Configuración para apps no tematizadas -->
+    
+    <!-- Mapeo de componentes a iconos -->
+    <!-- Settings/Configuración -->
+    <item name="com.android.settings" component="ComponentInfo{com.android.settings/com.android.settings.Settings}" drawable="icon_configuracion" />
+    <item name="com.android.settings" component="ComponentInfo{com.android.settings/com.android.settings.homepage.SettingsHomepageActivity}" drawable="icon_configuracion" />
+    <item name="com.android.settings" component="ComponentInfo{com.android.settings/com.android.settings.SubSettings}" drawable="icon_configuracion" />
+    <item name="com.android.settings" component="ComponentInfo{com.android.settings/com.android.settings.Settings$NetworkDashboardActivity}" drawable="icon_configuracion" />
+    
+    <!-- Contactos -->
+    <item name="com.android.contacts" component="ComponentInfo{com.android.contacts/com.android.contacts.activities.PeopleActivity}" drawable="icon_contactos" />
+    <item name="com.android.contacts" component="ComponentInfo{com.android.contacts/com.android.contacts.activities.TwelveKeyDialer}" drawable="icon_contactos" />
+    <item name="com.android.contacts" component="ComponentInfo{com.android.contacts/com.android.contacts.activities.DialtactsActivity}" drawable="icon_contactos" />
+    <item name="com.samsung.android.app.contacts" component="ComponentInfo{com.samsung.android.app.contacts/com.samsung.android.app.contacts.activities.PeopleActivity}" drawable="icon_contactos" />
+    <item name="com.samsung.android.contacts" component="ComponentInfo{com.samsung.android.contacts/com.samsung.android.contacts.activities.PeopleActivity}" drawable="icon_contactos" />
+    
+    <!-- Discord -->
+    <item name="com.discord" component="ComponentInfo{com.discord/com.discord.app.AppActivity$AppAction}" drawable="icon_discord" />
+    <item name="com.discord" component="ComponentInfo{com.discord/com.discord.app.AppActivity$Main}" drawable="icon_discord" />
+    <item name="com.discord" component="ComponentInfo{com.discord/com.discord.app.AppActivity$Splash}" drawable="icon_discord" />
+    
+    <!-- Evernote -->
+    <item name="com.evernote" component="ComponentInfo{com.evernote/com.evernote.ui.HomeActivity}" drawable="icon_evernote" />
+    <item name="com.evernote" component="ComponentInfo{com.evernote/com.evernote.ui.SplashActivity}" drawable="icon_evernote" />
+    <item name="com.evernote" component="ComponentInfo{com.evernote/com.evernote.ui.MainActivity}" drawable="icon_evernote" />
+    
+    <!-- Mi Video -->
+    <item name="com.miui.videoplayer" component="ComponentInfo{com.miui.videoplayer/com.miui.videoplayer.HomeActivity}" drawable="icon_mi_video" />
+    <item name="com.miui.videoplayer" component="ComponentInfo{com.miui.videoplayer/com.miui.videoplayer.MainActivity}" drawable="icon_mi_video" />
+    <item name="com.miui.videoplayer" component="ComponentInfo{com.miui.videoplayer/com.miui.videoplayer.VideoPlayerActivity}" drawable="icon_mi_video" />
+    
+    <!-- Reddit -->
+    <item name="com.reddit.frontpage" component="ComponentInfo{com.reddit.frontpage/com.reddit.frontpage.StartActivity}" drawable="icon_reddit" />
+    <item name="com.reddit.frontpage" component="ComponentInfo{com.reddit.frontpage/com.reddit.frontpage.MainActivity}" drawable="icon_reddit" />
+    <item name="com.reddit.frontpage" component="ComponentInfo{com.reddit.frontpage/com.reddit.frontpage.LauncherActivity}" drawable="icon_reddit" />
+    
+    <!-- Reloj -->
+    <item name="com.android.deskclock" component="ComponentInfo{com.android.deskclock/com.android.deskclock.DeskClock}" drawable="icon_reloj" />
+    <item name="com.android.deskclock" component="ComponentInfo{com.android.deskclock/com.android.deskclock.AlarmClock}" drawable="icon_reloj" />
+    <item name="com.sec.android.app.clockpackage" component="ComponentInfo{com.sec.android.app.clockpackage/com.sec.android.app.clockpackage.ClockPackage}" drawable="icon_reloj" />
+    <item name="com.sec.android.app.clockpackage" component="ComponentInfo{com.sec.android.app.clockpackage/com.sec.android.app.clockpackage.ClockActivity}" drawable="icon_reloj" />
+    
+    <!-- Teléfono -->
+    <item name="com.android.dialer" component="ComponentInfo{com.android.dialer/com.android.dialer.main.impl.MainActivity}" drawable="icon_telefono" />
+    <item name="com.android.dialer" component="ComponentInfo{com.android.dialer/com.android.dialer.DialtactsActivity}" drawable="icon_telefono" />
+    <item name="com.android.dialer" component="ComponentInfo{com.android.dialer/com.android.dialer.app.DialtactsActivity}" drawable="icon_telefono" />
+    <item name="com.samsung.android.dialer" component="ComponentInfo{com.samsung.android.dialer/com.samsung.android.dialer.DialtactsActivity}" drawable="icon_telefono" />
+    <item name="com.samsung.android.dialer" component="ComponentInfo{com.samsung.android.dialer/com.samsung.android.dialer.app.DialtactsActivity}" drawable="icon_telefono" />
+    
+    <!-- Telegram -->
+    <item name="org.telegram.messenger" component="ComponentInfo{org.telegram.messenger/org.telegram.ui.LaunchActivity}" drawable="icon_telegram" />
+    <item name="org.telegram.messenger" component="ComponentInfo{org.telegram.messenger/org.telegram.ui.LaunchActivity$Main}" drawable="icon_telegram" />
+    <item name="org.telegram.messenger" component="ComponentInfo{org.telegram.messenger/org.telegram.ui.LaunchActivity$Splash}" drawable="icon_telegram" />
+    
+    <!-- Telegram: añadir compatibilidad con org.telegram.messenger.DefaultIcon -->
+    <item name="org.telegram.messenger" component="ComponentInfo{org.telegram.messenger/org.telegram.messenger.DefaultIcon}" drawable="icon_telegram" />
+</resources>

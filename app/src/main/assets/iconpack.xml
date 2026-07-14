@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<IconPack>
+    <info name="Mint Icons" author="Akustom15" website="https://akustom15.com" version="1.0" />
+    
+    <!-- Configuración de máscara para iconos no personalizados -->
+    <iconback img="icon_back" />
+    <iconmask img="icon_mask" />
+    <iconupon img="icon_upon" />
+    <scale factor="1.0" />
+    <!-- Esta sección es necesaria para KLWP/KWGT -->
+    <category name="Todos" />
+    <category name="App" />
+    <category name="Redes Sociales" />
+    <category name="Comunicación" />
+    <category name="Entretenimiento" />
+    <category name="Sistema" />
+    
+    <!-- Definición de iconos para KLWP y KWGT -->
+    <icon name="Administrador de archivos" drawable="icon_administrador_de_archivos" category="Sistema" />
+    <icon name="Calculadora" drawable="icon_calculadora" category="Sistema" />
+    <icon name="Calendario" drawable="icon_calendario" category="Sistema" />
+    <icon name="Cámara" drawable="icon_camara" category="Sistema" />
+    <icon name="Chrome" drawable="icon_chrome" category="App,Comunicación" />
+    <icon name="Configuración" drawable="icon_configuracion" category="Sistema" />
+    <icon name="Contactos" drawable="icon_contactos" category="Sistema,Comunicación" />
+    <icon name="Discord" drawable="icon_discord" category="Comunicación,Redes Sociales" />
+    <icon name="Drive" drawable="icon_drive" category="App" />
+    <icon name="Email" drawable="icon_email" category="Comunicación" />
+    <icon name="Evernote" drawable="icon_evernote" category="App" />
+    <icon name="Facebook" drawable="icon_facebook" category="Comunicación,Redes Sociales" />
+    <icon name="Galería" drawable="icon_galeria" category="Sistema" />
+    <icon name="Gmail" drawable="icon_gmail" category="Comunicación" />
+    <icon name="Instagram" drawable="icon_instagram" category="Comunicación,Redes Sociales" />
+    <icon name="Mensajes" drawable="icon_mensaje" category="Comunicación" />
+    <icon name="Mi Video" drawable="icon_mi_video" category="Entretenimiento,Sistema" />
+    <icon name="Música" drawable="icon_music" category="Entretenimiento,Sistema" />
+    <icon name="Notas" drawable="icon_notas" category="Sistema" />
+    <icon name="Nova Launcher" drawable="icon_nova_launcher" category="Sistema" />
+    <icon name="Paypal" drawable="icon_paypal" category="App" />
+    <icon name="Play Store" drawable="icon_playstore" category="App" />
+    <icon name="Reddit" drawable="icon_reddit" category="Comunicación,Redes Sociales" />
+    <icon name="Reloj" drawable="icon_reloj" category="Sistema" />
+    <icon name="Teléfono" drawable="icon_telefono" category="Sistema,Comunicación" />
+    <icon name="Telegram" drawable="icon_telegram" category="Comunicación,Redes Sociales" />
+    <icon name="TikTok" drawable="icon_tiktok" category="Entretenimiento,Redes Sociales" />
+    <icon name="WhatsApp" drawable="icon_whatsapp" category="Comunicación,Redes Sociales" />
+    <icon name="X" drawable="icon_x" category="Comunicación,Redes Sociales" />
+</IconPack>

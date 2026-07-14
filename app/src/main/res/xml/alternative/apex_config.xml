@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<apex_config>
+    <apex_package>com.akustom15.mint</apex_package>
+    <apex_name>Mint Icons</apex_name>
+    <apex_author>Akustom15</apex_author>
+    <apex_version>1.0</apex_version>
+    <apex_maskable>true</apex_maskable>
+    <apex_use_defaults>true</apex_use_defaults>
+</apex_config>

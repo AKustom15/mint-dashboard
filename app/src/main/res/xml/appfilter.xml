@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    APPFILTER.XML
+
+    This file maps the ComponentName of installed apps to your drawables.
+    This allows Launchers to automatically apply your icon pack.
+
+    Example:
+    <item component="ComponentInfo{com.android.chrome/com.google.android.apps.chrome.Main}" drawable="chrome" />
+-->
+<resources>
+    
+</resources>

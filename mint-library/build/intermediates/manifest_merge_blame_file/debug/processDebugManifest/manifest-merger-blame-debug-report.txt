@@ -1,0 +1,123 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    xmlns:tools="http://schemas.android.com/tools"
+4    package="com.akustom15.mint.library" >
+5
+6    <uses-sdk android:minSdkVersion="29" />
+7
+8    <uses-permission android:name="android.permission.INTERNET" />
+8-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:5:5-67
+8-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:5:22-64
+9    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+9-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:6:5-79
+9-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:6:22-76
+10    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+10-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:7:5-72
+10-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:7:22-69
+11    <uses-permission android:name="android.permission.VIBRATE" />
+11-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:8:5-66
+11-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:8:22-63
+12    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+12-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:9:5-77
+12-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:9:22-74
+13
+14    <!-- Query para detectar launchers y KWGT/KLWP -->
+15    <queries>
+15-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:12:5-21:15
+16        <intent>
+16-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:13:9-16:18
+17            <action android:name="android.intent.action.MAIN" />
+17-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:14:13-65
+17-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:14:21-62
+18
+19            <category android:name="android.intent.category.LAUNCHER" />
+19-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:15:13-73
+19-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:15:23-70
+20        </intent>
+21
+22        <package android:name="org.kustom.widget" />
+22-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:17:9-53
+22-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:17:18-50
+23        <package android:name="org.kustom.widget.pro" />
+23-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:18:9-57
+23-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:18:18-54
+24        <package android:name="org.kustom.wallpaper" />
+24-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:19:9-56
+24-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:19:18-53
+25        <package android:name="org.kustom.wallpaper.pro" />
+25-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:20:9-60
+25-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:20:18-57
+26    </queries>
+27
+28    <application>
+28-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:23:5-58:19
+29
+30        <!--
+31             Official Kustom API Provider — makes the app discoverable by KWGT/KLWP
+32             in "Installed packs". Serves .kwgt/.klwp files from assets/widgets/.
+33             Authority MUST be ${applicationId} for kfile:// URI scheme to work.
+34        -->
+35        <provider
+35-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:27:9-38:20
+36            android:name="org.kustom.api.Provider"
+36-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:28:13-51
+37            android:authorities="${applicationId}"
+37-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:29:13-51
+38            android:exported="true"
+38-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:30:13-36
+39            tools:ignore="ExportedContentProvider" >
+39-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:31:13-51
+40            <intent-filter>
+40-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:32:13-37:29
+41                <action android:name="org.kustom.provider.WIDGETS" />
+41-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:33:17-70
+41-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:33:25-67
+42                <action android:name="org.kustom.provider.WALLPAPERS" />
+42-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:34:17-73
+42-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:34:25-70
+43                <action android:name="org.kustom.provider.KOMPONENTS" />
+43-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:35:17-73
+43-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:35:25-70
+44                <action android:name="org.kustom.provider.LOCKSCREENS" />
+44-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:36:17-74
+44-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:36:25-71
+45            </intent-filter>
+46        </provider>
+47
+48        <!--
+49             Push notifications (FCM) — shared by every consumer icon pack.
+50             Registered here so apps don't need to declare it themselves.
+51        -->
+52        <service
+52-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:42:9-48:19
+53            android:name="com.akustom15.mint.library.notifications.MintMessagingService"
+53-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:43:13-89
+54            android:exported="false" >
+54-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:44:13-37
+55            <intent-filter>
+55-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:45:13-47:29
+56                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+56-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:46:17-78
+56-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:46:25-75
+57            </intent-filter>
+58        </service>
+59
+60        <meta-data
+60-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:50:9-53:48
+61            android:name="com.google.firebase.messaging.default_notification_icon"
+61-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:51:13-83
+62            android:resource="@drawable/mint_ic_notification"
+62-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:52:13-62
+63            tools:replace="android:resource" />
+63-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:53:13-45
+64        <meta-data
+64-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:54:9-57:45
+65            android:name="com.google.firebase.messaging.default_notification_channel_id"
+65-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:55:13-89
+66            android:value="mint_push_channel"
+66-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:56:13-46
+67            tools:replace="android:value" />
+67-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:57:13-42
+68    </application>
+69
+70</manifest>

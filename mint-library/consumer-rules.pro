@@ -1,0 +1,2 @@
+-keep class com.akustom15.mint.library.** { *; }
+-dontwarn com.akustom15.mint.library.**

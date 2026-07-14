@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Query para detectar launchers y KWGT/KLWP -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <package android:name="org.kustom.widget" />
+        <package android:name="org.kustom.widget.pro" />
+        <package android:name="org.kustom.wallpaper" />
+        <package android:name="org.kustom.wallpaper.pro" />
+    </queries>
+
+    <application>
+        <!-- Official Kustom API Provider — makes the app discoverable by KWGT/KLWP
+             in "Installed packs". Serves .kwgt/.klwp files from assets/widgets/.
+             Authority MUST be ${applicationId} for kfile:// URI scheme to work. -->
+        <provider
+            android:name="org.kustom.api.Provider"
+            android:authorities="${applicationId}"
+            android:exported="true"
+            tools:ignore="ExportedContentProvider">
+            <intent-filter>
+                <action android:name="org.kustom.provider.WIDGETS" />
+                <action android:name="org.kustom.provider.WALLPAPERS" />
+                <action android:name="org.kustom.provider.KOMPONENTS" />
+                <action android:name="org.kustom.provider.LOCKSCREENS" />
+            </intent-filter>
+        </provider>
+
+        <!-- Push notifications (FCM) — shared by every consumer icon pack.
+             Registered here so apps don't need to declare it themselves. -->
+        <service
+            android:name="com.akustom15.mint.library.notifications.MintMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/mint_ic_notification"
+            tools:replace="android:resource" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="mint_push_channel"
+            tools:replace="android:value" />
+    </application>
+
+</manifest>

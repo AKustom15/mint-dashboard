@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Lista de iconos nuevos para la sección "New" -->
+    <item drawable="icon_bundled_notes" />
+    <item drawable="icon_el_ezaby_pharmacy" />
+    <item drawable="icon_instashop" />
+    <item drawable="icon_kfh_mobile_banking_egypt" />
+    <item drawable="icon_telda" />
+    <item drawable="icon_bizops_app" />
+    <item drawable="icon_just_expenses" />
+    <item drawable="icon_mahavitaran" />
+    <item drawable="icon_axis_max_life" />
+    <item drawable="icon_cricbuzz" />
+    <item drawable="icon_firstcry" />
+    <item drawable="icon_bitmart" />
+    <item drawable="icon_elgin_smart" />
+    <item drawable="icon_island" />
+    <item drawable="icon_netguard" />
+    <item drawable="icon_picpay" />
+    <item drawable="icon_slack" />
+    <item drawable="icon_viewpoints" />
+    <item drawable="icon_alpha_progression" />
+    <item drawable="icon_bolt_food" />
+    <item drawable="icon_ideme_vlakom" />
+    <item drawable="icon_moja_4ka" />
+    <item drawable="icon_rain_viewer" />
+    <item drawable="icon_wireless_helper" />
+    <item drawable="icon_aliucord_manager" />
+    <item drawable="icon_disco" />
+    <item drawable="icon_geode" />
+    <item drawable="icon_imediashare" />
+    <item drawable="icon_microg_companion" />
+    <item drawable="icon_widgetable" />
+    <item drawable="icon_xrecorder" />
+    <item drawable="icon_avg_cleaner" />
+    <item drawable="icon_melolo" />
+    <item drawable="icon_duo_mobile" />
+    <item drawable="icon_juventus" />
+    <item drawable="icon_lufthansa" />
+    <item drawable="icon_os_updater" />
+    <item drawable="icon_turkish_airlines" />
+    <item drawable="icon_volvo_cars" />
+</resources>
