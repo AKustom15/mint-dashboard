@@ -71,11 +71,22 @@ class MintNotificationPreferences private constructor(context: Context) {
     fun getNotificationHistory(): List<NotificationItem> {
         val history = getHistoryJson()
         val list = mutableListOf<NotificationItem>()
+        var needsSave = false
+        
         for (i in 0 until history.length()) {
             val obj = history.getJSONObject(i)
+            
+            // Fix legacy items missing an ID
+            var id = obj.optString("id", "")
+            if (id.isBlank()) {
+                id = UUID.randomUUID().toString()
+                obj.put("id", id)
+                needsSave = true
+            }
+            
             list.add(
                 NotificationItem(
-                    id = obj.optString("id", ""),
+                    id = id,
                     title = obj.optString("title", ""),
                     body = obj.optString("body", ""),
                     timestamp = obj.optLong("timestamp", 0L),
@@ -84,6 +95,11 @@ class MintNotificationPreferences private constructor(context: Context) {
                 )
             )
         }
+        
+        if (needsSave) {
+            prefs.edit().putString(KEY_HISTORY, history.toString()).apply()
+        }
+        
         return list.reversed() // newest first
     }
 
