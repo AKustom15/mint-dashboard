@@ -20,6 +20,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -37,6 +38,7 @@ import com.akustom15.mint.library.notifications.MintNotificationPreferences
 import com.akustom15.mint.library.notifications.NotificationItem
 import com.akustom15.mint.library.ui.composables.GradientBackground
 import com.akustom15.mint.library.ui.composables.LiquidGlassCard
+import com.akustom15.mint.library.ui.composables.FrostedGlassDialogCard
 import com.akustom15.mint.library.ui.theme.LocalLiquidGlassColors
 import com.akustom15.mint.library.ui.theme.MintColors
 import java.text.SimpleDateFormat
@@ -57,7 +59,11 @@ fun NotificationHistoryScreen(
     val unreadCount = notifications.count { !it.isRead }
 
     GradientBackground {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .then(if (selectedNotification != null) Modifier.blur(20.dp) else Modifier)
+        ) {
             // Top bar
             Spacer(modifier = Modifier.windowInsetsPadding(WindowInsets.statusBars))
             Row(
@@ -115,12 +121,11 @@ fun NotificationHistoryScreen(
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     items(notifications, key = { it.id }) { item ->
-                        var isDismissed by remember { mutableStateOf(false) }
                         val dismissState = rememberSwipeToDismissBoxState(
                             confirmValueChange = {
                                 if (it == SwipeToDismissBoxValue.EndToStart || it == SwipeToDismissBoxValue.StartToEnd) {
                                     prefs.deleteNotification(item.id)
-                                    isDismissed = true
+                                    notifications = notifications.filter { n -> n.id != item.id }
                                     true
                                 } else {
                                     false
@@ -128,48 +133,43 @@ fun NotificationHistoryScreen(
                             }
                         )
 
-                        AnimatedVisibility(
-                            visible = !isDismissed,
-                            exit = shrinkVertically() + fadeOut(animationSpec = tween(300))
-                        ) {
-                            SwipeToDismissBox(
-                                state = dismissState,
-                                enableDismissFromEndToStart = true,
-                                enableDismissFromStartToEnd = true,
-                                backgroundContent = {
-                                    Box(
-                                        modifier = Modifier
-                                            .fillMaxSize()
-                                            .padding(vertical = 4.dp)
-                                            .clip(RoundedCornerShape(16.dp))
-                                            .background(Color.Red.copy(alpha = 0.8f))
-                                            .padding(horizontal = 20.dp),
-                                        contentAlignment = if (dismissState.dismissDirection == SwipeToDismissBoxValue.StartToEnd) Alignment.CenterStart else Alignment.CenterEnd
-                                    ) {
-                                        Icon(
-                                            Icons.Default.Delete,
-                                            contentDescription = "Delete",
-                                            tint = Color.White
-                                        )
-                                    }
+                        SwipeToDismissBox(
+                            state = dismissState,
+                            enableDismissFromEndToStart = true,
+                            enableDismissFromStartToEnd = true,
+                            backgroundContent = {
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .padding(vertical = 4.dp)
+                                        .clip(RoundedCornerShape(16.dp))
+                                        .background(Color.Red.copy(alpha = 0.8f))
+                                        .padding(horizontal = 20.dp),
+                                    contentAlignment = if (dismissState.dismissDirection == SwipeToDismissBoxValue.StartToEnd) Alignment.CenterStart else Alignment.CenterEnd
+                                ) {
+                                    Icon(
+                                        Icons.Default.Delete,
+                                        contentDescription = "Delete",
+                                        tint = Color.White
+                                    )
                                 }
-                            ) {
-                                NotificationCard(
-                                    item = item,
-                                    onClick = {
-                                        prefs.markAsRead(item.id)
-                                        // Update state locally
-                                        notifications = notifications.map {
-                                            if (it.id == item.id) it.copy(isRead = true) else it
-                                        }
-                                        selectedNotification = item
-                                    },
-                                    onDelete = {
-                                        prefs.deleteNotification(item.id)
-                                        notifications = notifications.filter { it.id != item.id }
-                                    }
-                                )
                             }
+                        ) {
+                            NotificationCard(
+                                item = item,
+                                onClick = {
+                                    prefs.markAsRead(item.id)
+                                    // Update state locally
+                                    notifications = notifications.map {
+                                        if (it.id == item.id) it.copy(isRead = true) else it
+                                    }
+                                    selectedNotification = item
+                                },
+                                onDelete = {
+                                    prefs.deleteNotification(item.id)
+                                    notifications = notifications.filter { n -> n.id != item.id }
+                                }
+                            )
                         }
                     }
                 }
@@ -177,62 +177,63 @@ fun NotificationHistoryScreen(
         }
         
         // Custom Overlay Dialog for notification details (ensures Haze blur works)
-        AnimatedVisibility(
-            visible = selectedNotification != null,
-            enter = fadeIn(animationSpec = tween(300)),
-            exit = fadeOut(animationSpec = tween(300))
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.Black.copy(alpha = 0.5f))
-                    .clickable { selectedNotification = null },
-                contentAlignment = Alignment.Center
+        if (selectedNotification != null) {
+            Dialog(
+                onDismissRequest = { selectedNotification = null },
+                properties = DialogProperties(
+                    usePlatformDefaultWidth = false,
+                    decorFitsSystemWindows = false
+                )
             ) {
-                selectedNotification?.let { notif ->
-                    LiquidGlassCard(
-                        modifier = Modifier
-                            .fillMaxWidth(0.9f)
-                            .clickable(enabled = false) {}, // Prevent dismiss when clicking on the card
-                        shape = RoundedCornerShape(24.dp)
-                    ) {
-                        Column(
-                            modifier = Modifier.padding(24.dp)
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clickable { selectedNotification = null },
+                    contentAlignment = Alignment.Center
+                ) {
+                    selectedNotification?.let { notif ->
+                        FrostedGlassDialogCard(
+                            modifier = Modifier.clickable(enabled = false) {} // Prevent dismiss when clicking on the card
                         ) {
-                            Text(
-                                text = notif.title,
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 20.sp,
-                                color = liquidColors.textPrimary,
-                                modifier = Modifier.padding(bottom = 16.dp)
-                            )
-                            
-                            if (!notif.imageUrl.isNullOrBlank()) {
-                                AsyncImage(
-                                    model = notif.imageUrl,
-                                    contentDescription = "Notification Image",
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .height(150.dp)
-                                        .clip(RoundedCornerShape(12.dp))
-                                        .padding(bottom = 16.dp),
-                                    contentScale = ContentScale.Crop
-                                )
-                            }
-                            
-                            Text(
-                                text = notif.body,
-                                color = liquidColors.textSecondary,
-                                fontSize = 15.sp,
-                                modifier = Modifier.padding(bottom = 24.dp)
-                            )
-                            
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.End
+                            Column(
+                                modifier = Modifier.padding(28.dp),
+                                horizontalAlignment = Alignment.CenterHorizontally
                             ) {
-                                TextButton(onClick = { selectedNotification = null }) {
-                                    Text("OK", color = MintColors.Primary, fontWeight = FontWeight.Bold)
+                                Text(
+                                    text = notif.title,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 20.sp,
+                                    color = liquidColors.textPrimary,
+                                    modifier = Modifier.padding(bottom = 16.dp)
+                                )
+                                
+                                if (!notif.imageUrl.isNullOrBlank()) {
+                                    AsyncImage(
+                                        model = notif.imageUrl,
+                                        contentDescription = "Notification Image",
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .height(150.dp)
+                                            .clip(RoundedCornerShape(12.dp))
+                                            .padding(bottom = 16.dp),
+                                        contentScale = ContentScale.Crop
+                                    )
+                                }
+                                
+                                Text(
+                                    text = notif.body,
+                                    color = liquidColors.textSecondary,
+                                    fontSize = 15.sp,
+                                    modifier = Modifier.padding(bottom = 24.dp)
+                                )
+                                
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.End
+                                ) {
+                                    TextButton(onClick = { selectedNotification = null }) {
+                                        Text("OK", color = MintColors.Primary, fontWeight = FontWeight.Bold)
+                                    }
                                 }
                             }
                         }

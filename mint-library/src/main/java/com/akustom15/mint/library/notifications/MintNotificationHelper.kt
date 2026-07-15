@@ -103,8 +103,12 @@ object MintNotificationHelper {
         var bitmap: Bitmap? = null
         if (!imageUrl.isNullOrBlank()) {
             try {
-                val stream = URL(imageUrl).openStream()
-                bitmap = BitmapFactory.decodeStream(stream)
+                val url = URL(imageUrl)
+                val connection = url.openConnection() as java.net.HttpURLConnection
+                connection.doInput = true
+                connection.connect()
+                val input = connection.inputStream
+                bitmap = BitmapFactory.decodeStream(input)
             } catch (e: Exception) {
                 Log.e(TAG, "Failed to download notification image", e)
             }

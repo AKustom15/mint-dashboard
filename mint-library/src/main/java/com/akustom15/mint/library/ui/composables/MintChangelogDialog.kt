@@ -23,6 +23,7 @@ import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.draw.clip
 import com.akustom15.mint.library.config.MintConfig
+import com.akustom15.mint.library.ui.composables.FrostedGlassDialogCard
 import com.akustom15.mint.library.ui.theme.LocalLiquidGlassColors
 import com.akustom15.mint.library.ui.theme.MintColors
 import com.google.firebase.firestore.FirebaseFirestore
@@ -66,12 +67,6 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
     }
 
     if (showDialog) {
-        val dialogShape = RoundedCornerShape(28.dp)
-        val surfaceColor = if (isDark) MintColors.ButtonSurfaceDark else MintColors.ButtonSurfaceLight
-        val borderColor = if (isDark) MintColors.GlassBorderDark else MintColors.GlassBorderLight
-        val highlight = if (isDark) MintColors.ButtonHighlightDark else MintColors.ButtonHighlightLight
-        val shadowColor = if (isDark) MintColors.ButtonShadowDark else MintColors.ButtonShadowLight
-
         Dialog(
             onDismissRequest = { 
                 showDialog = false
@@ -93,47 +88,28 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
                     },
                 contentAlignment = Alignment.Center
             ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth(0.9f)
-                        .clickable(enabled = false) {} // Prevent dismiss on card click
-                        .shadow(
-                            elevation = 32.dp,
-                            shape = dialogShape,
-                            ambientColor = shadowColor,
-                            spotColor = shadowColor
-                        )
-                        .clip(dialogShape)
-                        .background(
-                            if (isDark) Color(0x331A1A2E) else Color(0x33FFFFFF)
-                        )
-                        .background(
-                            androidx.compose.ui.graphics.Brush.verticalGradient(
-                                listOf(
-                                    highlight.copy(alpha = 0.15f),
-                                    Color.Transparent,
-                                    surfaceColor.copy(alpha = 0.1f)
-                                )
-                            )
-                        )
-                        .border(1.dp, borderColor.copy(alpha = 0.5f), dialogShape)
+                FrostedGlassDialogCard(
+                    modifier = Modifier.clickable(enabled = false) {}
                 ) {
                     Column(
-                        modifier = Modifier.padding(28.dp)
+                        modifier = Modifier.padding(28.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
                             text = "¡Nueva Actualización $versionName!",
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
                             color = liquidColors.textPrimary,
-                            modifier = Modifier.padding(bottom = 16.dp)
+                            modifier = Modifier.padding(bottom = 16.dp),
+                            textAlign = TextAlign.Center
                         )
                         
                         Text(
                             text = changelogText,
                             color = liquidColors.textSecondary,
                             fontSize = 15.sp,
-                            modifier = Modifier.padding(bottom = 24.dp)
+                            modifier = Modifier.padding(bottom = 24.dp),
+                            textAlign = TextAlign.Center
                         )
                         
                         Row(

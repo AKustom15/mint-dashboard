@@ -43,11 +43,62 @@ object LauncherUtils {
             "ch.deletescape.lawnchair.plah",
             "ch.deletescape.lawnchair",
             "app.lawnchair" -> applyToLawnchairLauncher(context, launcher)
-            "ginlemon.smartlauncher" -> applyToSmartLauncher(context, launcher)
+            "ginlemon.smartlauncher",
+            "ginlemon.flowerfree" -> applyToSmartLauncher(context, launcher)
             "ginlemon.flower.launcher" -> applyToSmartLauncher(context, launcher)
             "com.actionlauncher.playstore" -> applyToActionLauncher(context, launcher)
+            "com.sec.android.app.launcher" -> applyToSamsungLauncher(context)
             else -> applyGeneric(context, launcher)
         }
+    }
+
+    private fun applyToSamsungLauncher(context: Context): Boolean {
+        val iconPackPackageName = context.packageName
+        // Samsung One UI doesn't have a direct icon pack intent.
+        // Try opening the Theme Store icon section, or fall back to opening the launcher.
+        val attempts = listOf(
+            {
+                // Try Samsung Galaxy Themes icon pack intent
+                Intent("com.samsung.android.themestore.ICON_PACK").apply {
+                    putExtra("package", iconPackPackageName)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+            },
+            {
+                // Try opening Samsung Theme settings
+                Intent().apply {
+                    component = ComponentName(
+                        "com.samsung.android.themestore",
+                        "com.samsung.android.themestore.activity.MainActivity"
+                    )
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+            },
+            {
+                // Fallback: open home launcher settings
+                context.packageManager.getLaunchIntentForPackage("com.sec.android.app.launcher")?.apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+            }
+        )
+
+        for (attemptGenerator in attempts) {
+            try {
+                val intent = attemptGenerator()
+                if (intent != null) {
+                    context.startActivity(intent)
+                    return true
+                }
+            } catch (e: Exception) {
+                Log.d(TAG, "Samsung launcher attempt failed: ${e.message}")
+            }
+        }
+        Toast.makeText(
+            context,
+            "Samsung One UI: Ve a Ajustes > Pantalla de inicio > aplicar el pack de iconos manualmente.",
+            Toast.LENGTH_LONG
+        ).show()
+        return false
     }
 
     private fun applyToNovaLauncher(context: Context, launcher: LauncherInfo): Boolean {

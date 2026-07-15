@@ -49,37 +49,55 @@ object AppFilterCache {
         val result = mutableSetOf<String>()
         val packageName = context.packageName
 
+        // First try to parse from res/xml/appfilter.xml
         try {
             val resId = context.resources.getIdentifier("appfilter", "xml", packageName)
-            if (resId == 0) return emptySet()
-
-            val parser = context.resources.getXml(resId)
-            var eventType = parser.eventType
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                if (eventType == XmlPullParser.START_TAG && parser.name == "item") {
-                    val componentString = parser.getAttributeValue(null, "component")
-                    if (componentString != null &&
-                        componentString.startsWith("ComponentInfo{") &&
-                        componentString.endsWith("}")
-                    ) {
-                        val fullComponent = componentString.substring(
-                            "ComponentInfo{".length,
-                            componentString.length - 1
-                        )
-                        if (fullComponent.isNotBlank() && fullComponent.contains("/") && !fullComponent.contains(" ")) {
-                            result.add(fullComponent.lowercase().trim())
-                        }
-                    }
-                }
-                eventType = parser.next()
+            if (resId != 0) {
+                val parser = context.resources.getXml(resId)
+                parseThemedComponents(parser, result)
+                parser.close()
             }
-            parser.close()
         } catch (e: Exception) {
-            Log.e("AppFilterCache", "Error parsing appfilter for themed components", e)
+            Log.e("AppFilterCache", "Error parsing res/xml/appfilter.xml", e)
+        }
+
+        // Then also try to parse from assets/appfilter.xml
+        try {
+            val inputStream = context.assets.open("appfilter.xml")
+            val factory = org.xmlpull.v1.XmlPullParserFactory.newInstance()
+            factory.isNamespaceAware = true
+            val parser = factory.newPullParser()
+            parser.setInput(inputStream, null)
+            parseThemedComponents(parser, result)
+            inputStream.close()
+        } catch (e: Exception) {
+            // Ignore if assets/appfilter.xml does not exist
         }
 
         cachedThemedComponents = result
         return result
+    }
+
+    private fun parseThemedComponents(parser: XmlPullParser, result: MutableSet<String>) {
+        var eventType = parser.eventType
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+            if (eventType == XmlPullParser.START_TAG && parser.name == "item") {
+                val componentString = parser.getAttributeValue(null, "component")
+                if (componentString != null &&
+                    componentString.startsWith("ComponentInfo{") &&
+                    componentString.endsWith("}")
+                ) {
+                    val fullComponent = componentString.substring(
+                        "ComponentInfo{".length,
+                        componentString.length - 1
+                    )
+                    if (fullComponent.isNotBlank() && fullComponent.contains("/") && !fullComponent.contains(" ")) {
+                        result.add(fullComponent.lowercase().trim())
+                    }
+                }
+            }
+            eventType = parser.next()
+        }
     }
     
     private fun parseXml(context: Context, resId: Int, iconNames: MutableList<String>) {
