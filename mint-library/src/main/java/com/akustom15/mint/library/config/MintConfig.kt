@@ -73,6 +73,7 @@ data class MintConfig(
     val updateInfo: String = "",
 
     // URLs
+    val appConfigUrl: String = "",
     val cloudWallpapersUrl: String = "",
     val updateJsonUrl: String = "",
     val privacyPolicyUrl: String = "",

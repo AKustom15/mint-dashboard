@@ -2,4 +2,9 @@
     <string name="app_name">Mint Icons</string>
     <string name="app_description">Mint Icon Pack by Akustom15</string>
     <string name="default_notification_channel_id">mint_updates</string>
+
+    <!-- Splash Screen Animation Texts -->
+    <string name="splash_name_part1">Mint </string>
+    <string name="splash_name_part2">Icon </string>
+    <string name="splash_name_part3">Pack</string>
 </resources>

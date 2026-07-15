@@ -29,12 +29,12 @@ class MainActivity : ComponentActivity() {
         requestNotificationPermissionIfNeeded()
 
         val config = MintConfig(
-            appName = "Mint Icons",
+            appName = getString(R.string.app_name),
             appSubtitle = "Liquid Glass Design",
             packageName = packageName,
             developerName = "AKustom15",
             iconRequestEmail = "akustom15help@gmail.com",
-            iconRequestSubject = "Solicitud de iconos para Mint Icons",
+            iconRequestSubject = "Solicitud de iconos para ${getString(R.string.app_name)}",
             freeRequestLimit = 10,
             premiumEnabled = true,
             premiumProducts = listOf(
@@ -44,7 +44,11 @@ class MainActivity : ComponentActivity() {
                 MintPremiumProduct("premium_icon_request_50", 50, "$10.00")
             ),
             firestoreCollection = "icon_requests",
-            firestoreUpdateDocument = "glasswave_current", // Update check document
+            firestoreUpdateDocument = "glasswave_current", // Cambia esto por el nombre de tu documento en Firebase (ej. "tuapp_current")
+            
+            // Remote Kill-Switch and Toggles
+            appConfigUrl = "", // Sube un JSON a GitHub y pon la URL aquí para controlar las solicitudes
+            
             cloudWallpapersUrl = "https://raw.githubusercontent.com/rs1525/wallpaper_glasswave/refs/heads/main/wallpaper_glaswave.json",
             // updateJsonUrl = "https://.../mint_version.json",
             

@@ -24,6 +24,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileInputStream
@@ -45,6 +46,12 @@ data class MissingIconApp(
     val alreadyRequested: Boolean = false
 )
 
+data class RemoteIconConfig(
+    val allowFreeRequests: Boolean = true,
+    val allowPremiumRequests: Boolean = true,
+    val pauseMessage: String = ""
+)
+
 data class IconRequestUiState(
     val missingApps: List<MissingIconApp> = emptyList(),
     val isLoading: Boolean = true,
@@ -54,7 +61,8 @@ data class IconRequestUiState(
     val requestSent: Boolean = false,
     val error: String? = null,
     val requestedIcons: Set<String> = emptySet(),
-    val totalAvailable: Int = 10
+    val totalAvailable: Int = 10,
+    val remoteConfig: RemoteIconConfig = RemoteIconConfig()
 )
 
 class IconRequestViewModel : ViewModel() {
@@ -92,6 +100,24 @@ class IconRequestViewModel : ViewModel() {
                 requestedIcons = requestedIcons,
                 totalAvailable = freeRemaining + premiumAvailableCount
             )
+        }
+    }
+
+    fun loadRemoteConfig(url: String) {
+        if (url.isBlank()) return
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val jsonString = java.net.URL(url).readText()
+                val jsonObject = JSONObject(jsonString)
+                val config = RemoteIconConfig(
+                    allowFreeRequests = jsonObject.optBoolean("allow_free_requests", true),
+                    allowPremiumRequests = jsonObject.optBoolean("allow_premium_requests", true),
+                    pauseMessage = jsonObject.optString("pause_message", "")
+                )
+                _uiState.value = _uiState.value.copy(remoteConfig = config)
+            } catch (e: Exception) {
+                Log.e("IconRequest", "Error loading remote config", e)
+            }
         }
     }
 
@@ -184,7 +210,7 @@ class IconRequestViewModel : ViewModel() {
      * Sends icon request email with ZIP attachment (appfilter.xml, appmap.xml, icons PNG)
      * and saves to Firestore. Replicates GlassWave behavior exactly.
      */
-    fun sendIconRequest(context: Context) {
+    fun sendIconRequest(context: Context, antiPiracyStatus: String?) {
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isSending = true)
 
@@ -196,7 +222,7 @@ class IconRequestViewModel : ViewModel() {
                 }
 
                 withContext(Dispatchers.IO) {
-                    shareIconRequests(context, selectedApps)
+                    shareIconRequests(context, selectedApps, antiPiracyStatus)
                 }
 
                 // Save to Firestore
@@ -262,7 +288,7 @@ class IconRequestViewModel : ViewModel() {
         }
     }
 
-    private fun shareIconRequests(context: Context, selectedApps: List<MissingIconApp>) {
+    private fun shareIconRequests(context: Context, selectedApps: List<MissingIconApp>, antiPiracyStatus: String?) {
         // 1) Prepare temp payload directory
         val cacheDir = context.cacheDir
         val payloadDir = File(cacheDir, "icon_request_payload").apply {
@@ -295,6 +321,8 @@ class IconRequestViewModel : ViewModel() {
             "${context.packageName}.fileprovider",
             zipFile
         )
+        
+        val androidId = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID) ?: "Unknown"
 
         // Build email subject and body
         val subject = "Solicitud de iconos para $appName (${selectedApps.size} apps)"
@@ -305,7 +333,10 @@ class IconRequestViewModel : ViewModel() {
                 append("• ${app.appName} (${app.packageName})\n")
                 append("  Descargar/Ver: $playStoreLink\n\n")
             }
-            append("(Los detalles completos de los componentes están en el archivo XML adjunto.)")
+            append("(Los detalles completos de los componentes están en el archivo XML adjunto.)\n\n")
+            append("--- Configuración del Dispositivo ---\n")
+            append("Device ID: $androidId\n")
+            append("License Status: ${antiPiracyStatus ?: "Unknown"}\n")
         }
 
         Log.d("IconRequest", "Email Subject: $subject")
@@ -317,7 +348,7 @@ class IconRequestViewModel : ViewModel() {
             putExtra(Intent.EXTRA_STREAM, fileUri)
             putExtra(Intent.EXTRA_SUBJECT, subject)
             putExtra(Intent.EXTRA_TEXT, emailBody +
-                "\n\nSe adjunta ZIP con: appfilter.xml, appmap.xml e iconos PNG de las apps seleccionadas.")
+                "\nSe adjunta ZIP con: appfilter.xml, appmap.xml e iconos PNG de las apps seleccionadas.")
             putExtra(Intent.EXTRA_EMAIL, arrayOf(emailAddress))
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }

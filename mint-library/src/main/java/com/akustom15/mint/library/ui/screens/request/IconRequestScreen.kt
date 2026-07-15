@@ -69,7 +69,14 @@ fun IconRequestScreen(
         viewModel.setFreeLimit(config.freeRequestLimit)
         viewModel.setPremiumAvailable(premiumAvailable)
         viewModel.loadMissingIcons(context)
+        if (config.appConfigUrl.isNotEmpty()) {
+            viewModel.loadRemoteConfig(config.appConfigUrl)
+        }
     }
+    
+    val securityManager = remember { com.akustom15.mint.library.security.SecurityManager.getInstance(context, config) }
+    val securityState by securityManager.securityState.collectAsState()
+    val antiPiracyStatus = securityState.javaClass.simpleName
 
     // Blur source for the floating Send button: the screen content (status card
     // + app list). The FAB is a hazeChild sibling of this Column, so it renders a
@@ -129,7 +136,8 @@ fun IconRequestScreen(
                     totalRequests = config.freeRequestLimit + premiumAvailable,
                     usedRequests = uiState.requestedIcons.size + uiState.selectedCount,
                     availableRequests = uiState.totalAvailable - uiState.selectedCount,
-                    premiumEnabled = config.premiumEnabled,
+                    premiumEnabled = config.premiumEnabled && uiState.remoteConfig.allowPremiumRequests,
+                    pauseMessage = uiState.remoteConfig.pauseMessage,
                     onBuyPremium = { showPremiumDialog = true }
                 )
 
@@ -199,14 +207,14 @@ fun IconRequestScreen(
             }
 
             // Liquid glass FAB overlay — real blur of the content behind it
-            if (uiState.selectedCount > 0 && !uiState.isLoading && !uiState.isSending) {
+            if (uiState.selectedCount > 0 && !uiState.isLoading && !uiState.isSending && uiState.remoteConfig.allowFreeRequests) {
               CompositionLocalProvider(LocalHazeState provides fabHazeState) {
                 RealBlurCard(
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
                         .padding(bottom = 24.dp)
                         .navigationBarsPadding()
-                        .clickable { viewModel.sendIconRequest(context) },
+                        .clickable { viewModel.sendIconRequest(context, antiPiracyStatus) },
                     cornerRadius = 70f,
                     blurRadius = 100,
                     blurPasses = 3,
@@ -266,6 +274,7 @@ private fun RequestStatusCard(
     usedRequests: Int,
     availableRequests: Int,
     premiumEnabled: Boolean,
+    pauseMessage: String = "",
     onBuyPremium: () -> Unit
 ) {
     val liquidColors = LocalLiquidGlassColors.current
@@ -308,6 +317,24 @@ private fun RequestStatusCard(
                 fontSize = 14.sp,
                 modifier = Modifier.padding(vertical = 8.dp)
             )
+            
+            if (pauseMessage.isNotEmpty()) {
+                Spacer(modifier = Modifier.height(8.dp))
+                LiquidGlassCard(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    Text(
+                        text = pauseMessage,
+                        color = MintColors.Tertiary,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(12.dp).fillMaxWidth()
+                    )
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+            }
 
             Spacer(modifier = Modifier.height(16.dp))
 
