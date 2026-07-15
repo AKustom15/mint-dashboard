@@ -1,22 +1,34 @@
 package com.akustom15.mint.library.ui.screens.settings
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.DeleteSweep
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.akustom15.mint.library.R
 import com.akustom15.mint.library.notifications.MintNotificationPreferences
 import com.akustom15.mint.library.notifications.NotificationItem
@@ -28,6 +40,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NotificationHistoryScreen(
     onNavigateBack: () -> Unit
@@ -36,6 +49,9 @@ fun NotificationHistoryScreen(
     val liquidColors = LocalLiquidGlassColors.current
     val prefs = remember { MintNotificationPreferences.getInstance(context) }
     var notifications by remember { mutableStateOf(prefs.getNotificationHistory()) }
+    var selectedNotification by remember { mutableStateOf<NotificationItem?>(null) }
+    
+    val unreadCount = notifications.count { !it.isRead }
 
     GradientBackground {
         Column(modifier = Modifier.fillMaxSize()) {
@@ -95,51 +111,205 @@ fun NotificationHistoryScreen(
                     ),
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
-                    items(notifications) { item ->
-                        NotificationCard(item)
+                    items(notifications, key = { it.id }) { item ->
+                        var isDismissed by remember { mutableStateOf(false) }
+                        val dismissState = rememberSwipeToDismissBoxState(
+                            confirmValueChange = {
+                                if (it == SwipeToDismissBoxValue.EndToStart || it == SwipeToDismissBoxValue.StartToEnd) {
+                                    prefs.deleteNotification(item.id)
+                                    isDismissed = true
+                                    true
+                                } else {
+                                    false
+                                }
+                            }
+                        )
+
+                        AnimatedVisibility(
+                            visible = !isDismissed,
+                            exit = shrinkVertically() + fadeOut(animationSpec = tween(300))
+                        ) {
+                            SwipeToDismissBox(
+                                state = dismissState,
+                                enableDismissFromEndToStart = true,
+                                enableDismissFromStartToEnd = true,
+                                backgroundContent = {
+                                    Box(
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                            .padding(vertical = 4.dp)
+                                            .clip(RoundedCornerShape(16.dp))
+                                            .background(Color.Red.copy(alpha = 0.8f))
+                                            .padding(horizontal = 20.dp),
+                                        contentAlignment = if (dismissState.dismissDirection == SwipeToDismissBoxValue.StartToEnd) Alignment.CenterStart else Alignment.CenterEnd
+                                    ) {
+                                        Icon(
+                                            Icons.Default.Delete,
+                                            contentDescription = "Delete",
+                                            tint = Color.White
+                                        )
+                                    }
+                                }
+                            ) {
+                                NotificationCard(
+                                    item = item,
+                                    onClick = {
+                                        prefs.markAsRead(item.id)
+                                        // Update state locally
+                                        notifications = notifications.map {
+                                            if (it.id == item.id) it.copy(isRead = true) else it
+                                        }
+                                        selectedNotification = item
+                                    },
+                                    onDelete = {
+                                        prefs.deleteNotification(item.id)
+                                        isDismissed = true
+                                    }
+                                )
+                            }
+                        }
                     }
                 }
             }
         }
     }
+
+    // Dialog for notification details
+    selectedNotification?.let { notif ->
+        AlertDialog(
+            onDismissRequest = { selectedNotification = null },
+            confirmButton = {
+                TextButton(onClick = { selectedNotification = null }) {
+                    Text("OK", color = MintColors.Primary)
+                }
+            },
+            title = {
+                Text(
+                    text = notif.title,
+                    fontWeight = FontWeight.Bold,
+                    color = liquidColors.textPrimary
+                )
+            },
+            text = {
+                Column {
+                    if (!notif.imageUrl.isNullOrBlank()) {
+                        AsyncImage(
+                            model = notif.imageUrl,
+                            contentDescription = "Notification Image",
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(150.dp)
+                                .clip(RoundedCornerShape(12.dp))
+                                .padding(bottom = 12.dp),
+                            contentScale = ContentScale.Crop
+                        )
+                    }
+                    Text(
+                        text = notif.body,
+                        color = liquidColors.textSecondary,
+                        fontSize = 15.sp
+                    )
+                }
+            },
+            containerColor = liquidColors.glassSurface,
+            shape = RoundedCornerShape(24.dp)
+        )
+    }
 }
 
 @Composable
-private fun NotificationCard(item: NotificationItem) {
+private fun NotificationCard(
+    item: NotificationItem, 
+    onClick: () -> Unit,
+    onDelete: () -> Unit
+) {
     val liquidColors = LocalLiquidGlassColors.current
     val dateFormat = remember { SimpleDateFormat("dd MMM yyyy  HH:mm", Locale.getDefault()) }
 
     LiquidGlassCard(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick),
         shape = RoundedCornerShape(16.dp)
     ) {
-        Column(
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 20.dp, vertical = 14.dp)
+                .padding(horizontal = 20.dp, vertical = 14.dp),
+            verticalAlignment = Alignment.Top
         ) {
-            Text(
-                text = item.title,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 15.sp,
-                color = liquidColors.textPrimary,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(
-                text = item.body,
-                fontSize = 13.sp,
-                color = liquidColors.textSecondary,
-                maxLines = 4,
-                overflow = TextOverflow.Ellipsis
-            )
-            Spacer(modifier = Modifier.height(6.dp))
-            Text(
-                text = dateFormat.format(Date(item.timestamp)),
-                fontSize = 11.sp,
-                color = liquidColors.textSecondary.copy(alpha = 0.6f)
-            )
+            // Unread indicator
+            if (!item.isRead) {
+                Box(
+                    modifier = Modifier
+                        .padding(top = 4.dp, end = 12.dp)
+                        .background(MintColors.Primary.copy(alpha = 0.2f), RoundedCornerShape(8.dp))
+                        .padding(horizontal = 6.dp, vertical = 2.dp)
+                ) {
+                    Text(
+                        text = "NUEVO",
+                        color = MintColors.Primary,
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.ExtraBold
+                    )
+                }
+            } else {
+                Spacer(modifier = Modifier.width(8.dp))
+            }
+
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = item.title,
+                    fontWeight = if (item.isRead) FontWeight.Medium else FontWeight.Bold,
+                    fontSize = 15.sp,
+                    color = liquidColors.textPrimary,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                
+                if (!item.imageUrl.isNullOrBlank()) {
+                    AsyncImage(
+                        model = item.imageUrl,
+                        contentDescription = "Thumbnail",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(120.dp)
+                            .padding(vertical = 8.dp)
+                            .clip(RoundedCornerShape(8.dp)),
+                        contentScale = ContentScale.Crop
+                    )
+                }
+
+                Text(
+                    text = item.body,
+                    fontSize = 13.sp,
+                    color = liquidColors.textSecondary,
+                    maxLines = if (item.imageUrl.isNullOrBlank()) 3 else 2,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Spacer(modifier = Modifier.height(6.dp))
+                Text(
+                    text = dateFormat.format(Date(item.timestamp)),
+                    fontSize = 11.sp,
+                    color = liquidColors.textSecondary.copy(alpha = 0.6f)
+                )
+            }
+            
+            // Delete button for obvious interaction
+            IconButton(
+                onClick = onDelete,
+                modifier = Modifier
+                    .padding(start = 8.dp)
+                    .size(32.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Delete,
+                    contentDescription = "Borrar",
+                    tint = liquidColors.textSecondary.copy(alpha = 0.5f),
+                    modifier = Modifier.size(20.dp)
+                )
+            }
         }
     }
 }

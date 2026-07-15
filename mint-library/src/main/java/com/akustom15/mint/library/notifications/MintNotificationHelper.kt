@@ -9,9 +9,12 @@ import android.media.AudioAttributes
 import android.net.Uri
 import android.os.Build
 import android.util.Log
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.core.app.NotificationCompat
 import com.akustom15.mint.library.R
 import com.google.firebase.messaging.FirebaseMessaging
+import java.net.URL
 
 /**
  * Handles notification channel creation, FCM topic subscription,
@@ -84,7 +87,7 @@ object MintNotificationHelper {
     /**
      * Show a local notification (called by MintMessagingService when FCM arrives).
      */
-    fun showNotification(context: Context, title: String, body: String) {
+    fun showNotification(context: Context, title: String, body: String, imageUrl: String? = null) {
         val soundUri = Uri.parse(
             "android.resource://${context.packageName}/${R.raw.new_notification_011}"
         )
@@ -97,7 +100,17 @@ object MintNotificationHelper {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+        var bitmap: Bitmap? = null
+        if (!imageUrl.isNullOrBlank()) {
+            try {
+                val stream = URL(imageUrl).openStream()
+                bitmap = BitmapFactory.decodeStream(stream)
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to download notification image", e)
+            }
+        }
+
+        val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.mint_ic_notification)
             .setContentTitle(title)
             .setContentText(body)
@@ -105,9 +118,17 @@ object MintNotificationHelper {
             .setSound(soundUri)
             .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .build()
+
+        if (bitmap != null) {
+            builder.setLargeIcon(bitmap)
+            builder.setStyle(
+                NotificationCompat.BigPictureStyle()
+                    .bigPicture(bitmap)
+                    .bigLargeIcon(null as Bitmap?) // Hide large icon when expanded
+            )
+        }
 
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        manager.notify(System.currentTimeMillis().toInt(), notification)
+        manager.notify(System.currentTimeMillis().toInt(), builder.build())
     }
 }

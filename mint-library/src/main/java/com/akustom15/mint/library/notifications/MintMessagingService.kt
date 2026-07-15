@@ -27,19 +27,20 @@ class MintMessagingService : FirebaseMessagingService() {
 
         val title = message.notification?.title ?: message.data["title"] ?: ""
         val body = message.notification?.body ?: message.data["body"] ?: ""
+        val imageUrl = message.notification?.imageUrl?.toString() ?: message.data["image"]
 
-        Log.d(TAG, "Push received: title=$title, body=$body")
+        Log.d(TAG, "Push received: title=$title, body=$body, image=$imageUrl")
 
         if (title.isBlank() && body.isBlank()) return
 
         val prefs = MintNotificationPreferences.getInstance(this)
 
         // Always save to history
-        prefs.saveNotification(title, body)
+        prefs.saveNotification(title, body, imageUrl)
 
         // Only show notification if user has them enabled
         if (prefs.areNotificationsEnabled()) {
-            MintNotificationHelper.showNotification(this, title, body)
+            MintNotificationHelper.showNotification(this, title, body, imageUrl)
         }
     }
 

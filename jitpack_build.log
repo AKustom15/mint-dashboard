@@ -1,0 +1,99 @@
+Build starting...
+Build image: default
+Start: Tue Jul 14 23:30:18 UTC 2026 d71d4f56febe
+Git:
+1.0.0-0-gfb5784c
+commit fb5784c399c8b928579aefc7671674ea5bc75a43
+Author: rs1525 
+Date:   Tue Jul 14 19:02:31 2026 -0400
+
+    Initial commit for Mint Dashboard Library and Base App
+
+
+Init SDKMan
+Found Android manifest
+Android SDK version: . Build tools: 
+Found gradle
+Gradle build script
+Gradle wrapper found
+Init SDKMan
+Found gradle version: 8.11.1.
+Using gradle wrapper
+Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8 -Dhttps.protocols=TLSv1.2
+Downloading https://services.gradle.org/distributions/gradle-8.11.1-bin.zip
+.10%.20%.30%.40%.50%.60%.70%.80%.90%.100%
+
+------------------------------------------------------------
+Gradle 8.11.1
+------------------------------------------------------------
+
+Build time:    2024-11-20 16:56:46 UTC
+Revision:      481cb05a490e0ef9f8620f7873b83bd8a72e7c39
+
+Kotlin:        2.0.20
+Groovy:        3.0.22
+Ant:           Apache Ant(TM) version 1.10.14 compiled on August 16 2023
+Launcher JVM:  1.8.0_292 (Private Build 25.292-b10)
+Daemon JVM:    Compatible with Java 21, any vendor (from gradle/gradle-daemon-jvm.properties)
+OS:            Linux 6.8.0-110-generic amd64
+
+0m2.041s
+Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8 -Dhttps.protocols=TLSv1.2
+openjdk version "1.8.0_292"
+OpenJDK Runtime Environment (build 1.8.0_292-8u292-b10-0ubuntu1~16.04.1-b10)
+OpenJDK 64-Bit Server VM (build 25.292-b10, mixed mode)
+Getting tasks: ./gradlew tasks --all
+Found tasks
+Tasks: 
+
+ ⚠️   WARNING:
+ Gradle 'publishToMavenLocal' task not found. Please add the 'maven-publish' or 'maven' plugin.
+ See the documentation and examples: https://docs.jitpack.io
+
+Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8 -Dhttps.protocols=TLSv1.2
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Cannot find a Java installation on your machine (Linux 6.8.0-110-generic amd64) matching: Compatible with Java 21, any vendor (from gradle/gradle-daemon-jvm.properties).
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Running: ./gradlew -Pgroup=com.github.AKustom15 -Pversion=1.0.0 publishToMavenLocal
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+Daemon JVM discovery is an incubating feature.
+Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8 -Dhttps.protocols=TLSv1.2
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Cannot find a Java installation on your machine (Linux 6.8.0-110-generic amd64) matching: Compatible with Java 21, any vendor (from gradle/gradle-daemon-jvm.properties).
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8 -Dhttps.protocols=TLSv1.2
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Cannot find a Java installation on your machine (Linux 6.8.0-110-generic amd64) matching: Compatible with Java 21, any vendor (from gradle/gradle-daemon-jvm.properties).
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+Build tool exit code: 1
+⚠️ Build failed. See errors above.
+2026-07-14T23:30:23.912408077Z
+Exit code: 1
+
+
