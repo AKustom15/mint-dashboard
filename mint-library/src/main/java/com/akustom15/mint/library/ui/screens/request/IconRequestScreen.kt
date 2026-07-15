@@ -131,76 +131,84 @@ fun IconRequestScreen(
                         )
                     }
                 }
-                // Status card matching GlassWave design
-                RequestStatusCard(
-                    totalRequests = config.freeRequestLimit + premiumAvailable,
-                    usedRequests = uiState.requestedIcons.size + uiState.selectedCount,
-                    availableRequests = uiState.totalAvailable - uiState.selectedCount,
-                    premiumEnabled = config.premiumEnabled && uiState.remoteConfig.allowPremiumRequests,
-                    pauseMessage = uiState.remoteConfig.pauseMessage,
-                    onBuyPremium = { showPremiumDialog = true }
-                )
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                // App list
-                if (uiState.isLoading || uiState.isSending) {
-                    Box(
-                        modifier = Modifier.weight(1f).fillMaxWidth(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            CircularProgressIndicator(color = MintColors.Primary)
-                            Spacer(modifier = Modifier.height(8.dp))
-                            Text(
-                                text = if (uiState.isSending)
-                                    stringResource(R.string.mint_icon_request_preparing)
-                                else stringResource(R.string.mint_icon_request_loading),
-                                fontSize = 14.sp,
-                                color = liquidColors.textSecondary
-                            )
-                        }
+                LazyColumn(
+                    modifier = Modifier.weight(1f),
+                    contentPadding = PaddingValues(
+                        top = 8.dp,
+                        bottom = 80.dp
+                    ),
+                    verticalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    item {
+                        // Status card matching GlassWave design
+                        RequestStatusCard(
+                            totalRequests = config.freeRequestLimit + premiumAvailable,
+                            usedRequests = uiState.requestedIcons.size + uiState.selectedCount,
+                            availableRequests = uiState.totalAvailable - uiState.selectedCount,
+                            premiumEnabled = config.premiumEnabled && uiState.remoteConfig.allowPremiumRequests,
+                            pauseMessage = uiState.remoteConfig.pauseMessage,
+                            onBuyPremium = { showPremiumDialog = true }
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
                     }
-                } else if (uiState.missingApps.isEmpty()) {
-                    Box(
-                        modifier = Modifier.weight(1f).fillMaxWidth(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text(
-                                text = stringResource(R.string.mint_icon_request_no_apps),
-                                fontSize = 18.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = MintColors.Primary
-                            )
-                            Text(
-                                text = stringResource(R.string.mint_icon_request_no_apps_desc),
-                                fontSize = 14.sp,
-                                color = liquidColors.textSecondary
-                            )
+
+                    if (uiState.isLoading || uiState.isSending) {
+                        item {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(vertical = 40.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                    CircularProgressIndicator(color = MintColors.Primary)
+                                    Spacer(modifier = Modifier.height(8.dp))
+                                    Text(
+                                        text = if (uiState.isSending)
+                                            stringResource(R.string.mint_icon_request_preparing)
+                                        else stringResource(R.string.mint_icon_request_loading),
+                                        fontSize = 14.sp,
+                                        color = liquidColors.textSecondary
+                                    )
+                                }
+                            }
                         }
-                    }
-                } else {
-                    LazyColumn(
-                        modifier = Modifier.weight(1f),
-                        contentPadding = PaddingValues(
-                            start = 16.dp,
-                            end = 16.dp,
-                            top = 8.dp,
-                            bottom = 80.dp
-                        ),
-                        verticalArrangement = Arrangement.spacedBy(6.dp)
-                    ) {
+                    } else if (uiState.missingApps.isEmpty()) {
+                        item {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(vertical = 40.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                    Text(
+                                        text = stringResource(R.string.mint_icon_request_no_apps),
+                                        fontSize = 18.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = MintColors.Primary
+                                    )
+                                    Text(
+                                        text = stringResource(R.string.mint_icon_request_no_apps_desc),
+                                        fontSize = 14.sp,
+                                        color = liquidColors.textSecondary
+                                    )
+                                }
+                            }
+                        }
+                    } else {
                         itemsIndexed(
                             items = uiState.missingApps,
                             key = { _, app -> app.packageName }
                         ) { index, app ->
-                            MissingIconRow(
-                                app = app,
-                                canSelect = !app.alreadyRequested &&
-                                    (uiState.selectedCount < uiState.totalAvailable || app.isSelected),
-                                onClick = { viewModel.toggleSelection(index) }
-                            )
+                            Box(modifier = Modifier.padding(horizontal = 16.dp)) {
+                                MissingIconRow(
+                                    app = app,
+                                    canSelect = !app.alreadyRequested &&
+                                        (uiState.selectedCount < uiState.totalAvailable || app.isSelected),
+                                    onClick = { viewModel.toggleSelection(index) }
+                                )
+                            }
                         }
                     }
                 }

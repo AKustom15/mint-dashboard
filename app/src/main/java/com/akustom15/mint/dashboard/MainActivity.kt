@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
             firestoreUpdateDocument = "glasswave_current", // Cambia esto por el nombre de tu documento en Firebase (ej. "tuapp_current")
             
             // Remote Kill-Switch and Toggles
-            appConfigUrl = "", // Sube un JSON a GitHub y pon la URL aquí para controlar las solicitudes
+            appConfigUrl = "https://raw.githubusercontent.com/AKustom15/GlassWave_General/refs/heads/main/interruptor_solicitud_icons.json", // Sube un JSON a GitHub y pon la URL aquí para controlar las solicitudes
             
             cloudWallpapersUrl = "https://raw.githubusercontent.com/rs1525/wallpaper_glasswave/refs/heads/main/wallpaper_glaswave.json",
             // updateJsonUrl = "https://.../mint_version.json",
