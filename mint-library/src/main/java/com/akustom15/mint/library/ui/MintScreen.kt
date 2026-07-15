@@ -17,6 +17,7 @@ import com.akustom15.mint.library.navigation.MintRoutes
 import com.akustom15.mint.library.ui.components.MintBottomNavigation
 import com.akustom15.mint.library.ui.components.MintTab
 import com.akustom15.mint.library.ui.composables.LocalHazeState
+import com.akustom15.mint.library.ui.composables.MintChangelogDialog
 import com.akustom15.mint.library.ui.theme.MintTheme
 import dev.chrisbanes.haze.HazeState
 import dev.chrisbanes.haze.haze
@@ -141,6 +142,9 @@ fun MintScreen(config: MintConfig) {
                         }
                     }
                 }
+                
+                // Show changelog if applicable
+                MintChangelogDialog(config = config)
             }
         }
     }

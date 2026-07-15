@@ -28,6 +28,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import coil.compose.AsyncImage
 import com.akustom15.mint.library.R
 import com.akustom15.mint.library.notifications.MintNotificationPreferences
@@ -163,7 +165,7 @@ fun NotificationHistoryScreen(
                                     },
                                     onDelete = {
                                         prefs.deleteNotification(item.id)
-                                        isDismissed = true
+                                        notifications = notifications.filter { it.id != item.id }
                                     }
                                 )
                             }
@@ -176,44 +178,68 @@ fun NotificationHistoryScreen(
 
     // Dialog for notification details
     selectedNotification?.let { notif ->
-        AlertDialog(
+        Dialog(
             onDismissRequest = { selectedNotification = null },
-            confirmButton = {
-                TextButton(onClick = { selectedNotification = null }) {
-                    Text("OK", color = MintColors.Primary)
-                }
-            },
-            title = {
-                Text(
-                    text = notif.title,
-                    fontWeight = FontWeight.Bold,
-                    color = liquidColors.textPrimary
-                )
-            },
-            text = {
-                Column {
-                    if (!notif.imageUrl.isNullOrBlank()) {
-                        AsyncImage(
-                            model = notif.imageUrl,
-                            contentDescription = "Notification Image",
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(150.dp)
-                                .clip(RoundedCornerShape(12.dp))
-                                .padding(bottom = 12.dp),
-                            contentScale = ContentScale.Crop
+            properties = DialogProperties(
+                usePlatformDefaultWidth = false,
+                decorFitsSystemWindows = false
+            )
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clickable { selectedNotification = null },
+                contentAlignment = Alignment.Center
+            ) {
+                LiquidGlassCard(
+                    modifier = Modifier
+                        .fillMaxWidth(0.9f)
+                        .clickable(enabled = false) {}, // Prevent dismiss when clicking on the card
+                    shape = RoundedCornerShape(24.dp)
+                ) {
+                    Column(
+                        modifier = Modifier.padding(24.dp)
+                    ) {
+                        Text(
+                            text = notif.title,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp,
+                            color = liquidColors.textPrimary,
+                            modifier = Modifier.padding(bottom = 16.dp)
                         )
+                        
+                        if (!notif.imageUrl.isNullOrBlank()) {
+                            AsyncImage(
+                                model = notif.imageUrl,
+                                contentDescription = "Notification Image",
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(150.dp)
+                                    .clip(RoundedCornerShape(12.dp))
+                                    .padding(bottom = 16.dp),
+                                contentScale = ContentScale.Crop
+                            )
+                        }
+                        
+                        Text(
+                            text = notif.body,
+                            color = liquidColors.textSecondary,
+                            fontSize = 15.sp,
+                            modifier = Modifier.padding(bottom = 24.dp)
+                        )
+                        
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.End
+                        ) {
+                            TextButton(onClick = { selectedNotification = null }) {
+                                Text("OK", color = MintColors.Primary, fontWeight = FontWeight.Bold)
+                            }
+                        }
                     }
-                    Text(
-                        text = notif.body,
-                        color = liquidColors.textSecondary,
-                        fontSize = 15.sp
-                    )
                 }
-            },
-            containerColor = liquidColors.glassSurface,
-            shape = RoundedCornerShape(24.dp)
-        )
+            }
+        }
     }
 }
 

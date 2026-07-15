@@ -44,6 +44,7 @@ class MainActivity : ComponentActivity() {
                 MintPremiumProduct("premium_icon_request_50", 50, "$10.00")
             ),
             firestoreCollection = "icon_requests",
+            firestoreUpdateDocument = "glasswave_current", // Update check document
             cloudWallpapersUrl = "https://raw.githubusercontent.com/rs1525/wallpaper_glasswave/refs/heads/main/wallpaper_glaswave.json",
             // updateJsonUrl = "https://.../mint_version.json",
             

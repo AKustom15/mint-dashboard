@@ -107,8 +107,9 @@ data class MintConfig(
     // Premium Products (configurable per icon pack)
     val premiumProducts: List<MintPremiumProduct> = defaultPremiumProducts(),
 
-    // Firestore (for request tracking)
+    // Firestore
     val firestoreCollection: String = "icon_requests",
+    val firestoreUpdateDocument: String = "",
 
     // Wallpapers
     val wallpaperCategories: List<String> = emptyList(),
