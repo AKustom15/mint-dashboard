@@ -106,7 +106,7 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
                         
                         Text(
                             text = changelogText,
-                            color = liquidColors.textSecondary,
+                            color = liquidColors.textPrimary, // Changed for better contrast
                             fontSize = 15.sp,
                             modifier = Modifier.padding(bottom = 24.dp),
                             textAlign = TextAlign.Center
@@ -116,12 +116,39 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.End
                         ) {
-                            TextButton(onClick = { 
-                                showDialog = false
-                                onShowChange(false)
-                                prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
-                            }) {
-                                Text("OK", color = MintColors.Primary, fontWeight = FontWeight.Bold)
+                            TextButton(
+                                onClick = { 
+                                    showDialog = false
+                                    onShowChange(false)
+                                    prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
+                                },
+                                modifier = Modifier.padding(end = 8.dp)
+                            ) {
+                                Text("LUEGO", color = liquidColors.textSecondary, fontWeight = FontWeight.Bold)
+                            }
+                            
+                            androidx.compose.material3.Button(
+                                onClick = { 
+                                    showDialog = false
+                                    onShowChange(false)
+                                    prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
+                                    
+                                    val intent = android.content.Intent(android.content.Intent.ACTION_VIEW).apply {
+                                        data = android.net.Uri.parse("market://details?id=${context.packageName}")
+                                        setPackage("com.android.vending")
+                                    }
+                                    try {
+                                        context.startActivity(intent)
+                                    } catch (e: Exception) {
+                                        // Fallback if Play Store is not installed
+                                        context.startActivity(
+                                            android.content.Intent(android.content.Intent.ACTION_VIEW, 
+                                                android.net.Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}"))
+                                        )
+                                    }
+                                }
+                            ) {
+                                Text("ACTUALIZAR", color = Color.White, fontWeight = FontWeight.Bold)
                             }
                         }
                     }

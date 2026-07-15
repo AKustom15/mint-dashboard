@@ -26,7 +26,6 @@ object MintNotificationHelper {
     const val CHANNEL_ID = "mint_push_channel"
     private const val CHANNEL_NAME = "Updates"
     private const val CHANNEL_DESC = "App updates and news"
-    private const val TOPIC_ALL = "all"
 
     /**
      * Initialize push notifications: create channel + subscribe to FCM topic.
@@ -72,14 +71,20 @@ object MintNotificationHelper {
     fun syncSubscription(context: Context) {
         val prefs = MintNotificationPreferences.getInstance(context)
         val enabled = prefs.areNotificationsEnabled()
+        
+        // Topic uniquely identifies the app package, replacing dots with underscores for FCM format
+        val packageTopic = context.packageName.replace(".", "_")
+
+        // Unsubscribe from legacy "all" topic to prevent duplicates
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("all")
 
         if (enabled) {
-            FirebaseMessaging.getInstance().subscribeToTopic(TOPIC_ALL)
-                .addOnSuccessListener { Log.d(TAG, "Subscribed to topic: $TOPIC_ALL") }
+            FirebaseMessaging.getInstance().subscribeToTopic(packageTopic)
+                .addOnSuccessListener { Log.d(TAG, "Subscribed to topic: $packageTopic") }
                 .addOnFailureListener { Log.e(TAG, "Failed to subscribe", it) }
         } else {
-            FirebaseMessaging.getInstance().unsubscribeFromTopic(TOPIC_ALL)
-                .addOnSuccessListener { Log.d(TAG, "Unsubscribed from topic: $TOPIC_ALL") }
+            FirebaseMessaging.getInstance().unsubscribeFromTopic(packageTopic)
+                .addOnSuccessListener { Log.d(TAG, "Unsubscribed from topic: $packageTopic") }
                 .addOnFailureListener { Log.e(TAG, "Failed to unsubscribe", it) }
         }
     }
