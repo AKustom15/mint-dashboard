@@ -3,6 +3,7 @@ package com.akustom15.mint.library.ui.screens.settings
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.fadeIn
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -174,66 +175,65 @@ fun NotificationHistoryScreen(
                 }
             }
         }
-    }
-
-    // Dialog for notification details
-    selectedNotification?.let { notif ->
-        Dialog(
-            onDismissRequest = { selectedNotification = null },
-            properties = DialogProperties(
-                usePlatformDefaultWidth = false,
-                decorFitsSystemWindows = false
-            )
+        
+        // Custom Overlay Dialog for notification details (ensures Haze blur works)
+        AnimatedVisibility(
+            visible = selectedNotification != null,
+            enter = fadeIn(animationSpec = tween(300)),
+            exit = fadeOut(animationSpec = tween(300))
         ) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
+                    .background(Color.Black.copy(alpha = 0.5f))
                     .clickable { selectedNotification = null },
                 contentAlignment = Alignment.Center
             ) {
-                LiquidGlassCard(
-                    modifier = Modifier
-                        .fillMaxWidth(0.9f)
-                        .clickable(enabled = false) {}, // Prevent dismiss when clicking on the card
-                    shape = RoundedCornerShape(24.dp)
-                ) {
-                    Column(
-                        modifier = Modifier.padding(24.dp)
+                selectedNotification?.let { notif ->
+                    LiquidGlassCard(
+                        modifier = Modifier
+                            .fillMaxWidth(0.9f)
+                            .clickable(enabled = false) {}, // Prevent dismiss when clicking on the card
+                        shape = RoundedCornerShape(24.dp)
                     ) {
-                        Text(
-                            text = notif.title,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 20.sp,
-                            color = liquidColors.textPrimary,
-                            modifier = Modifier.padding(bottom = 16.dp)
-                        )
-                        
-                        if (!notif.imageUrl.isNullOrBlank()) {
-                            AsyncImage(
-                                model = notif.imageUrl,
-                                contentDescription = "Notification Image",
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(150.dp)
-                                    .clip(RoundedCornerShape(12.dp))
-                                    .padding(bottom = 16.dp),
-                                contentScale = ContentScale.Crop
-                            )
-                        }
-                        
-                        Text(
-                            text = notif.body,
-                            color = liquidColors.textSecondary,
-                            fontSize = 15.sp,
-                            modifier = Modifier.padding(bottom = 24.dp)
-                        )
-                        
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.End
+                        Column(
+                            modifier = Modifier.padding(24.dp)
                         ) {
-                            TextButton(onClick = { selectedNotification = null }) {
-                                Text("OK", color = MintColors.Primary, fontWeight = FontWeight.Bold)
+                            Text(
+                                text = notif.title,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 20.sp,
+                                color = liquidColors.textPrimary,
+                                modifier = Modifier.padding(bottom = 16.dp)
+                            )
+                            
+                            if (!notif.imageUrl.isNullOrBlank()) {
+                                AsyncImage(
+                                    model = notif.imageUrl,
+                                    contentDescription = "Notification Image",
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(150.dp)
+                                        .clip(RoundedCornerShape(12.dp))
+                                        .padding(bottom = 16.dp),
+                                    contentScale = ContentScale.Crop
+                                )
+                            }
+                            
+                            Text(
+                                text = notif.body,
+                                color = liquidColors.textSecondary,
+                                fontSize = 15.sp,
+                                modifier = Modifier.padding(bottom = 24.dp)
+                            )
+                            
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.End
+                            ) {
+                                TextButton(onClick = { selectedNotification = null }) {
+                                    Text("OK", color = MintColors.Primary, fontWeight = FontWeight.Bold)
+                                }
                             }
                         }
                     }
@@ -293,25 +293,12 @@ private fun NotificationCard(
                     overflow = TextOverflow.Ellipsis
                 )
                 Spacer(modifier = Modifier.height(4.dp))
-                
-                if (!item.imageUrl.isNullOrBlank()) {
-                    AsyncImage(
-                        model = item.imageUrl,
-                        contentDescription = "Thumbnail",
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(120.dp)
-                            .padding(vertical = 8.dp)
-                            .clip(RoundedCornerShape(8.dp)),
-                        contentScale = ContentScale.Crop
-                    )
-                }
 
                 Text(
                     text = item.body,
                     fontSize = 13.sp,
                     color = liquidColors.textSecondary,
-                    maxLines = if (item.imageUrl.isNullOrBlank()) 3 else 2,
+                    maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
                 Spacer(modifier = Modifier.height(6.dp))

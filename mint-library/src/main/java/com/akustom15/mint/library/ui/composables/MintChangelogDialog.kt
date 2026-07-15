@@ -13,8 +13,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
+import androidx.compose.ui.graphics.Color
 import com.akustom15.mint.library.config.MintConfig
 import com.akustom15.mint.library.ui.theme.LocalLiquidGlassColors
 import com.akustom15.mint.library.ui.theme.MintColors
@@ -56,60 +60,54 @@ fun MintChangelogDialog(config: MintConfig) {
         }
     }
 
-    if (showDialog) {
-        Dialog(
-            onDismissRequest = { 
-                showDialog = false
-                prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
-            },
-            properties = DialogProperties(
-                usePlatformDefaultWidth = false,
-                decorFitsSystemWindows = false
-            )
+    AnimatedVisibility(
+        visible = showDialog,
+        enter = fadeIn(animationSpec = tween(300)),
+        exit = fadeOut(animationSpec = tween(300))
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black.copy(alpha = 0.5f))
+                .clickable { 
+                    showDialog = false
+                    prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
+                },
+            contentAlignment = Alignment.Center
         ) {
-            Box(
+            LiquidGlassCard(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .clickable { 
-                        showDialog = false
-                        prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
-                    },
-                contentAlignment = Alignment.Center
+                    .fillMaxWidth(0.9f)
+                    .clickable(enabled = false) {}, // Prevent dismiss on card click
+                shape = RoundedCornerShape(24.dp)
             ) {
-                LiquidGlassCard(
-                    modifier = Modifier
-                        .fillMaxWidth(0.9f)
-                        .clickable(enabled = false) {}, // Prevent dismiss on card click
-                    shape = RoundedCornerShape(24.dp)
+                Column(
+                    modifier = Modifier.padding(24.dp)
                 ) {
-                    Column(
-                        modifier = Modifier.padding(24.dp)
+                    Text(
+                        text = "¡Nueva Actualización $versionName!",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = liquidColors.textPrimary,
+                        modifier = Modifier.padding(bottom = 16.dp)
+                    )
+                    
+                    Text(
+                        text = changelogText,
+                        color = liquidColors.textSecondary,
+                        fontSize = 15.sp,
+                        modifier = Modifier.padding(bottom = 24.dp)
+                    )
+                    
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.End
                     ) {
-                        Text(
-                            text = "¡Nueva Actualización $versionName!",
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 20.sp,
-                            color = liquidColors.textPrimary,
-                            modifier = Modifier.padding(bottom = 16.dp)
-                        )
-                        
-                        Text(
-                            text = changelogText,
-                            color = liquidColors.textSecondary,
-                            fontSize = 15.sp,
-                            modifier = Modifier.padding(bottom = 24.dp)
-                        )
-                        
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.End
-                        ) {
-                            TextButton(onClick = { 
-                                showDialog = false
-                                prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
-                            }) {
-                                Text("OK", color = MintColors.Primary, fontWeight = FontWeight.Bold)
-                            }
+                        TextButton(onClick = { 
+                            showDialog = false
+                            prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
+                        }) {
+                            Text("OK", color = MintColors.Primary, fontWeight = FontWeight.Bold)
                         }
                     }
                 }

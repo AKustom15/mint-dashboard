@@ -144,7 +144,9 @@ fun MintScreen(config: MintConfig) {
                 }
                 
                 // Show changelog if applicable
-                MintChangelogDialog(config = config)
+                CompositionLocalProvider(LocalHazeState provides navHazeState) {
+                    MintChangelogDialog(config = config)
+                }
             }
         }
     }
