@@ -103,11 +103,25 @@ class IconRequestViewModel : ViewModel() {
         }
     }
 
-    fun loadRemoteConfig(url: String) {
-        if (url.isBlank()) return
+    fun loadRemoteConfig(urlStr: String) {
+        if (urlStr.isBlank()) return
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val jsonString = java.net.URL(url).readText()
+                val url = java.net.URL(urlStr)
+                val connection = url.openConnection() as java.net.HttpURLConnection
+                
+                // Parse ?token= parameter if it exists (for private GitHub repos)
+                val query = url.query
+                if (query != null && query.contains("token=")) {
+                    val token = query.split("&").firstOrNull { it.startsWith("token=") }?.substringAfter("token=")
+                    if (token != null) {
+                        connection.setRequestProperty("Authorization", "token $token")
+                    }
+                }
+                
+                connection.requestMethod = "GET"
+                val jsonString = connection.inputStream.bufferedReader().use { it.readText() }
+                
                 val jsonObject = JSONObject(jsonString)
                 val config = RemoteIconConfig(
                     allowFreeRequests = jsonObject.optBoolean("allow_free_requests", true),
@@ -116,7 +130,7 @@ class IconRequestViewModel : ViewModel() {
                 )
                 _uiState.value = _uiState.value.copy(remoteConfig = config)
             } catch (e: Exception) {
-                Log.e("IconRequest", "Error loading remote config", e)
+                Log.e("IconRequest", "Error loading remote config: ${e.message}")
             }
         }
     }
