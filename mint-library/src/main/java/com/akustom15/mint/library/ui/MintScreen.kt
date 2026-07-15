@@ -9,8 +9,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import com.akustom15.mint.library.config.MintConfig
 import com.akustom15.mint.library.navigation.MintNavGraph
 import com.akustom15.mint.library.navigation.MintRoutes
@@ -45,6 +48,8 @@ fun MintScreen(config: MintConfig) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+
+    var isChangelogOpen by remember { mutableStateOf(false) }
 
     // Build visible tabs based on config
     val visibleTabs = remember(config.showWidgets, config.showWallpapers) {
@@ -107,6 +112,7 @@ fun MintScreen(config: MintConfig) {
                     modifier = Modifier
                         .fillMaxSize()
                         .background(MaterialTheme.colorScheme.background)
+                        .then(if (isChangelogOpen) Modifier.blur(20.dp) else Modifier)
                 ) {
                     // Blur source for the nav: everything the screens draw.
                     Box(modifier = Modifier.fillMaxSize().haze(state = navHazeState)) {
@@ -145,7 +151,10 @@ fun MintScreen(config: MintConfig) {
                 
                 // Show changelog if applicable
                 CompositionLocalProvider(LocalHazeState provides navHazeState) {
-                    MintChangelogDialog(config = config)
+                    MintChangelogDialog(
+                        config = config,
+                        onShowChange = { show -> isChangelogOpen = show }
+                    )
                 }
             }
         }

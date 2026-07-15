@@ -14,20 +14,24 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.draw.clip
 import com.akustom15.mint.library.config.MintConfig
 import com.akustom15.mint.library.ui.theme.LocalLiquidGlassColors
 import com.akustom15.mint.library.ui.theme.MintColors
 import com.google.firebase.firestore.FirebaseFirestore
 
 @Composable
-fun MintChangelogDialog(config: MintConfig) {
+fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}) {
     val context = LocalContext.current
     val liquidColors = LocalLiquidGlassColors.current
+    val isDark = liquidColors.isDark
     
     var showDialog by remember { mutableStateOf(false) }
     var changelogText by remember { mutableStateOf("") }
@@ -54,60 +58,95 @@ fun MintChangelogDialog(config: MintConfig) {
                             versionName = vName
                             latestVersionCode = vCode
                             showDialog = true
+                            onShowChange(true)
                         }
                     }
                 }
         }
     }
 
-    AnimatedVisibility(
-        visible = showDialog,
-        enter = fadeIn(animationSpec = tween(300)),
-        exit = fadeOut(animationSpec = tween(300))
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.Black.copy(alpha = 0.5f))
-                .clickable { 
-                    showDialog = false
-                    prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
-                },
-            contentAlignment = Alignment.Center
+    if (showDialog) {
+        val dialogShape = RoundedCornerShape(28.dp)
+        val surfaceColor = if (isDark) MintColors.ButtonSurfaceDark else MintColors.ButtonSurfaceLight
+        val borderColor = if (isDark) MintColors.GlassBorderDark else MintColors.GlassBorderLight
+        val highlight = if (isDark) MintColors.ButtonHighlightDark else MintColors.ButtonHighlightLight
+        val shadowColor = if (isDark) MintColors.ButtonShadowDark else MintColors.ButtonShadowLight
+
+        Dialog(
+            onDismissRequest = { 
+                showDialog = false
+                onShowChange(false)
+                prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
+            },
+            properties = DialogProperties(
+                usePlatformDefaultWidth = false,
+                decorFitsSystemWindows = false
+            )
         ) {
-            LiquidGlassCard(
+            Box(
                 modifier = Modifier
-                    .fillMaxWidth(0.9f)
-                    .clickable(enabled = false) {}, // Prevent dismiss on card click
-                shape = RoundedCornerShape(24.dp)
+                    .fillMaxSize()
+                    .clickable { 
+                        showDialog = false
+                        onShowChange(false)
+                        prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
+                    },
+                contentAlignment = Alignment.Center
             ) {
-                Column(
-                    modifier = Modifier.padding(24.dp)
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.9f)
+                        .clickable(enabled = false) {} // Prevent dismiss on card click
+                        .shadow(
+                            elevation = 32.dp,
+                            shape = dialogShape,
+                            ambientColor = shadowColor,
+                            spotColor = shadowColor
+                        )
+                        .clip(dialogShape)
+                        .background(
+                            if (isDark) Color(0x331A1A2E) else Color(0x33FFFFFF)
+                        )
+                        .background(
+                            androidx.compose.ui.graphics.Brush.verticalGradient(
+                                listOf(
+                                    highlight.copy(alpha = 0.15f),
+                                    Color.Transparent,
+                                    surfaceColor.copy(alpha = 0.1f)
+                                )
+                            )
+                        )
+                        .border(1.dp, borderColor.copy(alpha = 0.5f), dialogShape)
                 ) {
-                    Text(
-                        text = "¡Nueva Actualización $versionName!",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp,
-                        color = liquidColors.textPrimary,
-                        modifier = Modifier.padding(bottom = 16.dp)
-                    )
-                    
-                    Text(
-                        text = changelogText,
-                        color = liquidColors.textSecondary,
-                        fontSize = 15.sp,
-                        modifier = Modifier.padding(bottom = 24.dp)
-                    )
-                    
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.End
+                    Column(
+                        modifier = Modifier.padding(28.dp)
                     ) {
-                        TextButton(onClick = { 
-                            showDialog = false
-                            prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
-                        }) {
-                            Text("OK", color = MintColors.Primary, fontWeight = FontWeight.Bold)
+                        Text(
+                            text = "¡Nueva Actualización $versionName!",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp,
+                            color = liquidColors.textPrimary,
+                            modifier = Modifier.padding(bottom = 16.dp)
+                        )
+                        
+                        Text(
+                            text = changelogText,
+                            color = liquidColors.textSecondary,
+                            fontSize = 15.sp,
+                            modifier = Modifier.padding(bottom = 24.dp)
+                        )
+                        
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.End
+                        ) {
+                            TextButton(onClick = { 
+                                showDialog = false
+                                onShowChange(false)
+                                prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
+                            }) {
+                                Text("OK", color = MintColors.Primary, fontWeight = FontWeight.Bold)
+                            }
                         }
                     }
                 }
