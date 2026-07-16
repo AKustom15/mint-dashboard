@@ -334,7 +334,7 @@ private fun RequestStatusCard(
                 ) {
                     Text(
                         text = pauseMessage,
-                        color = MintColors.Tertiary,
+                        color = liquidColors.textPrimary,
                         fontWeight = FontWeight.Bold,
                         fontSize = 14.sp,
                         textAlign = TextAlign.Center,
