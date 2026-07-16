@@ -27,6 +27,9 @@ object MintNotificationHelper {
     private const val CHANNEL_NAME = "Updates"
     private const val CHANNEL_DESC = "App updates and news"
 
+    /** Intent extra: if true, the host Activity should navigate to the notification history screen. */
+    const val EXTRA_OPEN_NOTIFICATIONS = "mint_open_notifications"
+
     /**
      * Initialize push notifications: create channel + subscribe to FCM topic.
      * Call this from Activity.onCreate().
@@ -97,10 +100,13 @@ object MintNotificationHelper {
             "android.resource://${context.packageName}/${R.raw.new_notification_011}"
         )
 
-        // Open the app when tapped
-        val launchIntent = context.packageManager.getLaunchIntentForPackage(context.packageName)
+        // Open the app and navigate directly to the notification history screen
+        val launchIntent = context.packageManager.getLaunchIntentForPackage(context.packageName)?.apply {
+            putExtra(EXTRA_OPEN_NOTIFICATIONS, true)
+            addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        }
         val pendingIntent = PendingIntent.getActivity(
-            context, 0,
+            context, System.currentTimeMillis().toInt(),
             launchIntent ?: Intent(),
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )

@@ -43,6 +43,8 @@ import com.akustom15.mint.library.ui.composables.MoreAppsCarousel
 import com.akustom15.mint.library.ui.theme.LocalLiquidGlassColors
 import com.akustom15.mint.library.ui.theme.MintColors
 import kotlinx.coroutines.launch
+import androidx.compose.runtime.collectAsState
+
 
 @Composable
 fun SettingsScreen(
@@ -110,7 +112,7 @@ fun SettingsScreen(
                     modifier = Modifier.weight(1f)
                 )
                 // Bell → notification history (with unread badge)
-                val unreadCount = remember { notificationPrefs.getUnreadCount() }
+                val unreadCount by notificationPrefs.unreadCountFlow.collectAsState()
                 Box(contentAlignment = Alignment.TopEnd) {
                     IconButton(onClick = onNavigateToNotifications) {
                         Icon(

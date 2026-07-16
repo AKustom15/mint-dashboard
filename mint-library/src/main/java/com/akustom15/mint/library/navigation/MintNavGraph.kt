@@ -42,7 +42,8 @@ fun MintNavGraph(
                         restoreState = true
                     }
                 },
-                onNavigateToIconRequest = { navController.navigate(MintRoutes.ICON_REQUEST) }
+                onNavigateToIconRequest = { navController.navigate(MintRoutes.ICON_REQUEST) },
+                onNavigateToNotifications = { navController.navigate(MintRoutes.NOTIFICATIONS) }
             )
         }
 

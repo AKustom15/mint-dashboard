@@ -2,6 +2,9 @@ package com.akustom15.mint.library.notifications
 
 import android.content.Context
 import android.content.SharedPreferences
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.UUID
@@ -34,6 +37,15 @@ class MintNotificationPreferences private constructor(context: Context) {
         }
     }
 
+    // Reactive unread count — UI observes this as a StateFlow
+    private val _unreadCount = MutableStateFlow(0)
+    val unreadCountFlow: StateFlow<Int> = _unreadCount.asStateFlow()
+
+    init {
+        // Initialise with current persisted value so the flow is correct at start
+        _unreadCount.value = computeUnreadCount()
+    }
+
     fun areNotificationsEnabled(): Boolean = prefs.getBoolean(KEY_ENABLED, true)
 
     fun setNotificationsEnabled(enabled: Boolean) {
@@ -63,6 +75,7 @@ class MintNotificationPreferences private constructor(context: Context) {
         }
 
         prefs.edit().putString(KEY_HISTORY, history.toString()).apply()
+        _unreadCount.value = computeUnreadCount()
     }
 
     /**
@@ -113,6 +126,7 @@ class MintNotificationPreferences private constructor(context: Context) {
             }
         }
         prefs.edit().putString(KEY_HISTORY, history.toString()).apply()
+        _unreadCount.value = computeUnreadCount()
     }
 
     fun deleteNotification(id: String) {
@@ -125,26 +139,38 @@ class MintNotificationPreferences private constructor(context: Context) {
             }
         }
         prefs.edit().putString(KEY_HISTORY, newHistory.toString()).apply()
+        _unreadCount.value = computeUnreadCount()
     }
 
     fun clearHistory() {
         prefs.edit().putString(KEY_HISTORY, "[]").apply()
+        _unreadCount.value = 0
     }
 
     /**
      * Returns the number of unread notifications (for badge display).
+     * Use [unreadCountFlow] to observe reactively in Compose.
      */
-    fun getUnreadCount(): Int {
+    fun getUnreadCount(): Int = _unreadCount.value
+
+    /** Marks every stored notification as read. */
+    fun markAllAsRead() {
+        val history = getHistoryJson()
+        for (i in 0 until history.length()) {
+            history.getJSONObject(i).put("isRead", true)
+        }
+        prefs.edit().putString(KEY_HISTORY, history.toString()).apply()
+        _unreadCount.value = 0
+    }
+
+    private fun computeUnreadCount(): Int {
         val history = getHistoryJson()
         var count = 0
         for (i in 0 until history.length()) {
-            val obj = history.getJSONObject(i)
-            if (!obj.optBoolean("isRead", false)) count++
+            if (!history.getJSONObject(i).optBoolean("isRead", false)) count++
         }
         return count
     }
-
-
     private fun getHistoryJson(): JSONArray {
         val raw = prefs.getString(KEY_HISTORY, "[]") ?: "[]"
         return try {

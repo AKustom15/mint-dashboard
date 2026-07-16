@@ -27,6 +27,8 @@ import dev.chrisbanes.haze.haze
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
+import androidx.activity.ComponentActivity
+import com.akustom15.mint.library.notifications.MintNotificationHelper
 import com.akustom15.mint.library.security.SecurityManager
 import androidx.compose.material3.Text
 import androidx.compose.material3.MaterialTheme
@@ -50,6 +52,19 @@ fun MintScreen(config: MintConfig) {
     val currentRoute = navBackStackEntry?.destination?.route
 
     var isChangelogOpen by remember { mutableStateOf(false) }
+
+    // If the app was opened from a push notification tap, navigate to notifications screen
+    LaunchedEffect(Unit) {
+        val activity = context as? ComponentActivity
+        val openNotifs = activity?.intent?.getBooleanExtra(
+            MintNotificationHelper.EXTRA_OPEN_NOTIFICATIONS, false
+        ) ?: false
+        if (openNotifs) {
+            // Clear the extra so it doesn't trigger again on recomposition
+            activity?.intent?.removeExtra(MintNotificationHelper.EXTRA_OPEN_NOTIFICATIONS)
+            navController.navigate(MintRoutes.NOTIFICATIONS)
+        }
+    }
 
     // Build visible tabs based on config
     val visibleTabs = remember(config.showWidgets, config.showWallpapers) {

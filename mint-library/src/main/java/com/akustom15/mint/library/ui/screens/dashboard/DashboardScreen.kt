@@ -42,20 +42,23 @@ import com.akustom15.mint.library.ui.composables.RotatingIconAnimation
 import com.akustom15.mint.library.ui.theme.LocalLiquidGlassColors
 import com.akustom15.mint.library.ui.theme.MintColors
 
+import androidx.compose.runtime.collectAsState
+
 @Composable
 fun DashboardScreen(
     config: MintConfig,
     viewModel: DashboardViewModel = viewModel(),
     onNavigateToIconsPreview: () -> Unit,
-    onNavigateToIconRequest: () -> Unit
+    onNavigateToIconRequest: () -> Unit,
+    onNavigateToNotifications: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val uiState by viewModel.uiState.collectAsState()
     val liquidColors = LocalLiquidGlassColors.current
 
-    // Unread notifications count for dot indicator
+    // Unread notifications count — reactive via StateFlow
     val notificationPrefs = remember { MintNotificationPreferences.getInstance(context) }
-    val unreadCount = remember { notificationPrefs.getUnreadCount() }
+    val unreadCount by notificationPrefs.unreadCountFlow.collectAsState()
 
     // Rating dialog: check if should be shown on this launch
     var showRatingDialog by remember { mutableStateOf(false) }
@@ -64,11 +67,13 @@ fun DashboardScreen(
         showRatingDialog = MintRatingManager(context)
     }
 
+    val isAnyDialogOpen = uiState.showLauncherDialog || showRatingDialog
+
     GradientBackground {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .then(if (uiState.showLauncherDialog) Modifier.blur(20.dp) else Modifier)
+                .then(if (isAnyDialogOpen) Modifier.blur(20.dp) else Modifier)
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -94,7 +99,7 @@ fun DashboardScreen(
                     CircularProgressIndicator(color = MintColors.Primary)
                 }
 
-                // ── Notification dot ── shown in top-right corner, non-intrusive
+                // ── Notification dot ── clickable, pulsing, top-right corner
                 if (unreadCount > 0) {
                     val infiniteTransition = rememberInfiniteTransition(label = "notif_dot_pulse")
                     val pulseScale by infiniteTransition.animateFloat(
@@ -111,9 +116,11 @@ fun DashboardScreen(
                             .align(Alignment.TopEnd)
                             .padding(top = 16.dp, end = 16.dp)
                             .scale(pulseScale)
+                            .clip(CircleShape)
                             .background(androidx.compose.ui.graphics.Color(0xFFFF3B30), CircleShape)
                             .border(2.dp, liquidColors.textPrimary.copy(alpha = 0.2f), CircleShape)
-                            .padding(horizontal = 7.dp, vertical = 4.dp),
+                            .clickable { onNavigateToNotifications() }
+                            .padding(horizontal = 8.dp, vertical = 5.dp),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
