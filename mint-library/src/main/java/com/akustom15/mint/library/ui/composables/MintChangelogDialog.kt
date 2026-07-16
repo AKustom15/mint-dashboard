@@ -88,8 +88,12 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
                     },
                 contentAlignment = Alignment.Center
             ) {
-                FrostedGlassDialogCard(
-                    modifier = Modifier.clickable(enabled = false) {}
+                androidx.compose.material3.Card(
+                    shape = RoundedCornerShape(20.dp),
+                    colors = androidx.compose.material3.CardDefaults.cardColors(
+                        containerColor = if (isDark) Color(0xFF1C1C1E) else Color.White
+                    ),
+                    modifier = Modifier.padding(horizontal = 20.dp)
                 ) {
                     Column(
                         modifier = Modifier.padding(28.dp),
@@ -98,19 +102,37 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
                         Text(
                             text = "¡Nueva Actualización $versionName!",
                             fontWeight = FontWeight.Bold,
-                            fontSize = 20.sp,
-                            color = liquidColors.textPrimary,
+                            fontSize = 19.sp,
+                            color = if (isDark) Color.White else Color.Black,
                             modifier = Modifier.padding(bottom = 16.dp),
                             textAlign = TextAlign.Center
                         )
                         
-                        Text(
-                            text = changelogText,
-                            color = if (androidx.compose.foundation.isSystemInDarkTheme()) Color.White else Color.Black,
-                            fontSize = 15.sp,
-                            modifier = Modifier.padding(bottom = 24.dp),
-                            textAlign = TextAlign.Center
-                        )
+                        val changelogItems = changelogText.split("•").map { it.trim() }.filter { it.isNotEmpty() }
+                        
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier.padding(bottom = 24.dp)
+                        ) {
+                            if (changelogItems.isEmpty()) {
+                                Text(
+                                    text = changelogText,
+                                    color = if (isDark) Color.White else Color.Black,
+                                    fontSize = 14.sp,
+                                    textAlign = TextAlign.Center
+                                )
+                            } else {
+                                changelogItems.forEach { item ->
+                                    Text(
+                                        text = "• $item",
+                                        color = if (isDark) Color.White else Color.Black,
+                                        fontSize = 14.sp,
+                                        textAlign = TextAlign.Center,
+                                        modifier = Modifier.padding(vertical = 2.dp)
+                                    )
+                                }
+                            }
+                        }
                         
                         Row(
                             modifier = Modifier.fillMaxWidth(),
@@ -124,7 +146,7 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
                                 },
                                 modifier = Modifier.padding(end = 8.dp)
                             ) {
-                                Text("LUEGO", color = liquidColors.textSecondary, fontWeight = FontWeight.Bold)
+                                Text("LUEGO", color = if (isDark) Color.LightGray else Color.DarkGray, fontWeight = FontWeight.Bold)
                             }
                             
                             androidx.compose.material3.Button(
@@ -141,7 +163,6 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
                                     try {
                                         context.startActivity(intent)
                                     } catch (e: Exception) {
-                                        // Fallback if Play Store is not installed
                                         val webIntent = android.content.Intent(android.content.Intent.ACTION_VIEW, 
                                             android.net.Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}")
                                         ).apply {
@@ -149,7 +170,10 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
                                         }
                                         context.startActivity(webIntent)
                                     }
-                                }
+                                },
+                                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                                    containerColor = MintColors.Primary
+                                )
                             ) {
                                 Text("ACTUALIZAR", color = Color.White, fontWeight = FontWeight.Bold)
                             }
