@@ -31,7 +31,7 @@ private const val KEY_RATED = "user_rated"
 private const val KEY_NEVER_RATE = "never_rate"
 private const val KEY_LAST_ASKED = "last_asked_timestamp"
 private const val LAUNCHES_BEFORE_PROMPT = 3
-private const val DAYS_BETWEEN_PROMPTS = 30L
+private const val DAYS_BETWEEN_PROMPTS = 1L
 
 /**
  * Call this once on app launch (e.g. in MainActivity.onCreate).
