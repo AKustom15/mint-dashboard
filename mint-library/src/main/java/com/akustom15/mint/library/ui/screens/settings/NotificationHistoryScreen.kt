@@ -220,9 +220,10 @@ fun NotificationHistoryScreen(
                                     )
                                 }
                                 
+                                val isDark = liquidColors.isDark
                                 Text(
                                     text = notif.body,
-                                    color = liquidColors.textSecondary,
+                                    color = if (isDark) Color.White else Color.Black,
                                     fontSize = 15.sp,
                                     modifier = Modifier.padding(bottom = 24.dp)
                                 )
