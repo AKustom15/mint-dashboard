@@ -223,8 +223,8 @@ fun SettingsScreen(
                     }
                 }
 
-                // Check for updates (only if an update URL is configured)
-                if (config.updateJsonUrl.isNotEmpty()) {
+                // Check for updates (only if an update URL or firestore document is configured)
+                if (config.updateJsonUrl.isNotEmpty() || config.firestoreUpdateDocument.isNotEmpty()) {
                     SettingsItem(
                         title = stringResource(R.string.mint_settings_check_update),
                         subtitle = if (isCheckingUpdate)
@@ -234,38 +234,89 @@ fun SettingsScreen(
                             if (!isCheckingUpdate) {
                                 isCheckingUpdate = true
                                 scope.launch {
-                                    val result = MintUpdateChecker.check(
-                                        config.updateJsonUrl,
-                                        config.versionCode
-                                    )
-                                    isCheckingUpdate = false
-                                    when {
-                                        result == null -> Toast.makeText(
-                                            context,
-                                            context.getString(R.string.mint_settings_update_failed),
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                        result.updateAvailable -> {
-                                            Toast.makeText(
+                                    if (config.firestoreUpdateDocument.isNotEmpty()) {
+                                        val db = com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                                        db.collection("app_versions").document(config.firestoreUpdateDocument)
+                                            .get()
+                                            .addOnSuccessListener { doc ->
+                                                isCheckingUpdate = false
+                                                if (doc.exists()) {
+                                                    val vCode = doc.getLong("versionCode")?.toInt() ?: 0
+                                                    if (vCode > config.versionCode) {
+                                                        Toast.makeText(
+                                                            context,
+                                                            context.getString(R.string.mint_settings_update_available),
+                                                            Toast.LENGTH_SHORT
+                                                        ).show()
+                                                        val intent = android.content.Intent(android.content.Intent.ACTION_VIEW).apply {
+                                                            data = android.net.Uri.parse("market://details?id=${context.packageName}")
+                                                            setPackage("com.android.vending")
+                                                        }
+                                                        try {
+                                                            context.startActivity(intent)
+                                                        } catch (e: Exception) {
+                                                            context.startActivity(
+                                                                android.content.Intent(android.content.Intent.ACTION_VIEW,
+                                                                    android.net.Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}"))
+                                                            )
+                                                        }
+                                                    } else {
+                                                        Toast.makeText(
+                                                            context,
+                                                            context.getString(R.string.mint_settings_up_to_date),
+                                                            Toast.LENGTH_SHORT
+                                                        ).show()
+                                                    }
+                                                } else {
+                                                    Toast.makeText(
+                                                        context,
+                                                        context.getString(R.string.mint_settings_update_failed),
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                }
+                                            }
+                                            .addOnFailureListener {
+                                                isCheckingUpdate = false
+                                                Toast.makeText(
+                                                    context,
+                                                    context.getString(R.string.mint_settings_update_failed),
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                            }
+                                    } else {
+                                        val result = MintUpdateChecker.check(
+                                            config.updateJsonUrl,
+                                            config.versionCode
+                                        )
+                                        isCheckingUpdate = false
+                                        when {
+                                            result == null -> Toast.makeText(
                                                 context,
-                                                context.getString(R.string.mint_settings_update_available),
+                                                context.getString(R.string.mint_settings_update_failed),
                                                 Toast.LENGTH_SHORT
                                             ).show()
-                                            val url = result.downloadUrl.ifEmpty { config.moreAppsUrl }
-                                            if (url.isNotEmpty()) {
-                                                context.startActivity(
-                                                    android.content.Intent(
-                                                        android.content.Intent.ACTION_VIEW,
-                                                        android.net.Uri.parse(url)
+                                            result.updateAvailable -> {
+                                                Toast.makeText(
+                                                    context,
+                                                    context.getString(R.string.mint_settings_update_available),
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                                val url = result.downloadUrl.ifEmpty { config.moreAppsUrl }
+                                                if (url.isNotEmpty()) {
+                                                    context.startActivity(
+                                                        android.content.Intent(
+                                                            android.content.Intent.ACTION_VIEW,
+                                                            android.net.Uri.parse(url)
+                                                        )
                                                     )
-                                                )
+                                                }
                                             }
+                                            else -> Toast.makeText(
+                                                context,
+                                                context.getString(R.string.mint_settings_up_to_date),
+                                                Toast.LENGTH_SHORT
+                                            ).show()
                                         }
-                                        else -> Toast.makeText(
-                                            context,
-                                            context.getString(R.string.mint_settings_up_to_date),
-                                            Toast.LENGTH_SHORT
-                                        ).show()
                                     }
                                 }
                             }
