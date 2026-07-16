@@ -1,9 +1,12 @@
 package com.akustom15.mint.library.ui.screens.settings
 
 import android.widget.Toast
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -16,6 +19,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -105,13 +109,44 @@ fun SettingsScreen(
                     color = liquidColors.textPrimary,
                     modifier = Modifier.weight(1f)
                 )
-                // Bell → notification history
-                IconButton(onClick = onNavigateToNotifications) {
-                    Icon(
-                        Icons.Default.Notifications,
-                        contentDescription = stringResource(R.string.mint_notifications_history),
-                        tint = liquidColors.textPrimary
-                    )
+                // Bell → notification history (with unread badge)
+                val unreadCount = remember { notificationPrefs.getUnreadCount() }
+                Box(contentAlignment = Alignment.TopEnd) {
+                    IconButton(onClick = onNavigateToNotifications) {
+                        Icon(
+                            Icons.Default.Notifications,
+                            contentDescription = stringResource(R.string.mint_notifications_history),
+                            tint = liquidColors.textPrimary
+                        )
+                    }
+                    if (unreadCount > 0) {
+                        val infiniteTransition = rememberInfiniteTransition(label = "badge_pulse")
+                        val pulseScale by infiniteTransition.animateFloat(
+                            initialValue = 1f,
+                            targetValue = 1.25f,
+                            animationSpec = infiniteRepeatable(
+                                animation = tween(600, easing = FastOutSlowInEasing),
+                                repeatMode = RepeatMode.Reverse
+                            ),
+                            label = "badge_scale"
+                        )
+                        Box(
+                            modifier = Modifier
+                                .padding(top = 6.dp, end = 6.dp)
+                                .scale(pulseScale)
+                                .defaultMinSize(minWidth = 18.dp, minHeight = 18.dp)
+                                .background(androidx.compose.ui.graphics.Color(0xFFFF3B30), CircleShape)
+                                .padding(horizontal = 4.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = if (unreadCount > 99) "99+" else unreadCount.toString(),
+                                color = androidx.compose.ui.graphics.Color.White,
+                                fontSize = 9.sp,
+                                fontWeight = FontWeight.ExtraBold
+                            )
+                        }
+                    }
                 }
             }
 

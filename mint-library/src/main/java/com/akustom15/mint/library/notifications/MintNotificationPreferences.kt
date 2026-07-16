@@ -131,6 +131,20 @@ class MintNotificationPreferences private constructor(context: Context) {
         prefs.edit().putString(KEY_HISTORY, "[]").apply()
     }
 
+    /**
+     * Returns the number of unread notifications (for badge display).
+     */
+    fun getUnreadCount(): Int {
+        val history = getHistoryJson()
+        var count = 0
+        for (i in 0 until history.length()) {
+            val obj = history.getJSONObject(i)
+            if (!obj.optBoolean("isRead", false)) count++
+        }
+        return count
+    }
+
+
     private fun getHistoryJson(): JSONArray {
         val raw = prefs.getString(KEY_HISTORY, "[]") ?: "[]"
         return try {

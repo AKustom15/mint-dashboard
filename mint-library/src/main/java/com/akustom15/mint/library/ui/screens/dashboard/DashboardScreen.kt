@@ -1,5 +1,6 @@
 package com.akustom15.mint.library.ui.screens.dashboard
 
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -13,6 +14,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -28,10 +30,13 @@ import com.akustom15.mint.library.config.MintConfig
 import com.akustom15.mint.library.data.LauncherInfo
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.window.Dialog
+import com.akustom15.mint.library.notifications.MintNotificationPreferences
 import com.akustom15.mint.library.ui.composables.FrostedGlassDialogCard
 import com.akustom15.mint.library.ui.composables.GlassButton
 import com.akustom15.mint.library.ui.composables.GradientBackground
 import com.akustom15.mint.library.ui.composables.LiquidGlassCard
+import com.akustom15.mint.library.ui.composables.MintRatingDialog
+import com.akustom15.mint.library.ui.composables.MintRatingManager
 import com.akustom15.mint.library.ui.composables.RealBlurCard
 import com.akustom15.mint.library.ui.composables.RotatingIconAnimation
 import com.akustom15.mint.library.ui.theme.LocalLiquidGlassColors
@@ -48,8 +53,15 @@ fun DashboardScreen(
     val uiState by viewModel.uiState.collectAsState()
     val liquidColors = LocalLiquidGlassColors.current
 
+    // Unread notifications count for dot indicator
+    val notificationPrefs = remember { MintNotificationPreferences.getInstance(context) }
+    val unreadCount = remember { notificationPrefs.getUnreadCount() }
+
+    // Rating dialog: check if should be shown on this launch
+    var showRatingDialog by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) {
         viewModel.initData(context)
+        showRatingDialog = MintRatingManager(context)
     }
 
     GradientBackground {
@@ -80,6 +92,37 @@ fun DashboardScreen(
                     )
                 } else {
                     CircularProgressIndicator(color = MintColors.Primary)
+                }
+
+                // ── Notification dot ── shown in top-right corner, non-intrusive
+                if (unreadCount > 0) {
+                    val infiniteTransition = rememberInfiniteTransition(label = "notif_dot_pulse")
+                    val pulseScale by infiniteTransition.animateFloat(
+                        initialValue = 0.85f,
+                        targetValue = 1.15f,
+                        animationSpec = infiniteRepeatable(
+                            animation = tween(700, easing = FastOutSlowInEasing),
+                            repeatMode = RepeatMode.Reverse
+                        ),
+                        label = "dot_scale"
+                    )
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.TopEnd)
+                            .padding(top = 16.dp, end = 16.dp)
+                            .scale(pulseScale)
+                            .background(androidx.compose.ui.graphics.Color(0xFFFF3B30), CircleShape)
+                            .border(2.dp, liquidColors.textPrimary.copy(alpha = 0.2f), CircleShape)
+                            .padding(horizontal = 7.dp, vertical = 4.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "🔔 ${if (unreadCount > 9) "9+" else unreadCount}",
+                            color = androidx.compose.ui.graphics.Color.White,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.ExtraBold
+                        )
+                    }
                 }
             }
 
@@ -297,6 +340,11 @@ fun DashboardScreen(
                     }
                 }
             }
+        }
+
+        // Rating dialog — shown on qualifying launches (see MintRatingManager)
+        if (showRatingDialog && !uiState.showLauncherDialog) {
+            MintRatingDialog(onDismiss = { showRatingDialog = false })
         }
     }
 }
