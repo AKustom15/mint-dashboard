@@ -35,9 +35,9 @@
     <string name="mint_settings_language">Idioma</string>
     <string name="mint_settings_select_language">Seleccionar idioma</string>
     <string name="mint_settings_data">DATOS</string>
-    <string name="mint_settings_clear_cache">Limpiar caché de iconos</string>
-    <string name="mint_settings_clear_cache_desc">Liberar memoria</string>
-    <string name="mint_settings_clear_cache_confirm">Se limpiará la caché de iconos. Se recargarán la próxima vez.</string>
+    <string name="mint_settings_clear_cache">Limpiar caché</string>
+    <string name="mint_settings_clear_cache_desc">Liberar memoria e internet</string>
+    <string name="mint_settings_clear_cache_confirm">Se limpiará la caché de la app y se recargarán los datos remotos.</string>
     <string name="mint_settings_cache_cleared">¡Caché limpiada!</string>
     <string name="mint_settings_clear">Limpiar</string>
     <string name="mint_settings_cancel">Cancelar</string>

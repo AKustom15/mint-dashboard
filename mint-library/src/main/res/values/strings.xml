@@ -38,9 +38,9 @@
     <string name="mint_settings_language">Language</string>
     <string name="mint_settings_select_language">Select Language</string>
     <string name="mint_settings_data">DATA</string>
-    <string name="mint_settings_clear_cache">Clear Icon Cache</string>
-    <string name="mint_settings_clear_cache_desc">Free up memory</string>
-    <string name="mint_settings_clear_cache_confirm">This will clear the icon cache. Icons will be reloaded next time.</string>
+    <string name="mint_settings_clear_cache">Clear Cache</string>
+    <string name="mint_settings_clear_cache_desc">Clear app and internet cache</string>
+    <string name="mint_settings_clear_cache_confirm">This will clear the app cache and reload remote configurations.</string>
     <string name="mint_settings_cache_cleared">Cache cleared!</string>
     <string name="mint_settings_clear">Clear</string>
     <string name="mint_settings_cancel">Cancel</string>

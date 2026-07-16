@@ -251,14 +251,17 @@ fun SettingsScreen(
                                                         val intent = android.content.Intent(android.content.Intent.ACTION_VIEW).apply {
                                                             data = android.net.Uri.parse("market://details?id=${context.packageName}")
                                                             setPackage("com.android.vending")
+                                                            addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
                                                         }
                                                         try {
                                                             context.startActivity(intent)
                                                         } catch (e: Exception) {
-                                                            context.startActivity(
-                                                                android.content.Intent(android.content.Intent.ACTION_VIEW,
-                                                                    android.net.Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}"))
-                                                            )
+                                                            val webIntent = android.content.Intent(android.content.Intent.ACTION_VIEW,
+                                                                android.net.Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}")
+                                                            ).apply {
+                                                                addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+                                                            }
+                                                            context.startActivity(webIntent)
                                                         }
                                                     } else {
                                                         Toast.makeText(
@@ -303,12 +306,13 @@ fun SettingsScreen(
                                                 ).show()
                                                 val url = result.downloadUrl.ifEmpty { config.moreAppsUrl }
                                                 if (url.isNotEmpty()) {
-                                                    context.startActivity(
-                                                        android.content.Intent(
-                                                            android.content.Intent.ACTION_VIEW,
-                                                            android.net.Uri.parse(url)
-                                                        )
-                                                    )
+                                                    val webIntent = android.content.Intent(
+                                                        android.content.Intent.ACTION_VIEW,
+                                                        android.net.Uri.parse(url)
+                                                    ).apply {
+                                                        addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+                                                    }
+                                                    context.startActivity(webIntent)
                                                 }
                                             }
                                             else -> Toast.makeText(
