@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="mint_icon_request_title">طلب أيقونات</string>
     <string name="mint_icon_request_header">طلب أيقونات</string>
@@ -18,13 +18,11 @@
     <string name="mint_icon_request_sent">تم الإرسال: %d أيقونة</string>
     <string name="mint_icon_request_select_all">تحديد الكل</string>
     <string name="mint_icon_request_deselect_all">إلغاء تحديد الكل</string>
-
     <string name="mint_buy_premium">شراء بريميوم</string>
     <string name="mint_premium_dialog_title">طلبات بريميوم</string>
     <string name="mint_premium_dialog_close">إغلاق</string>
     <string name="mint_premium_dialog_buy">شراء</string>
     <string name="mint_premium_purchase_success">تم الشراء بنجاح! تمت إضافة %d طلبات.</string>
-
     <string name="mint_settings_title">الإعدادات</string>
     <string name="mint_settings_appearance">المظهر</string>
     <string name="mint_settings_theme">السمة</string>
@@ -46,7 +44,6 @@
     <string name="mint_settings_package">الحزمة</string>
     <string name="mint_settings_privacy">سياسة الخصوصية</string>
     <string name="mint_settings_privacy_desc">عرض سياسة الخصوصية</string>
-
     <string name="mint_dashboard_subtitle">حزمة أيقونات مخصصة لجهازك</string>
     <string name="mint_dashboard_apply_icons">تطبيق الأيقونات</string>
     <string name="mint_dashboard_custom_icons">أيقونات مخصصة</string>
@@ -56,18 +53,15 @@
     <string name="mint_dashboard_missing_apps">%d تطبيق مفقود</string>
     <string name="mint_dashboard_select_launcher">اختر المشغّل</string>
     <string name="mint_dashboard_no_launchers">لم يتم العثور على مشغّلات متوافقة.</string>
-
     <string name="mint_tab_icons">الأيقونات</string>
     <string name="mint_tab_widgets">الأدوات</string>
     <string name="mint_tab_wallpapers">الخلفيات</string>
     <string name="mint_tab_settings">الإعدادات</string>
-
     <string name="mint_icons_title">معاينة الأيقونات</string>
     <string name="mint_icons_search">بحث…</string>
     <string name="mint_icons_no_favorites">لا مفضلات بعد</string>
     <string name="mint_icons_no_results">لم يتم العثور على أيقونات</string>
     <string name="mint_icons_close">إغلاق</string>
-
     <string name="mint_wallpapers_title">خلفيات</string>
     <string name="mint_wallpapers_empty">لا توجد خلفيات</string>
     <string name="mint_wallpapers_empty_hint">قم بتهيئة cloudWallpapersUrl في MintConfig</string>
@@ -75,7 +69,6 @@
     <string name="mint_wallpapers_close">إغلاق</string>
     <string name="mint_wallpapers_applied">تم تطبيق الخلفية!</string>
     <string name="mint_wallpapers_failed">فشل تطبيق الخلفية</string>
-
     <string name="mint_about_title">حول</string>
     <string name="mint_about_developer">المطور</string>
     <string name="mint_about_social">التواصل الاجتماعي</string>
@@ -83,4 +76,36 @@
     <string name="mint_about_powered_by">مدعوم من</string>
     <string name="mint_about_library_name">Mint Library</string>
     <string name="mint_about_library_desc">نظام تصميم Liquid Glass</string>
+    <string name="mint_settings_notifications_section">الإشعارات</string>
+    <string name="mint_settings_notifications">إشعارات الدفع</string>
+    <string name="mint_settings_notifications_desc">تلقي الأخبار والتحديثات</string>
+    <string name="mint_settings_check_update">التحقق من وجود تحديثات</string>
+    <string name="mint_settings_check_update_desc">البحث عن إصدار جديد</string>
+    <string name="mint_settings_checking_update">جاري التحقق من التحديثات...</string>
+    <string name="mint_settings_up_to_date">لديك أحدث إصدار</string>
+    <string name="mint_settings_update_available">تحديث متاح</string>
+    <string name="mint_settings_update_failed">تعذر التحقق من التحديثات</string>
+    <string name="mint_settings_whats_new">ما الجديد</string>
+    <string name="mint_notifications_title">الإشعارات</string>
+    <string name="mint_notifications_empty">لا توجد إشعارات بعد</string>
+    <string name="mint_notifications_history">سجل الإشعارات</string>
+    <string name="mint_more_apps_title">المزيد من التطبيقات</string>
+    <string name="mint_more_apps_install">تثبيت</string>
+    <string name="mint_widgets_empty">لا توجد أدوات متاحة</string>
+    <string name="mint_widgets_apply">تطبيق</string>
+    <string name="mint_wallpapers_loading">جاري تحميل الخلفيات...</string>
+    <string name="mint_wallpapers_retry">إعادة المحاولة</string>
+    <string name="mint_wallpapers_home_screen">الشاشة الرئيسية</string>
+    <string name="mint_wallpapers_lock_screen">شاشة القفل</string>
+    <string name="mint_wallpapers_both_screens">كلا الشاشتين</string>
+    <string name="mint_wallpapers_applied_home">تم التطبيق على الشاشة الرئيسية</string>
+    <string name="mint_wallpapers_applied_lock">تم التطبيق على شاشة القفل</string>
+    <string name="mint_wallpapers_applied_both">تم التطبيق على كلا الشاشتين</string>
+    <string name="mint_wallpapers_not_downloadable">هذه الخلفية غير قابلة للتنزيل</string>
+    <string name="mint_wallpapers_downloading">جاري تنزيل الخلفية...</string>
+    <string name="mint_wallpapers_download_started">بدأ التنزيل</string>
+    <string name="mint_wallpapers_info">معلومات الخلفية</string>
+    <string name="mint_wallpapers_name_label">الاسم</string>
+    <string name="mint_wallpapers_author_label">المؤلف</string>
+    <string name="mint_wallpapers_dimensions_label">الأبعاد</string>
 </resources>
