@@ -76,7 +76,7 @@
     <string name="mint_about_powered_by">REALIZZATO CON</string>
     <string name="mint_about_library_name">Mint Library</string>
     <string name="mint_about_library_desc">Sistema di Design Liquid Glass</string>
-    <string name="mint_settings_whats_new">Cosa c'è di nuovo</string>
+    <string name="mint_settings_whats_new">Cosa c\'è di nuovo</string>
     <string name="mint_widgets_empty">Nessun widget disponibile</string>
     <string name="mint_widgets_apply">Fare domanda a</string>
     <string name="mint_settings_notifications_section">NOTIFICHE</string>
@@ -85,7 +85,7 @@
     <string name="mint_settings_check_update">Controlla gli aggiornamenti</string>
     <string name="mint_settings_check_update_desc">Cerca una nuova versione</string>
     <string name="mint_settings_checking_update">Controllo aggiornamenti...</string>
-    <string name="mint_settings_up_to_date">Hai l'ultima versione</string>
+    <string name="mint_settings_up_to_date">Hai l\'ultima versione</string>
     <string name="mint_settings_update_available">Aggiornamento disponibile</string>
     <string name="mint_settings_update_failed">Impossibile verificare la presenza di aggiornamenti</string>
     <string name="mint_notifications_title">Notifiche</string>
@@ -113,13 +113,13 @@
     <string name="wallpapers_section_title">Sfondi</string>
     <string name="wallpapers_section_desc">Scopri gli sfondi che si adattano perfettamente alle tue icone</string>
     <string name="request_section_title">Richiedi icone</string>
-    <string name="request_section_desc">Non riesci a trovare l'icona che ti serve? Richiedilo qui</string>
+    <string name="request_section_desc">Non riesci a trovare l\'icona che ti serve? Richiedilo qui</string>
     <string name="about_section_desc">Informazioni sullo sviluppatore e crediti</string>
     <string name="icons_preview_title">Anteprima delle icone</string>
     <string name="search_icons_hint">Cerca icone...</string>
     <string name="icons_count">%1$d icone</string>
     <string name="no_icons_found">Nessun risultato trovato</string>
-    <string name="try_another_search">Prova un'altra ricerca</string>
+    <string name="try_another_search">Prova un\'altra ricerca</string>
     <string name="no_icons_available">Nessuna icona disponibile</string>
     <string name="no_icons_message">Questo pacchetto non contiene icone oppure non è stato possibile caricarle correttamente</string>
     <string name="total_apps_installed">Totale %d app installate</string>
@@ -139,7 +139,7 @@
     <string name="icon_request_send_telegram">Invia tramite Telegram</string>
     <string name="premium_request_sent">Richiesta Premium inviata e credito consumato.</string>
     <string name="premium_request_consume_failed">Impossibile consumare il credito premium. Invio come normale richiesta.</string>
-    <string name="dashboard_header_animation_desc">Animazione dell'intestazione decorativa</string>
+    <string name="dashboard_header_animation_desc">Animazione dell\'intestazione decorativa</string>
     <string name="button_wallpapers_desc">Apri la sezione degli sfondi</string>
     <string name="icon_request_loading_apps">Caricamento app...</string>
     <string name="icon_request_retry">Riprova</string>
@@ -154,9 +154,9 @@
     <string name="icon_request_send_dialog_send">Inviare</string>
     <string name="icon_request_send_dialog_cancel">Cancellare</string>
     <string name="icon_request_send_success">Richiesta inviata: %1$d icone</string>
-    <string name="icon_request_send_error">Errore durante l'invio: %1$s</string>
-    <string name="icon_request_email_chooser">Scegli l'app di posta elettronica</string>
-    <string name="icon_request_email_error_open">Impossibile aprire l'app di posta elettronica</string>
+    <string name="icon_request_send_error">Errore durante l\'invio: %1$s</string>
+    <string name="icon_request_email_chooser">Scegli l\'app di posta elettronica</string>
+    <string name="icon_request_email_error_open">Impossibile aprire l\'app di posta elettronica</string>
     <string name="icon_request">Richiesta di icone</string>
     <string name="icon_request_description">Invia la tua richiesta di icone e lo sviluppatore proverà a includerle.</string>
     <string name="icon_request_total">Totale</string>
