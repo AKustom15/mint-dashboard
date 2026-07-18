@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="mint_icon_request_title">아이콘 요청</string>
     <string name="mint_icon_request_header">아이콘 요청</string>
@@ -18,13 +18,11 @@
     <string name="mint_icon_request_sent">요청 전송됨: %d 아이콘</string>
     <string name="mint_icon_request_select_all">모두 선택</string>
     <string name="mint_icon_request_deselect_all">모두 선택 해제</string>
-
     <string name="mint_buy_premium">프리미엄 구매</string>
     <string name="mint_premium_dialog_title">프리미엄 아이콘 요청</string>
     <string name="mint_premium_dialog_close">닫기</string>
     <string name="mint_premium_dialog_buy">구매</string>
     <string name="mint_premium_purchase_success">구매 성공! %d 요청이 추가되었습니다.</string>
-
     <string name="mint_settings_title">설정</string>
     <string name="mint_settings_appearance">외관</string>
     <string name="mint_settings_theme">테마</string>
@@ -46,7 +44,6 @@
     <string name="mint_settings_package">패키지</string>
     <string name="mint_settings_privacy">개인정보 보호정책</string>
     <string name="mint_settings_privacy_desc">개인정보 보호정책 보기</string>
-
     <string name="mint_dashboard_subtitle">기기를 위한 맞춤 아이콘 팩</string>
     <string name="mint_dashboard_apply_icons">아이콘 적용</string>
     <string name="mint_dashboard_custom_icons">맞춤 아이콘</string>
@@ -56,18 +53,15 @@
     <string name="mint_dashboard_missing_apps">%d개 누락됨</string>
     <string name="mint_dashboard_select_launcher">런처 선택</string>
     <string name="mint_dashboard_no_launchers">호환 런처를 찾을 수 없습니다.</string>
-
     <string name="mint_tab_icons">아이콘</string>
     <string name="mint_tab_widgets">위젯</string>
     <string name="mint_tab_wallpapers">배경화면</string>
     <string name="mint_tab_settings">설정</string>
-
     <string name="mint_icons_title">아이콘 미리보기</string>
     <string name="mint_icons_search">아이콘 검색…</string>
     <string name="mint_icons_no_favorites">즐겨찾기 없음</string>
     <string name="mint_icons_no_results">아이콘을 찾을 수 없습니다</string>
     <string name="mint_icons_close">닫기</string>
-
     <string name="mint_wallpapers_title">배경화면</string>
     <string name="mint_wallpapers_empty">배경화면 없음</string>
     <string name="mint_wallpapers_empty_hint">MintConfig에서 cloudWallpapersUrl을 설정하세요</string>
@@ -75,7 +69,6 @@
     <string name="mint_wallpapers_close">닫기</string>
     <string name="mint_wallpapers_applied">배경화면 적용됨!</string>
     <string name="mint_wallpapers_failed">배경화면 적용 실패</string>
-
     <string name="mint_about_title">정보</string>
     <string name="mint_about_developer">개발자</string>
     <string name="mint_about_social">소셜</string>
@@ -83,4 +76,91 @@
     <string name="mint_about_powered_by">제공</string>
     <string name="mint_about_library_name">Mint Library</string>
     <string name="mint_about_library_desc">Liquid Glass 디자인 시스템</string>
+    <string name="mint_settings_whats_new">새로운 소식</string>
+    <string name="mint_widgets_empty">사용 가능한 위젯이 없습니다.</string>
+    <string name="mint_widgets_apply">적용하다</string>
+    <string name="mint_settings_notifications_section">알림</string>
+    <string name="mint_settings_notifications">푸시 알림</string>
+    <string name="mint_settings_notifications_desc">뉴스 및 업데이트 받기</string>
+    <string name="mint_settings_check_update">업데이트 확인</string>
+    <string name="mint_settings_check_update_desc">새 버전을 찾아보세요</string>
+    <string name="mint_settings_checking_update">업데이트 확인 중...</string>
+    <string name="mint_settings_up_to_date">최신 버전이 있습니다.</string>
+    <string name="mint_settings_update_available">업데이트 가능</string>
+    <string name="mint_settings_update_failed">업데이트를 확인할 수 없습니다.</string>
+    <string name="mint_notifications_title">알림</string>
+    <string name="mint_notifications_empty">아직 알림이 없습니다</string>
+    <string name="mint_notifications_history">알림 내역</string>
+    <string name="mint_more_apps_title">더 많은 앱</string>
+    <string name="mint_more_apps_install">설치하다</string>
+    <string name="mint_wallpapers_loading">배경화면 로드 중...</string>
+    <string name="mint_wallpapers_retry">다시 해 보다</string>
+    <string name="mint_wallpapers_home_screen">홈 화면</string>
+    <string name="mint_wallpapers_lock_screen">잠금 화면</string>
+    <string name="mint_wallpapers_both_screens">두 화면 모두</string>
+    <string name="mint_wallpapers_applied_home">홈 화면에 적용</string>
+    <string name="mint_wallpapers_applied_lock">잠금화면에 적용</string>
+    <string name="mint_wallpapers_applied_both">두 화면 모두에 적용</string>
+    <string name="mint_wallpapers_not_downloadable">이 배경화면을 다운로드할 수 없습니다.</string>
+    <string name="mint_wallpapers_downloading">배경화면 다운로드 중...</string>
+    <string name="mint_wallpapers_download_started">다운로드가 시작되었습니다</string>
+    <string name="mint_wallpapers_info">배경화면 정보</string>
+    <string name="mint_wallpapers_name_label">이름</string>
+    <string name="mint_wallpapers_author_label">작가</string>
+    <string name="mint_wallpapers_dimensions_label">치수</string>
+    <string name="icons_preview_section_title">아이콘 미리보기</string>
+    <string name="icons_preview_section_desc">이 팩에 포함된 모든 아이콘을 살펴보세요</string>
+    <string name="wallpapers_section_title">배경화면</string>
+    <string name="wallpapers_section_desc">귀하의 아이콘과 완벽하게 어울리는 배경화면을 찾아보세요</string>
+    <string name="request_section_title">요청 아이콘</string>
+    <string name="request_section_desc">필요한 아이콘을 찾을 수 없나요? 여기에서 요청하세요</string>
+    <string name="about_section_desc">개발자 및 크레딧에 대한 정보</string>
+    <string name="icons_preview_title">아이콘 미리보기</string>
+    <string name="search_icons_hint">아이콘 검색...</string>
+    <string name="icons_count">%1$d개의 아이콘</string>
+    <string name="no_icons_found">검색결과가 없습니다</string>
+    <string name="try_another_search">다른 검색을 시도해 보세요</string>
+    <string name="no_icons_available">사용 가능한 아이콘이 없습니다.</string>
+    <string name="no_icons_message">이 팩에는 아이콘이 포함되어 있지 않거나 올바르게 로드할 수 없습니다.</string>
+    <string name="total_apps_installed">총 %d개의 앱이 설치되었습니다.</string>
+    <string name="themed_apps">%d개의 테마 앱</string>
+    <string name="missing_apps">%d개의 누락된 앱</string>
+    <string name="settings_screen_title">설정</string>
+    <string name="dark_theme_setting">어두운 테마</string>
+    <string name="auto_apply_icons_setting">자동 적용 아이콘</string>
+    <string name="about_registro_title">변경 내역</string>
+    <string name="back">뒤쪽에</string>
+    <string name="icon_request_title">요청 아이콘</string>
+    <string name="icon_request_instructions">아이콘과 기기 세부정보가 필요한 앱에 대한 정보를 제공하세요.</string>
+    <string name="icon_request_app_list">앱 목록</string>
+    <string name="icon_request_device_info">장치 정보</string>
+    <string name="icon_request_email_subject">아이콘 요청</string>
+    <string name="icon_request_send_email">이메일로 보내기</string>
+    <string name="icon_request_send_telegram">텔레그램으로 보내기</string>
+    <string name="premium_request_sent">프리미엄 요청이 전송되고 크레딧이 소모되었습니다.</string>
+    <string name="premium_request_consume_failed">프리미엄 크레딧을 사용하지 못했습니다. 일반 요청으로 보내는 중입니다.</string>
+    <string name="dashboard_header_animation_desc">장식 헤더 애니메이션</string>
+    <string name="button_wallpapers_desc">배경화면 섹션 열기</string>
+    <string name="icon_request_loading_apps">앱 로드 중...</string>
+    <string name="icon_request_retry">다시 해 보다</string>
+    <string name="icon_request_limit_info">한도 정보</string>
+    <string name="icon_request_selected_apps">선택됨: %1$d</string>
+    <string name="icon_request_available_requests">사용 가능: %1$d</string>
+    <string name="icon_request_already_requested">이미 요청됨: %1$d</string>
+    <string name="icon_request_no_apps_found">앱을 찾을 수 없습니다.</string>
+    <string name="icon_request_apps_without_icons">아이콘이 없는 앱(%1$d)</string>
+    <string name="icon_request_send_dialog_title">요청 보내기</string>
+    <string name="icon_request_send_dialog_message">%1$d개 아이콘에 대한 요청을 보내시겠습니까?</string>
+    <string name="icon_request_send_dialog_send">보내다</string>
+    <string name="icon_request_send_dialog_cancel">취소</string>
+    <string name="icon_request_send_success">요청이 전송되었습니다: %1$d개 아이콘</string>
+    <string name="icon_request_send_error">보내는 중 오류 발생: %1$s</string>
+    <string name="icon_request_email_chooser">이메일 앱 선택</string>
+    <string name="icon_request_email_error_open">이메일 앱을 열 수 없습니다</string>
+    <string name="icon_request">아이콘 요청</string>
+    <string name="icon_request_description">아이콘 요청을 제출하면 개발자가 해당 아이콘을 포함하려고 노력할 것입니다.</string>
+    <string name="icon_request_total">총</string>
+    <string name="icon_request_limit">%d개의 요청</string>
+    <string name="icon_request_available">사용 가능</string>
+    <string name="icon_request_used">사용된</string>
 </resources>

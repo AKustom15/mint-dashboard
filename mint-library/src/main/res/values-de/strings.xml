@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="mint_icon_request_title">Icon-Anfrage</string>
     <string name="mint_icon_request_header">Icon-Anfrage</string>
@@ -18,13 +18,11 @@
     <string name="mint_icon_request_sent">Anfrage gesendet: %d Icons</string>
     <string name="mint_icon_request_select_all">Alle auswählen</string>
     <string name="mint_icon_request_deselect_all">Alle abwählen</string>
-
     <string name="mint_buy_premium">Premium kaufen</string>
     <string name="mint_premium_dialog_title">Premium Icon-Anfragen</string>
     <string name="mint_premium_dialog_close">Schließen</string>
     <string name="mint_premium_dialog_buy">Kaufen</string>
     <string name="mint_premium_purchase_success">Kauf erfolgreich! %d Anfragen hinzugefügt.</string>
-
     <string name="mint_settings_title">Einstellungen</string>
     <string name="mint_settings_appearance">DARSTELLUNG</string>
     <string name="mint_settings_theme">Design</string>
@@ -46,7 +44,6 @@
     <string name="mint_settings_package">Paket</string>
     <string name="mint_settings_privacy">Datenschutzrichtlinie</string>
     <string name="mint_settings_privacy_desc">Datenschutzrichtlinie anzeigen</string>
-
     <string name="mint_dashboard_subtitle">Individuelles Icon-Paket für dein Gerät</string>
     <string name="mint_dashboard_apply_icons">Icons anwenden</string>
     <string name="mint_dashboard_custom_icons">Individuelle Icons</string>
@@ -56,18 +53,15 @@
     <string name="mint_dashboard_missing_apps">%d fehlende Apps</string>
     <string name="mint_dashboard_select_launcher">Launcher auswählen</string>
     <string name="mint_dashboard_no_launchers">Keine kompatiblen Launcher gefunden.</string>
-
     <string name="mint_tab_icons">Icons</string>
     <string name="mint_tab_widgets">Widgets</string>
     <string name="mint_tab_wallpapers">Hintergründe</string>
     <string name="mint_tab_settings">Einstellungen</string>
-
     <string name="mint_icons_title">Icon-Vorschau</string>
     <string name="mint_icons_search">Icons suchen…</string>
     <string name="mint_icons_no_favorites">Noch keine Favoriten</string>
     <string name="mint_icons_no_results">Keine Icons gefunden</string>
     <string name="mint_icons_close">Schließen</string>
-
     <string name="mint_wallpapers_title">Hintergründe</string>
     <string name="mint_wallpapers_empty">Keine Hintergründe verfügbar</string>
     <string name="mint_wallpapers_empty_hint">cloudWallpapersUrl in MintConfig konfigurieren</string>
@@ -75,7 +69,6 @@
     <string name="mint_wallpapers_close">Schließen</string>
     <string name="mint_wallpapers_applied">Hintergrund angewendet!</string>
     <string name="mint_wallpapers_failed">Fehler beim Anwenden</string>
-
     <string name="mint_about_title">Über</string>
     <string name="mint_about_developer">ENTWICKLER</string>
     <string name="mint_about_social">SOZIALE MEDIEN</string>
@@ -83,4 +76,91 @@
     <string name="mint_about_powered_by">ENTWICKELT MIT</string>
     <string name="mint_about_library_name">Mint Library</string>
     <string name="mint_about_library_desc">Liquid Glass Design System</string>
+    <string name="mint_settings_whats_new">Was ist neu</string>
+    <string name="mint_widgets_empty">Keine Widgets verfügbar</string>
+    <string name="mint_widgets_apply">Anwenden</string>
+    <string name="mint_settings_notifications_section">MITTEILUNGEN</string>
+    <string name="mint_settings_notifications">Push-Benachrichtigungen</string>
+    <string name="mint_settings_notifications_desc">Erhalten Sie Neuigkeiten und Updates</string>
+    <string name="mint_settings_check_update">Suchen Sie nach Updates</string>
+    <string name="mint_settings_check_update_desc">Suchen Sie nach einer neuen Version</string>
+    <string name="mint_settings_checking_update">Suche nach Updates...</string>
+    <string name="mint_settings_up_to_date">Sie haben die neueste Version</string>
+    <string name="mint_settings_update_available">Update verfügbar</string>
+    <string name="mint_settings_update_failed">Es konnte nicht nach Updates gesucht werden</string>
+    <string name="mint_notifications_title">Benachrichtigungen</string>
+    <string name="mint_notifications_empty">Noch keine Benachrichtigungen</string>
+    <string name="mint_notifications_history">Benachrichtigungsverlauf</string>
+    <string name="mint_more_apps_title">MEHR APPS</string>
+    <string name="mint_more_apps_install">Installieren</string>
+    <string name="mint_wallpapers_loading">Hintergrundbilder werden geladen...</string>
+    <string name="mint_wallpapers_retry">Wiederholen</string>
+    <string name="mint_wallpapers_home_screen">Startbildschirm</string>
+    <string name="mint_wallpapers_lock_screen">Bildschirm sperren</string>
+    <string name="mint_wallpapers_both_screens">Beide Bildschirme</string>
+    <string name="mint_wallpapers_applied_home">Wird auf den Startbildschirm angewendet</string>
+    <string name="mint_wallpapers_applied_lock">Wird auf den Sperrbildschirm angewendet</string>
+    <string name="mint_wallpapers_applied_both">Wird auf beide Bildschirme angewendet</string>
+    <string name="mint_wallpapers_not_downloadable">Dieses Hintergrundbild kann nicht heruntergeladen werden</string>
+    <string name="mint_wallpapers_downloading">Hintergrundbild wird heruntergeladen...</string>
+    <string name="mint_wallpapers_download_started">Download gestartet</string>
+    <string name="mint_wallpapers_info">Hintergrundinformationen</string>
+    <string name="mint_wallpapers_name_label">Name</string>
+    <string name="mint_wallpapers_author_label">Autor</string>
+    <string name="mint_wallpapers_dimensions_label">Abmessungen</string>
+    <string name="icons_preview_section_title">Vorschau der Symbole</string>
+    <string name="icons_preview_section_desc">Entdecken Sie alle in diesem Paket enthaltenen Symbole</string>
+    <string name="wallpapers_section_title">Hintergrundbilder</string>
+    <string name="wallpapers_section_desc">Entdecken Sie Hintergrundbilder, die perfekt zu Ihren Symbolen passen</string>
+    <string name="request_section_title">Anforderungssymbole</string>
+    <string name="request_section_desc">Sie können das benötigte Symbol nicht finden? Fordern Sie es hier an</string>
+    <string name="about_section_desc">Informationen zum Entwickler und Credits</string>
+    <string name="icons_preview_title">Vorschau der Symbole</string>
+    <string name="search_icons_hint">Suchsymbole...</string>
+    <string name="icons_count">%1$d Symbole</string>
+    <string name="no_icons_found">Keine Ergebnisse gefunden</string>
+    <string name="try_another_search">Versuchen Sie es mit einer anderen Suche</string>
+    <string name="no_icons_available">Keine Symbole verfügbar</string>
+    <string name="no_icons_message">Dieses Paket enthält keine Symbole oder sie konnten nicht korrekt geladen werden</string>
+    <string name="total_apps_installed">Insgesamt %d Apps installiert</string>
+    <string name="themed_apps">%d Themen-Apps</string>
+    <string name="missing_apps">%d fehlende Apps</string>
+    <string name="settings_screen_title">Einstellungen</string>
+    <string name="dark_theme_setting">Dunkles Thema</string>
+    <string name="auto_apply_icons_setting">Symbole automatisch anwenden</string>
+    <string name="about_registro_title">Änderungsprotokoll</string>
+    <string name="back">Zurück</string>
+    <string name="icon_request_title">Anforderungssymbole</string>
+    <string name="icon_request_instructions">Geben Sie Informationen zu den Apps an, die Symbole benötigen, sowie Ihre Gerätedetails.</string>
+    <string name="icon_request_app_list">App-Liste</string>
+    <string name="icon_request_device_info">Geräteinformationen</string>
+    <string name="icon_request_email_subject">Symbolanforderung</string>
+    <string name="icon_request_send_email">Per E-Mail senden</string>
+    <string name="icon_request_send_telegram">Senden Sie per Telegramm</string>
+    <string name="premium_request_sent">Premium-Anfrage gesendet und Guthaben verbraucht.</string>
+    <string name="premium_request_consume_failed">Premium-Guthaben konnte nicht verbraucht werden. Senden als normale Anfrage.</string>
+    <string name="dashboard_header_animation_desc">Dekorative Header-Animation</string>
+    <string name="button_wallpapers_desc">Öffnen Sie den Bereich „Hintergrundbilder“.</string>
+    <string name="icon_request_loading_apps">Apps werden geladen...</string>
+    <string name="icon_request_retry">Wiederholen</string>
+    <string name="icon_request_limit_info">Limit-Info</string>
+    <string name="icon_request_selected_apps">Ausgewählt: %1$d</string>
+    <string name="icon_request_available_requests">Verfügbar: %1$d</string>
+    <string name="icon_request_already_requested">Bereits angefordert: %1$d</string>
+    <string name="icon_request_no_apps_found">Keine Apps gefunden</string>
+    <string name="icon_request_apps_without_icons">Apps ohne Symbole (%1$d)</string>
+    <string name="icon_request_send_dialog_title">Anfrage senden</string>
+    <string name="icon_request_send_dialog_message">Möchten Sie eine Anfrage für %1$d Symbole senden?</string>
+    <string name="icon_request_send_dialog_send">Schicken</string>
+    <string name="icon_request_send_dialog_cancel">Stornieren</string>
+    <string name="icon_request_send_success">Anfrage gesendet: %1$d Symbole</string>
+    <string name="icon_request_send_error">Fehler beim Senden: %1$s</string>
+    <string name="icon_request_email_chooser">Wählen Sie eine E-Mail-App</string>
+    <string name="icon_request_email_error_open">Die E-Mail-App konnte nicht geöffnet werden</string>
+    <string name="icon_request">Symbolanforderung</string>
+    <string name="icon_request_description">Senden Sie Ihre Symbolanfrage und der Entwickler wird versuchen, diese einzubinden.</string>
+    <string name="icon_request_total">Gesamt</string>
+    <string name="icon_request_limit">%d Anfragen</string>
+    <string name="icon_request_available">Verfügbar</string>
+    <string name="icon_request_used">Gebraucht</string>
 </resources>
