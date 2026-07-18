@@ -426,6 +426,8 @@ fun SettingsScreen(
         // Theme dialog — frosted glass card
         if (showThemeDialog) {
             Dialog(onDismissRequest = { showThemeDialog = false }) {
+                com.akustom15.mint.library.ui.MintLocalizedContent {
+
                 FrostedGlassDialogCard {
                     Column(
                         modifier = Modifier.padding(28.dp),
@@ -479,12 +481,16 @@ fun SettingsScreen(
                         }
                     }
                 }
+            
+                }
             }
         }
 
         // Language dialog — frosted glass card
         if (showLanguageDialog) {
             Dialog(onDismissRequest = { showLanguageDialog = false }) {
+                com.akustom15.mint.library.ui.MintLocalizedContent {
+
                 FrostedGlassDialogCard {
                     Column(
                         modifier = Modifier.padding(28.dp),
@@ -535,12 +541,16 @@ fun SettingsScreen(
                         }
                     }
                 }
+            
+                }
             }
         }
 
         // Clear Cache dialog — frosted glass card
         if (showClearCacheDialog) {
             Dialog(onDismissRequest = { showClearCacheDialog = false }) {
+                com.akustom15.mint.library.ui.MintLocalizedContent {
+
                 FrostedGlassDialogCard {
                     Column(
                         modifier = Modifier.padding(28.dp),
@@ -575,6 +585,8 @@ fun SettingsScreen(
                             }
                         }
                     }
+                }
+            
                 }
             }
         }

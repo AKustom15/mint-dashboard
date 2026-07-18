@@ -332,6 +332,9 @@ private fun WallpaperDetailDialog(
             usePlatformDefaultWidth = false
         )
     ) {
+
+        com.akustom15.mint.library.ui.MintLocalizedContent {
+
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -465,11 +468,17 @@ private fun WallpaperDetailDialog(
                 }
             }
         }
+    
+
+        }
+
     }
 
     // Apply wallpaper options dialog — frosted glass card
     if (showApplyOptions) {
         Dialog(onDismissRequest = { showApplyOptions = false }) {
+            com.akustom15.mint.library.ui.MintLocalizedContent {
+
             FrostedGlassDialogCard {
                 Column(
                     modifier = Modifier.padding(28.dp),
@@ -543,12 +552,16 @@ private fun WallpaperDetailDialog(
                     }
                 }
             }
+        
+            }
         }
     }
 
     // Info dialog — frosted glass card
     if (showInfoDialog) {
         Dialog(onDismissRequest = { showInfoDialog = false }) {
+            com.akustom15.mint.library.ui.MintLocalizedContent {
+
             FrostedGlassDialogCard {
                 Column(
                     modifier = Modifier.padding(28.dp),
@@ -578,6 +591,8 @@ private fun WallpaperDetailDialog(
                         Text(stringResource(R.string.mint_wallpapers_close))
                     }
                 }
+            }
+        
             }
         }
     }

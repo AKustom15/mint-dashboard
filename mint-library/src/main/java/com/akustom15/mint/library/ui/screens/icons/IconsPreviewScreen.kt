@@ -434,6 +434,9 @@ private fun IconDetailDialog(
     val shadowColor = if (isDark) MintColors.ButtonShadowDark else MintColors.ButtonShadowLight
 
     Dialog(onDismissRequest = onDismiss) {
+
+        com.akustom15.mint.library.ui.MintLocalizedContent {
+
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -506,5 +509,9 @@ private fun IconDetailDialog(
                 }
             }
         }
+    
+
+        }
+
     }
 }

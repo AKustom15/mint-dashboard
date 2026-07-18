@@ -83,6 +83,9 @@ fun MintRatingDialog(
             decorFitsSystemWindows = false
         )
     ) {
+
+        com.akustom15.mint.library.ui.MintLocalizedContent {
+
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -269,5 +272,9 @@ fun MintRatingDialog(
                 }
             }
         }
+    
+
+        }
+
     }
 }

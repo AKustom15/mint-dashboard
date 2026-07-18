@@ -91,6 +91,8 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
                 decorFitsSystemWindows = false
             )
         ) {
+            com.akustom15.mint.library.ui.MintLocalizedContent {
+
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -277,6 +279,8 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
                         }
                     }
                 }
+            }
+        
             }
         }
     }

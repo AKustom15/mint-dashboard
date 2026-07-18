@@ -75,6 +75,9 @@ fun PremiumPurchaseDialog(
             usePlatformDefaultWidth = false
         )
     ) {
+
+        com.akustom15.mint.library.ui.MintLocalizedContent {
+
         FrostedGlassDialogCard {
             Column(
                 modifier = Modifier
@@ -197,6 +200,10 @@ fun PremiumPurchaseDialog(
                 }
             }
         }
+    
+
+        }
+
     }
 }
 

@@ -303,6 +303,8 @@ fun DashboardScreen(
         // Launcher dialog with frosted glass card
         if (uiState.showLauncherDialog) {
             Dialog(onDismissRequest = { viewModel.dismissLauncherDialog() }) {
+                com.akustom15.mint.library.ui.MintLocalizedContent {
+
                 FrostedGlassDialogCard {
                     Column(
                         modifier = Modifier
@@ -345,6 +347,8 @@ fun DashboardScreen(
                             Text(stringResource(R.string.mint_settings_cancel), color = MintColors.Primary)
                         }
                     }
+                }
+            
                 }
             }
         }
