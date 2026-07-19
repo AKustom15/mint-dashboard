@@ -337,6 +337,9 @@ class IconRequestViewModel : ViewModel() {
         )
         
         val androidId = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID) ?: "Unknown"
+        val model = android.os.Build.MODEL
+        val androidVersion = "Android ${android.os.Build.VERSION.RELEASE} (SDK ${android.os.Build.VERSION.SDK_INT})"
+        val orderId = MintPremiumPreferences.getLastProcessedOrderId(context)
 
         // Build email subject and body
         val subject = "Solicitud de iconos para $appName (${selectedApps.size} apps)"
@@ -348,7 +351,12 @@ class IconRequestViewModel : ViewModel() {
                 append("  Descargar/Ver: $playStoreLink\n\n")
             }
             append("(Los detalles completos de los componentes están en el archivo XML adjunto.)\n\n")
-            append("--- Configuración del Dispositivo ---\n")
+            append("--- Información Adicional ---\n")
+            append("Modelo: $model\n")
+            append("Versión de Android: $androidVersion\n")
+            if (orderId != null) {
+                append("Order ID: $orderId\n")
+            }
             append("Device ID: $androidId\n")
             append("License Status: ${antiPiracyStatus ?: "Unknown"}\n")
         }
