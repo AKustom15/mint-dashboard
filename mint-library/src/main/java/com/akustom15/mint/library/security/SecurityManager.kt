@@ -7,11 +7,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 
 /**
  * Gestor unificado de seguridad que combina múltiples métodos de verificación
- * Recomendado para 2025: Google Play Integrity API + Firebase App Check + Verificación de Instalador
+ * Recomendado para 2025: Google Play Integrity API + Firebase App Check + Verificación de Instalador + Play Billing (LVL)
  */
 class SecurityManager private constructor(private val context: Context, private val config: MintConfig) {
     companion object {
@@ -42,23 +45,32 @@ class SecurityManager private constructor(private val context: Context, private 
     }
 
     init {
-        // Observar cambios en el estado de Play Integrity
+        // Observar cambios combinados de Play Integrity y LicenseChecker
         scope.launch {
-            playIntegrityChecker.integrityState.collect { integrityState ->
-                when (integrityState) {
-                    is PlayIntegrityChecker.IntegrityState.Valid -> {
-                        _securityState.value = SecurityState.Valid
+            combine(playIntegrityChecker.integrityState, licenseChecker.licenseState) { integrityState, licenseState ->
+                when {
+                    integrityState is PlayIntegrityChecker.IntegrityState.Checking || licenseState is LicenseState.Checking -> {
+                        SecurityState.Checking
                     }
-                    is PlayIntegrityChecker.IntegrityState.Invalid -> {
-                        _securityState.value = SecurityState.Invalid(integrityState.reason)
+                    integrityState is PlayIntegrityChecker.IntegrityState.Invalid -> {
+                        SecurityState.Invalid(integrityState.reason)
                     }
-                    is PlayIntegrityChecker.IntegrityState.Error -> {
-                        _securityState.value = SecurityState.Error(integrityState.message)
+                    licenseState is LicenseState.Invalid -> {
+                        SecurityState.Invalid(licenseState.reason)
                     }
-                    is PlayIntegrityChecker.IntegrityState.Checking -> {
-                        _securityState.value = SecurityState.Checking
+                    integrityState is PlayIntegrityChecker.IntegrityState.Error -> {
+                        SecurityState.Error(integrityState.message)
                     }
+                    licenseState is LicenseState.Error -> {
+                        SecurityState.Error(licenseState.message)
+                    }
+                    integrityState is PlayIntegrityChecker.IntegrityState.Valid && licenseState is LicenseState.Valid -> {
+                        SecurityState.Valid
+                    }
+                    else -> SecurityState.Checking
                 }
+            }.collect { combinedState ->
+                _securityState.value = combinedState
             }
         }
     }
@@ -67,17 +79,28 @@ class SecurityManager private constructor(private val context: Context, private 
      * Realiza todas las verificaciones de seguridad
      */
     fun performSecurityChecks() {
+        if (!config.enableAntiPiracy) {
+            Log.d(TAG, "Anti-piratería deshabilitada en la configuración. Saltando comprobaciones.")
+            _securityState.value = SecurityState.Valid
+            return
+        }
+
         scope.launch {
             try {
                 Log.d(TAG, "Iniciando verificaciones de seguridad...")
-                val isValid = playIntegrityChecker.performSecurityChecks()
+                
+                val integrityJob = async { playIntegrityChecker.performSecurityChecks() }
+                val licenseJob = async { licenseChecker.checkLicense() }
+                
+                val results = awaitAll(integrityJob, licenseJob)
+                val isValid = results.all { it }
                 
                 if (isValid) {
                     Log.i(TAG, "✅ Todas las verificaciones de seguridad pasaron")
-                    _securityState.value = SecurityState.Valid
+                    // El estado ya se actualizará a Valid mediante el colector (combine)
                 } else {
                     Log.w(TAG, "❌ Fallo en verificaciones de seguridad")
-                    // El estado ya se actualizó en el collector
+                    // El estado ya se actualizará a Invalid/Error mediante el colector
                 }
             } catch (e: Exception) {
                 Log.e(TAG, "Error en verificaciones de seguridad", e)
