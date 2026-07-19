@@ -193,7 +193,9 @@ object LauncherUtils {
 
     private fun applyToSmartLauncher(context: Context, launcher: LauncherInfo): Boolean {
         val iconPackPackageName = context.packageName
-        val intent = Intent("ginlemon.smartlauncher.SET_THEME").apply {
+        
+        // Try the intent from LauncherInfo first (setGSLTHEME) which is what the old glasswave used via applyGeneric
+        val intent = Intent(launcher.intentAction.ifBlank { "ginlemon.smartlauncher.setGSLTHEME" }).apply {
             setPackage(launcher.packageName)
             putExtra("package", iconPackPackageName)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -203,15 +205,27 @@ object LauncherUtils {
             context.startActivity(intent)
             true
         } catch (e: Exception) {
-            val openThemesIntent = Intent("ginlemon.smartlauncher.THEMES").apply {
+            // Fallback to SET_THEME just in case
+            val fallbackIntent = Intent("ginlemon.smartlauncher.SET_THEME").apply {
                 setPackage(launcher.packageName)
+                putExtra("package", iconPackPackageName)
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }
             try {
-                context.startActivity(openThemesIntent)
+                context.startActivity(fallbackIntent)
                 true
             } catch (e2: Exception) {
-                false
+                // Final fallback to open theme settings
+                val openThemesIntent = Intent("ginlemon.smartlauncher.THEMES").apply {
+                    setPackage(launcher.packageName)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+                try {
+                    context.startActivity(openThemesIntent)
+                    true
+                } catch (e3: Exception) {
+                    false
+                }
             }
         }
     }
