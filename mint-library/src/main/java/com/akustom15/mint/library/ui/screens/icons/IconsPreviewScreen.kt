@@ -54,6 +54,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun IconsPreviewScreen(
     onNavigateBack: () -> Unit,
+    isPickerMode: Boolean = false,
+    onIconPicked: ((Int, String) -> Unit)? = null,
     viewModel: IconsPreviewViewModel = viewModel()
 ) {
     val context = LocalContext.current
@@ -266,7 +268,13 @@ fun IconsPreviewScreen(
                     IconPageContent(
                         icons = iconsForPage,
                         favorites = uiState.favorites,
-                        onIconClick = { viewModel.selectIcon(it) },
+                        onIconClick = { 
+                            if (isPickerMode) {
+                                onIconPicked?.invoke(it.resourceId, it.name)
+                            } else {
+                                viewModel.selectIcon(it)
+                            }
+                        },
                         isDark = isDark
                     )
                 }

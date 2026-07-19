@@ -55,6 +55,41 @@
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="mint_push_channel"
             tools:replace="android:value" />
+            
+        <!-- Icon Picker Activity (for Nova CUSTOM_ICON_PICKER, Lawnchair, Kustom) -->
+        <activity
+            android:name="com.akustom15.mint.library.ui.screens.icons.MintIconPickerActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Mint">
+
+            <intent-filter android:priority="-1">
+                <action android:name="com.novalauncher.THEME" />
+                <category android:name="com.novalauncher.category.CUSTOM_ICON_PICKER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.teslacoilsw.launcher.action.PICK_ICON" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="ch.deletescape.lawnchair.ICONPACK" />
+                <category android:name="ch.deletescape.lawnchair.PICK" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PICK" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.OPENABLE" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
