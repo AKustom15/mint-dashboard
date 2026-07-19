@@ -69,18 +69,18 @@ private fun createLocalizedContext(context: Context, locale: Locale): Context {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
         configuration.setLocale(locale)
         configuration.setLayoutDirection(locale)
+        val configContext = context.createConfigurationContext(configuration)
+        return object : android.content.ContextWrapper(context) {
+            override fun getResources(): android.content.res.Resources {
+                return configContext.resources
+            }
+        }
     } else {
         @Suppress("DEPRECATION")
         configuration.locale = locale
         configuration.setLayoutDirection(locale)
-    }
-
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        context.createConfigurationContext(configuration)
-    } else {
-        @Suppress("DEPRECATION")
         val resources = context.resources
         resources.updateConfiguration(configuration, resources.displayMetrics)
-        context
+        return context
     }
 }
