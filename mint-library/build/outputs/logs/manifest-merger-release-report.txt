@@ -1,7 +1,7 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:2:1-60:12
-INJECTED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:2:1-60:12
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:2:1-95:12
+INJECTED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:2:1-95:12
 	package
 		INJECTED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml
 	xmlns:tools
@@ -57,7 +57,7 @@ ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-lib
 	android:name
 		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:20:18-57
 application
-ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:23:5-58:19
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:23:5-93:19
 provider#org.kustom.api.Provider
 ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:27:9-38:20
 	android:authorities
@@ -114,6 +114,72 @@ ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-lib
 		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:56:13-46
 	android:name
 		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:55:13-89
+activity#com.akustom15.mint.library.ui.screens.icons.MintIconPickerActivity
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:60:9-92:20
+	android:exported
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:62:13-36
+	android:theme
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:63:13-72
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:61:13-94
+intent-filter#action:name:com.novalauncher.THEME+category:name:com.novalauncher.category.CUSTOM_ICON_PICKER
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:65:13-68:29
+	android:priority
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:65:28-49
+action#com.novalauncher.THEME
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:66:17-65
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:66:25-62
+category#com.novalauncher.category.CUSTOM_ICON_PICKER
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:67:17-89
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:67:27-86
+intent-filter#action:name:com.teslacoilsw.launcher.action.PICK_ICON+category:name:android.intent.category.DEFAULT
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:69:13-72:29
+action#com.teslacoilsw.launcher.action.PICK_ICON
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:70:17-84
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:70:25-81
+category#android.intent.category.DEFAULT
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:71:17-76
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:71:27-73
+intent-filter#action:name:android.intent.action.CREATE_SHORTCUT+category:name:android.intent.category.DEFAULT
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:73:13-76:29
+action#android.intent.action.CREATE_SHORTCUT
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:74:17-80
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:74:25-77
+intent-filter#action:name:ch.deletescape.lawnchair.ICONPACK+category:name:ch.deletescape.lawnchair.PICK
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:77:13-80:29
+action#ch.deletescape.lawnchair.ICONPACK
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:78:17-76
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:78:25-73
+category#ch.deletescape.lawnchair.PICK
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:79:17-74
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:79:27-71
+intent-filter#action:name:android.intent.action.PICK+category:name:android.intent.category.DEFAULT+data:mimeType:image/*
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:81:13-85:29
+action#android.intent.action.PICK
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:82:17-69
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:82:25-66
+data
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:84:17-52
+	android:mimeType
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:84:23-49
+intent-filter#action:name:android.intent.action.GET_CONTENT+category:name:android.intent.category.DEFAULT+category:name:android.intent.category.OPENABLE+data:mimeType:image/*
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:86:13-91:29
+action#android.intent.action.GET_CONTENT
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:87:17-76
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:87:25-73
+category#android.intent.category.OPENABLE
+ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:89:17-77
+	android:name
+		ADDED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:89:27-74
 uses-sdk
 INJECTED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml

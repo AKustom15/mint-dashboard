@@ -60,7 +60,7 @@
         <activity
             android:name="com.akustom15.mint.library.ui.screens.icons.MintIconPickerActivity"
             android:exported="true"
-            android:theme="@style/Theme.Mint">
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
 
             <intent-filter android:priority="-1">
                 <action android:name="com.novalauncher.THEME" />

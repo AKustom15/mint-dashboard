@@ -31,11 +31,16 @@
     <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Condividi con"</string>
     <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Condividi tramite <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
     <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Comprimi"</string>
+    <string name="about_registro_title">Registro delle modifiche</string>
+    <string name="about_section_desc">Informazioni sullo sviluppatore e crediti</string>
+    <string name="auto_apply_icons_setting">Icone di applicazione automatica</string>
+    <string name="back">Indietro</string>
     <string name="bottomsheet_action_collapse">Comprimi riquadro inferiore</string>
     <string name="bottomsheet_action_expand">Espandi riquadro inferiore</string>
     <string name="bottomsheet_action_expand_halfway">Espandi a metà</string>
     <string name="bottomsheet_drag_handle_clicked">Doppio tocco su punto di trascinamento</string>
     <string name="bottomsheet_drag_handle_content_description">Punto di trascinamento</string>
+    <string name="button_wallpapers_desc">Apri la sezione degli sfondi</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"Rispondi"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Video"</string>
     <string msgid="3229508546291798546" name="call_notification_decline_action">"Rifiuta"</string>
@@ -66,6 +71,8 @@
     <string name="common_open_on_phone">Apri sul telefono</string>
     <string name="common_signin_button_text">Accedi</string>
     <string name="common_signin_button_text_long">Accedi con Google</string>
+    <string name="dark_theme_setting">Tema oscuro</string>
+    <string name="dashboard_header_animation_desc">Animazione dell\'intestazione decorativa</string>
     <string msgid="8038256446254964252" name="default_error_message">"Valore non valido"</string>
     <string msgid="6312721426453364202" name="default_popup_window_title">"Finestra popup"</string>
     <string msgid="1890207353314751437" name="dropdown_menu">"Menu a discesa"</string>
@@ -73,6 +80,39 @@
     <string name="error_icon_content_description">Errore</string>
     <string name="exposed_dropdown_menu_content_description">Mostra il menu a discesa</string>
     <string name="icon_content_description">Icona della finestra di dialogo</string>
+    <string name="icon_request">Richiesta di icone</string>
+    <string name="icon_request_already_requested">Già richiesto: %1$d</string>
+    <string name="icon_request_app_list">Elenco delle app</string>
+    <string name="icon_request_apps_without_icons">App senza icone (%1$d)</string>
+    <string name="icon_request_available">Disponibile</string>
+    <string name="icon_request_available_requests">Disponibile: %1$d</string>
+    <string name="icon_request_description">Invia la tua richiesta di icone e lo sviluppatore proverà a includerle.</string>
+    <string name="icon_request_device_info">Informazioni sul dispositivo</string>
+    <string name="icon_request_email_chooser">Scegli l\'app di posta elettronica</string>
+    <string name="icon_request_email_error_open">Impossibile aprire l\'app di posta elettronica</string>
+    <string name="icon_request_email_subject">Richiesta di icone</string>
+    <string name="icon_request_instructions">Fornisci informazioni sulle app che necessitano di icone e i dettagli del tuo dispositivo.</string>
+    <string name="icon_request_limit">%d richieste</string>
+    <string name="icon_request_limit_info">Informazioni sui limiti</string>
+    <string name="icon_request_loading_apps">Caricamento app...</string>
+    <string name="icon_request_no_apps_found">Nessuna app trovata</string>
+    <string name="icon_request_retry">Riprova</string>
+    <string name="icon_request_selected_apps">Selezionato: %1$d</string>
+    <string name="icon_request_send_dialog_cancel">Cancellare</string>
+    <string name="icon_request_send_dialog_message">Vuoi inviare una richiesta per %1$d icone?</string>
+    <string name="icon_request_send_dialog_send">Inviare</string>
+    <string name="icon_request_send_dialog_title">Invia richiesta</string>
+    <string name="icon_request_send_email">Invia tramite e-mail</string>
+    <string name="icon_request_send_error">Errore durante l\'invio: %1$s</string>
+    <string name="icon_request_send_success">Richiesta inviata: %1$d icone</string>
+    <string name="icon_request_send_telegram">Invia tramite Telegram</string>
+    <string name="icon_request_title">Richiedi icone</string>
+    <string name="icon_request_total">Totale</string>
+    <string name="icon_request_used">Usato</string>
+    <string name="icons_count">%1$d icone</string>
+    <string name="icons_preview_section_desc">Esplora tutte le icone incluse in questo pacchetto</string>
+    <string name="icons_preview_section_title">Anteprima delle icone</string>
+    <string name="icons_preview_title">Anteprima delle icone</string>
     <string msgid="6827826412747255547" name="in_progress">"In corso"</string>
     <string msgid="7933458017204019916" name="indeterminate">"Elemento parzialmente selezionato"</string>
     <string name="item_view_role_description">Scheda</string>
@@ -186,6 +226,11 @@
     <string name="mint_icons_no_results">Nessuna icona trovata</string>
     <string name="mint_icons_search">Cerca icone…</string>
     <string name="mint_icons_title">Anteprima icone</string>
+    <string name="mint_more_apps_install">Installare</string>
+    <string name="mint_more_apps_title">ALTRE APP</string>
+    <string name="mint_notifications_empty">Nessuna notifica ancora</string>
+    <string name="mint_notifications_history">Cronologia delle notifiche</string>
+    <string name="mint_notifications_title">Notifiche</string>
     <string name="mint_premium_dialog_buy">Acquista</string>
     <string name="mint_premium_dialog_close">Chiudi</string>
     <string name="mint_premium_dialog_title">Richieste Premium</string>
@@ -193,6 +238,9 @@
     <string name="mint_settings_appearance">ASPETTO</string>
     <string name="mint_settings_cache_cleared">Cache svuotata!</string>
     <string name="mint_settings_cancel">Annulla</string>
+    <string name="mint_settings_check_update">Controlla gli aggiornamenti</string>
+    <string name="mint_settings_check_update_desc">Cerca una nuova versione</string>
+    <string name="mint_settings_checking_update">Controllo aggiornamenti...</string>
     <string name="mint_settings_clear">Svuota</string>
     <string name="mint_settings_clear_cache">Svuota cache icone</string>
     <string name="mint_settings_clear_cache_confirm">La cache verrà svuotata. Le icone verranno ricaricate la prossima volta.</string>
@@ -200,6 +248,9 @@
     <string name="mint_settings_data">DATI</string>
     <string name="mint_settings_info">INFORMAZIONI</string>
     <string name="mint_settings_language">Lingua</string>
+    <string name="mint_settings_notifications">Notifiche push</string>
+    <string name="mint_settings_notifications_desc">Ricevi notizie e aggiornamenti</string>
+    <string name="mint_settings_notifications_section">NOTIFICHE</string>
     <string name="mint_settings_package">Pacchetto</string>
     <string name="mint_settings_privacy">Informativa sulla privacy</string>
     <string name="mint_settings_privacy_desc">Visualizza informativa sulla privacy</string>
@@ -210,18 +261,40 @@
     <string name="mint_settings_theme_light">Chiaro</string>
     <string name="mint_settings_theme_system">Sistema</string>
     <string name="mint_settings_title">Impostazioni</string>
+    <string name="mint_settings_up_to_date">Hai l\'ultima versione</string>
+    <string name="mint_settings_update_available">Aggiornamento disponibile</string>
+    <string name="mint_settings_update_failed">Impossibile verificare la presenza di aggiornamenti</string>
     <string name="mint_settings_version">Versione</string>
+    <string name="mint_settings_whats_new">Cosa c\'è di nuovo</string>
     <string name="mint_tab_icons">Icone</string>
     <string name="mint_tab_settings">Impostazioni</string>
     <string name="mint_tab_wallpapers">Sfondi</string>
     <string name="mint_tab_widgets">Widgets</string>
     <string name="mint_wallpapers_applied">Sfondo applicato!</string>
+    <string name="mint_wallpapers_applied_both">Applicato a entrambi gli schermi</string>
+    <string name="mint_wallpapers_applied_home">Applicato alla schermata iniziale</string>
+    <string name="mint_wallpapers_applied_lock">Applicato alla schermata di blocco</string>
     <string name="mint_wallpapers_apply">Applica</string>
+    <string name="mint_wallpapers_author_label">Autore</string>
+    <string name="mint_wallpapers_both_screens">Entrambi gli schermi</string>
     <string name="mint_wallpapers_close">Chiudi</string>
+    <string name="mint_wallpapers_dimensions_label">Dimensioni</string>
+    <string name="mint_wallpapers_download_started">Download avviato</string>
+    <string name="mint_wallpapers_downloading">Download dello sfondo...</string>
     <string name="mint_wallpapers_empty">Nessuno sfondo disponibile</string>
     <string name="mint_wallpapers_empty_hint">Configura cloudWallpapersUrl in MintConfig</string>
     <string name="mint_wallpapers_failed">Errore nell\'applicazione</string>
+    <string name="mint_wallpapers_home_screen">Schermata iniziale</string>
+    <string name="mint_wallpapers_info">Informazioni sullo sfondo</string>
+    <string name="mint_wallpapers_loading">Caricamento sfondi...</string>
+    <string name="mint_wallpapers_lock_screen">Schermata di blocco</string>
+    <string name="mint_wallpapers_name_label">Nome</string>
+    <string name="mint_wallpapers_not_downloadable">Questo sfondo non può essere scaricato</string>
+    <string name="mint_wallpapers_retry">Riprova</string>
     <string name="mint_wallpapers_title">Sfondi</string>
+    <string name="mint_widgets_apply">Fare domanda a</string>
+    <string name="mint_widgets_empty">Nessun widget disponibile</string>
+    <string name="missing_apps">%d app mancanti</string>
     <string name="mtrl_badge_numberless_content_description">Nuova notifica</string>
     <string name="mtrl_checkbox_state_description_checked">Selezionata</string>
     <string name="mtrl_checkbox_state_description_indeterminate">Parzialmente selezionata</string>
@@ -268,14 +341,23 @@
     <string name="mtrl_timepicker_cancel">Annulla</string>
     <string name="mtrl_timepicker_confirm">OK</string>
     <string msgid="542007171693138492" name="navigation_menu">"Menu di navigazione"</string>
+    <string name="no_icons_available">Nessuna icona disponibile</string>
+    <string name="no_icons_found">Nessun risultato trovato</string>
+    <string name="no_icons_message">Questo pacchetto non contiene icone oppure non è stato possibile caricarle correttamente</string>
     <string msgid="6610465462668679431" name="not_selected">"Opzione non selezionata"</string>
     <string name="password_toggle_content_description">Mostra password</string>
+    <string name="premium_request_consume_failed">Impossibile consumare il credito premium. Invio come normale richiesta.</string>
+    <string name="premium_request_sent">Richiesta Premium inviata e credito consumato.</string>
     <string msgid="5941395253238309765" name="range_end">"Fine intervallo"</string>
     <string msgid="7097486360902471446" name="range_start">"Inizio intervallo"</string>
+    <string name="request_section_desc">Non riesci a trovare l\'icona che ti serve? Richiedilo qui</string>
+    <string name="request_section_title">Richiedi icone</string>
+    <string name="search_icons_hint">Cerca icone...</string>
     <string msgid="6264217191555673260" name="search_menu_title">"Cerca"</string>
     <string name="searchview_clear_text_content_description">Cancella testo</string>
     <string name="searchview_navigation_content_description">Indietro</string>
     <string msgid="6043586758067023" name="selected">"Elemento selezionato"</string>
+    <string name="settings_screen_title">Impostazioni</string>
     <string name="side_sheet_accessibility_pane_title">Scheda secondaria</string>
     <string msgid="4139871816613051306" name="state_empty">"Vuoto"</string>
     <string msgid="5834637030682409883" name="state_off">"Off"</string>
@@ -284,6 +366,11 @@
     <string msgid="2561197295334830845" name="switch_role">"Opzione"</string>
     <string msgid="1672349317127674378" name="tab">"Scheda"</string>
     <string msgid="5946805113151406391" name="template_percent">"<ns1:g id="PERCENTAGE">%1$d</ns1:g> percento."</string>
+    <string name="themed_apps">%d app a tema</string>
     <string msgid="3765533235322692011" name="tooltip_description">"Descrizione comando"</string>
     <string msgid="3124740595719787496" name="tooltip_label">"Mostra descrizione comando"</string>
+    <string name="total_apps_installed">Totale %d app installate</string>
+    <string name="try_another_search">Prova un\'altra ricerca</string>
+    <string name="wallpapers_section_desc">Scopri gli sfondi che si adattano perfettamente alle tue icone</string>
+    <string name="wallpapers_section_title">Sfondi</string>
 </resources>

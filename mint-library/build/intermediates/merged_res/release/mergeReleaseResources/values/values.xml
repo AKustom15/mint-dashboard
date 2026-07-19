@@ -2110,6 +2110,7 @@
     <string name="mint_icons_no_results">No icons found</string>
     <string name="mint_icons_search">Search icons…</string>
     <string name="mint_icons_title">Icons Preview</string>
+    <string name="mint_more_apps_install">Install</string>
     <string name="mint_more_apps_title">MORE APPS</string>
     <string name="mint_notifications_empty">No notifications yet</string>
     <string name="mint_notifications_history">Notification history</string>
@@ -2123,11 +2124,11 @@
     <string name="mint_settings_cancel">Cancel</string>
     <string name="mint_settings_check_update">Check for Updates</string>
     <string name="mint_settings_check_update_desc">Look for a new version</string>
-    <string name="mint_settings_checking_update">Checking for updates…</string>
+    <string name="mint_settings_checking_update">Checking for updates...</string>
     <string name="mint_settings_clear">Clear</string>
-    <string name="mint_settings_clear_cache">Clear Icon Cache</string>
-    <string name="mint_settings_clear_cache_confirm">This will clear the icon cache. Icons will be reloaded next time.</string>
-    <string name="mint_settings_clear_cache_desc">Free up memory</string>
+    <string name="mint_settings_clear_cache">Clear Cache</string>
+    <string name="mint_settings_clear_cache_confirm">This will clear the app cache and reload remote configurations.</string>
+    <string name="mint_settings_clear_cache_desc">Clear app and internet cache</string>
     <string name="mint_settings_data">DATA</string>
     <string name="mint_settings_info">INFO</string>
     <string name="mint_settings_language">Language</string>
@@ -2148,6 +2149,7 @@
     <string name="mint_settings_update_available">Update available</string>
     <string name="mint_settings_update_failed">Could not check for updates</string>
     <string name="mint_settings_version">Version</string>
+    <string name="mint_settings_whats_new">What\'s New</string>
     <string name="mint_tab_icons">Icons</string>
     <string name="mint_tab_settings">Settings</string>
     <string name="mint_tab_wallpapers">Wallpapers</string>
@@ -6704,6 +6706,14 @@
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
   </style>
+    <style name="Theme.PlayCore.Transparent" parent="android:Theme">
+<item name="android:windowIsTranslucent">true</item>
+<item name="android:windowBackground">@android:color/transparent</item>
+<item name="android:windowContentOverlay">@null</item>
+<item name="android:windowNoTitle">true</item>
+<item name="android:windowIsFloating">true</item>
+<item name="android:backgroundDimEnabled">false</item>
+</style>
     <style name="ThemeOverlay.AppCompat" parent="Base.ThemeOverlay.AppCompat"/>
     <style name="ThemeOverlay.AppCompat.ActionBar" parent="Base.ThemeOverlay.AppCompat.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Dark" parent="Base.ThemeOverlay.AppCompat.Dark"/>

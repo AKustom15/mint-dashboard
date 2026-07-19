@@ -63,15 +63,16 @@ com.akustom15.mint.library.mint-library-coordinatorlayout-1.1.0-61 C:\Users\Rain
 com.akustom15.mint.library.mint-library-jetified-animation-release-62 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\d89f74bb2b4170d127e42bb7172fedef\transformed\jetified-animation-release\res
 com.akustom15.mint.library.mint-library-jetified-ui-unit-release-63 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\df02d5c55b319db37b4a87d9c4fb4645\transformed\jetified-ui-unit-release\res
 com.akustom15.mint.library.mint-library-navigation-runtime-2.7.7-64 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\e919d2580311f4513628532c9e891e04\transformed\navigation-runtime-2.7.7\res
-com.akustom15.mint.library.mint-library-jetified-coil-base-2.7.0-65 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\ee9afe2539e351b9da297c18c115d2d6\transformed\jetified-coil-base-2.7.0\res
-com.akustom15.mint.library.mint-library-drawerlayout-1.1.1-66 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\f368a7847d0174f1a0694455730988ca\transformed\drawerlayout-1.1.1\res
-com.akustom15.mint.library.mint-library-jetified-firebase-common-21.0.0-67 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\f38efe57f488c5d86ecb2fbeb90349b7\transformed\jetified-firebase-common-21.0.0\res
-com.akustom15.mint.library.mint-library-jetified-lifecycle-viewmodel-ktx-2.8.5-68 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\f8a9572995431d483a5156692ba6d76a\transformed\jetified-lifecycle-viewmodel-ktx-2.8.5\res
-com.akustom15.mint.library.mint-library-jetified-startup-runtime-1.1.1-69 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\fc366678e8ea99ea18ca049a367f6b4a\transformed\jetified-startup-runtime-1.1.1\res
-com.akustom15.mint.library.mint-library-pngs-70 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\build\generated\res\pngs\release
-com.akustom15.mint.library.mint-library-resValues-71 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\build\generated\res\resValues\release
-com.akustom15.mint.library.mint-library-mergeReleaseResources-72 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\build\intermediates\incremental\release\mergeReleaseResources\merged.dir
-com.akustom15.mint.library.mint-library-mergeReleaseResources-73 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\build\intermediates\incremental\release\mergeReleaseResources\stripped.dir
-com.akustom15.mint.library.mint-library-release-74 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\build\intermediates\merged_res\release\mergeReleaseResources
-com.akustom15.mint.library.mint-library-main-75 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\res
-com.akustom15.mint.library.mint-library-release-76 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\release\res
+com.akustom15.mint.library.mint-library-jetified-core-common-2.0.4-65 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\e9a311710e1d6e2495e4bfb7a8cc0c90\transformed\jetified-core-common-2.0.4\res
+com.akustom15.mint.library.mint-library-jetified-coil-base-2.7.0-66 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\ee9afe2539e351b9da297c18c115d2d6\transformed\jetified-coil-base-2.7.0\res
+com.akustom15.mint.library.mint-library-drawerlayout-1.1.1-67 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\f368a7847d0174f1a0694455730988ca\transformed\drawerlayout-1.1.1\res
+com.akustom15.mint.library.mint-library-jetified-firebase-common-21.0.0-68 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\f38efe57f488c5d86ecb2fbeb90349b7\transformed\jetified-firebase-common-21.0.0\res
+com.akustom15.mint.library.mint-library-jetified-lifecycle-viewmodel-ktx-2.8.5-69 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\f8a9572995431d483a5156692ba6d76a\transformed\jetified-lifecycle-viewmodel-ktx-2.8.5\res
+com.akustom15.mint.library.mint-library-jetified-startup-runtime-1.1.1-70 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\fc366678e8ea99ea18ca049a367f6b4a\transformed\jetified-startup-runtime-1.1.1\res
+com.akustom15.mint.library.mint-library-pngs-71 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\build\generated\res\pngs\release
+com.akustom15.mint.library.mint-library-resValues-72 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\build\generated\res\resValues\release
+com.akustom15.mint.library.mint-library-mergeReleaseResources-73 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\build\intermediates\incremental\release\mergeReleaseResources\merged.dir
+com.akustom15.mint.library.mint-library-mergeReleaseResources-74 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\build\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+com.akustom15.mint.library.mint-library-release-75 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\build\intermediates\merged_res\release\mergeReleaseResources
+com.akustom15.mint.library.mint-library-main-76 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\res
+com.akustom15.mint.library.mint-library-release-77 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\release\res

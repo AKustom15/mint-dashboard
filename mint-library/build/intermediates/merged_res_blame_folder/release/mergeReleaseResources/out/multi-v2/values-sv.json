@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-71:/values-sv/values-sv.xml",
+            "outputFile": "com.akustom15.mint.library.mint-library-release-74:/values-sv/values-sv.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\3e144c5adf53b12c3e59ff9c40520a1a\\transformed\\jetified-play-services-basement-18.4.0\\res\\values-sv\\values.xml",
@@ -144,7 +144,7 @@
             ]
         },
         {
-            "outputFile": "com.akustom15.mint.library.mint-library-release-73:/values-sv/values-sv.xml",
+            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-72:/values-sv/values-sv.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\3e144c5adf53b12c3e59ff9c40520a1a\\transformed\\jetified-play-services-basement-18.4.0\\res\\values-sv\\values.xml",

@@ -186,6 +186,7 @@
     <string name="mint_icons_no_results">No se encontraron iconos</string>
     <string name="mint_icons_search">Buscar iconos…</string>
     <string name="mint_icons_title">Vista de Iconos</string>
+    <string name="mint_more_apps_install">Instalar</string>
     <string name="mint_more_apps_title">MÁS APPS</string>
     <string name="mint_notifications_empty">Aún no hay notificaciones</string>
     <string name="mint_notifications_history">Historial de notificaciones</string>
@@ -201,9 +202,9 @@
     <string name="mint_settings_check_update_desc">Comprobar si hay una nueva versión</string>
     <string name="mint_settings_checking_update">Buscando actualizaciones…</string>
     <string name="mint_settings_clear">Limpiar</string>
-    <string name="mint_settings_clear_cache">Limpiar caché de iconos</string>
-    <string name="mint_settings_clear_cache_confirm">Se limpiará la caché de iconos. Se recargarán la próxima vez.</string>
-    <string name="mint_settings_clear_cache_desc">Liberar memoria</string>
+    <string name="mint_settings_clear_cache">Limpiar caché</string>
+    <string name="mint_settings_clear_cache_confirm">Se limpiará la caché de la app y se recargarán los datos remotos.</string>
+    <string name="mint_settings_clear_cache_desc">Liberar memoria e internet</string>
     <string name="mint_settings_data">DATOS</string>
     <string name="mint_settings_info">INFORMACIÓN</string>
     <string name="mint_settings_language">Idioma</string>
@@ -224,6 +225,7 @@
     <string name="mint_settings_update_available">Actualización disponible</string>
     <string name="mint_settings_update_failed">No se pudo comprobar actualizaciones</string>
     <string name="mint_settings_version">Versión</string>
+    <string name="mint_settings_whats_new">Novedades</string>
     <string name="mint_tab_icons">Iconos</string>
     <string name="mint_tab_settings">Ajustes</string>
     <string name="mint_tab_wallpapers">Fondos</string>
@@ -250,6 +252,8 @@
     <string name="mint_wallpapers_not_downloadable">Este fondo no se puede descargar</string>
     <string name="mint_wallpapers_retry">Reintentar</string>
     <string name="mint_wallpapers_title">Fondos de pantalla</string>
+    <string name="mint_widgets_apply">Aplicar</string>
+    <string name="mint_widgets_empty">No hay widgets disponibles</string>
     <string name="mtrl_badge_numberless_content_description">Notificación nueva</string>
     <string name="mtrl_checkbox_state_description_checked">Marcada</string>
     <string name="mtrl_checkbox_state_description_indeterminate">Marcada parcialmente</string>

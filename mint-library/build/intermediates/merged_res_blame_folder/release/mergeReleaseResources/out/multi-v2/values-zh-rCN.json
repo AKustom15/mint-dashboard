@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.akustom15.mint.library.mint-library-release-73:/values-zh-rCN/values-zh-rCN.xml",
+            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-72:/values-zh-rCN/values-zh-rCN.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\2b5795dc00ed13d0dc7d38dbcdb47685\\transformed\\core-1.13.1\\res\\values-zh-rCN\\values-zh-rCN.xml",
@@ -144,7 +144,7 @@
             ]
         },
         {
-            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-71:/values-zh-rCN/values-zh-rCN.xml",
+            "outputFile": "com.akustom15.mint.library.mint-library-release-74:/values-zh-rCN/values-zh-rCN.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\2b5795dc00ed13d0dc7d38dbcdb47685\\transformed\\core-1.13.1\\res\\values-zh-rCN\\values-zh-rCN.xml",
