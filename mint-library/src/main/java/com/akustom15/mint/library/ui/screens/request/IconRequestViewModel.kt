@@ -341,8 +341,18 @@ class IconRequestViewModel : ViewModel() {
         val androidVersion = "Android ${android.os.Build.VERSION.RELEASE} (SDK ${android.os.Build.VERSION.SDK_INT})"
         val orderId = MintPremiumPreferences.getLastProcessedOrderId(context)
 
+        // Calculate if this batch uses premium requests
+        val freeRequestsAlreadyUsed = kotlin.math.min(_uiState.value.requestedIcons.size, _uiState.value.freeLimit)
+        val freeRequestsAvailableForBatch = kotlin.math.max(0, _uiState.value.freeLimit - freeRequestsAlreadyUsed)
+        val isPremium = selectedApps.size > freeRequestsAvailableForBatch
+
         // Build email subject and body
-        val subject = "Solicitud de iconos para $appName (${selectedApps.size} apps)"
+        val subject = if (isPremium) {
+            "🌟 Solicitud Premium - $appName (${selectedApps.size} apps)"
+        } else {
+            "Solicitud Gratuita - $appName (${selectedApps.size} apps)"
+        }
+
         val emailBody = buildString {
             append("Icon request for $appName Icon Pack:\n\n")
             selectedApps.forEach { app ->
