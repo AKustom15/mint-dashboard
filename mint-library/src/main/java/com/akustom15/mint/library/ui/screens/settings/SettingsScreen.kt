@@ -503,7 +503,7 @@ fun SettingsScreen(
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(bottom = 16.dp)
                         )
-                        Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                        Column(modifier = Modifier.verticalScroll(rememberScrollState()).heightIn(max = 400.dp)) {
                             MintAppLanguage.entries.forEach { lang ->
                                 Row(
                                     modifier = Modifier
