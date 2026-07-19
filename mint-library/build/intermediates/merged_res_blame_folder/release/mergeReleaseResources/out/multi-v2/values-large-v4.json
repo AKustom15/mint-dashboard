@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-72:/values-large-v4/values-large-v4.xml",
+            "outputFile": "com.akustom15.mint.library.mint-library-release-75:/values-large-v4/values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\5a386cb3c7a5b0aadbbc480dc60cc516\\transformed\\appcompat-1.7.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\38d5d76a72392808d6571a137be795e6\\transformed\\appcompat-1.7.0\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\cea242cb64df5026d91c055526950c59\\transformed\\material-1.12.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\c517b7750cf7cd1fc0b6649b8e6d190d\\transformed\\material-1.12.0\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -33,10 +33,10 @@
             ]
         },
         {
-            "outputFile": "com.akustom15.mint.library.mint-library-release-74:/values-large-v4/values-large-v4.xml",
+            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-73:/values-large-v4/values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\5a386cb3c7a5b0aadbbc480dc60cc516\\transformed\\appcompat-1.7.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\38d5d76a72392808d6571a137be795e6\\transformed\\appcompat-1.7.0\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
@@ -46,7 +46,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\cea242cb64df5026d91c055526950c59\\transformed\\material-1.12.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\c517b7750cf7cd1fc0b6649b8e6d190d\\transformed\\material-1.12.0\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

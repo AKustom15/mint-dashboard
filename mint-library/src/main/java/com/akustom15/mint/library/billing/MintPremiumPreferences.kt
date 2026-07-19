@@ -3,23 +3,77 @@ package com.akustom15.mint.library.billing
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKey
 
 /**
  * Centralized premium preferences management for icon request system.
  * Reusable across all icon packs using the Mint library.
+ *
+ * Entitlement state is stored in [EncryptedSharedPreferences] (AES-256) so it
+ * can't be trivially edited from a rooted device, ADB backup, or file managers.
+ * Values are still local — the source of truth remains Google Play (a valid,
+ * signature-verified purchase is required to add credits; see MintBillingManager).
  */
 object MintPremiumPreferences {
 
     private const val TAG = "MintPremiumPrefs"
-    private const val PREF_NAME = "mint_premium_preferences"
+    private const val PREF_NAME = "mint_premium_preferences"        // legacy plaintext
+    private const val SECURE_PREF_NAME = "mint_premium_secure"      // encrypted
     private const val KEY_PREMIUM_REQUEST = "premium_request"
     private const val KEY_PREMIUM_REQUEST_PRODUCT_ID = "premium_request_product_id"
     private const val KEY_PREMIUM_REQUEST_COUNT = "premium_request_count"
     private const val KEY_PREMIUM_REQUEST_TOTAL = "premium_request_total"
     private const val KEY_LAST_PROCESSED_ORDER_ID = "last_processed_order_id"
 
+    @Volatile
+    private var cachedPrefs: SharedPreferences? = null
+
     private fun getSharedPreferences(context: Context): SharedPreferences {
-        return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        cachedPrefs?.let { return it }
+        return synchronized(this) {
+            cachedPrefs ?: buildSecurePrefs(context.applicationContext).also { cachedPrefs = it }
+        }
+    }
+
+    private fun buildSecurePrefs(appContext: Context): SharedPreferences {
+        return try {
+            val masterKey = MasterKey.Builder(appContext)
+                .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+                .build()
+            val secure = EncryptedSharedPreferences.create(
+                appContext,
+                SECURE_PREF_NAME,
+                masterKey,
+                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            )
+            migrateFromPlaintext(appContext, secure)
+            secure
+        } catch (e: Exception) {
+            // Never crash the app if the keystore is unavailable — fall back to
+            // private prefs (still MODE_PRIVATE) so functionality keeps working.
+            Log.e(TAG, "EncryptedSharedPreferences unavailable, falling back", e)
+            appContext.getSharedPreferences(SECURE_PREF_NAME, Context.MODE_PRIVATE)
+        }
+    }
+
+    /** One-time migration of any legacy plaintext values into the encrypted store. */
+    private fun migrateFromPlaintext(appContext: Context, secure: SharedPreferences) {
+        val legacy = appContext.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        if (legacy.all.isEmpty()) return
+        if (!secure.contains(KEY_PREMIUM_REQUEST_COUNT)) {
+            secure.edit().apply {
+                putBoolean(KEY_PREMIUM_REQUEST, legacy.getBoolean(KEY_PREMIUM_REQUEST, false))
+                putString(KEY_PREMIUM_REQUEST_PRODUCT_ID, legacy.getString(KEY_PREMIUM_REQUEST_PRODUCT_ID, ""))
+                putInt(KEY_PREMIUM_REQUEST_COUNT, legacy.getInt(KEY_PREMIUM_REQUEST_COUNT, 0))
+                putInt(KEY_PREMIUM_REQUEST_TOTAL, legacy.getInt(KEY_PREMIUM_REQUEST_TOTAL, 0))
+                putString(KEY_LAST_PROCESSED_ORDER_ID, legacy.getString(KEY_LAST_PROCESSED_ORDER_ID, null))
+                apply()
+            }
+        }
+        // Wipe legacy plaintext so it can't be tampered with anymore.
+        legacy.edit().clear().apply()
     }
 
     fun isPremiumRequest(context: Context): Boolean {

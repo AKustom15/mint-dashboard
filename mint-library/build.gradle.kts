@@ -86,6 +86,10 @@ dependencies {
 
     // Security & Anti-Piracy
     api("com.google.android.play:integrity:1.4.0")
+    // Firebase App Check (Play Integrity provider) — protects Firestore/FCM backends
+    api(libs.firebase.appcheck)
+    // Encrypted storage for premium/entitlement state
+    api(libs.androidx.security.crypto)
 
     // Google Play Billing (premium icon requests)
     api(libs.billing.ktx)

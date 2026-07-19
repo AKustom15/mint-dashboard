@@ -31,7 +31,7 @@ class SecurityManager private constructor(private val context: Context, private 
     }
 
     private val playIntegrityChecker = PlayIntegrityChecker(context)
-    private val licenseChecker = LicenseChecker(context, config.base64LicenseKey)
+    private val licenseChecker = LicenseChecker(context, config.base64LicenseKey, config.requireValidLicense)
     private val _securityState = MutableStateFlow<SecurityState>(SecurityState.Checking)
     val securityState: StateFlow<SecurityState> = _securityState
 

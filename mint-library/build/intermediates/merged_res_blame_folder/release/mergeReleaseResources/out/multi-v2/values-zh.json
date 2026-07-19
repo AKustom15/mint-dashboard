@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-72:/values-zh/values-zh.xml",
+            "outputFile": "com.akustom15.mint.library.mint-library-release-75:/values-zh/values-zh.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Rainerc\\Documents\\desarrollo de apps\\dashboard\\mint\\mint-library\\src\\main\\res\\values-zh\\strings.xml",
@@ -23,7 +23,7 @@
             ]
         },
         {
-            "outputFile": "com.akustom15.mint.library.mint-library-release-74:/values-zh/values-zh.xml",
+            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-73:/values-zh/values-zh.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Rainerc\\Documents\\desarrollo de apps\\dashboard\\mint\\mint-library\\src\\main\\res\\values-zh\\strings.xml",

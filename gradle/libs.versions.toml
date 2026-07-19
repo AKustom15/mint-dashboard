@@ -25,6 +25,7 @@ glide = "4.16.0"
 splashscreen = "1.0.1"
 coroutines = "1.8.1"
 ksp = "2.0.21-1.0.25"
+securityCrypto = "1.1.0-alpha06"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -71,6 +72,7 @@ play-integrity = { group = "com.google.android.play", name = "integrity", versio
 billing-ktx = { group = "com.android.billingclient", name = "billing-ktx", version.ref = "billing" }
 bouncycastle-prov = { group = "org.bouncycastle", name = "bcprov-jdk18on", version.ref = "bouncycastle" }
 bouncycastle-pkix = { group = "org.bouncycastle", name = "bcpkix-jdk18on", version.ref = "bouncycastle" }
+androidx-security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "securityCrypto" }
 
 # Firebase
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }

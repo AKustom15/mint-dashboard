@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.akustom15.mint.library.mint-library-release-74:/values-v22/values-v22.xml",
+            "outputFile": "com.akustom15.mint.library.mint-library-release-75:/values-v22/values-v22.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\5a386cb3c7a5b0aadbbc480dc60cc516\\transformed\\appcompat-1.7.0\\res\\values-v22\\values-v22.xml",
+                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\38d5d76a72392808d6571a137be795e6\\transformed\\appcompat-1.7.0\\res\\values-v22\\values-v22.xml",
                     "from": {
                         "startLines": "2,3,4,9",
                         "startColumns": "4,4,4,4",
@@ -17,10 +17,10 @@
             ]
         },
         {
-            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-72:/values-v22/values-v22.xml",
+            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-73:/values-v22/values-v22.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\5a386cb3c7a5b0aadbbc480dc60cc516\\transformed\\appcompat-1.7.0\\res\\values-v22\\values-v22.xml",
+                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\38d5d76a72392808d6571a137be795e6\\transformed\\appcompat-1.7.0\\res\\values-v22\\values-v22.xml",
                     "from": {
                         "startLines": "2,3,4,9",
                         "startColumns": "4,4,4,4",

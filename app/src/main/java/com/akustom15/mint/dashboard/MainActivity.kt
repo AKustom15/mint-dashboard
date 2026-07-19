@@ -13,6 +13,7 @@ import com.akustom15.mint.library.billing.MintPremiumProduct
 import com.akustom15.mint.library.config.MoreApp
 import com.akustom15.mint.library.config.MintConfig
 import com.akustom15.mint.library.notifications.MintNotificationHelper
+import com.akustom15.mint.library.security.MintAppCheck
 import com.akustom15.mint.library.ui.MintScreen
 
 class MainActivity : ComponentActivity() {
@@ -23,6 +24,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        // Firebase App Check (Play Integrity) — protects Firestore/FCM backends
+        MintAppCheck.initialize()
 
         // Push notifications: create channel + subscribe to FCM topic
         MintNotificationHelper.initialize(this)

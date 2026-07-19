@@ -13,3 +13,17 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# ── Secrets — never commit these ──
+*.jks
+*.keystore
+*.p12
+*.pepk
+keystore.properties
+signing.properties
+# Firebase Admin / service-account private keys (server-side only!)
+**/firebase-adminsdk*.json
+**/*service-account*.json
+serviceAccountKey.json
+# google-services.json is per-app config; uncomment to keep it out of the repo:
+# google-services.json

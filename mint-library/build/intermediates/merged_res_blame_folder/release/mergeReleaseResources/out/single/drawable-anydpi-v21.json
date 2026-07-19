@@ -1,26 +1,26 @@
 [
     {
-        "merged": "com.akustom15.mint.library.mint-library-release-74:/drawable-anydpi-v21/ic_call_decline.xml",
-        "source": "com.akustom15.mint.library.mint-library-core-1.13.1-13:/drawable-anydpi-v21/ic_call_decline.xml"
+        "merged": "com.akustom15.mint.library.mint-library-release-75:/drawable-anydpi-v21/ic_call_answer_video_low.xml",
+        "source": "com.akustom15.mint.library.mint-library-core-1.13.1-55:/drawable-anydpi-v21/ic_call_answer_video_low.xml"
     },
     {
-        "merged": "com.akustom15.mint.library.mint-library-release-74:/drawable-anydpi-v21/ic_call_answer_video.xml",
-        "source": "com.akustom15.mint.library.mint-library-core-1.13.1-13:/drawable-anydpi-v21/ic_call_answer_video.xml"
+        "merged": "com.akustom15.mint.library.mint-library-release-75:/drawable-anydpi-v21/ic_call_decline.xml",
+        "source": "com.akustom15.mint.library.mint-library-core-1.13.1-55:/drawable-anydpi-v21/ic_call_decline.xml"
     },
     {
-        "merged": "com.akustom15.mint.library.mint-library-release-74:/drawable-anydpi-v21/ic_call_answer_video_low.xml",
-        "source": "com.akustom15.mint.library.mint-library-core-1.13.1-13:/drawable-anydpi-v21/ic_call_answer_video_low.xml"
+        "merged": "com.akustom15.mint.library.mint-library-release-75:/drawable-anydpi-v21/ic_call_answer_low.xml",
+        "source": "com.akustom15.mint.library.mint-library-core-1.13.1-55:/drawable-anydpi-v21/ic_call_answer_low.xml"
     },
     {
-        "merged": "com.akustom15.mint.library.mint-library-release-74:/drawable-anydpi-v21/ic_call_decline_low.xml",
-        "source": "com.akustom15.mint.library.mint-library-core-1.13.1-13:/drawable-anydpi-v21/ic_call_decline_low.xml"
+        "merged": "com.akustom15.mint.library.mint-library-release-75:/drawable-anydpi-v21/ic_call_answer_video.xml",
+        "source": "com.akustom15.mint.library.mint-library-core-1.13.1-55:/drawable-anydpi-v21/ic_call_answer_video.xml"
     },
     {
-        "merged": "com.akustom15.mint.library.mint-library-release-74:/drawable-anydpi-v21/ic_call_answer.xml",
-        "source": "com.akustom15.mint.library.mint-library-core-1.13.1-13:/drawable-anydpi-v21/ic_call_answer.xml"
+        "merged": "com.akustom15.mint.library.mint-library-release-75:/drawable-anydpi-v21/ic_call_answer.xml",
+        "source": "com.akustom15.mint.library.mint-library-core-1.13.1-55:/drawable-anydpi-v21/ic_call_answer.xml"
     },
     {
-        "merged": "com.akustom15.mint.library.mint-library-release-74:/drawable-anydpi-v21/ic_call_answer_low.xml",
-        "source": "com.akustom15.mint.library.mint-library-core-1.13.1-13:/drawable-anydpi-v21/ic_call_answer_low.xml"
+        "merged": "com.akustom15.mint.library.mint-library-release-75:/drawable-anydpi-v21/ic_call_decline_low.xml",
+        "source": "com.akustom15.mint.library.mint-library-core-1.13.1-55:/drawable-anydpi-v21/ic_call_decline_low.xml"
     }
 ]

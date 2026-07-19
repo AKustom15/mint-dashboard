@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-72:/values-w600dp-land-v13/values-w600dp-land-v13.xml",
+            "outputFile": "com.akustom15.mint.library.mint-library-release-75:/values-w600dp-land-v13/values-w600dp-land-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\cea242cb64df5026d91c055526950c59\\transformed\\material-1.12.0\\res\\values-w600dp-land-v13\\values-w600dp-land-v13.xml",
+                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\c517b7750cf7cd1fc0b6649b8e6d190d\\transformed\\material-1.12.0\\res\\values-w600dp-land-v13\\values-w600dp-land-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "com.akustom15.mint.library.mint-library-release-74:/values-w600dp-land-v13/values-w600dp-land-v13.xml",
+            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-73:/values-w600dp-land-v13/values-w600dp-land-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\cea242cb64df5026d91c055526950c59\\transformed\\material-1.12.0\\res\\values-w600dp-land-v13\\values-w600dp-land-v13.xml",
+                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\c517b7750cf7cd1fc0b6649b8e6d190d\\transformed\\material-1.12.0\\res\\values-w600dp-land-v13\\values-w600dp-land-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

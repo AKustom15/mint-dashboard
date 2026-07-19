@@ -47,6 +47,15 @@ fun MintScreen(config: MintConfig) {
     val securityManager = remember { SecurityManager.getInstance(context, config) }
     val securityState by securityManager.securityState.collectAsState()
 
+    // Run the anti-piracy checks (Play Integrity + license/piracy detection).
+    // Without this the security module never executes. Gated by config so free
+    // apps that don't opt in are unaffected.
+    LaunchedEffect(config.enableAntiPiracy) {
+        if (config.enableAntiPiracy) {
+            securityManager.performSecurityChecks()
+        }
+    }
+
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route

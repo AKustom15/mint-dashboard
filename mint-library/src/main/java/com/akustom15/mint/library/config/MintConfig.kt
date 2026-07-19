@@ -58,6 +58,10 @@ data class MintConfig(
 
     // Security & Anti-Piracy
     val enableAntiPiracy: Boolean = false,
+    // Require a valid, signature-verified Play purchase to run (PAID apps only).
+    // Leave false for FREE apps so users aren't blocked for not having bought
+    // anything — piracy signals (Lucky Patcher, pirate stores) still block.
+    val requireValidLicense: Boolean = false,
     val base64LicenseKey: String = "",
     val gcpProjectNumber: Long = 0L,
 

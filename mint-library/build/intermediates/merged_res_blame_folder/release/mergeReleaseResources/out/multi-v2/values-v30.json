@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-72:/values-v30/values-v30.xml",
+            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-73:/values-v30/values-v30.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\174fddfedd5695b342369267ee956638\\transformed\\jetified-material3-release\\res\\values-v30\\values-v30.xml",
+                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\0a106c2771f916be119b31bfbee9af2f\\transformed\\jetified-material3-release\\res\\values-v30\\values-v30.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "com.akustom15.mint.library.mint-library-release-74:/values-v30/values-v30.xml",
+            "outputFile": "com.akustom15.mint.library.mint-library-release-75:/values-v30/values-v30.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\174fddfedd5695b342369267ee956638\\transformed\\jetified-material3-release\\res\\values-v30\\values-v30.xml",
+                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\0a106c2771f916be119b31bfbee9af2f\\transformed\\jetified-material3-release\\res\\values-v30\\values-v30.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

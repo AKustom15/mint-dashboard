@@ -258,6 +258,7 @@ fun IconRequestScreen(
     if (showPremiumDialog) {
         PremiumPurchaseDialog(
             products = config.premiumProducts,
+            base64PublicKey = config.base64LicenseKey,
             onDismiss = { showPremiumDialog = false },
             onPurchaseSuccess = { _, iconCount ->
                 showPremiumDialog = false

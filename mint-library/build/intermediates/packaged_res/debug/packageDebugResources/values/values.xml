@@ -56,9 +56,9 @@
     <string name="mint_settings_check_update_desc">Look for a new version</string>
     <string name="mint_settings_checking_update">Checking for updates...</string>
     <string name="mint_settings_clear">Clear</string>
-    <string name="mint_settings_clear_cache">Clear Icon Cache</string>
-    <string name="mint_settings_clear_cache_confirm">This will clear the icon cache. Icons will be reloaded next time.</string>
-    <string name="mint_settings_clear_cache_desc">Free up memory</string>
+    <string name="mint_settings_clear_cache">Clear Cache</string>
+    <string name="mint_settings_clear_cache_confirm">This will clear the app cache and reload remote configurations.</string>
+    <string name="mint_settings_clear_cache_desc">Clear app and internet cache</string>
     <string name="mint_settings_data">DATA</string>
     <string name="mint_settings_info">INFO</string>
     <string name="mint_settings_language">Language</string>

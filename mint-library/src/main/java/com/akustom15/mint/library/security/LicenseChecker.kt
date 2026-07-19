@@ -10,7 +10,11 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
-class LicenseChecker(private val context: Context, private val base64PublicKey: String) {
+class LicenseChecker(
+    private val context: Context,
+    private val base64PublicKey: String,
+    private val requireLicense: Boolean = false
+) {
     companion object {
         private const val TAG = "LicenseChecker"
         private const val LUCKY_PATCHER_PACKAGE = "com.android.vending.billing.InAppBillingService.COIN"
@@ -237,6 +241,14 @@ class LicenseChecker(private val context: Context, private val base64PublicKey: 
         // Verificar tiendas no oficiales
         if (checkPirateStores()) {
             _licenseState.value = LicenseState.Invalid("Detectada tienda no oficial", isPiracyRelated = true)
+            return
+        }
+
+        // Apps gratuitas: no exigir una compra para funcionar. Con las señales de
+        // piratería ya comprobadas arriba, marcamos válido y no pedimos licencia.
+        if (!requireLicense) {
+            Log.d(TAG, "requireLicense=false: se omite la verificación de compra (app gratuita).")
+            _licenseState.value = LicenseState.Valid
             return
         }
 

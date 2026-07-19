@@ -9,6 +9,7 @@ import com.google.android.play.core.integrity.IntegrityTokenResponse
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.suspendCancellableCoroutine
+import java.security.SecureRandom
 import kotlin.coroutines.resume
 
 /**
@@ -18,7 +19,21 @@ import kotlin.coroutines.resume
 class PlayIntegrityChecker(private val context: Context) {
     companion object {
         private const val TAG = "PlayIntegrityChecker"
-        private const val NONCE = "glasswave_integrity_check"
+    }
+
+    /**
+     * A fresh, random nonce per request. NOTE: for real protection the nonce must
+     * be generated and later verified server-side (bind it to the decoded token in
+     * your backend). A client-only random nonce prevents trivial replay but is not
+     * a substitute for server verification.
+     */
+    private fun generateNonce(): String {
+        val bytes = ByteArray(24)
+        SecureRandom().nextBytes(bytes)
+        return android.util.Base64.encodeToString(
+            bytes,
+            android.util.Base64.NO_WRAP or android.util.Base64.URL_SAFE
+        )
     }
 
     private val integrityManager: IntegrityManager = IntegrityManagerFactory.create(context)
@@ -38,7 +53,7 @@ class PlayIntegrityChecker(private val context: Context) {
     suspend fun verifyIntegrity(): Boolean = suspendCancellableCoroutine { continuation ->
         try {
             val integrityTokenRequest = IntegrityTokenRequest.builder()
-                .setNonce(NONCE)
+                .setNonce(generateNonce())
                 .build()
 
             integrityManager.requestIntegrityToken(integrityTokenRequest)

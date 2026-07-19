@@ -3,6 +3,7 @@ package com.akustom15.mint.library.billing
 import android.app.Activity
 import android.content.Context
 import android.util.Log
+import com.akustom15.mint.library.security.Security
 import com.android.billingclient.api.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -10,10 +11,17 @@ import kotlinx.coroutines.flow.StateFlow
 /**
  * Centralized billing manager for premium icon requests.
  * Reusable across all icon packs using the Mint library.
+ *
+ * @param base64PublicKey the app's RSA public key from Google Play Console. When
+ * set, every purchase is signature-verified before credits are granted, so a
+ * spoofed/fake purchase (e.g. via patched billing) is rejected. If left empty,
+ * verification is skipped (logs a warning) to avoid blocking apps that haven't
+ * configured the key yet.
  */
 class MintBillingManager(
     private val context: Context,
-    private val products: List<MintPremiumProduct>
+    private val products: List<MintPremiumProduct>,
+    private val base64PublicKey: String = ""
 ) {
     companion object {
         private const val TAG = "MintBillingManager"
@@ -162,6 +170,19 @@ class MintBillingManager(
     private fun processPremiumPurchase(purchase: Purchase) {
         val productId = purchase.products.firstOrNull() ?: return
         val orderId = purchase.orderId ?: "unknown"
+
+        // Verify the purchase signature against the Play Console public key.
+        // Rejects spoofed/tampered purchases (patched billing, fake stores).
+        if (base64PublicKey.isNotBlank()) {
+            val valid = Security.verifyPurchase(base64PublicKey, purchase.originalJson, purchase.signature)
+            if (!valid) {
+                Log.e(TAG, "Rejected purchase with invalid signature: $productId")
+                _billingState.value = BillingState.Error("Invalid purchase signature")
+                return
+            }
+        } else {
+            Log.w(TAG, "base64PublicKey not set — skipping signature verification (configure it in MintConfig).")
+        }
 
         Log.d(TAG, "Processing purchase: $productId -> $orderId")
 

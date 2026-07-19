@@ -30,7 +30,8 @@ import kotlinx.coroutines.launch
 fun PremiumPurchaseDialog(
     products: List<MintPremiumProduct>,
     onDismiss: () -> Unit,
-    onPurchaseSuccess: (String, Int) -> Unit
+    onPurchaseSuccess: (String, Int) -> Unit,
+    base64PublicKey: String = ""
 ) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -38,7 +39,7 @@ fun PremiumPurchaseDialog(
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
 
-    val billingManager = remember { MintBillingManager(context, products) }
+    val billingManager = remember { MintBillingManager(context, products, base64PublicKey) }
 
     LaunchedEffect(Unit) {
         billingManager.initialize()
