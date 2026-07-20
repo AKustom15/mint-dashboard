@@ -19,14 +19,14 @@ object AppFilterCache {
         val packageName = context.packageName
         
         try {
-            val appfilterResId = context.resources.getIdentifier("appfilter_new", "xml", packageName)
-            if (appfilterResId == 0) {
-                val fallbackResId = context.resources.getIdentifier("appfilter", "xml", packageName)
-                if (fallbackResId == 0) return emptyList()
-                
-                parseXml(context, fallbackResId, iconNames)
-            } else {
+            val appfilterResId = context.resources.getIdentifier("appfilter", "xml", packageName)
+            if (appfilterResId != 0) {
                 parseXml(context, appfilterResId, iconNames)
+            }
+            
+            val appfilterNewResId = context.resources.getIdentifier("appfilter_new", "xml", packageName)
+            if (appfilterNewResId != 0) {
+                parseXml(context, appfilterNewResId, iconNames)
             }
             
             cachedIcons = iconNames
