@@ -48,11 +48,10 @@ fun MintScreen(config: MintConfig) {
     val securityManager = remember { SecurityManager.getInstance(context, config) }
     val securityState by securityManager.securityState.collectAsState()
 
-    // Initialize Firebase App Check unconditionally so Firestore rules
+    // Initialize Firebase App Check unconditionally and SYNCHRONOUSLY so Firestore rules
     // (request.app != null) work for icon requests even without anti-piracy.
-    LaunchedEffect(Unit) {
-        MintAppCheck.initialize()
-    }
+    // This MUST be run before any ViewModel touches FirebaseFirestore.getInstance()
+    remember { MintAppCheck.initialize(); true }
 
     // Run the anti-piracy checks (Play Integrity + license/piracy detection).
     // Without this the security module never executes. Gated by config so free
