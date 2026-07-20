@@ -70,18 +70,10 @@ object IconPackManager {
 
     private fun loadDrawableIcons(context: Context): Pair<Int, List<String>> {
         try {
-            val packageName = context.packageName
-            val rClass = Class.forName("$packageName.R\$drawable")
-            val fields = rClass.fields
-            val names = mutableListOf<String>()
-            for (field in fields) {
-                if (field.type == Int::class.javaPrimitiveType && field.name.startsWith("icon_")) {
-                    names.add(field.name)
-                }
-            }
-            return Pair(names.size, names.shuffled())
+            val names = AppFilterCache.getIconNames(context).distinct().shuffled()
+            return Pair(names.size, names)
         } catch (e: Exception) {
-            Log.e("IconPackManager", "Error loading drawables: ${e.message}", e)
+            Log.e("IconPackManager", "Error loading drawables from appfilter: ${e.message}", e)
             return Pair(0, emptyList())
         }
     }
