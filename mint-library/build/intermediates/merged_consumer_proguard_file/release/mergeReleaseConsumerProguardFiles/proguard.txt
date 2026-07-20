@@ -9,6 +9,12 @@
 -keep class com.akustom15.mint.library.** { *; }
 -dontwarn com.akustom15.mint.library.**
 
+# Keep app R$drawable/R$xml/R$raw fields so resources.getIdentifier() works
+# in release builds (R8 inlines & removes R class fields in AGP 8+).
+-keepclassmembers class **.R$drawable { public static <fields>; }
+-keepclassmembers class **.R$xml { public static <fields>; }
+-keepclassmembers class **.R$raw { public static <fields>; }
+
 # Strip verbose/debug/info logs in release so the security flow (license checks,
 # purchase verification, integrity) doesn't leave readable breadcrumbs in logcat
 # or the decompiled bytecode. Error/warn logs are kept.

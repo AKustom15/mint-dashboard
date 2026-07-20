@@ -202,6 +202,17 @@
           }
         },
         {
+          "group": "com.google.firebase",
+          "module": "firebase-appcheck-playintegrity"
+        },
+        {
+          "group": "androidx.security",
+          "module": "security-crypto",
+          "version": {
+            "requires": "1.1.0-alpha06"
+          }
+        },
+        {
           "group": "com.android.billingclient",
           "module": "billing-ktx",
           "version": {
@@ -220,11 +231,11 @@
         {
           "name": "mint-library-1.0.0.aar",
           "url": "mint-library-1.0.0.aar",
-          "size": 1017454,
-          "sha512": "c0d36ab7b2f8015f60ef42764fc5e8ea28043f60959bcaf45716e2576b3d920f07afad2d3f2dc17d7450a43258912e43729782aaa4af4cf08f1aa9503b602173",
-          "sha256": "7b783fea99f29021aa755a97bac85c274dbc876ca2914ae5b832ea7375d863c5",
-          "sha1": "2039b054eeccd12ce548e309022414e7ad48260f",
-          "md5": "227fee0cbcd6b055c87addc4289eb4e8"
+          "size": 1218227,
+          "sha512": "bb599763d00b109fa2ed8c209493bfe78dfdda62692883d33d4072707fdf6391de1bf8b3d2f1e3dcc5a1b1fe281588ec5c1f3f523ac1f4ffb86d496ce603ebaf",
+          "sha256": "67911f8532673c94e8e0d3a6dff23213933e5d45731b17178fc0b7bbfbe6c597",
+          "sha1": "641836758c56db814d1cf1a04396b648b6e218ad",
+          "md5": "41bb7219b7acc74884d7bb8768ae3b02"
         }
       ]
     },
@@ -423,6 +434,17 @@
           }
         },
         {
+          "group": "com.google.firebase",
+          "module": "firebase-appcheck-playintegrity"
+        },
+        {
+          "group": "androidx.security",
+          "module": "security-crypto",
+          "version": {
+            "requires": "1.1.0-alpha06"
+          }
+        },
+        {
           "group": "com.android.billingclient",
           "module": "billing-ktx",
           "version": {
@@ -441,11 +463,11 @@
         {
           "name": "mint-library-1.0.0.aar",
           "url": "mint-library-1.0.0.aar",
-          "size": 1017454,
-          "sha512": "c0d36ab7b2f8015f60ef42764fc5e8ea28043f60959bcaf45716e2576b3d920f07afad2d3f2dc17d7450a43258912e43729782aaa4af4cf08f1aa9503b602173",
-          "sha256": "7b783fea99f29021aa755a97bac85c274dbc876ca2914ae5b832ea7375d863c5",
-          "sha1": "2039b054eeccd12ce548e309022414e7ad48260f",
-          "md5": "227fee0cbcd6b055c87addc4289eb4e8"
+          "size": 1218227,
+          "sha512": "bb599763d00b109fa2ed8c209493bfe78dfdda62692883d33d4072707fdf6391de1bf8b3d2f1e3dcc5a1b1fe281588ec5c1f3f523ac1f4ffb86d496ce603ebaf",
+          "sha256": "67911f8532673c94e8e0d3a6dff23213933e5d45731b17178fc0b7bbfbe6c597",
+          "sha1": "641836758c56db814d1cf1a04396b648b6e218ad",
+          "md5": "41bb7219b7acc74884d7bb8768ae3b02"
         }
       ]
     },
@@ -464,11 +486,11 @@
         {
           "name": "mint-library-1.0.0-sources.jar",
           "url": "mint-library-1.0.0-sources.jar",
-          "size": 194389,
-          "sha512": "e71f63ebb2bf0a4a44daacc90feef56a1a99e03b8ad21fd4a211dfbac7ccde9bcca58154d81caf7976dcfba2feaa12a288b414bff151384864f12c6e38ad0cfc",
-          "sha256": "d53b32a1e0af5c01b1fc984dc2d0444be52f6906cafc61e8551e2ab4de0e5a06",
-          "sha1": "da666132e42300740e0eda0f0d2c13e249f2554e",
-          "md5": "8285dc540800a76288a40ced1dc128dd"
+          "size": 229635,
+          "sha512": "30ccc2c96ebc68806fda6d99cb76da8f0b5a17b49536767436c7b3c62c402c4960e73061c6431414655910c3ede81f887f1ab6265b97e28a0447e30e4c150016",
+          "sha256": "55fce40c5b57bd8836fae3e7cbb0c51fca6071aa8167ea0745c81ce8239542f0",
+          "sha1": "45f676edac53cbe79fef58c06ff159f69bdfebe3",
+          "md5": "4b9ce3f427f2f70ca8463240bfd69e7d"
         }
       ]
     }

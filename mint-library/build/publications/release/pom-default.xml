@@ -179,6 +179,17 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
+      <groupId>com.google.firebase</groupId>
+      <artifactId>firebase-appcheck-playintegrity</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>androidx.security</groupId>
+      <artifactId>security-crypto</artifactId>
+      <version>1.1.0-alpha06</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
       <groupId>com.android.billingclient</groupId>
       <artifactId>billing-ktx</artifactId>
       <version>7.1.1</version>

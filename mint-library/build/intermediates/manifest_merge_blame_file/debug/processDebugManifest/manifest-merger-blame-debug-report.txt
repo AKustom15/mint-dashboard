@@ -50,7 +50,7 @@
 26    </queries>
 27
 28    <application>
-28-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:23:5-58:19
+28-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:23:5-93:19
 29
 30        <!--
 31             Official Kustom API Provider — makes the app discoverable by KWGT/KLWP
@@ -118,6 +118,89 @@
 66-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:56:13-46
 67            tools:replace="android:value" />
 67-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:57:13-42
-68    </application>
-69
-70</manifest>
+68
+69        <!-- Icon Picker Activity (for Nova CUSTOM_ICON_PICKER, Lawnchair, Kustom) -->
+70        <activity
+70-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:60:9-92:20
+71            android:name="com.akustom15.mint.library.ui.screens.icons.MintIconPickerActivity"
+71-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:61:13-94
+72            android:exported="true"
+72-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:62:13-36
+73            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+73-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:63:13-72
+74            <intent-filter android:priority="-1" >
+74-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:65:13-68:29
+74-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:65:28-49
+75                <action android:name="com.novalauncher.THEME" />
+75-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:66:17-65
+75-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:66:25-62
+76
+77                <category android:name="com.novalauncher.category.CUSTOM_ICON_PICKER" />
+77-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:67:17-89
+77-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:67:27-86
+78            </intent-filter>
+79            <intent-filter>
+79-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:69:13-72:29
+80                <action android:name="com.teslacoilsw.launcher.action.PICK_ICON" />
+80-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:70:17-84
+80-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:70:25-81
+81
+82                <category android:name="android.intent.category.DEFAULT" />
+82-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:71:17-76
+82-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:71:27-73
+83            </intent-filter>
+84            <intent-filter>
+84-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:73:13-76:29
+85                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+85-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:74:17-80
+85-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:74:25-77
+86
+87                <category android:name="android.intent.category.DEFAULT" />
+87-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:71:17-76
+87-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:71:27-73
+88            </intent-filter>
+89            <intent-filter>
+89-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:77:13-80:29
+90                <action android:name="ch.deletescape.lawnchair.ICONPACK" />
+90-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:78:17-76
+90-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:78:25-73
+91
+92                <category android:name="ch.deletescape.lawnchair.PICK" />
+92-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:79:17-74
+92-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:79:27-71
+93            </intent-filter>
+94            <intent-filter>
+94-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:81:13-85:29
+95                <action android:name="android.intent.action.PICK" />
+95-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:82:17-69
+95-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:82:25-66
+96
+97                <category android:name="android.intent.category.DEFAULT" />
+97-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:71:17-76
+97-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:71:27-73
+98
+99                <data android:mimeType="image/*" />
+99-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:84:17-52
+99-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:84:23-49
+100            </intent-filter>
+101            <intent-filter>
+101-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:86:13-91:29
+102                <action android:name="android.intent.action.GET_CONTENT" />
+102-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:87:17-76
+102-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:87:25-73
+103
+104                <category android:name="android.intent.category.DEFAULT" />
+104-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:71:17-76
+104-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:71:27-73
+105                <category android:name="android.intent.category.OPENABLE" />
+105-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:89:17-77
+105-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:89:27-74
+106
+107                <data android:mimeType="image/*" />
+107-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:84:17-52
+107-->C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\AndroidManifest.xml:84:23-49
+108            </intent-filter>
+109        </activity>
+110    </application>
+111
+112</manifest>

@@ -40,7 +40,7 @@ object IconPackManager {
                     XmlPullParser.START_TAG -> {
                         when (parser.name) {
                             "category" -> {
-                                currentCategory = parser.getAttributeValue(null, "name")
+                                currentCategory = parser.getAttributeValue(null, "name") ?: parser.getAttributeValue(null, "title")
                                 if (currentCategory != null) {
                                     result[currentCategory] = mutableSetOf()
                                 }
