@@ -384,9 +384,19 @@ fun SettingsScreen(
                     )
                 }
 
+                val versionText = remember(context) {
+                    try {
+                        val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
+                        @Suppress("DEPRECATION")
+                        "${packageInfo.versionName} (${packageInfo.versionCode})"
+                    } catch (e: Exception) {
+                        "${config.versionName} (${config.versionCode})"
+                    }
+                }
+
                 SettingsItem(
                     title = stringResource(R.string.mint_settings_version),
-                    subtitle = "${config.versionName} (${config.versionCode})",
+                    subtitle = versionText,
                     onClick = {}
                 )
 
