@@ -235,12 +235,13 @@ class IconRequestViewModel : ViewModel() {
                     return@launch
                 }
 
+                // FIRST: Save to Firestore to consume credits and verify App Check
+                saveToFirestore(context, selectedApps.map { it.packageName }.toSet())
+
+                // THEN: If it succeeds, generate the zip and open email
                 withContext(Dispatchers.IO) {
                     shareIconRequests(context, selectedApps, antiPiracyStatus)
                 }
-
-                // Save to Firestore
-                saveToFirestore(context, selectedApps.map { it.packageName }.toSet())
 
                 _uiState.value = _uiState.value.copy(
                     isSending = false,
@@ -249,7 +250,7 @@ class IconRequestViewModel : ViewModel() {
             } catch (e: Exception) {
                 Log.e("IconRequest", "Error sending request", e)
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Error verificando solicitud. Revisa tu conexión a internet.", Toast.LENGTH_LONG).show()
                 }
                 _uiState.value = _uiState.value.copy(isSending = false)
             }
@@ -295,10 +296,11 @@ class IconRequestViewModel : ViewModel() {
             )
 
             withContext(Dispatchers.Main) {
-                Toast.makeText(context, "Solicitud enviada: ${newPackages.size} iconos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Solicitud verificada: ${newPackages.size} iconos", Toast.LENGTH_SHORT).show()
             }
         } catch (e: Exception) {
             Log.e("IconRequest", "Error saving to Firestore", e)
+            throw e // MUST throw so sendIconRequest can catch it and abort sending the email
         }
     }
 
