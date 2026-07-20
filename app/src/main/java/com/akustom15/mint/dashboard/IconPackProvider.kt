@@ -6,6 +6,7 @@ import android.content.UriMatcher
 import android.database.Cursor
 import android.database.MatrixCursor
 import android.net.Uri
+import org.xmlpull.v1.XmlPullParser
 
 class IconPackProvider : ContentProvider() {
 
@@ -38,11 +39,26 @@ class IconPackProvider : ContentProvider() {
             CODE_ICONS -> {
                 try {
                     val packageName = ctx.packageName
-                    val rClass = Class.forName("$packageName.R\$drawable")
-                    rClass.fields.forEach { field ->
-                        if (field.type == Int::class.javaPrimitiveType && field.name.startsWith("icon_")) {
-                            cursor.addRow(arrayOf(field.name, field.getInt(null)))
+                    val resources = ctx.resources
+
+                    // Parse res/xml/drawable.xml to enumerate icons (R8-safe)
+                    val resId = resources.getIdentifier("drawable", "xml", packageName)
+                    if (resId != 0) {
+                        val parser = resources.getXml(resId)
+                        var eventType = parser.eventType
+                        while (eventType != XmlPullParser.END_DOCUMENT) {
+                            if (eventType == XmlPullParser.START_TAG && parser.name == "item") {
+                                val drawable = parser.getAttributeValue(null, "drawable")
+                                if (drawable != null && drawable.startsWith("icon_")) {
+                                    val iconResId = resources.getIdentifier(drawable, "drawable", packageName)
+                                    if (iconResId != 0) {
+                                        cursor.addRow(arrayOf(drawable, iconResId))
+                                    }
+                                }
+                            }
+                            eventType = parser.next()
                         }
+                        parser.close()
                     }
                 } catch (e: Exception) {
                     // Ignore
