@@ -118,7 +118,30 @@ class IconsPreviewViewModel : ViewModel() {
             Log.e("IconsPreview", "Error parsing res/xml/drawable.xml", e)
         }
 
-        // 2) Fallback: parse from appfilter.xml if drawable.xml yielded nothing
+        // 2) Also parse appfilter_new.xml to include new/recent icons
+        try {
+            val newResId = resources.getIdentifier("appfilter_new", "xml", packageName)
+            if (newResId != 0) {
+                val parser = resources.getXml(newResId)
+                var eventType = parser.eventType
+                while (eventType != XmlPullParser.END_DOCUMENT) {
+                    if (eventType == XmlPullParser.START_TAG && parser.name == "item") {
+                        val drawable = parser.getAttributeValue(null, "drawable")
+                        if (drawable != null && drawable.startsWith("icon_") &&
+                            !EXCLUDED_ICONS.contains(drawable)
+                        ) {
+                            iconNames.add(drawable)
+                        }
+                    }
+                    eventType = parser.next()
+                }
+                parser.close()
+            }
+        } catch (e: Exception) {
+            Log.e("IconsPreview", "Error parsing res/xml/appfilter_new.xml", e)
+        }
+
+        // 3) Fallback: parse from appfilter.xml if nothing loaded yet
         if (iconNames.isEmpty()) {
             try {
                 AppFilterCache.getIconNames(context)
@@ -129,7 +152,7 @@ class IconsPreviewViewModel : ViewModel() {
             }
         }
 
-        // 3) Resolve each name → resource ID (R8-safe)
+        // 4) Resolve each name → resource ID (R8-safe)
         return iconNames
             .mapNotNull { name ->
                 val id = resources.getIdentifier(name, "drawable", packageName)

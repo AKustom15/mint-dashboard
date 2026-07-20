@@ -29,6 +29,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
 import androidx.activity.ComponentActivity
 import com.akustom15.mint.library.notifications.MintNotificationHelper
+import com.akustom15.mint.library.security.MintAppCheck
 import com.akustom15.mint.library.security.SecurityManager
 import androidx.compose.material3.Text
 import androidx.compose.material3.MaterialTheme
@@ -46,6 +47,12 @@ fun MintScreen(config: MintConfig) {
     val context = LocalContext.current
     val securityManager = remember { SecurityManager.getInstance(context, config) }
     val securityState by securityManager.securityState.collectAsState()
+
+    // Initialize Firebase App Check unconditionally so Firestore rules
+    // (request.app != null) work for icon requests even without anti-piracy.
+    LaunchedEffect(Unit) {
+        MintAppCheck.initialize()
+    }
 
     // Run the anti-piracy checks (Play Integrity + license/piracy detection).
     // Without this the security module never executes. Gated by config so free

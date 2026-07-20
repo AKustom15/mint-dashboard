@@ -41,6 +41,8 @@ class IconPackProvider : ContentProvider() {
                     val packageName = ctx.packageName
                     val resources = ctx.resources
 
+                    val addedNames = mutableSetOf<String>()
+
                     // Parse res/xml/drawable.xml to enumerate icons (R8-safe)
                     val resId = resources.getIdentifier("drawable", "xml", packageName)
                     if (resId != 0) {
@@ -49,7 +51,27 @@ class IconPackProvider : ContentProvider() {
                         while (eventType != XmlPullParser.END_DOCUMENT) {
                             if (eventType == XmlPullParser.START_TAG && parser.name == "item") {
                                 val drawable = parser.getAttributeValue(null, "drawable")
-                                if (drawable != null && drawable.startsWith("icon_")) {
+                                if (drawable != null && drawable.startsWith("icon_") && addedNames.add(drawable)) {
+                                    val iconResId = resources.getIdentifier(drawable, "drawable", packageName)
+                                    if (iconResId != 0) {
+                                        cursor.addRow(arrayOf(drawable, iconResId))
+                                    }
+                                }
+                            }
+                            eventType = parser.next()
+                        }
+                        parser.close()
+                    }
+
+                    // Also parse appfilter_new.xml for new/recent icons
+                    val newResId = resources.getIdentifier("appfilter_new", "xml", packageName)
+                    if (newResId != 0) {
+                        val parser = resources.getXml(newResId)
+                        var eventType = parser.eventType
+                        while (eventType != XmlPullParser.END_DOCUMENT) {
+                            if (eventType == XmlPullParser.START_TAG && parser.name == "item") {
+                                val drawable = parser.getAttributeValue(null, "drawable")
+                                if (drawable != null && drawable.startsWith("icon_") && addedNames.add(drawable)) {
                                     val iconResId = resources.getIdentifier(drawable, "drawable", packageName)
                                     if (iconResId != 0) {
                                         cursor.addRow(arrayOf(drawable, iconResId))
