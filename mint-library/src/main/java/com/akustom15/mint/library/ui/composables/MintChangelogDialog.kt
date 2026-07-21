@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -125,7 +126,7 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
 
                         // Título: "🚀 Nueva Actualización Disponible"
                         Text(
-                            text = "🚀 Nueva Actualización Disponible",
+                            text = stringResource(R.string.mint_update_title),
                             fontSize = 19.sp,
                             fontWeight = FontWeight.Bold,
                             color = liquidColors.textPrimary,
@@ -136,7 +137,7 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
 
                         // Descripción con versión — igual al proyecto viejo
                         Text(
-                            text = "GlassWave $versionName está listo para descargar con nuevos iconos y mejoras.",
+                            text = stringResource(R.string.mint_update_desc, appName, versionName),
                             fontSize = 14.sp,
                             color = liquidColors.textPrimary,
                             textAlign = TextAlign.Center,
@@ -218,7 +219,7 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
                                     )
                                     Spacer(modifier = Modifier.width(4.dp))
                                     Text(
-                                        text = "LUEGO",
+                                        text = stringResource(R.string.mint_update_btn_later),
                                         fontSize = 12.sp,
                                         fontWeight = FontWeight.Medium,
                                         maxLines = 1
@@ -269,7 +270,7 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
                                     )
                                     Spacer(modifier = Modifier.width(4.dp))
                                     Text(
-                                        text = "ACTUALIZAR",
+                                        text = stringResource(R.string.mint_update_btn_update),
                                         fontSize = 12.sp,
                                         fontWeight = FontWeight.Bold,
                                         maxLines = 1

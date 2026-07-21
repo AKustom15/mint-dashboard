@@ -387,10 +387,9 @@ fun SettingsScreen(
                 val versionText = remember(context) {
                     try {
                         val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
-                        @Suppress("DEPRECATION")
-                        "${packageInfo.versionName} (${packageInfo.versionCode})"
+                        "V-${packageInfo.versionName}"
                     } catch (e: Exception) {
-                        "${config.versionName} (${config.versionCode})"
+                        "V-${config.versionName}"
                     }
                 }
 

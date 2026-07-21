@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -109,7 +110,7 @@ fun MintRatingDialog(
                     )
 
                     Text(
-                        text = "¿Te gusta la app?",
+                        text = stringResource(R.string.mint_rating_title),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         color = liquidColors.textPrimary,
@@ -119,7 +120,7 @@ fun MintRatingDialog(
                     Spacer(modifier = Modifier.height(6.dp))
 
                     Text(
-                        text = "Tu opinión nos ayuda a crecer y mejorar para ti 🙏",
+                        text = stringResource(R.string.mint_rating_desc),
                         fontSize = 13.sp,
                         color = liquidColors.textPrimary.copy(alpha = 0.8f),
                         textAlign = TextAlign.Center,
@@ -174,11 +175,11 @@ fun MintRatingDialog(
 
                     // Star label
                     val starLabel = when (selectedStars) {
-                        1 -> "😔 Muy malo"
-                        2 -> "😐 Regular"
-                        3 -> "😊 Bueno"
-                        4 -> "😄 Muy bueno"
-                        5 -> "🤩 ¡Excelente!"
+                        1 -> stringResource(R.string.mint_rating_star_1)
+                        2 -> stringResource(R.string.mint_rating_star_2)
+                        3 -> stringResource(R.string.mint_rating_star_3)
+                        4 -> stringResource(R.string.mint_rating_star_4)
+                        5 -> stringResource(R.string.mint_rating_star_5)
                         else -> ""
                     }
                     Text(
@@ -233,7 +234,7 @@ fun MintRatingDialog(
                         )
                     ) {
                         Text(
-                            text = if (selectedStars >= 4) "⭐ Calificar en Play Store" else "Enviar valoración",
+                            text = if (selectedStars >= 4) stringResource(R.string.mint_rating_btn_rate_store) else stringResource(R.string.mint_rating_btn_submit),
                             fontWeight = FontWeight.Bold,
                             fontSize = 14.sp
                         )
@@ -249,7 +250,7 @@ fun MintRatingDialog(
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
-                            text = "Ahora no",
+                            text = stringResource(R.string.mint_rating_btn_not_now),
                             color = liquidColors.textPrimary.copy(alpha = 0.5f),
                             fontSize = 13.sp
                         )
@@ -264,7 +265,7 @@ fun MintRatingDialog(
                         }
                     ) {
                         Text(
-                            text = "No volver a preguntar",
+                            text = stringResource(R.string.mint_rating_btn_never),
                             color = liquidColors.textPrimary.copy(alpha = 0.3f),
                             fontSize = 11.sp
                         )

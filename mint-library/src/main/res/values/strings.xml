@@ -129,4 +129,23 @@
     <string name="mint_about_powered_by">POWERED BY</string>
     <string name="mint_about_library_name">Mint Library</string>
     <string name="mint_about_library_desc">Liquid Glass Design System</string>
+
+    <!-- Dialogs -->
+    <string name="mint_rating_title">Do you like the app?</string>
+    <string name="mint_rating_desc">Your feedback helps us grow and improve for you 🙏</string>
+    <string name="mint_rating_btn_rate_store">⭐ Rate on Play Store</string>
+    <string name="mint_rating_btn_submit">Submit feedback</string>
+    <string name="mint_rating_btn_not_now">Not now</string>
+    <string name="mint_rating_btn_never">Never ask again</string>
+    
+    <string name="mint_rating_star_1">I don\'t like it</string>
+    <string name="mint_rating_star_2">Could be better</string>
+    <string name="mint_rating_star_3">It\'s good</string>
+    <string name="mint_rating_star_4">😄 Very good</string>
+    <string name="mint_rating_star_5">🤩 Excellent!</string>
+    
+    <string name="mint_update_title">🚀 New Update Available</string>
+    <string name="mint_update_desc">%1$s %2$s is ready to download with new icons and improvements.</string>
+    <string name="mint_update_btn_later">LATER</string>
+    <string name="mint_update_btn_update">UPDATE</string>
 </resources>

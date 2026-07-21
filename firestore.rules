@@ -1,0 +1,48 @@
+rules_version = '2';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// VERSIÓN A — USAR AHORA (funciona sin App Check, desbloquea las solicitudes ya)
+// Pégalo en: Firebase Console → Firestore Database → Reglas → Publicar.
+// Efecto inmediato, no requiere recompilar la app.
+// ─────────────────────────────────────────────────────────────────────────────
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Info de versiones / changelog: lectura pública, sin escritura desde cliente
+    match /app_versions/{document} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Solicitudes de iconos: el cliente lee/escribe su propio documento (por ANDROID_ID)
+    match /icon_requests/{document} {
+      allow read, write: if true;
+    }
+
+    // Todo lo demás: denegado (solo el servidor con la service account puede)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// VERSIÓN B — ENDURECIDA (usar DESPUÉS de desplegar App Check)
+// Requisitos antes de activarla:
+//   1. Publicar la nueva librería (con MintAppCheck) y actualizar las apps.
+//   2. Registrar cada app en Firebase Console → App Check (proveedor Play Integrity).
+//   3. Confirmar en la consola que llegan tokens válidos (modo monitoreo).
+//   4. Recién entonces cambiar `if true` por `if request.app != null` aquí.
+//
+// service cloud.firestore {
+//   match /databases/{database}/documents {
+//     match /app_versions/{document} {
+//       allow read: if request.app != null;
+//       allow write: if false;
+//     }
+//     match /icon_requests/{document} {
+//       allow read, write: if request.app != null;
+//     }
+//     match /{document=**} { allow read, write: if false; }
+//   }
+// }
