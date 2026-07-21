@@ -12,6 +12,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -67,6 +68,7 @@ fun MintRatingDialog(
     onDismiss: () -> Unit
 ) {
     val context = LocalContext.current
+    val configuration = LocalConfiguration.current
     val liquidColors = LocalLiquidGlassColors.current
     val isDark = liquidColors.isDark
     var selectedStars by remember { mutableIntStateOf(0) }
@@ -85,20 +87,21 @@ fun MintRatingDialog(
             decorFitsSystemWindows = false
         )
     ) {
-
-        com.akustom15.mint.library.ui.MintLocalizedContent {
-
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .clickable { onDismiss() },
-            contentAlignment = Alignment.Center
+        CompositionLocalProvider(
+            LocalContext provides context,
+            LocalConfiguration provides configuration
         ) {
-            FrostedGlassDialogCard(
+            Box(
                 modifier = Modifier
-                    .padding(horizontal = 24.dp)
-                    .clickable(enabled = false) {}
+                    .fillMaxSize()
+                    .clickable { onDismiss() },
+                contentAlignment = Alignment.Center
             ) {
+                FrostedGlassDialogCard(
+                    modifier = Modifier
+                        .padding(horizontal = 24.dp)
+                        .clickable(enabled = false) {}
+                ) {
                 Column(
                     modifier = Modifier.padding(28.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -277,6 +280,7 @@ fun MintRatingDialog(
     
 
         }
-
+            }
+        }
     }
 }

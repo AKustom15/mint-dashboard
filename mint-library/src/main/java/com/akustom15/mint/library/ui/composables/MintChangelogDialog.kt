@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.platform.LocalConfiguration
 import com.akustom15.mint.library.config.MintConfig
 import com.akustom15.mint.library.ui.theme.LocalLiquidGlassColors
 import com.akustom15.mint.library.ui.theme.MintColors
@@ -30,6 +31,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}) {
     val context = LocalContext.current
+    val configuration = LocalConfiguration.current
     val liquidColors = LocalLiquidGlassColors.current
     val isDark = liquidColors.isDark
 
@@ -93,7 +95,10 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
                 decorFitsSystemWindows = false
             )
         ) {
-            com.akustom15.mint.library.ui.MintLocalizedContent {
+            CompositionLocalProvider(
+                LocalContext provides context,
+                LocalConfiguration provides configuration
+            ) {
 
             Box(
                 modifier = Modifier
@@ -178,7 +183,202 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
 
                         // Timer de cuenta regresiva — igual al proyecto viejo
                         Text(
-                            text = "⏱ Se cerrará en: $secondsLeft segundos",
+                            text = stringResource(R.string.mint_update_closing_in, secondsLeft),
+                            fontSize = 12.sp,
+                            color = liquidColors.textPrimary.copy(alpha = 0.7f),
+                            textAlign = TextAlign.Center
+                        )
+
+                        Spacer(modifier = Modifier.height(20.dp))
+
+                        // Botones: LUEGO y ACTUALIZAR
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            // Botón LUEGO (cerrar)
+                            OutlinedButton(
+                                onClick = {
+                                    showDialog = false
+                                    onShowChange(false)
+                                    prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
+                                },
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .height(44.dp),
+                                colors = ButtonDefaults.outlinedButtonColors(
+                                    contentColor = liquidColors.textPrimary
+                                ),
+                                border = androidx.compose.foundation.BorderStroke(
+                                    width = 1.dp,
+                                    color = liquidColors.textPrimary.copy(alpha = 0.4f)
+                                )
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.Center
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.Close,
+                                        contentDescription = "Cerrar",
+                                        modifier = Modifier.size(14.dp)
+                                    )
+                                    Spacer(modifier = Modifier.width(4.dp))
+                                    Text(
+                                        text = stringResource(R.string.mint_update_btn_later),
+                                        fontSize = 12.sp,
+                                        fontWeight = FontWeight.Medium,
+                                        maxLines = 1
+                                    )
+                                }
+                            }
+
+                            // Botón ACTUALIZAR
+                            Button(
+                                onClick = {
+                                    showDialog = false
+                                    onShowChange(false)
+                                    prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
+
+                                    val intent = android.content.Intent(android.content.Intent.ACTION_VIEW).apply {
+                                        data = android.net.Uri.parse("market://details?id=${context.packageName}")
+                                        setPackage("com.android.vending")
+                                        addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+                                    }
+                                    try {
+                                        context.startActivity(intent)
+                                    } catch (e: Exception) {
+                                        val webIntent = android.content.Intent(
+                                            android.content.Intent.ACTION_VIEW,
+                                            android.net.Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}")
+                                        ).apply {
+                                            addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+                                        }
+                                        context.startActivity(webIntent)
+                                    }
+                                },
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .height(44.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = MintColors.Primary,
+                                    contentColor = Color.White
+                                )
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.Center
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.SystemUpdate,
+                                        contentDescription = "Actualizar",
+                                        modifier = Modifier.size(14.dp)
+                                    )
+                                    Spacer(modifier = Modifier.width(4.dp))
+                                    Text(
+                                        text = stringResource(R.string.mint_update_btn_update),
+                                        fontSize = 12.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        maxLines = 1
+                                    )
+                showDialog = false
+                onShowChange(false)
+                prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
+            },
+            properties = DialogProperties(
+                usePlatformDefaultWidth = false,
+                decorFitsSystemWindows = false
+            )
+        ) {
+            CompositionLocalProvider(
+                LocalContext provides context,
+                LocalConfiguration provides configuration
+            ) {
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clickable {
+                        showDialog = false
+                        onShowChange(false)
+                        prefs.edit().putInt("last_seen_changelog", latestVersionCode).apply()
+                    },
+                contentAlignment = Alignment.Center
+            ) {
+                // ─── Efecto Glass igual que el resto del proyecto ───
+                FrostedGlassDialogCard(
+                    modifier = Modifier
+                        .padding(horizontal = 20.dp)
+                        .clickable(enabled = false) {}
+                ) {
+                    Column(
+                        modifier = Modifier.padding(24.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        // 🚀 Ícono — igual que proyecto viejo
+                        Icon(
+                            imageVector = Icons.Default.SystemUpdate,
+                            contentDescription = "Actualización",
+                            modifier = Modifier.size(48.dp),
+                            tint = MintColors.Primary
+                        )
+
+                        Spacer(modifier = Modifier.height(12.dp))
+
+                        // Título: "🚀 Nueva Actualización Disponible"
+                        Text(
+                            text = stringResource(R.string.mint_update_title),
+                            fontSize = 19.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = liquidColors.textPrimary,
+                            textAlign = TextAlign.Center
+                        )
+
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        // Descripción con versión — igual al proyecto viejo
+                        Text(
+                            text = stringResource(R.string.mint_update_desc, config.appName, versionName),
+                            fontSize = 14.sp,
+                            color = liquidColors.textPrimary,
+                            textAlign = TextAlign.Center,
+                            lineHeight = 20.sp
+                        )
+
+                        // Changelog dinámico desde Firebase
+                        if (changelogText.isNotEmpty()) {
+                            Spacer(modifier = Modifier.height(12.dp))
+                            val changelogItems = changelogText.split("•").map { it.trim() }.filter { it.isNotEmpty() }
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                if (changelogItems.size <= 1) {
+                                    // No bullet separator found — show as plain text
+                                    Text(
+                                        text = changelogText,
+                                        fontSize = 13.sp,
+                                        color = liquidColors.textPrimary,
+                                        textAlign = TextAlign.Center,
+                                        lineHeight = 18.sp
+                                    )
+                                } else {
+                                    changelogItems.forEach { item ->
+                                        Text(
+                                            text = "• $item",
+                                            fontSize = 13.sp,
+                                            color = liquidColors.textPrimary,
+                                            textAlign = TextAlign.Center,
+                                            lineHeight = 18.sp,
+                                            modifier = Modifier.padding(vertical = 1.dp)
+                                        )
+                                    }
+                                }
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        // Timer de cuenta regresiva — igual al proyecto viejo
+                        Text(
+                            text = stringResource(R.string.mint_update_closing_in, secondsLeft),
                             fontSize = 12.sp,
                             color = liquidColors.textPrimary.copy(alpha = 0.7f),
                             textAlign = TextAlign.Center
