@@ -12,8 +12,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -181,6 +180,7 @@ fun SettingsScreen(
                         MintThemeMode.DARK -> stringResource(R.string.mint_settings_theme_dark)
                         MintThemeMode.SYSTEM -> stringResource(R.string.mint_settings_theme_system)
                     },
+                    icon = Icons.Default.Palette,
                     onClick = { showThemeDialog = true }
                 )
 
@@ -188,6 +188,7 @@ fun SettingsScreen(
                 SettingsItem(
                     title = stringResource(R.string.mint_settings_language),
                     subtitle = appLanguage.displayName,
+                    icon = Icons.Default.Language,
                     onClick = { showLanguageDialog = true }
                 )
 
@@ -207,6 +208,7 @@ fun SettingsScreen(
                     title = stringResource(R.string.mint_settings_clear_cache),
                     subtitle = if (cacheCleared) stringResource(R.string.mint_settings_cache_cleared)
                     else stringResource(R.string.mint_settings_clear_cache_desc),
+                    icon = Icons.Default.Delete,
                     onClick = { showClearCacheDialog = true }
                 )
 
@@ -232,6 +234,13 @@ fun SettingsScreen(
                             .padding(horizontal = 20.dp, vertical = 12.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
+                        Icon(
+                            imageVector = Icons.Default.Notifications,
+                            contentDescription = null,
+                            tint = MintColors.Primary,
+                            modifier = Modifier.size(24.dp)
+                        )
+                        Spacer(modifier = Modifier.width(16.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
                                 text = stringResource(R.string.mint_settings_notifications),
@@ -267,6 +276,7 @@ fun SettingsScreen(
                         subtitle = if (isCheckingUpdate)
                             stringResource(R.string.mint_settings_checking_update)
                         else stringResource(R.string.mint_settings_check_update_desc),
+                        icon = Icons.Default.Refresh,
                         onClick = {
                             if (!isCheckingUpdate) {
                                 isCheckingUpdate = true
@@ -380,6 +390,7 @@ fun SettingsScreen(
                     SettingsItem(
                         title = stringResource(R.string.mint_settings_whats_new),
                         subtitle = config.updateInfo,
+                        icon = Icons.Default.Info,
                         onClick = {}
                     )
                 }
@@ -396,12 +407,14 @@ fun SettingsScreen(
                 SettingsItem(
                     title = stringResource(R.string.mint_settings_version),
                     subtitle = versionText,
+                    icon = Icons.Default.Info,
                     onClick = {}
                 )
 
                 SettingsItem(
                     title = stringResource(R.string.mint_settings_package),
                     subtitle = config.packageName,
+                    icon = Icons.Default.Build,
                     onClick = {}
                 )
 
@@ -409,6 +422,7 @@ fun SettingsScreen(
                     SettingsItem(
                         title = stringResource(R.string.mint_settings_privacy),
                         subtitle = stringResource(R.string.mint_settings_privacy_desc),
+                        icon = Icons.Default.Lock,
                         onClick = {
                             val intent = android.content.Intent(
                                 android.content.Intent.ACTION_VIEW,
@@ -606,6 +620,7 @@ fun SettingsScreen(
 private fun SettingsItem(
     title: String,
     subtitle: String,
+    icon: androidx.compose.ui.graphics.vector.ImageVector? = null,
     onClick: () -> Unit
 ) {
     val liquidColors = LocalLiquidGlassColors.current
@@ -615,22 +630,34 @@ private fun SettingsItem(
         shape = RoundedCornerShape(16.dp),
         onClick = onClick
     ) {
-        Column(
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 20.dp, vertical = 16.dp)
+                .padding(horizontal = 20.dp, vertical = 16.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = title,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 16.sp,
-                color = liquidColors.textPrimary
-            )
-            Text(
-                text = subtitle,
-                fontSize = 13.sp,
-                color = liquidColors.textSecondary
-            )
+            if (icon != null) {
+                Icon(
+                    imageVector = icon,
+                    contentDescription = null,
+                    tint = MintColors.Primary,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.width(16.dp))
+            }
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 16.sp,
+                    color = liquidColors.textPrimary
+                )
+                Text(
+                    text = subtitle,
+                    fontSize = 13.sp,
+                    color = liquidColors.textSecondary
+                )
+            }
         }
     }
 }
