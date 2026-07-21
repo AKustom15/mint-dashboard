@@ -244,35 +244,12 @@ class LicenseChecker(
             return
         }
 
-        // Apps gratuitas: no exigir una compra para funcionar. Con las señales de
-        // piratería ya comprobadas arriba, marcamos válido y no pedimos licencia.
-        if (!requireLicense) {
-            Log.d(TAG, "requireLicense=false: se omite la verificación de compra (app gratuita).")
-            _licenseState.value = LicenseState.Valid
-            return
-        }
-
-        try {
-            // Verificar licencia con Billing
-            Log.d(TAG, "performSecurityChecks: Calling checkLicense()")
-            val isBillingLicenseValid = checkLicense()
-            Log.d(TAG, "performSecurityChecks: checkLicense() returned $isBillingLicenseValid. Current state: ${_licenseState.value}")
-
-            if (isBillingLicenseValid) {
-                _licenseState.value = LicenseState.Valid
-            } else {
-                // Si checkLicense() devuelve false, pero el listener ya puso Valid, no lo sobrescribas.
-                if (_licenseState.value !is LicenseState.Valid) {
-                    _licenseState.value = LicenseState.Invalid(
-                        reason = "Licencia no válida o no encontrada en Play Store",
-                        isPiracyRelated = false // Falla de Billing no es piratería directa
-                    )
-                }
-            }
-        } catch (e: Exception) {
-            Log.e(TAG, "Error en verificación de licencia", e)
-            _licenseState.value = LicenseState.Error("Error durante la verificación de licencia: ${e.message}")
-        }
+        // NOTA: la comprobación de titularidad de una app de PAGO NO se hace aquí.
+        // queryPurchasesAsync(INAPP) solo lista compras dentro de la app, no la
+        // propiedad de la app pagada, así que declinaría a compradores legítimos.
+        // Esa verificación la hace MintLicenseVerifier (Play Integrity + servidor).
+        // Este checker solo aporta señales de piratería (Lucky Patcher / tiendas).
+        _licenseState.value = LicenseState.Valid
     }
 
     fun onDestroy() {

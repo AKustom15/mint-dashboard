@@ -1,25 +1,33 @@
 package com.akustom15.mint.library.security
 
 import android.content.Context
-import com.akustom15.mint.library.config.MintConfig
 import android.util.Log
+import com.akustom15.mint.library.config.MintConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
 
 /**
- * Gestor unificado de seguridad que combina múltiples métodos de verificación
- * Recomendado para 2025: Google Play Integrity API + Firebase App Check + Verificación de Instalador + Play Billing (LVL)
+ * Unified security gate.
+ *
+ * Combines:
+ *  - Play Integrity (client): installer + integrity token (soft signal).
+ *  - Piracy detection (client): Lucky Patcher / unofficial stores.
+ *  - Paid-app ownership (SERVER): [MintLicenseVerifier] verifies the Play
+ *    Integrity `appLicensingVerdict` in a Cloud Function. This is the robust
+ *    part — a patched client can't fake it. Only enforced when
+ *    [MintConfig.requireValidLicense] is true (i.e. the app is paid).
  */
-class SecurityManager private constructor(private val context: Context, private val config: MintConfig) {
+class SecurityManager private constructor(
+    private val context: Context,
+    private val config: MintConfig
+) {
     companion object {
         private const val TAG = "SecurityManager"
-        
+
         @Volatile
         private var instance: SecurityManager? = null
 
@@ -32,8 +40,14 @@ class SecurityManager private constructor(private val context: Context, private 
 
     private val playIntegrityChecker = PlayIntegrityChecker(context)
     private val licenseChecker = LicenseChecker(context, config.base64LicenseKey, config.requireValidLicense)
+    private val licenseVerifier = MintLicenseVerifier(context)
+
     private val _securityState = MutableStateFlow<SecurityState>(SecurityState.Checking)
     val securityState: StateFlow<SecurityState> = _securityState
+
+    // Server paid-app license verdict (null = not yet checked). Only meaningful
+    // when config.requireValidLicense is true.
+    private val _serverLicense = MutableStateFlow<MintLicenseVerifier.Result?>(null)
 
     private val scope = CoroutineScope(Dispatchers.Main)
 
@@ -45,62 +59,70 @@ class SecurityManager private constructor(private val context: Context, private 
     }
 
     init {
-        // Observar cambios combinados de Play Integrity y LicenseChecker
         scope.launch {
-            combine(playIntegrityChecker.integrityState, licenseChecker.licenseState) { integrityState, licenseState ->
+            combine(
+                playIntegrityChecker.integrityState,
+                licenseChecker.licenseState,
+                _serverLicense
+            ) { integrityState, licenseState, serverLicense ->
                 when {
-                    integrityState is PlayIntegrityChecker.IntegrityState.Checking || licenseState is LicenseState.Checking -> {
+                    integrityState is PlayIntegrityChecker.IntegrityState.Checking ||
+                        licenseState is LicenseState.Checking ->
                         SecurityState.Checking
-                    }
-                    integrityState is PlayIntegrityChecker.IntegrityState.Invalid -> {
+
+                    // Integridad inválida (no instalada desde Play, etc.)
+                    integrityState is PlayIntegrityChecker.IntegrityState.Invalid ->
                         SecurityState.Invalid(integrityState.reason)
-                    }
-                    licenseState is LicenseState.Invalid -> {
+
+                    // Piratería detectada (Lucky Patcher / tiendas no oficiales)
+                    licenseState is LicenseState.Invalid ->
                         SecurityState.Invalid(licenseState.reason)
-                    }
-                    integrityState is PlayIntegrityChecker.IntegrityState.Error -> {
+
+                    // Titularidad de app de pago, verificada en servidor
+                    config.requireValidLicense && serverLicense is MintLicenseVerifier.Result.Unlicensed ->
+                        SecurityState.Invalid("Esta cuenta no compró la aplicación")
+
+                    integrityState is PlayIntegrityChecker.IntegrityState.Error ->
                         SecurityState.Error(integrityState.message)
-                    }
-                    licenseState is LicenseState.Error -> {
+                    licenseState is LicenseState.Error ->
                         SecurityState.Error(licenseState.message)
+
+                    // Integridad OK + sin piratería
+                    integrityState is PlayIntegrityChecker.IntegrityState.Valid &&
+                        licenseState is LicenseState.Valid -> {
+                        // Si la app es de pago, esperar el veredicto del servidor.
+                        // (Licensed o Unknown → válido: fail-open para no bloquear
+                        //  a compradores legítimos por errores transitorios.)
+                        if (config.requireValidLicense && serverLicense == null) SecurityState.Checking
+                        else SecurityState.Valid
                     }
-                    integrityState is PlayIntegrityChecker.IntegrityState.Valid && licenseState is LicenseState.Valid -> {
-                        SecurityState.Valid
-                    }
+
                     else -> SecurityState.Checking
                 }
-            }.collect { combinedState ->
-                _securityState.value = combinedState
+            }.collect { combined ->
+                _securityState.value = combined
             }
         }
     }
 
-    /**
-     * Realiza todas las verificaciones de seguridad
-     */
+    /** Runs all security checks. No-op (Valid) when anti-piracy is disabled. */
     fun performSecurityChecks() {
         if (!config.enableAntiPiracy) {
-            Log.d(TAG, "Anti-piratería deshabilitada en la configuración. Saltando comprobaciones.")
+            Log.d(TAG, "Anti-piratería deshabilitada. Saltando comprobaciones.")
             _securityState.value = SecurityState.Valid
             return
         }
 
         scope.launch {
             try {
-                Log.d(TAG, "Iniciando verificaciones de seguridad...")
-                
-                val integrityJob = async { playIntegrityChecker.performSecurityChecks() }
-                val licenseJob = async { licenseChecker.checkLicense() }
-                
-                val results = awaitAll(integrityJob, licenseJob)
-                val isValid = results.all { it }
-                
-                if (isValid) {
-                    Log.i(TAG, "✅ Todas las verificaciones de seguridad pasaron")
-                    // El estado ya se actualizará a Valid mediante el colector (combine)
-                } else {
-                    Log.w(TAG, "❌ Fallo en verificaciones de seguridad")
-                    // El estado ya se actualizará a Invalid/Error mediante el colector
+                Log.d(TAG, "Iniciando verificaciones de seguridad…")
+                // Señales de cliente (integridad + piratería)
+                playIntegrityChecker.performSecurityChecks()
+                licenseChecker.performSecurityChecks()
+
+                // Titularidad de app de pago (servidor)
+                if (config.requireValidLicense) {
+                    _serverLicense.value = licenseVerifier.verify()
                 }
             } catch (e: Exception) {
                 Log.e(TAG, "Error en verificaciones de seguridad", e)
@@ -109,18 +131,11 @@ class SecurityManager private constructor(private val context: Context, private 
         }
     }
 
-    /**
-     * Verifica si la app es segura para usar
-     */
-    fun isAppSecure(): Boolean {
-        return _securityState.value is SecurityState.Valid
-    }
+    fun isAppSecure(): Boolean = _securityState.value is SecurityState.Valid
 
-    /**
-     * Fuerza una nueva verificación de seguridad
-     */
     fun refreshSecurityChecks() {
         Log.d(TAG, "Forzando nueva verificación de seguridad")
+        _serverLicense.value = null
         performSecurityChecks()
     }
-} 
+}

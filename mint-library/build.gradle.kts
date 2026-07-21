@@ -88,6 +88,8 @@ dependencies {
     api("com.google.android.play:integrity:1.4.0")
     // Firebase App Check (Play Integrity provider) — protects Firestore/FCM backends
     api(libs.firebase.appcheck)
+    // Firebase Functions — client calls the server-side license verifier
+    api(libs.firebase.functions)
     // Encrypted storage for premium/entitlement state
     api(libs.androidx.security.crypto)
 
