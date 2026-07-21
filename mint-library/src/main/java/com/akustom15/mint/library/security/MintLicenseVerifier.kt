@@ -5,16 +5,21 @@ import android.util.Base64
 import android.util.Log
 import com.google.android.play.core.integrity.IntegrityManagerFactory
 import com.google.android.play.core.integrity.IntegrityTokenRequest
-import com.google.firebase.functions.FirebaseFunctions
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
+import org.json.JSONObject
+import java.io.OutputStreamWriter
+import java.net.HttpURLConnection
+import java.net.URL
 import java.security.SecureRandom
 
 /**
- * Server-side paid-app license verification.
+ * Server-side paid-app license verification via HTTP (Supabase Edge Function).
  *
  * Flow:
  *  1. Request a Play Integrity token on the device (classic request).
- *  2. Send it to a Cloud Function ([functionName]) that decodes the token with
+ *  2. Send it to a backend ([verificationUrl]) that decodes the token with
  *     Google's Play Integrity API and reads `accountDetails.appLicensingVerdict`.
  *  3. The server returns whether the account actually owns (bought) this paid app.
  *
@@ -24,8 +29,7 @@ import java.security.SecureRandom
  */
 class MintLicenseVerifier(
     private val context: Context,
-    private val functionName: String = "verifyAppLicense",
-    private val region: String = ""
+    private val verificationUrl: String
 ) {
     companion object {
         private const val TAG = "MintLicenseVerifier"
@@ -45,11 +49,6 @@ class MintLicenseVerifier(
         data class Unknown(val reason: String) : Result()
     }
 
-    private val functions: FirebaseFunctions by lazy {
-        if (region.isNotBlank()) FirebaseFunctions.getInstance(region)
-        else FirebaseFunctions.getInstance()
-    }
-
     private fun randomNonce(): String {
         val bytes = ByteArray(32)
         SecureRandom().nextBytes(bytes)
@@ -57,6 +56,11 @@ class MintLicenseVerifier(
     }
 
     suspend fun verify(): Result {
+        if (verificationUrl.isBlank()) {
+            Log.e(TAG, "No verificationUrl provided in MintConfig.")
+            return Result.Unknown("no_url")
+        }
+
         return try {
             // 1. Get the integrity token on-device
             val manager = IntegrityManagerFactory.create(context.applicationContext)
@@ -65,14 +69,37 @@ class MintLicenseVerifier(
             ).await()
             val token = response.token()
 
-            // 2. Ask the server to decode & evaluate it
-            val data = hashMapOf("integrityToken" to token)
-            val callResult = functions.getHttpsCallable(functionName).call(data).await()
+            // 2. Ask the server to decode & evaluate it via HTTP POST
+            val jsonResponse = withContext(Dispatchers.IO) {
+                val url = URL(verificationUrl)
+                val conn = url.openConnection() as HttpURLConnection
+                conn.requestMethod = "POST"
+                conn.setRequestProperty("Content-Type", "application/json; utf-8")
+                conn.setRequestProperty("Accept", "application/json")
+                conn.doOutput = true
+                conn.connectTimeout = 15000
+                conn.readTimeout = 15000
 
-            @Suppress("UNCHECKED_CAST")
-            val map = callResult.getData() as? Map<String, Any?> ?: emptyMap()
-            val verdict = (map["verdict"] as? String) ?: "UNKNOWN"
-            val licensed = (map["licensed"] as? Boolean) ?: false
+                val jsonBody = JSONObject()
+                jsonBody.put("integrityToken", token)
+
+                OutputStreamWriter(conn.outputStream).use { writer ->
+                    writer.write(jsonBody.toString())
+                    writer.flush()
+                }
+
+                if (conn.responseCode in 200..299) {
+                    conn.inputStream.bufferedReader().use { it.readText() }
+                } else {
+                    val error = conn.errorStream?.bufferedReader()?.use { it.readText() }
+                    Log.e(TAG, "HTTP error ${conn.responseCode}: $error")
+                    null
+                }
+            } ?: return Result.Unknown("http_error")
+
+            val jsonObject = JSONObject(jsonResponse)
+            val verdict = jsonObject.optString("verdict", "UNKNOWN")
+            val licensed = jsonObject.optBoolean("licensed", false)
 
             Log.d(TAG, "Server license verdict: $verdict (licensed=$licensed)")
             when {

@@ -80,7 +80,6 @@ firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore-ktx" }
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
 firebase-appcheck = { group = "com.google.firebase", name = "firebase-appcheck-playintegrity" }
-firebase-functions = { group = "com.google.firebase", name = "firebase-functions" }
 kotlinx-coroutines-play-services = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "coroutines" }
 
 [plugins]

@@ -64,6 +64,7 @@ data class MintConfig(
     val requireValidLicense: Boolean = false,
     val base64LicenseKey: String = "",
     val gcpProjectNumber: Long = 0L,
+    val licenseVerificationUrl: String = "",
 
     // Feature Toggles
     val showWidgets: Boolean = true,
