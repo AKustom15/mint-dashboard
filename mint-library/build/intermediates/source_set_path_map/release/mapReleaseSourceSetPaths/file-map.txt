@@ -1,0 +1,79 @@
+com.akustom15.mint.library.mint-library-jetified-core-common-2.0.4-0 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\004db7ca71fa9c352cf441e6b9f8a29d\transformed\jetified-core-common-2.0.4\res
+com.akustom15.mint.library.mint-library-jetified-material3-release-1 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\0a106c2771f916be119b31bfbee9af2f\transformed\jetified-material3-release\res
+com.akustom15.mint.library.mint-library-jetified-activity-compose-1.9.0-2 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\0b52cb233da9447e6e19a5ba4ceb4024\transformed\jetified-activity-compose-1.9.0\res
+com.akustom15.mint.library.mint-library-jetified-lifecycle-runtime-ktx-release-3 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\0e43b9f53c835d938eefa604bf8b1f5d\transformed\jetified-lifecycle-runtime-ktx-release\res
+com.akustom15.mint.library.mint-library-lifecycle-livedata-core-2.8.5-4 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\10daecf44ab4335586dc07826e42b4ac\transformed\lifecycle-livedata-core-2.8.5\res
+com.akustom15.mint.library.mint-library-jetified-ui-release-5 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\135360a24bd24183c4672cd70c869833\transformed\jetified-ui-release\res
+com.akustom15.mint.library.mint-library-jetified-ui-unit-release-6 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\1409cc90e729e057b0141ba18bd0c33f\transformed\jetified-ui-unit-release\res
+com.akustom15.mint.library.mint-library-jetified-haze-release-7 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\1438ac25249ddde3d800035aad293e9c\transformed\jetified-haze-release\res
+com.akustom15.mint.library.mint-library-coordinatorlayout-1.1.0-8 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\151b02571547ad821540a9f3b7d55a79\transformed\coordinatorlayout-1.1.0\res
+com.akustom15.mint.library.mint-library-jetified-play-services-measurement-api-22.1.2-9 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\16cfbe86afdcc676fe77f03a11d6d4f1\transformed\jetified-play-services-measurement-api-22.1.2\res
+com.akustom15.mint.library.mint-library-jetified-savedstate-1.2.1-10 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\1815ba0fd879f3733b78791fdeed6952\transformed\jetified-savedstate-1.2.1\res
+com.akustom15.mint.library.mint-library-jetified-annotation-experimental-1.4.1-11 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\1b15280b13c1164f5ba26e00cc9baa28\transformed\jetified-annotation-experimental-1.4.1\res
+com.akustom15.mint.library.mint-library-jetified-play-services-basement-18.4.0-12 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\22a773764f5cd257979b4a27dc71bd35\transformed\jetified-play-services-basement-18.4.0\res
+com.akustom15.mint.library.mint-library-jetified-graphics-path-1.0.1-13 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\25c161c8976cca6e98215aede2be48f9\transformed\jetified-graphics-path-1.0.1\res
+com.akustom15.mint.library.mint-library-jetified-customview-poolingcontainer-1.0.0-14 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\291ecf20152f0133949cb69aecbd6c77\transformed\jetified-customview-poolingcontainer-1.0.0\res
+com.akustom15.mint.library.mint-library-jetified-lottie-6.2.0-15 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\303b4ea3ef88470de076aa4be44f2e1b\transformed\jetified-lottie-6.2.0\res
+com.akustom15.mint.library.mint-library-appcompat-1.7.0-16 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\38d5d76a72392808d6571a137be795e6\transformed\appcompat-1.7.0\res
+com.akustom15.mint.library.mint-library-core-runtime-2.2.0-17 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\3bc0fa8e9ab7e1ace58ca1411c0d964a\transformed\core-runtime-2.2.0\res
+com.akustom15.mint.library.mint-library-jetified-security-crypto-1.1.0-alpha06-18 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\3bffe9e6bdbfc652ede464d7bd26e6de\transformed\jetified-security-crypto-1.1.0-alpha06\res
+com.akustom15.mint.library.mint-library-constraintlayout-2.0.1-19 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\3d4bd9e06edb97808ac7ccd0516616b6\transformed\constraintlayout-2.0.1\res
+com.akustom15.mint.library.mint-library-jetified-coil-base-2.7.0-20 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\3f79a1b84656fba25fcbfdce69edf522\transformed\jetified-coil-base-2.7.0\res
+com.akustom15.mint.library.mint-library-navigation-runtime-2.7.7-21 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\43e3d02ca641d8dc53cfb71cd79d3e7f\transformed\navigation-runtime-2.7.7\res
+com.akustom15.mint.library.mint-library-navigation-runtime-ktx-2.7.7-22 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\45929f0c77b9ef2cf555bd9d12891668\transformed\navigation-runtime-ktx-2.7.7\res
+com.akustom15.mint.library.mint-library-jetified-firebase-messaging-24.1.0-23 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\45c0f7b866a6fe0abf4bd085c9c447af\transformed\jetified-firebase-messaging-24.1.0\res
+com.akustom15.mint.library.mint-library-jetified-lifecycle-viewmodel-ktx-2.8.5-24 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\46c199fcb9a41bde439f7bd6a2db3302\transformed\jetified-lifecycle-viewmodel-ktx-2.8.5\res
+com.akustom15.mint.library.mint-library-jetified-material-icons-extended-release-25 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\4bd9149e93d12532ccf67cc77af4eb2f\transformed\jetified-material-icons-extended-release\res
+com.akustom15.mint.library.mint-library-jetified-lifecycle-runtime-release-26 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\51ce9b31ff311e0d38870618651d83a8\transformed\jetified-lifecycle-runtime-release\res
+com.akustom15.mint.library.mint-library-jetified-emoji2-views-helper-1.3.0-27 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\53bf3b63cf396ce47cd245fa9416e3c0\transformed\jetified-emoji2-views-helper-1.3.0\res
+com.akustom15.mint.library.mint-library-jetified-navigation-compose-2.7.7-28 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\5fcd1c1a7bf91e43f89bb4f2da7c9da0\transformed\jetified-navigation-compose-2.7.7\res
+com.akustom15.mint.library.mint-library-jetified-animation-core-release-29 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\6561eac58e47148f879a04e2c4f48989\transformed\jetified-animation-core-release\res
+com.akustom15.mint.library.mint-library-jetified-lifecycle-viewmodel-compose-release-30 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\66ec290f9994386539df4bec01845d28\transformed\jetified-lifecycle-viewmodel-compose-release\res
+com.akustom15.mint.library.mint-library-jetified-lifecycle-runtime-compose-release-31 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\69c3eeb6cc74b7c55dbd5f691f4d42d6\transformed\jetified-lifecycle-runtime-compose-release\res
+com.akustom15.mint.library.mint-library-jetified-startup-runtime-1.1.1-32 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\6b04c8c662fb54ca2af04e50f6fc3bc6\transformed\jetified-startup-runtime-1.1.1\res
+com.akustom15.mint.library.mint-library-jetified-ui-tooling-preview-release-33 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\734cee63116ec24c0345b5a9ed2f99a3\transformed\jetified-ui-tooling-preview-release\res
+com.akustom15.mint.library.mint-library-jetified-lifecycle-viewmodel-release-34 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\782aed2dd5b3f88b0f88bcfd902aaf88\transformed\jetified-lifecycle-viewmodel-release\res
+com.akustom15.mint.library.mint-library-jetified-ui-graphics-release-35 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\7c55f359ee0a6419fc6b1ff5c9bf9782\transformed\jetified-ui-graphics-release\res
+com.akustom15.mint.library.mint-library-lifecycle-livedata-2.8.5-36 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\88a66a361482af4a5e198bc515f9e44a\transformed\lifecycle-livedata-2.8.5\res
+com.akustom15.mint.library.mint-library-jetified-ui-text-release-37 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\89e07dfa7b43fe93207e1979c5e9239e\transformed\jetified-ui-text-release\res
+com.akustom15.mint.library.mint-library-jetified-core-ktx-1.13.1-38 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\8c4ecebdbc9bda073a831d6c3867acb1\transformed\jetified-core-ktx-1.13.1\res
+com.akustom15.mint.library.mint-library-jetified-lifecycle-viewmodel-savedstate-2.8.5-39 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\8d6171ed1704a9812604e2f27fc2e2b0\transformed\jetified-lifecycle-viewmodel-savedstate-2.8.5\res
+com.akustom15.mint.library.mint-library-jetified-lifecycle-livedata-core-ktx-2.8.5-40 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\8de2b88101b623be7bd2836a718198d1\transformed\jetified-lifecycle-livedata-core-ktx-2.8.5\res
+com.akustom15.mint.library.mint-library-jetified-ads-adservices-1.0.0-beta05-41 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\8f7ef460fb0d7c4201a44a5596a98e09\transformed\jetified-ads-adservices-1.0.0-beta05\res
+com.akustom15.mint.library.mint-library-jetified-material-icons-core-release-42 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\97752094de64f7184a7771061c27eb04\transformed\jetified-material-icons-core-release\res
+com.akustom15.mint.library.mint-library-recyclerview-1.1.0-43 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\9b1f623bd2debc4a8fbb5fbb44536620\transformed\recyclerview-1.1.0\res
+com.akustom15.mint.library.mint-library-navigation-common-2.7.7-44 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\9b3a7ff433782e5bd52bac0da9d23404\transformed\navigation-common-2.7.7\res
+com.akustom15.mint.library.mint-library-jetified-appcompat-resources-1.7.0-45 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\a058dc4e7d6be63670d6c52dbefa499f\transformed\jetified-appcompat-resources-1.7.0\res
+com.akustom15.mint.library.mint-library-jetified-ads-adservices-java-1.0.0-beta05-46 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\a3785648af7e3458f73d2f15ad1a7245\transformed\jetified-ads-adservices-java-1.0.0-beta05\res
+com.akustom15.mint.library.mint-library-fragment-1.5.4-47 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\a507a8cb4115081e65929a66b1f2ef57\transformed\fragment-1.5.4\res
+com.akustom15.mint.library.mint-library-jetified-savedstate-ktx-1.2.1-48 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\afc90c70e1206ab2d185931315828419\transformed\jetified-savedstate-ktx-1.2.1\res
+com.akustom15.mint.library.mint-library-jetified-foundation-layout-release-49 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\ba541f1c01498e512066eb1b0f64aabe\transformed\jetified-foundation-layout-release\res
+com.akustom15.mint.library.mint-library-jetified-profileinstaller-1.3.1-50 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\bacc7bd58819b773a0a55711e6135dfb\transformed\jetified-profileinstaller-1.3.1\res
+com.akustom15.mint.library.mint-library-transition-1.5.0-51 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\bb901953a403c61d2043f2d399f6ee9e\transformed\transition-1.5.0\res
+com.akustom15.mint.library.mint-library-jetified-animation-release-52 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\bf125d18caace9d79ef4845373acd54f\transformed\jetified-animation-release\res
+com.akustom15.mint.library.mint-library-jetified-activity-1.9.0-53 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\c0b7ff8c72eaa95d50ae47d6414ac1a5\transformed\jetified-activity-1.9.0\res
+com.akustom15.mint.library.mint-library-material-1.12.0-54 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\c517b7750cf7cd1fc0b6649b8e6d190d\transformed\material-1.12.0\res
+com.akustom15.mint.library.mint-library-core-1.13.1-55 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\cfee3b7d7b65fb43e81e679e3efe5957\transformed\core-1.13.1\res
+com.akustom15.mint.library.mint-library-jetified-ui-geometry-release-56 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\d23530d1a4879eabe56f5b3ebd2f63bf\transformed\jetified-ui-geometry-release\res
+com.akustom15.mint.library.mint-library-cardview-1.0.0-57 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\db8ea5a80af4117f224e5a73714ffff4\transformed\cardview-1.0.0\res
+com.akustom15.mint.library.mint-library-jetified-runtime-saveable-release-58 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\e25a7343ab95e822acdd6dc34d3870a5\transformed\jetified-runtime-saveable-release\res
+com.akustom15.mint.library.mint-library-jetified-material-ripple-release-59 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\e2b0507d9bea572f66aea60432a90db5\transformed\jetified-material-ripple-release\res
+com.akustom15.mint.library.mint-library-jetified-firebase-common-21.0.0-60 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\e4d7297cc3955eb87ca992ddafed5810\transformed\jetified-firebase-common-21.0.0\res
+com.akustom15.mint.library.mint-library-jetified-activity-ktx-1.9.0-61 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\e5ff1605bcb391d1eb422a8672259709\transformed\jetified-activity-ktx-1.9.0\res
+com.akustom15.mint.library.mint-library-drawerlayout-1.1.1-62 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\ea14b4a232b2fb0d2ec43c31984fa317\transformed\drawerlayout-1.1.1\res
+com.akustom15.mint.library.mint-library-jetified-ui-util-release-63 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\eee37bef75c221292e69126eaee07b05\transformed\jetified-ui-util-release\res
+com.akustom15.mint.library.mint-library-jetified-runtime-release-64 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\ef1cbd61afa19858ecd5857ae9475049\transformed\jetified-runtime-release\res
+com.akustom15.mint.library.mint-library-jetified-foundation-release-65 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\efda1e1b3ad1168a094d667067e68778\transformed\jetified-foundation-release\res
+com.akustom15.mint.library.mint-library-jetified-play-services-base-18.5.0-66 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\f6e113ace98b7628d0dd25c2e5af9b87\transformed\jetified-play-services-base-18.5.0\res
+com.akustom15.mint.library.mint-library-jetified-billing-7.1.1-67 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\f7d4767171d97ffffeb2cc5cfcfc73ed\transformed\jetified-billing-7.1.1\res
+com.akustom15.mint.library.mint-library-jetified-lifecycle-process-2.8.5-68 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\f9616c0575ce5cdfd5f513b26ed3abfe\transformed\jetified-lifecycle-process-2.8.5\res
+com.akustom15.mint.library.mint-library-jetified-emoji2-1.3.0-69 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\fd29e044384373013342f04082e23f5a\transformed\jetified-emoji2-1.3.0\res
+com.akustom15.mint.library.mint-library-navigation-common-ktx-2.7.7-70 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\fe0b19c939d0c97b0a11dcc2d302293f\transformed\navigation-common-ktx-2.7.7\res
+com.akustom15.mint.library.mint-library-jetified-viewpager2-1.0.0-71 C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\fe3e57ff942394c67c69e08f59f9ab22\transformed\jetified-viewpager2-1.0.0\res
+com.akustom15.mint.library.mint-library-pngs-72 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\build\generated\res\pngs\release
+com.akustom15.mint.library.mint-library-resValues-73 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\build\generated\res\resValues\release
+com.akustom15.mint.library.mint-library-mergeReleaseResources-74 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\build\intermediates\incremental\release\mergeReleaseResources\merged.dir
+com.akustom15.mint.library.mint-library-mergeReleaseResources-75 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\build\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+com.akustom15.mint.library.mint-library-release-76 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\build\intermediates\merged_res\release\mergeReleaseResources
+com.akustom15.mint.library.mint-library-main-77 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\main\res
+com.akustom15.mint.library.mint-library-release-78 C:\Users\Rainerc\Documents\desarrollo de apps\dashboard\mint\mint-library\src\release\res

@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.akustom15.mint.library.mint-library-mergeReleaseResources-73:/values-port/values-port.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\38d5d76a72392808d6571a137be795e6\\transformed\\appcompat-1.7.0\\res\\values-port\\values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.akustom15.mint.library.mint-library-release-75:/values-port/values-port.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Rainerc\\.gradle\\caches\\8.11.1\\transforms\\38d5d76a72392808d6571a137be795e6\\transformed\\appcompat-1.7.0\\res\\values-port\\values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -24,6 +24,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.akustom15.mint.library.ui.theme.LocalLiquidGlassColors
 import com.akustom15.mint.library.ui.theme.MintColors
+import com.akustom15.mint.library.R
 import kotlinx.coroutines.delay
 
 private const val RATING_PREFS = "mint_rating_prefs"

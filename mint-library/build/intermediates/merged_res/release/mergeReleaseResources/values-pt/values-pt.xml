@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"Navegar para a página inicial"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"Navegar para cima"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"Mais opções"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"Concluído"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"Ver tudo"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"Selecionar um app"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"DESATIVADO"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"ATIVADO"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"delete"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"espaço"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"Pesquisar…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"Limpar consulta"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"Consulta de pesquisa"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"Pesquisar"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"Enviar consulta"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"Pesquisa por voz"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Compartilhar com"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Compartilhar com <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Recolher"</string>
+    <string name="about_registro_title">Registro de alterações</string>
+    <string name="about_section_desc">Informações sobre o desenvolvedor e créditos</string>
+    <string name="auto_apply_icons_setting">Aplicar ícones automaticamente</string>
+    <string name="back">Voltar</string>
+    <string name="button_wallpapers_desc">Seção de papéis de parede abertos</string>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"Atender"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Vídeo"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"Recusar"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"Desligar"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"Chamada recebida"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"Chamada em andamento"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"Filtrando uma ligação recebida"</string>
+    <string msgid="406453423630273620" name="close_drawer">"Fechar menu de navegação"</string>
+    <string msgid="7573152094250666567" name="close_sheet">"Fechar planilha"</string>
+    <string name="dark_theme_setting">Tema escuro</string>
+    <string name="dashboard_header_animation_desc">Animação de cabeçalho decorativo</string>
+    <string msgid="8038256446254964252" name="default_error_message">"Entrada inválida"</string>
+    <string msgid="6312721426453364202" name="default_popup_window_title">"Janela pop-up"</string>
+    <string msgid="1890207353314751437" name="dropdown_menu">"Menu suspenso"</string>
+    <string name="icon_request">Solicitação de ícone</string>
+    <string name="icon_request_already_requested">Já solicitado: %1$d</string>
+    <string name="icon_request_app_list">Lista de aplicativos</string>
+    <string name="icon_request_apps_without_icons">Aplicativos sem ícones (%1$d)</string>
+    <string name="icon_request_available">Disponível</string>
+    <string name="icon_request_available_requests">Disponível: %1$d</string>
+    <string name="icon_request_description">Envie sua solicitação de ícone e o desenvolvedor tentará incluí-los.</string>
+    <string name="icon_request_device_info">Informações do dispositivo</string>
+    <string name="icon_request_email_chooser">Escolha o aplicativo de e-mail</string>
+    <string name="icon_request_email_error_open">Não foi possível abrir o aplicativo de e-mail</string>
+    <string name="icon_request_email_subject">Solicitação de ícone</string>
+    <string name="icon_request_instructions">Forneça informações sobre os aplicativos que precisam de ícones e detalhes do seu dispositivo.</string>
+    <string name="icon_request_limit">%d solicitações</string>
+    <string name="icon_request_limit_info">Limite de informações</string>
+    <string name="icon_request_loading_apps">Carregando aplicativos...</string>
+    <string name="icon_request_no_apps_found">Nenhum aplicativo encontrado</string>
+    <string name="icon_request_retry">Tentar novamente</string>
+    <string name="icon_request_selected_apps">Selecionado: %1$d</string>
+    <string name="icon_request_send_dialog_cancel">Cancelar</string>
+    <string name="icon_request_send_dialog_message">Quer enviar uma solicitação de %1$d ícones?</string>
+    <string name="icon_request_send_dialog_send">Enviar</string>
+    <string name="icon_request_send_dialog_title">Enviar solicitação</string>
+    <string name="icon_request_send_email">Enviar por e-mail</string>
+    <string name="icon_request_send_error">Erro ao enviar: %1$s</string>
+    <string name="icon_request_send_success">Solicitação enviada: %1$d ícones</string>
+    <string name="icon_request_send_telegram">Enviar via telegrama</string>
+    <string name="icon_request_title">Ícones de solicitação</string>
+    <string name="icon_request_total">Total</string>
+    <string name="icon_request_used">Usado</string>
+    <string name="icons_count">%1$d ícones</string>
+    <string name="icons_preview_section_desc">Explore todos os ícones incluídos neste pacote</string>
+    <string name="icons_preview_section_title">Visualização de ícones</string>
+    <string name="icons_preview_title">Visualização de ícones</string>
+    <string msgid="6827826412747255547" name="in_progress">"Em andamento"</string>
+    <string msgid="7933458017204019916" name="indeterminate">"Parcialmente selecionada"</string>
+    <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"Fechar página inferior"</string>
+    <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"Dispensar página inferior"</string>
+    <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"Alça de arrastar"</string>
+    <string msgid="6670819569745899763" name="m3c_bottom_sheet_expand_description">"Abrir página inferior"</string>
+    <string msgid="3010635850035863127" name="m3c_bottom_sheet_pane_title">"Página inferior"</string>
+    <string msgid="8166741421776570875" name="m3c_date_input_headline">"Data informada"</string>
+    <string msgid="229313757840775812" name="m3c_date_input_headline_description">"Data informada: %1$s"</string>
+    <string msgid="6116910750161463197" name="m3c_date_input_invalid_for_pattern">"A data não está no padrão esperado: %1$s"</string>
+    <string msgid="2521768508935305279" name="m3c_date_input_invalid_not_allowed">"Data não permitida: %1$s"</string>
+    <string msgid="7052898923934555305" name="m3c_date_input_invalid_year_range">"A data está fora do intervalo de anos esperado: %1$s a %2$s"</string>
+    <string msgid="2895559812010326913" name="m3c_date_input_label">"Data"</string>
+    <string msgid="1237013946323089826" name="m3c_date_input_no_input_description">"Nenhum"</string>
+    <string msgid="7306227249789210568" name="m3c_date_input_title">"Selecionar data"</string>
+    <string msgid="7605002211875882969" name="m3c_date_picker_headline">"Data selecionada"</string>
+    <string msgid="3664277305226978227" name="m3c_date_picker_headline_description">"Seleção atual: %1$s"</string>
+    <string msgid="8436650776581492840" name="m3c_date_picker_navigate_to_year_description">"Navegar para o ano de %1$s"</string>
+    <string msgid="5811000998184572395" name="m3c_date_picker_no_selection_description">"Nenhum"</string>
+    <string msgid="7813882352367152251" name="m3c_date_picker_scroll_to_earlier_years">"Role a tela para mostrar anos anteriores"</string>
+    <string msgid="5727367015496556177" name="m3c_date_picker_scroll_to_later_years">"Role a tela para mostrar anos seguintes"</string>
+    <string msgid="1804346892470238807" name="m3c_date_picker_switch_to_calendar_mode">"Usar o modo de entrada na agenda"</string>
+    <string msgid="395627960681594326" name="m3c_date_picker_switch_to_day_selection">"Deslize para selecionar um ano ou toque para voltar à seleção de dia"</string>
+    <string msgid="2219746470065162704" name="m3c_date_picker_switch_to_input_mode">"Usar o modo de entrada de texto"</string>
+    <string msgid="7142101321095356500" name="m3c_date_picker_switch_to_next_month">"Mudar para o próximo mês"</string>
+    <string msgid="228438865139394590" name="m3c_date_picker_switch_to_previous_month">"Mudar para o mês anterior"</string>
+    <string msgid="791651718641787594" name="m3c_date_picker_switch_to_year_selection">"Usar a seleção de ano"</string>
+    <string msgid="7430790972741451689" name="m3c_date_picker_title">"Selecionar data"</string>
+    <string msgid="3199387177749801575" name="m3c_date_picker_today_description">"Hoje"</string>
+    <string msgid="2068382232816991922" name="m3c_date_picker_year_picker_pane_title">"Seletor de ano visível"</string>
+    <string msgid="3190049423327661366" name="m3c_date_range_input_invalid_range_input">"Período inválido"</string>
+    <string msgid="3148384720560189467" name="m3c_date_range_input_title">"Informar datas"</string>
+    <string msgid="2138321128465719402" name="m3c_date_range_picker_day_in_range">"Dentro do período"</string>
+    <string msgid="4947636797751277713" name="m3c_date_range_picker_end_headline">"Data de término"</string>
+    <string msgid="602077859540990149" name="m3c_date_range_picker_scroll_to_next_month">"Role a tela para mostrar o mês seguinte"</string>
+    <string msgid="4592174524846109496" name="m3c_date_range_picker_scroll_to_previous_month">"Role a tela para mostrar o mês anterior"</string>
+    <string msgid="4665981448952749820" name="m3c_date_range_picker_start_headline">"Data de início"</string>
+    <string msgid="3134165431120340385" name="m3c_date_range_picker_title">"Selecionar datas"</string>
+    <string msgid="7617233117134790350" name="m3c_dialog">"Caixa de diálogo"</string>
+    <string msgid="3177828188723359358" name="m3c_dropdown_menu_collapsed">"Fechado"</string>
+    <string msgid="2360841780724299882" name="m3c_dropdown_menu_expanded">"Aberto"</string>
+    <string msgid="8687821690726149911" name="m3c_dropdown_menu_toggle">"Ativar/desativar o menu suspenso"</string>
+    <string msgid="6152806324422087846" name="m3c_search_bar_search">"Pesquisar"</string>
+    <string msgid="6152755701819882931" name="m3c_snackbar_dismiss">"Dispensar"</string>
+    <string msgid="7655536806087401899" name="m3c_suggestions_available">"Sugestões abaixo"</string>
+    <string msgid="2786685010796619560" name="m3c_time_picker_am">"AM"</string>
+    <string msgid="2349193472625211372" name="m3c_time_picker_hour">"Hora"</string>
+    <string msgid="9179527532316922345" name="m3c_time_picker_hour_24h_suffix">"%1$d horas"</string>
+    <string msgid="8876759303332837035" name="m3c_time_picker_hour_selection">"Selecione a hora"</string>
+    <string msgid="3458167507790628988" name="m3c_time_picker_hour_suffix">"%1$dh"</string>
+    <string msgid="6973808109666874069" name="m3c_time_picker_hour_text_field">"por hora"</string>
+    <string msgid="4313071914266462005" name="m3c_time_picker_minute">"Minuto"</string>
+    <string msgid="4699133535056739733" name="m3c_time_picker_minute_selection">"Selecione os minutos"</string>
+    <string msgid="5064177921781937179" name="m3c_time_picker_minute_suffix">"%1$d minutos"</string>
+    <string msgid="7661234488295443182" name="m3c_time_picker_minute_text_field">"por minutos"</string>
+    <string msgid="5865171949528594571" name="m3c_time_picker_period_toggle_description">"Selecione AM ou PM"</string>
+    <string msgid="6616362054113087709" name="m3c_time_picker_pm">"PM"</string>
+    <string msgid="1805687647081129904" name="m3c_tooltip_long_press_label">"Mostrar dica"</string>
+    <string msgid="5460405025248574620" name="m3c_tooltip_pane_description">"Dica"</string>
+    <string name="mint_about_developer">DESENVOLVEDOR</string>
+    <string name="mint_about_library_desc">Sistema de Design Liquid Glass</string>
+    <string name="mint_about_library_name">Mint Library</string>
+    <string name="mint_about_more_apps">Mais Apps</string>
+    <string name="mint_about_powered_by">DESENVOLVIDO COM</string>
+    <string name="mint_about_social">REDES SOCIAIS</string>
+    <string name="mint_about_title">Sobre</string>
+    <string name="mint_buy_premium">Comprar Premium</string>
+    <string name="mint_dashboard_apply_icons">Aplicar Ícones</string>
+    <string name="mint_dashboard_custom_icons">Ícones Personalizados</string>
+    <string name="mint_dashboard_missing_apps">%d apps faltantes</string>
+    <string name="mint_dashboard_no_launchers">Nenhum launcher compatível encontrado.</string>
+    <string name="mint_dashboard_request_title">SOLICITAÇÃO DE ÍCONES</string>
+    <string name="mint_dashboard_select_launcher">Selecionar Launcher</string>
+    <string name="mint_dashboard_subtitle">Pacote de ícones personalizado para o seu dispositivo</string>
+    <string name="mint_dashboard_themed_apps">%d apps temáticos</string>
+    <string name="mint_dashboard_total_installed">Total %d apps instalados</string>
+    <string name="mint_icon_request_already_requested">Já solicitado</string>
+    <string name="mint_icon_request_available">Disponível</string>
+    <string name="mint_icon_request_count">%d Solicitação</string>
+    <string name="mint_icon_request_description">Faça sua solicitação de ícones e o desenvolvedor tentará incluir os ícones solicitados.</string>
+    <string name="mint_icon_request_deselect_all">Desmarcar tudo</string>
+    <string name="mint_icon_request_header">Solicitação de ícones</string>
+    <string name="mint_icon_request_limit_reached">Limite de solicitações atingido</string>
+    <string name="mint_icon_request_loading">Carregando apps…</string>
+    <string name="mint_icon_request_no_apps">Todos os apps têm tema!</string>
+    <string name="mint_icon_request_no_apps_desc">Nenhum ícone faltando encontrado</string>
+    <string name="mint_icon_request_preparing">Preparando solicitação…</string>
+    <string name="mint_icon_request_request">solicitação</string>
+    <string name="mint_icon_request_select_all">Selecionar tudo</string>
+    <string name="mint_icon_request_send">Enviar</string>
+    <string name="mint_icon_request_sent">Solicitação enviada: %d ícones</string>
+    <string name="mint_icon_request_title">Solicitação de Ícones</string>
+    <string name="mint_icon_request_total">Total</string>
+    <string name="mint_icon_request_used">Usado</string>
+    <string name="mint_icons_close">Fechar</string>
+    <string name="mint_icons_no_favorites">Sem favoritos ainda</string>
+    <string name="mint_icons_no_results">Nenhum ícone encontrado</string>
+    <string name="mint_icons_search">Buscar ícones…</string>
+    <string name="mint_icons_title">Pré-visualização</string>
+    <string name="mint_more_apps_install">Instalar</string>
+    <string name="mint_more_apps_title">MAIS APLICATIVOS</string>
+    <string name="mint_notifications_empty">Nenhuma notificação ainda</string>
+    <string name="mint_notifications_history">Histórico de notificações</string>
+    <string name="mint_notifications_title">Notificações</string>
+    <string name="mint_premium_dialog_buy">Comprar</string>
+    <string name="mint_premium_dialog_close">Fechar</string>
+    <string name="mint_premium_dialog_title">Solicitações Premium</string>
+    <string name="mint_premium_purchase_success">Compra bem-sucedida! %d solicitações adicionadas.</string>
+    <string name="mint_settings_appearance">APARÊNCIA</string>
+    <string name="mint_settings_cache_cleared">Cache limpo!</string>
+    <string name="mint_settings_cancel">Cancelar</string>
+    <string name="mint_settings_check_update">Verifique se há atualizações</string>
+    <string name="mint_settings_check_update_desc">Procure uma nova versão</string>
+    <string name="mint_settings_checking_update">Verificando atualizações...</string>
+    <string name="mint_settings_clear">Limpar</string>
+    <string name="mint_settings_clear_cache">Limpar cache de ícones</string>
+    <string name="mint_settings_clear_cache_confirm">O cache será limpo. Os ícones serão recarregados na próxima vez.</string>
+    <string name="mint_settings_clear_cache_desc">Liberar memória</string>
+    <string name="mint_settings_data">DADOS</string>
+    <string name="mint_settings_info">INFORMAÇÕES</string>
+    <string name="mint_settings_language">Idioma</string>
+    <string name="mint_settings_notifications">Notificações push</string>
+    <string name="mint_settings_notifications_desc">Receba notícias e atualizações</string>
+    <string name="mint_settings_notifications_section">NOTIFICAÇÕES</string>
+    <string name="mint_settings_package">Pacote</string>
+    <string name="mint_settings_privacy">Política de privacidade</string>
+    <string name="mint_settings_privacy_desc">Ver política de privacidade</string>
+    <string name="mint_settings_select_language">Selecionar idioma</string>
+    <string name="mint_settings_select_theme">Selecionar tema</string>
+    <string name="mint_settings_theme">Tema</string>
+    <string name="mint_settings_theme_dark">Escuro</string>
+    <string name="mint_settings_theme_light">Claro</string>
+    <string name="mint_settings_theme_system">Sistema</string>
+    <string name="mint_settings_title">Configurações</string>
+    <string name="mint_settings_up_to_date">Você tem a versão mais recente</string>
+    <string name="mint_settings_update_available">Atualização disponível</string>
+    <string name="mint_settings_update_failed">Não foi possível verificar atualizações</string>
+    <string name="mint_settings_version">Versão</string>
+    <string name="mint_settings_whats_new">O que há de novo</string>
+    <string name="mint_tab_icons">Ícones</string>
+    <string name="mint_tab_settings">Configurações</string>
+    <string name="mint_tab_wallpapers">Papéis</string>
+    <string name="mint_tab_widgets">Widgets</string>
+    <string name="mint_wallpapers_applied">Papel aplicado!</string>
+    <string name="mint_wallpapers_applied_both">Aplicado a ambas as telas</string>
+    <string name="mint_wallpapers_applied_home">Aplicado à tela inicial</string>
+    <string name="mint_wallpapers_applied_lock">Aplicado à tela de bloqueio</string>
+    <string name="mint_wallpapers_apply">Aplicar</string>
+    <string name="mint_wallpapers_author_label">Autor</string>
+    <string name="mint_wallpapers_both_screens">Ambas as telas</string>
+    <string name="mint_wallpapers_close">Fechar</string>
+    <string name="mint_wallpapers_dimensions_label">Dimensões</string>
+    <string name="mint_wallpapers_download_started">Download iniciado</string>
+    <string name="mint_wallpapers_downloading">Baixando papel de parede...</string>
+    <string name="mint_wallpapers_empty">Nenhum papel disponível</string>
+    <string name="mint_wallpapers_empty_hint">Configure cloudWallpapersUrl no MintConfig</string>
+    <string name="mint_wallpapers_failed">Falha ao aplicar papel</string>
+    <string name="mint_wallpapers_home_screen">Tela inicial</string>
+    <string name="mint_wallpapers_info">Informações do papel de parede</string>
+    <string name="mint_wallpapers_loading">Carregando papéis de parede...</string>
+    <string name="mint_wallpapers_lock_screen">Tela de bloqueio</string>
+    <string name="mint_wallpapers_name_label">Nome</string>
+    <string name="mint_wallpapers_not_downloadable">Este papel de parede não pode ser baixado</string>
+    <string name="mint_wallpapers_retry">Tentar novamente</string>
+    <string name="mint_wallpapers_title">Papéis de parede</string>
+    <string name="mint_widgets_apply">Aplicar</string>
+    <string name="mint_widgets_empty">Nenhum widget disponível</string>
+    <string name="missing_apps">%d aplicativos ausentes</string>
+    <string msgid="542007171693138492" name="navigation_menu">"Menu de navegação"</string>
+    <string name="no_icons_available">Nenhum ícone disponível</string>
+    <string name="no_icons_found">Nenhum resultado encontrado</string>
+    <string name="no_icons_message">Este pacote não contém ícones ou eles não puderam ser carregados corretamente</string>
+    <string msgid="6610465462668679431" name="not_selected">"Não selecionado"</string>
+    <string name="premium_request_consume_failed">Falha ao consumir crédito premium. Enviando como solicitação normal.</string>
+    <string name="premium_request_sent">Solicitação de prêmio enviada e crédito consumido.</string>
+    <string msgid="5941395253238309765" name="range_end">"Fim do intervalo"</string>
+    <string msgid="7097486360902471446" name="range_start">"Início do intervalo"</string>
+    <string name="request_section_desc">Não consegue encontrar o ícone que você precisa? Solicite aqui</string>
+    <string name="request_section_title">Ícones de solicitação</string>
+    <string name="search_icons_hint">Pesquisar ícones...</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"Pesquisar"</string>
+    <string msgid="6043586758067023" name="selected">"Selecionado"</string>
+    <string name="settings_screen_title">Configurações</string>
+    <string msgid="4139871816613051306" name="state_empty">"Vazio"</string>
+    <string msgid="5834637030682409883" name="state_off">"Desativado"</string>
+    <string msgid="1490883874751719580" name="state_on">"Ativado"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="2561197295334830845" name="switch_role">"Chave"</string>
+    <string msgid="1672349317127674378" name="tab">"Guia"</string>
+    <string msgid="5946805113151406391" name="template_percent">"<ns1:g id="PERCENTAGE">%1$d</ns1:g>%%"</string>
+    <string name="themed_apps">%d aplicativos temáticos</string>
+    <string msgid="3765533235322692011" name="tooltip_description">"dica"</string>
+    <string msgid="3124740595719787496" name="tooltip_label">"mostrar dica"</string>
+    <string name="total_apps_installed">Total de %d aplicativos instalados</string>
+    <string name="try_another_search">Tente outra pesquisa</string>
+    <string name="wallpapers_section_desc">Descubra papéis de parede que combinam perfeitamente com seus ícones</string>
+    <string name="wallpapers_section_title">Papéis de parede</string>
+</resources>

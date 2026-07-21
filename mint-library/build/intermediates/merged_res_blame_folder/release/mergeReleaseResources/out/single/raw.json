@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "com.akustom15.mint.library.mint-library-release-75:/raw/com_android_billingclient_heterodyne_info",
+        "source": "com.akustom15.mint.library.mint-library-jetified-billing-7.1.1-67:/raw/com_android_billingclient_heterodyne_info"
+    },
+    {
+        "merged": "com.akustom15.mint.library.mint-library-release-75:/raw/new_notification_011.mp3",
+        "source": "com.akustom15.mint.library.mint-library-main-76:/raw/new_notification_011.mp3"
+    },
+    {
+        "merged": "com.akustom15.mint.library.mint-library-release-75:/raw/com_android_billingclient_registration_info.binarypb",
+        "source": "com.akustom15.mint.library.mint-library-jetified-billing-7.1.1-67:/raw/com_android_billingclient_registration_info.binarypb"
+    },
+    {
+        "merged": "com.akustom15.mint.library.mint-library-release-75:/raw/firebase_common_keep.xml",
+        "source": "com.akustom15.mint.library.mint-library-jetified-firebase-common-21.0.0-60:/raw/firebase_common_keep.xml"
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.akustom15.mint.library.mint-library-release-75:/color-night-v8/material_timepicker_modebutton_tint.xml",
+        "source": "com.akustom15.mint.library.mint-library-material-1.12.0-54:/color-night-v8/material_timepicker_modebutton_tint.xml"
+    },
+    {
+        "merged": "com.akustom15.mint.library.mint-library-release-75:/color-night-v8/material_timepicker_clockface.xml",
+        "source": "com.akustom15.mint.library.mint-library-material-1.12.0-54:/color-night-v8/material_timepicker_clockface.xml"
+    },
+    {
+        "merged": "com.akustom15.mint.library.mint-library-release-75:/color-night-v8/material_timepicker_button_stroke.xml",
+        "source": "com.akustom15.mint.library.mint-library-material-1.12.0-54:/color-night-v8/material_timepicker_button_stroke.xml"
+    }
+]

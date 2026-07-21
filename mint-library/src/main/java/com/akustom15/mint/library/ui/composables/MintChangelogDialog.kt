@@ -23,6 +23,7 @@ import androidx.compose.ui.window.DialogProperties
 import com.akustom15.mint.library.config.MintConfig
 import com.akustom15.mint.library.ui.theme.LocalLiquidGlassColors
 import com.akustom15.mint.library.ui.theme.MintColors
+import com.akustom15.mint.library.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.delay
 
@@ -137,7 +138,7 @@ fun MintChangelogDialog(config: MintConfig, onShowChange: (Boolean) -> Unit = {}
 
                         // Descripción con versión — igual al proyecto viejo
                         Text(
-                            text = stringResource(R.string.mint_update_desc, appName, versionName),
+                            text = stringResource(R.string.mint_update_desc, config.appName, versionName),
                             fontSize = 14.sp,
                             color = liquidColors.textPrimary,
                             textAlign = TextAlign.Center,
