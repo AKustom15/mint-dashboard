@@ -87,21 +87,23 @@ fun MintRatingDialog(
             decorFitsSystemWindows = false
         )
     ) {
+
         CompositionLocalProvider(
             LocalContext provides context,
             LocalConfiguration provides configuration
         ) {
-            Box(
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .clickable { onDismiss() },
+            contentAlignment = Alignment.Center
+        ) {
+            FrostedGlassDialogCard(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .clickable { onDismiss() },
-                contentAlignment = Alignment.Center
+                    .padding(horizontal = 24.dp)
+                    .clickable(enabled = false) {}
             ) {
-                FrostedGlassDialogCard(
-                    modifier = Modifier
-                        .padding(horizontal = 24.dp)
-                        .clickable(enabled = false) {}
-                ) {
                 Column(
                     modifier = Modifier.padding(28.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -280,7 +282,6 @@ fun MintRatingDialog(
     
 
         }
-            }
-        }
+
     }
 }

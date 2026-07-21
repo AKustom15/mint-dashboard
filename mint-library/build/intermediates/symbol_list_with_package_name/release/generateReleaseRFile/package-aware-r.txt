@@ -98,6 +98,7 @@ string mint_tab_wallpapers
 string mint_tab_widgets
 string mint_update_btn_later
 string mint_update_btn_update
+string mint_update_closing_in
 string mint_update_desc
 string mint_update_title
 string mint_wallpapers_applied

@@ -243,6 +243,7 @@
     <string name="mint_tab_widgets">Widgets</string>
     <string name="mint_update_btn_later">LUEGO</string>
     <string name="mint_update_btn_update">ACTUALIZAR</string>
+    <string name="mint_update_closing_in">⏱ Se cerrará en: %d segundos</string>
     <string name="mint_update_desc">%1$s %2$s está listo para descargar con nuevos iconos y mejoras.</string>
     <string name="mint_update_title">🚀 Nueva Actualización Disponible</string>
     <string name="mint_wallpapers_applied">¡Fondo aplicado!</string>

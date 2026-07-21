@@ -97,6 +97,7 @@ int string mint_tab_wallpapers 0x0
 int string mint_tab_widgets 0x0
 int string mint_update_btn_later 0x0
 int string mint_update_btn_update 0x0
+int string mint_update_closing_in 0x0
 int string mint_update_desc 0x0
 int string mint_update_title 0x0
 int string mint_wallpapers_applied 0x0
