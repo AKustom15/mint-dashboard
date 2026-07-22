@@ -68,14 +68,48 @@ object IconPackManager {
         }
     }
 
+    private val EXCLUDED_ICONS = setOf("icon_back", "icon_mask", "icon_upon", "icon_base")
+
     private fun loadDrawableIcons(context: Context): Pair<Int, List<String>> {
+        val packageName = context.packageName
+        val resources = context.resources
+        val iconNames = mutableSetOf<String>()
+
         try {
-            val names = AppFilterCache.getIconNames(context).distinct().shuffled()
-            return Pair(names.size, names)
+            val resId = resources.getIdentifier("drawable", "xml", packageName)
+            if (resId != 0) {
+                val parser = resources.getXml(resId)
+                var eventType = parser.eventType
+                while (eventType != XmlPullParser.END_DOCUMENT) {
+                    if (eventType == XmlPullParser.START_TAG && parser.name == "item") {
+                        val drawable = parser.getAttributeValue(null, "drawable")
+                        if (drawable != null && drawable.startsWith("icon_") && !EXCLUDED_ICONS.contains(drawable)) {
+                            iconNames.add(drawable)
+                        }
+                    }
+                    eventType = parser.next()
+                }
+                parser.close()
+            }
         } catch (e: Exception) {
-            Log.e("IconPackManager", "Error loading drawables from appfilter: ${e.message}", e)
-            return Pair(0, emptyList())
+            Log.e("IconPackManager", "Error parsing res/xml/drawable.xml: ${e.message}", e)
         }
+
+        if (iconNames.isEmpty()) {
+            try {
+                AppFilterCache.getIconNames(context)
+                    .filter { it.startsWith("icon_") && !EXCLUDED_ICONS.contains(it) }
+                    .forEach { iconNames.add(it) }
+            } catch (e: Exception) {
+                Log.e("IconPackManager", "Error loading from appfilter fallback: ${e.message}", e)
+            }
+        }
+
+        val validNames = iconNames.filter { name ->
+            resources.getIdentifier(name, "drawable", packageName) != 0
+        }.shuffled()
+
+        return Pair(validNames.size, validNames)
     }
 
     private fun countInstalledAndThemed(context: Context) {
