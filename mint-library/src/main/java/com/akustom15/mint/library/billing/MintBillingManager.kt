@@ -107,8 +107,9 @@ class MintBillingManager(
             .setProductList(productList)
             .build()
 
-        billingClient.queryProductDetailsAsync(params) { billingResult, productDetailsList ->
+        billingClient.queryProductDetailsAsync(params) { billingResult, queryProductDetailsResult ->
             if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
+                val productDetailsList = queryProductDetailsResult.productDetailsList
                 Log.d(TAG, "Available products: ${productDetailsList.size}")
                 productDetailsList.forEach { details ->
                     Log.d(TAG, "  - ${details.productId}: ${details.oneTimePurchaseOfferDetails?.formattedPrice}")
@@ -137,7 +138,8 @@ class MintBillingManager(
             .setProductList(productList)
             .build()
 
-        billingClient.queryProductDetailsAsync(params) { billingResult, productDetailsList ->
+        billingClient.queryProductDetailsAsync(params) { billingResult, queryProductDetailsResult ->
+            val productDetailsList = queryProductDetailsResult.productDetailsList
             if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && productDetailsList.isNotEmpty()) {
                 val productDetails = productDetailsList[0]
                 val flowParams = BillingFlowParams.newBuilder()
