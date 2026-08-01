@@ -54,7 +54,7 @@ class IconPackProvider : ContentProvider() {
                                 if (drawable != null && drawable.startsWith("icon_") && addedNames.add(drawable)) {
                                     val iconResId = resources.getIdentifier(drawable, "drawable", packageName)
                                     if (iconResId != 0) {
-                                        cursor.addRow(arrayOf(drawable, iconResId))
+                                        cursor.addRow(arrayOf<Any>(drawable, iconResId))
                                     }
                                 }
                             }
@@ -74,7 +74,7 @@ class IconPackProvider : ContentProvider() {
                                 if (drawable != null && drawable.startsWith("icon_") && addedNames.add(drawable)) {
                                     val iconResId = resources.getIdentifier(drawable, "drawable", packageName)
                                     if (iconResId != 0) {
-                                        cursor.addRow(arrayOf(drawable, iconResId))
+                                        cursor.addRow(arrayOf<Any>(drawable, iconResId))
                                     }
                                 }
                             }
