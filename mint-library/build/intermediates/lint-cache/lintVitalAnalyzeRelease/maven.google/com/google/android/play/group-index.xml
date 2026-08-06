@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <com.google.android.play>
   <age-signals versions="0.0.1-beta01,0.0.1-beta02,0.0.1,0.0.2,0.0.3,0.0.4"/>
-  <ai-delivery versions="0.1.0-alpha01,0.1.1-alpha01"/>
+  <ai-delivery versions="0.1.0-alpha01,0.1.1-alpha01,0.2.0-beta01"/>
   <app-update versions="2.0.0,2.0.1,2.1.0"/>
   <app-update-ktx versions="2.0.0,2.0.1,2.1.0"/>
   <asset-delivery versions="2.0.0,2.0.1,2.0.2,2.1.0,2.2.0,2.2.1,2.2.2,2.3.0"/>

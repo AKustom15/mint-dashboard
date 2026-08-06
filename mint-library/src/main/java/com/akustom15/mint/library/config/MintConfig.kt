@@ -95,6 +95,11 @@ data class MintConfig(
     val youtubeUrl: String = "",
     val facebookUrl: String = "",
     val telegramUrl: String = "",
+    val tiktokUrl: String = "",
+    val threadsUrl: String = "",
+
+    // Social Icons Options
+    val useOriginalSocialIconColors: Boolean = false,
 
     // Social Icons (resource IDs from consumer app)
     @DrawableRes val xIcon: Int = android.R.drawable.ic_menu_send,
@@ -102,6 +107,8 @@ data class MintConfig(
     @DrawableRes val youtubeIcon: Int = android.R.drawable.ic_media_play,
     @DrawableRes val facebookIcon: Int = android.R.drawable.ic_menu_share,
     @DrawableRes val telegramIcon: Int = android.R.drawable.ic_menu_send,
+    @DrawableRes val tiktokIcon: Int = android.R.drawable.ic_media_play,
+    @DrawableRes val threadsIcon: Int = android.R.drawable.ic_menu_send,
 
     // Icon Request
     val iconRequestEmail: String = "",

@@ -4,6 +4,7 @@ import android.widget.Toast
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -21,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
@@ -401,7 +403,8 @@ fun SettingsScreen(
 
                 val hasSocials = config.developerWebsite.isNotEmpty() || config.xUrl.isNotEmpty() || 
                                  config.instagramUrl.isNotEmpty() || config.youtubeUrl.isNotEmpty() || 
-                                 config.facebookUrl.isNotEmpty() || config.telegramUrl.isNotEmpty()
+                                 config.facebookUrl.isNotEmpty() || config.telegramUrl.isNotEmpty() ||
+                                 config.tiktokUrl.isNotEmpty() || config.threadsUrl.isNotEmpty()
                 
                 if (hasSocials) {
                     DeveloperSocialsCard(config = config, uriHandler = uriHandler)
@@ -699,8 +702,12 @@ private fun DeveloperSocialsCard(
             )
             Spacer(modifier = Modifier.height(12.dp))
             
+            val iconTint = if (config.useOriginalSocialIconColors) Color.Unspecified else MintColors.Primary
+            
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .horizontalScroll(rememberScrollState()),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 if (config.developerWebsite.isNotEmpty()) {
@@ -711,7 +718,7 @@ private fun DeveloperSocialsCard(
                         Icon(
                             imageVector = Icons.Default.Language,
                             contentDescription = "Website",
-                            tint = MintColors.Primary
+                            tint = iconTint
                         )
                     }
                 }
@@ -723,7 +730,7 @@ private fun DeveloperSocialsCard(
                         Icon(
                             painter = androidx.compose.ui.res.painterResource(id = config.xIcon),
                             contentDescription = "X",
-                            tint = MintColors.Primary
+                            tint = iconTint
                         )
                     }
                 }
@@ -735,7 +742,7 @@ private fun DeveloperSocialsCard(
                         Icon(
                             painter = androidx.compose.ui.res.painterResource(id = config.instagramIcon),
                             contentDescription = "Instagram",
-                            tint = MintColors.Primary
+                            tint = iconTint
                         )
                     }
                 }
@@ -747,7 +754,55 @@ private fun DeveloperSocialsCard(
                         Icon(
                             painter = androidx.compose.ui.res.painterResource(id = config.youtubeIcon),
                             contentDescription = "YouTube",
-                            tint = MintColors.Primary
+                            tint = iconTint
+                        )
+                    }
+                }
+                if (config.facebookUrl.isNotEmpty()) {
+                    IconButton(
+                        onClick = { uriHandler.openUri(config.facebookUrl) },
+                        modifier = Modifier.size(40.dp)
+                    ) {
+                        Icon(
+                            painter = androidx.compose.ui.res.painterResource(id = config.facebookIcon),
+                            contentDescription = "Facebook",
+                            tint = iconTint
+                        )
+                    }
+                }
+                if (config.telegramUrl.isNotEmpty()) {
+                    IconButton(
+                        onClick = { uriHandler.openUri(config.telegramUrl) },
+                        modifier = Modifier.size(40.dp)
+                    ) {
+                        Icon(
+                            painter = androidx.compose.ui.res.painterResource(id = config.telegramIcon),
+                            contentDescription = "Telegram",
+                            tint = iconTint
+                        )
+                    }
+                }
+                if (config.tiktokUrl.isNotEmpty()) {
+                    IconButton(
+                        onClick = { uriHandler.openUri(config.tiktokUrl) },
+                        modifier = Modifier.size(40.dp)
+                    ) {
+                        Icon(
+                            painter = androidx.compose.ui.res.painterResource(id = config.tiktokIcon),
+                            contentDescription = "TikTok",
+                            tint = iconTint
+                        )
+                    }
+                }
+                if (config.threadsUrl.isNotEmpty()) {
+                    IconButton(
+                        onClick = { uriHandler.openUri(config.threadsUrl) },
+                        modifier = Modifier.size(40.dp)
+                    ) {
+                        Icon(
+                            painter = androidx.compose.ui.res.painterResource(id = config.threadsIcon),
+                            contentDescription = "Threads",
+                            tint = iconTint
                         )
                     }
                 }
