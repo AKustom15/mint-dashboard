@@ -128,4 +128,6 @@
     <string name="mint_update_btn_later">LUEGO</string>
     <string name="mint_update_btn_update">ACTUALIZAR</string>
     <string name="mint_update_closing_in">⏱ Se cerrará en: %d segundos</string>
+    <string name="mint_open_link">Abrir Enlace</string>
+    <string name="mint_settings_developer">Redes y Web</string>
 </resources>

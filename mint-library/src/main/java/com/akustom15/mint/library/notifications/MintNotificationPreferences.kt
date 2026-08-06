@@ -55,7 +55,7 @@ class MintNotificationPreferences private constructor(context: Context) {
     /**
      * Save a notification to history. Keeps the last [MAX_HISTORY] items.
      */
-    fun saveNotification(title: String, body: String, imageUrl: String? = null) {
+    fun saveNotification(title: String, body: String, imageUrl: String? = null, link: String? = null) {
         val history = getHistoryJson()
         val entry = JSONObject().apply {
             put("id", UUID.randomUUID().toString())
@@ -65,6 +65,9 @@ class MintNotificationPreferences private constructor(context: Context) {
             put("isRead", false)
             if (!imageUrl.isNullOrBlank()) {
                 put("imageUrl", imageUrl)
+            }
+            if (!link.isNullOrBlank()) {
+                put("link", link)
             }
         }
         history.put(entry)
@@ -104,7 +107,8 @@ class MintNotificationPreferences private constructor(context: Context) {
                     body = obj.optString("body", ""),
                     timestamp = obj.optLong("timestamp", 0L),
                     isRead = obj.optBoolean("isRead", false),
-                    imageUrl = if (obj.has("imageUrl")) obj.optString("imageUrl") else null
+                    imageUrl = if (obj.has("imageUrl")) obj.optString("imageUrl") else null,
+                    link = if (obj.has("link")) obj.optString("link") else null
                 )
             )
         }
@@ -190,5 +194,6 @@ data class NotificationItem(
     val body: String,
     val timestamp: Long,
     var isRead: Boolean = false,
-    val imageUrl: String? = null
+    val imageUrl: String? = null,
+    val link: String? = null
 )

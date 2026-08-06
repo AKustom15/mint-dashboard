@@ -163,4 +163,6 @@
     <string name="icon_request_limit">%d 个请求</string>
     <string name="icon_request_available">可用的</string>
     <string name="icon_request_used">用过的</string>
+    <string name="mint_open_link">打开链接</string>
+    <string name="mint_settings_developer">社交 / 网站</string>
 </resources>

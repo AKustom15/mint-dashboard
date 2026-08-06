@@ -163,4 +163,6 @@
     <string name="icon_request_limit">%d solicitações</string>
     <string name="icon_request_available">Disponível</string>
     <string name="icon_request_used">Usado</string>
+    <string name="mint_open_link">Abrir Link</string>
+    <string name="mint_settings_developer">Social / Web</string>
 </resources>

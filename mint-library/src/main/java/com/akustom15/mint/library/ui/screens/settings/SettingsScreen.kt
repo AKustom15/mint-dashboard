@@ -12,6 +12,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -395,6 +397,14 @@ fun SettingsScreen(
                     )
                 }
 
+                val hasSocials = config.developerWebsite.isNotEmpty() || config.xUrl.isNotEmpty() || 
+                                 config.instagramUrl.isNotEmpty() || config.youtubeUrl.isNotEmpty() || 
+                                 config.facebookUrl.isNotEmpty() || config.telegramUrl.isNotEmpty()
+                
+                if (hasSocials) {
+                    DeveloperSocialsCard(config = config, uriHandler = uriHandler)
+                }
+
                 val versionText = remember(context) {
                     try {
                         val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
@@ -657,6 +667,88 @@ private fun SettingsItem(
                     fontSize = 13.sp,
                     color = liquidColors.textSecondary
                 )
+            }
+        }
+    }
+}
+
+@Composable
+private fun DeveloperSocialsCard(
+    config: com.akustom15.mint.library.config.MintConfig,
+    uriHandler: androidx.compose.ui.platform.UriHandler
+) {
+    val liquidColors = LocalLiquidGlassColors.current
+
+    LiquidGlassCard(
+        modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
+        shape = RoundedCornerShape(16.dp),
+        onClick = {}
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp, vertical = 16.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.mint_settings_developer),
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 16.sp,
+                color = liquidColors.textPrimary
+            )
+            Spacer(modifier = Modifier.height(12.dp))
+            
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                if (config.developerWebsite.isNotEmpty()) {
+                    IconButton(
+                        onClick = { uriHandler.openUri(config.developerWebsite) },
+                        modifier = Modifier.size(40.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Language,
+                            contentDescription = "Website",
+                            tint = MintColors.Primary
+                        )
+                    }
+                }
+                if (config.xUrl.isNotEmpty()) {
+                    IconButton(
+                        onClick = { uriHandler.openUri(config.xUrl) },
+                        modifier = Modifier.size(40.dp)
+                    ) {
+                        Icon(
+                            painter = androidx.compose.ui.res.painterResource(id = config.xIcon),
+                            contentDescription = "X",
+                            tint = MintColors.Primary
+                        )
+                    }
+                }
+                if (config.instagramUrl.isNotEmpty()) {
+                    IconButton(
+                        onClick = { uriHandler.openUri(config.instagramUrl) },
+                        modifier = Modifier.size(40.dp)
+                    ) {
+                        Icon(
+                            painter = androidx.compose.ui.res.painterResource(id = config.instagramIcon),
+                            contentDescription = "Instagram",
+                            tint = MintColors.Primary
+                        )
+                    }
+                }
+                if (config.youtubeUrl.isNotEmpty()) {
+                    IconButton(
+                        onClick = { uriHandler.openUri(config.youtubeUrl) },
+                        modifier = Modifier.size(40.dp)
+                    ) {
+                        Icon(
+                            painter = androidx.compose.ui.res.painterResource(id = config.youtubeIcon),
+                            contentDescription = "YouTube",
+                            tint = MintColors.Primary
+                        )
+                    }
+                }
             }
         }
     }

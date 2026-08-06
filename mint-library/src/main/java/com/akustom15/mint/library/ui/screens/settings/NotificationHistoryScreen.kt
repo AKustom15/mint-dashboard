@@ -25,6 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -55,6 +56,7 @@ fun NotificationHistoryScreen(
     val prefs = remember { MintNotificationPreferences.getInstance(context) }
     var notifications by remember { mutableStateOf(prefs.getNotificationHistory()) }
     var selectedNotification by remember { mutableStateOf<NotificationItem?>(null) }
+    val uriHandler = LocalUriHandler.current
     
     val unreadCount = notifications.count { !it.isRead }
 
@@ -234,6 +236,19 @@ fun NotificationHistoryScreen(
                                     modifier = Modifier.fillMaxWidth(),
                                     horizontalArrangement = Arrangement.End
                                 ) {
+                                    if (!notif.link.isNullOrBlank()) {
+                                        TextButton(
+                                            onClick = {
+                                                try {
+                                                    uriHandler.openUri(notif.link)
+                                                } catch (e: Exception) {
+                                                    e.printStackTrace()
+                                                }
+                                            }
+                                        ) {
+                                            Text(stringResource(R.string.mint_open_link), color = MintColors.Primary, fontWeight = FontWeight.Bold)
+                                        }
+                                    }
                                     TextButton(onClick = { selectedNotification = null }) {
                                         Text("OK", color = MintColors.Primary, fontWeight = FontWeight.Bold)
                                     }
