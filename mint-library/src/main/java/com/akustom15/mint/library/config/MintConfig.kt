@@ -102,6 +102,7 @@ data class MintConfig(
     val useOriginalSocialIconColors: Boolean = false,
 
     // Social Icons (resource IDs from consumer app)
+    @DrawableRes val websiteIcon: Int = android.R.drawable.ic_menu_info_details,
     @DrawableRes val xIcon: Int = android.R.drawable.ic_menu_send,
     @DrawableRes val instagramIcon: Int = android.R.drawable.ic_menu_camera,
     @DrawableRes val youtubeIcon: Int = android.R.drawable.ic_media_play,

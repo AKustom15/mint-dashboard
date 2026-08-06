@@ -716,7 +716,7 @@ private fun DeveloperSocialsCard(
                         modifier = Modifier.size(40.dp)
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Language,
+                            painter = androidx.compose.ui.res.painterResource(id = config.websiteIcon),
                             contentDescription = "Website",
                             tint = iconTint
                         )
