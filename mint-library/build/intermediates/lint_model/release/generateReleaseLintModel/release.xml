@@ -27,6 +27,6 @@
       applicationId="com.akustom15.mint.library"
       generatedSourceFolders="build\generated\ap_generated_sources\release\out;build\generated\source\buildConfig\release"
       generatedResourceFolders="build\generated\res\resValues\release"
-      desugaredMethodsFiles="C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\e51d056793573db39aaf626677ab4354\transformed\D8BackportedDesugaredMethods.txt">
+      desugaredMethodsFiles="C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\1532ed06f0081680877c970c367c1631\transformed\D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>

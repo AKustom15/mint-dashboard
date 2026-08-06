@@ -85,6 +85,7 @@
     <string name="mint_notifications_empty">还没有通知</string>
     <string name="mint_notifications_history">通知历史记录</string>
     <string name="mint_notifications_title">通知</string>
+    <string name="mint_open_link">打开链接</string>
     <string name="mint_premium_dialog_buy">购买</string>
     <string name="mint_premium_dialog_close">关闭</string>
     <string name="mint_premium_dialog_title">高级图标请求</string>
@@ -100,6 +101,7 @@
     <string name="mint_settings_clear_cache_confirm">将清除图标缓存。下次将重新加载图标。</string>
     <string name="mint_settings_clear_cache_desc">释放内存</string>
     <string name="mint_settings_data">数据</string>
+    <string name="mint_settings_developer">社交 / 网站</string>
     <string name="mint_settings_info">信息</string>
     <string name="mint_settings_language">语言</string>
     <string name="mint_settings_notifications">推送通知</string>

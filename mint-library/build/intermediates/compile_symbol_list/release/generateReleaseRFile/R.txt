@@ -45,6 +45,7 @@ int string mint_more_apps_title 0x0
 int string mint_notifications_empty 0x0
 int string mint_notifications_history 0x0
 int string mint_notifications_title 0x0
+int string mint_open_link 0x0
 int string mint_premium_dialog_buy 0x0
 int string mint_premium_dialog_close 0x0
 int string mint_premium_dialog_title 0x0
@@ -71,6 +72,7 @@ int string mint_settings_clear_cache 0x0
 int string mint_settings_clear_cache_confirm 0x0
 int string mint_settings_clear_cache_desc 0x0
 int string mint_settings_data 0x0
+int string mint_settings_developer 0x0
 int string mint_settings_info 0x0
 int string mint_settings_language 0x0
 int string mint_settings_notifications 0x0

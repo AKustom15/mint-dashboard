@@ -191,6 +191,7 @@
     <string name="mint_notifications_empty">Aún no hay notificaciones</string>
     <string name="mint_notifications_history">Historial de notificaciones</string>
     <string name="mint_notifications_title">Notificaciones</string>
+    <string name="mint_open_link">Abrir Enlace</string>
     <string name="mint_premium_dialog_buy">Comprar</string>
     <string name="mint_premium_dialog_close">Cerrar</string>
     <string name="mint_premium_dialog_title">Solicitudes Premium</string>
@@ -217,6 +218,7 @@
     <string name="mint_settings_clear_cache_confirm">Se limpiará la caché de la app y se recargarán los datos remotos.</string>
     <string name="mint_settings_clear_cache_desc">Liberar memoria e internet</string>
     <string name="mint_settings_data">DATOS</string>
+    <string name="mint_settings_developer">Redes y Web</string>
     <string name="mint_settings_info">INFORMACIÓN</string>
     <string name="mint_settings_language">Idioma</string>
     <string name="mint_settings_notifications">Notificaciones push</string>

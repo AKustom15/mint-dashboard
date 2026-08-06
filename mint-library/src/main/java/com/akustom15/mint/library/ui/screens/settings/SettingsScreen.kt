@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -58,6 +59,7 @@ fun SettingsScreen(
     val liquidColors = LocalLiquidGlassColors.current
     val preferences = remember { MintPreferences.getInstance(context) }
     val notificationPrefs = remember { MintNotificationPreferences.getInstance(context) }
+    val uriHandler = LocalUriHandler.current
 
     val appLanguage by preferences.appLanguage.collectAsState()
     val themeMode by preferences.themeMode.collectAsState()

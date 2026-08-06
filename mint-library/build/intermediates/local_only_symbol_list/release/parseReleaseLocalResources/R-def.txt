@@ -47,6 +47,7 @@ string mint_more_apps_title
 string mint_notifications_empty
 string mint_notifications_history
 string mint_notifications_title
+string mint_open_link
 string mint_premium_dialog_buy
 string mint_premium_dialog_close
 string mint_premium_dialog_title
@@ -73,6 +74,7 @@ string mint_settings_clear_cache
 string mint_settings_clear_cache_confirm
 string mint_settings_clear_cache_desc
 string mint_settings_data
+string mint_settings_developer
 string mint_settings_info
 string mint_settings_language
 string mint_settings_notifications

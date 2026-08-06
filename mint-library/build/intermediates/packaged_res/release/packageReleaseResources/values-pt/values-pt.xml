@@ -85,6 +85,7 @@
     <string name="mint_notifications_empty">Nenhuma notificação ainda</string>
     <string name="mint_notifications_history">Histórico de notificações</string>
     <string name="mint_notifications_title">Notificações</string>
+    <string name="mint_open_link">Abrir Link</string>
     <string name="mint_premium_dialog_buy">Comprar</string>
     <string name="mint_premium_dialog_close">Fechar</string>
     <string name="mint_premium_dialog_title">Solicitações Premium</string>
@@ -100,6 +101,7 @@
     <string name="mint_settings_clear_cache_confirm">O cache será limpo. Os ícones serão recarregados na próxima vez.</string>
     <string name="mint_settings_clear_cache_desc">Liberar memória</string>
     <string name="mint_settings_data">DADOS</string>
+    <string name="mint_settings_developer">Social / Web</string>
     <string name="mint_settings_info">INFORMAÇÕES</string>
     <string name="mint_settings_language">Idioma</string>
     <string name="mint_settings_notifications">Notificações push</string>

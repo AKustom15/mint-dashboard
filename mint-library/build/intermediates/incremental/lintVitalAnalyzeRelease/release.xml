@@ -7,7 +7,7 @@
     proguardFiles="build\intermediates\default_proguard_files\global\proguard-android-optimize.txt-8.9.1;proguard-rules.pro"
     consumerProguardFiles="consumer-rules.pro"
     partialResultsDir="build\intermediates\lint_vital_partial_results\release\lintVitalAnalyzeRelease\out"
-    desugaredMethodsFiles="C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\e51d056793573db39aaf626677ab4354\transformed\D8BackportedDesugaredMethods.txt">
+    desugaredMethodsFiles="C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\1532ed06f0081680877c970c367c1631\transformed\D8BackportedDesugaredMethods.txt">
   <buildFeatures
       namespacing="REQUIRED"/>
   <sourceProviders>
@@ -27,6 +27,6 @@
       applicationId="com.akustom15.mint.library"
       generatedSourceFolders="build\generated\ap_generated_sources\release\out;build\generated\source\buildConfig\release"
       generatedResourceFolders="build\generated\res\resValues\release"
-      desugaredMethodsFiles="C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\e51d056793573db39aaf626677ab4354\transformed\D8BackportedDesugaredMethods.txt">
+      desugaredMethodsFiles="C:\Users\Rainerc\.gradle\caches\8.11.1\transforms\1532ed06f0081680877c970c367c1631\transformed\D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>

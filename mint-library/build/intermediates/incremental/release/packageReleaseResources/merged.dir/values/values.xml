@@ -45,6 +45,7 @@
     <string name="mint_notifications_empty">No notifications yet</string>
     <string name="mint_notifications_history">Notification history</string>
     <string name="mint_notifications_title">Notifications</string>
+    <string name="mint_open_link">Open Link</string>
     <string name="mint_premium_dialog_buy">Buy</string>
     <string name="mint_premium_dialog_close">Close</string>
     <string name="mint_premium_dialog_title">Premium Icon Requests</string>
@@ -71,6 +72,7 @@
     <string name="mint_settings_clear_cache_confirm">This will clear the app cache and reload remote configurations.</string>
     <string name="mint_settings_clear_cache_desc">Clear app and internet cache</string>
     <string name="mint_settings_data">DATA</string>
+    <string name="mint_settings_developer">Social / Web</string>
     <string name="mint_settings_info">INFO</string>
     <string name="mint_settings_language">Language</string>
     <string name="mint_settings_notifications">Push Notifications</string>
