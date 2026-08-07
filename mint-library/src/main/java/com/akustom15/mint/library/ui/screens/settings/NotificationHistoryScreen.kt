@@ -16,6 +16,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.DeleteSweep
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -234,23 +235,48 @@ fun NotificationHistoryScreen(
                                 
                                 Row(
                                     modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.End
+                                    horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.End),
+                                    verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     if (!notif.link.isNullOrBlank()) {
-                                        TextButton(
+                                        Button(
                                             onClick = {
                                                 try {
                                                     uriHandler.openUri(notif.link)
                                                 } catch (e: Exception) {
                                                     e.printStackTrace()
                                                 }
-                                            }
+                                            },
+                                            shape = RoundedCornerShape(24.dp),
+                                            colors = ButtonDefaults.buttonColors(
+                                                containerColor = MintColors.Primary,
+                                                contentColor = Color.White
+                                            ),
+                                            contentPadding = PaddingValues(horizontal = 24.dp, vertical = 8.dp)
                                         ) {
-                                            Text(stringResource(R.string.mint_open_link), color = MintColors.Primary, fontWeight = FontWeight.Bold)
+                                            Text(
+                                                text = stringResource(R.string.mint_open_link),
+                                                fontWeight = FontWeight.Bold,
+                                                fontSize = 14.sp
+                                            )
                                         }
                                     }
-                                    TextButton(onClick = { selectedNotification = null }) {
-                                        Text("OK", color = MintColors.Primary, fontWeight = FontWeight.Bold)
+                                    // Circular close button
+                                    IconButton(
+                                        onClick = { selectedNotification = null },
+                                        modifier = Modifier
+                                            .size(36.dp)
+                                            .background(
+                                                color = liquidColors.textSecondary.copy(alpha = 0.15f),
+                                                shape = CircleShape
+                                            )
+                                    ) {
+                                        Icon(
+                                            imageVector = Icons.Default.Close,
+                                            contentDescription = stringResource(R.string.mint_close),
+                                            tint = liquidColors.textPrimary,
+                                            modifier = Modifier.size(18.dp)
+                                        )
                                     }
                                 }
                             }

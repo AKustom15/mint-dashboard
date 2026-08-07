@@ -48,6 +48,7 @@
     <string name="mint_about_social">ソーシャル</string>
     <string name="mint_about_title">概要</string>
     <string name="mint_buy_premium">プレミアムを購入</string>
+    <string name="mint_close">閉じる</string>
     <string name="mint_dashboard_apply_icons">アイコンを適用</string>
     <string name="mint_dashboard_custom_icons">カスタムアイコン</string>
     <string name="mint_dashboard_missing_apps">%d 個の未対応</string>
@@ -85,7 +86,7 @@
     <string name="mint_notifications_empty">まだ通知はありません</string>
     <string name="mint_notifications_history">通知履歴</string>
     <string name="mint_notifications_title">通知</string>
-    <string name="mint_open_link">リンクを開く</string>
+    <string name="mint_open_link">開く</string>
     <string name="mint_premium_dialog_buy">購入</string>
     <string name="mint_premium_dialog_close">閉じる</string>
     <string name="mint_premium_dialog_title">プレミアムアイコンリクエスト</string>

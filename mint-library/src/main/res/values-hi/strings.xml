@@ -163,6 +163,7 @@
     <string name="icon_request_limit">%d अनुरोध</string>
     <string name="icon_request_available">उपलब्ध</string>
     <string name="icon_request_used">इस्तेमाल किया गया</string>
-    <string name="mint_open_link">लिंक खोलें</string>
+    <string name="mint_open_link">खोलें</string>
+    <string name="mint_close">बंद करें</string>
     <string name="mint_settings_developer">सोशल / वेब</string>
 </resources>

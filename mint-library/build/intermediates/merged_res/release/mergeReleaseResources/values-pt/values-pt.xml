@@ -146,6 +146,7 @@
     <string name="mint_about_social">REDES SOCIAIS</string>
     <string name="mint_about_title">Sobre</string>
     <string name="mint_buy_premium">Comprar Premium</string>
+    <string name="mint_close">Fechar</string>
     <string name="mint_dashboard_apply_icons">Aplicar Ícones</string>
     <string name="mint_dashboard_custom_icons">Ícones Personalizados</string>
     <string name="mint_dashboard_missing_apps">%d apps faltantes</string>
@@ -183,7 +184,7 @@
     <string name="mint_notifications_empty">Nenhuma notificação ainda</string>
     <string name="mint_notifications_history">Histórico de notificações</string>
     <string name="mint_notifications_title">Notificações</string>
-    <string name="mint_open_link">Abrir Link</string>
+    <string name="mint_open_link">Abrir</string>
     <string name="mint_premium_dialog_buy">Comprar</string>
     <string name="mint_premium_dialog_close">Fechar</string>
     <string name="mint_premium_dialog_title">Solicitações Premium</string>

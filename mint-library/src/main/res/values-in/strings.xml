@@ -163,6 +163,7 @@
     <string name="icon_request_limit">%d Permintaan</string>
     <string name="icon_request_available">Tersedia</string>
     <string name="icon_request_used">Digunakan</string>
-    <string name="mint_open_link">Buka Tautan</string>
+    <string name="mint_open_link">Buka</string>
+    <string name="mint_close">Tutup</string>
     <string name="mint_settings_developer">Sosial / Web</string>
 </resources>

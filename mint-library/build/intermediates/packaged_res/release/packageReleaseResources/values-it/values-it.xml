@@ -48,6 +48,7 @@
     <string name="mint_about_social">SOCIAL</string>
     <string name="mint_about_title">Info</string>
     <string name="mint_buy_premium">Acquista Premium</string>
+    <string name="mint_close">Chiudi</string>
     <string name="mint_dashboard_apply_icons">Applica Icone</string>
     <string name="mint_dashboard_custom_icons">Icone Personalizzate</string>
     <string name="mint_dashboard_missing_apps">%d app mancanti</string>
@@ -85,7 +86,7 @@
     <string name="mint_notifications_empty">Nessuna notifica ancora</string>
     <string name="mint_notifications_history">Cronologia delle notifiche</string>
     <string name="mint_notifications_title">Notifiche</string>
-    <string name="mint_open_link">Apri il link</string>
+    <string name="mint_open_link">Apri</string>
     <string name="mint_premium_dialog_buy">Acquista</string>
     <string name="mint_premium_dialog_close">Chiudi</string>
     <string name="mint_premium_dialog_title">Richieste Premium</string>

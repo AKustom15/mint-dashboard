@@ -149,6 +149,7 @@
     <string name="mint_update_btn_later">LATER</string>
     <string name="mint_update_btn_update">UPDATE</string>
     <string name="mint_update_closing_in">⏱ Closing in: %d seconds</string>
-    <string name="mint_open_link">Open Link</string>
+    <string name="mint_open_link">Open</string>
+    <string name="mint_close">Close</string>
     <string name="mint_settings_developer">Social / Web</string>
 </resources>

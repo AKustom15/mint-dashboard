@@ -9,6 +9,7 @@ string mint_about_powered_by
 string mint_about_social
 string mint_about_title
 string mint_buy_premium
+string mint_close
 string mint_dashboard_apply_icons
 string mint_dashboard_custom_icons
 string mint_dashboard_missing_apps

@@ -108,6 +108,7 @@
     <string name="mint_wallpapers_name_label">الاسم</string>
     <string name="mint_wallpapers_author_label">المؤلف</string>
     <string name="mint_wallpapers_dimensions_label">الأبعاد</string>
-    <string name="mint_open_link">فتح الرابط</string>
+    <string name="mint_open_link">فتح</string>
+    <string name="mint_close">إغلاق</string>
     <string name="mint_settings_developer">الاجتماعية / الويب</string>
 </resources>

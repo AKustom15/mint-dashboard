@@ -8,6 +8,7 @@
     <string name="mint_about_social">التواصل الاجتماعي</string>
     <string name="mint_about_title">حول</string>
     <string name="mint_buy_premium">شراء بريميوم</string>
+    <string name="mint_close">إغلاق</string>
     <string name="mint_dashboard_apply_icons">تطبيق الأيقونات</string>
     <string name="mint_dashboard_custom_icons">أيقونات مخصصة</string>
     <string name="mint_dashboard_missing_apps">%d تطبيق مفقود</string>
@@ -45,7 +46,7 @@
     <string name="mint_notifications_empty">لا توجد إشعارات بعد</string>
     <string name="mint_notifications_history">سجل الإشعارات</string>
     <string name="mint_notifications_title">الإشعارات</string>
-    <string name="mint_open_link">فتح الرابط</string>
+    <string name="mint_open_link">فتح</string>
     <string name="mint_premium_dialog_buy">شراء</string>
     <string name="mint_premium_dialog_close">إغلاق</string>
     <string name="mint_premium_dialog_title">طلبات بريميوم</string>

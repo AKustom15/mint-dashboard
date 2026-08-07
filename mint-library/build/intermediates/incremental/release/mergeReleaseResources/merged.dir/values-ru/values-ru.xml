@@ -196,6 +196,7 @@
     <string name="mint_about_social">СОЦСЕТИ</string>
     <string name="mint_about_title">О приложении</string>
     <string name="mint_buy_premium">Купить Премиум</string>
+    <string name="mint_close">Закрыть</string>
     <string name="mint_dashboard_apply_icons">Применить иконки</string>
     <string name="mint_dashboard_custom_icons">Пользовательские иконки</string>
     <string name="mint_dashboard_missing_apps">%d отсутствующих</string>
@@ -233,7 +234,7 @@
     <string name="mint_notifications_empty">Уведомлений пока нет</string>
     <string name="mint_notifications_history">История уведомлений</string>
     <string name="mint_notifications_title">Уведомления</string>
-    <string name="mint_open_link">Открыть ссылку</string>
+    <string name="mint_open_link">Открыть</string>
     <string name="mint_premium_dialog_buy">Купить</string>
     <string name="mint_premium_dialog_close">Закрыть</string>
     <string name="mint_premium_dialog_title">Премиум запросы иконок</string>

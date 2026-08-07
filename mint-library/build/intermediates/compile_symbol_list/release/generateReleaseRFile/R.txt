@@ -8,6 +8,7 @@ int string mint_about_powered_by 0x0
 int string mint_about_social 0x0
 int string mint_about_title 0x0
 int string mint_buy_premium 0x0
+int string mint_close 0x0
 int string mint_dashboard_apply_icons 0x0
 int string mint_dashboard_custom_icons 0x0
 int string mint_dashboard_missing_apps 0x0

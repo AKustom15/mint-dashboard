@@ -194,6 +194,7 @@
     <string name="mint_about_social">소셜</string>
     <string name="mint_about_title">정보</string>
     <string name="mint_buy_premium">프리미엄 구매</string>
+    <string name="mint_close">닫기</string>
     <string name="mint_dashboard_apply_icons">아이콘 적용</string>
     <string name="mint_dashboard_custom_icons">맞춤 아이콘</string>
     <string name="mint_dashboard_missing_apps">%d개 누락됨</string>
@@ -231,7 +232,7 @@
     <string name="mint_notifications_empty">아직 알림이 없습니다</string>
     <string name="mint_notifications_history">알림 내역</string>
     <string name="mint_notifications_title">알림</string>
-    <string name="mint_open_link">링크 열기</string>
+    <string name="mint_open_link">열기</string>
     <string name="mint_premium_dialog_buy">구매</string>
     <string name="mint_premium_dialog_close">닫기</string>
     <string name="mint_premium_dialog_title">프리미엄 아이콘 요청</string>

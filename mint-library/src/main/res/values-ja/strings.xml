@@ -163,6 +163,7 @@
     <string name="icon_request_limit">%d 件のリクエスト</string>
     <string name="icon_request_available">利用可能</string>
     <string name="icon_request_used">使用済み</string>
-    <string name="mint_open_link">リンクを開く</string>
+    <string name="mint_open_link">開く</string>
+    <string name="mint_close">閉じる</string>
     <string name="mint_settings_developer">ソーシャル / Web</string>
 </resources>

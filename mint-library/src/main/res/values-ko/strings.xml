@@ -163,6 +163,7 @@
     <string name="icon_request_limit">%d개의 요청</string>
     <string name="icon_request_available">사용 가능</string>
     <string name="icon_request_used">사용된</string>
-    <string name="mint_open_link">링크 열기</string>
+    <string name="mint_open_link">열기</string>
+    <string name="mint_close">닫기</string>
     <string name="mint_settings_developer">소셜 / 웹</string>
 </resources>

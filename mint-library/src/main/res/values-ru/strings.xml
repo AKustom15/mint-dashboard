@@ -163,6 +163,7 @@
     <string name="icon_request_limit">%d запросов</string>
     <string name="icon_request_available">Доступный</string>
     <string name="icon_request_used">Использовал</string>
-    <string name="mint_open_link">Открыть ссылку</string>
+    <string name="mint_open_link">Открыть</string>
+    <string name="mint_close">Закрыть</string>
     <string name="mint_settings_developer">Социальные сети / Веб</string>
 </resources>

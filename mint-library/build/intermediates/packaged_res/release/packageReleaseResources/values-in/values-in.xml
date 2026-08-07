@@ -48,6 +48,7 @@
     <string name="mint_about_social">MEDIA SOSIAL</string>
     <string name="mint_about_title">Tentang</string>
     <string name="mint_buy_premium">Beli Premium</string>
+    <string name="mint_close">Tutup</string>
     <string name="mint_dashboard_apply_icons">Terapkan Ikon</string>
     <string name="mint_dashboard_custom_icons">Ikon Kustom</string>
     <string name="mint_dashboard_missing_apps">%d aplikasi hilang</string>
@@ -85,7 +86,7 @@
     <string name="mint_notifications_empty">Belum ada pemberitahuan</string>
     <string name="mint_notifications_history">Riwayat Pemberitahuan</string>
     <string name="mint_notifications_title">Pemberitahuan</string>
-    <string name="mint_open_link">Buka Tautan</string>
+    <string name="mint_open_link">Buka</string>
     <string name="mint_premium_dialog_buy">Beli</string>
     <string name="mint_premium_dialog_close">Tutup</string>
     <string name="mint_premium_dialog_title">Permintaan Ikon Premium</string>
