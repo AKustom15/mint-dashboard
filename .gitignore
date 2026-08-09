@@ -9,6 +9,10 @@
 /.idea/assetWizardSettings.xml
 .DS_Store
 /build
+# Antes solo se ignoraba /build (la raíz), así que mint-library/build y app/build
+# sí se versionaban: cada commit arrastraba .jar, R.txt y XML generados. Esto
+# ignora las carpetas build de CUALQUIER módulo.
+build/
 /captures
 .externalNativeBuild
 .cxx

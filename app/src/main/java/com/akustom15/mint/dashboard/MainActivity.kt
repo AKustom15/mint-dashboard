@@ -25,8 +25,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Firebase App Check (Play Integrity) — protects Firestore/FCM backends
-        MintAppCheck.initialize()
+        // Firebase App Check — protege Firestore/FCM.
+        // Necesita el contexto para saber si el build es depurable: en debug
+        // instala el proveedor de depuración, porque Play Integrity siempre
+        // falla ahí y dejaría la app sin acceso a Firestore.
+        MintAppCheck.initialize(this)
 
         // Push notifications: create channel + subscribe to FCM topic
         MintNotificationHelper.initialize(this)

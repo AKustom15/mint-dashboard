@@ -412,3 +412,30 @@ enabled = true
 # declarative_schema_path = "./database"
 # JSON string passed through to pg-delta SQL formatting.
 # format_options = "{\"keywordCase\":\"upper\",\"indent\":2,\"maxWidth\":80,\"commaStyle\":\"trailing\"}"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Funciones de seguridad — autenticación por App Check, no por JWT de Supabase
+#
+# verify_jwt = false NO significa "abierto". Significa que la puerta no es el
+# JWT de Supabase, sino el token de Firebase App Check, que cada función valida
+# en su primera línea (_shared/appcheck.ts).
+#
+# Por qué App Check en vez del JWT:
+#   · La anon key de Supabase es PÚBLICA y se extrae del APK en un minuto, así
+#     que como control de acceso no aporta gran cosa.
+#   · El token de App Check lo emite Google solo a instalaciones genuinas de la
+#     app, firmadas por Play. Un script no puede fabricarlo.
+#
+# Una petición sin App Check se rechaza con 401 en la primera línea, antes de
+# llamar a Google y antes de tocar la base de datos: cuesta una invocación
+# barata y nada más.
+# ═══════════════════════════════════════════════════════════════════════════
+
+[functions.issueNonce]
+verify_jwt = false
+
+[functions.iconRequest]
+verify_jwt = false
+
+[functions.verifyAppLicense]
+verify_jwt = false

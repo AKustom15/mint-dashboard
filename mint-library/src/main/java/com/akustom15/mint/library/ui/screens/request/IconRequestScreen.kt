@@ -64,7 +64,11 @@ fun IconRequestScreen(
         viewModel.configure(
             appName = config.appName,
             email = config.iconRequestEmail.ifEmpty { "akustom15help@gmail.com" },
-            collection = config.firestoreCollection
+            collection = config.firestoreCollection,
+            nonceUrl = config.nonceUrl,
+            iconRequestUrl = config.iconRequestUrl,
+            iconStatusUrl = config.iconStatusUrl,
+            appVersionName = config.versionName
         )
         viewModel.setFreeLimit(config.freeRequestLimit)
         viewModel.setPremiumAvailable(premiumAvailable)

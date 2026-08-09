@@ -1,48 +1,54 @@
 rules_version = '2';
 
-// ─────────────────────────────────────────────────────────────────────────────
-// VERSIÓN A — USAR AHORA (funciona sin App Check, desbloquea las solicitudes ya)
-// Pégalo en: Firebase Console → Firestore Database → Reglas → Publicar.
-// Efecto inmediato, no requiere recompilar la app.
-// ─────────────────────────────────────────────────────────────────────────────
+// ═════════════════════════════════════════════════════════════════════════════
+// REGLAS DE FIRESTORE — GlassWave / Mint
+// Actualizado: 2026-08-09
+//
+// CÓMO PUBLICARLAS
+//   Firebase Console → proyecto glasswave-20e7a → Firestore Database →
+//   pestaña Reglas → seleccionar todo → pegar ESTE ARCHIVO COMPLETO → Publicar.
+//
+//   Se puede copiar el archivo entero: los comentarios // son válidos aquí.
+//
+// PRINCIPIO
+//   El cliente NO toca la base de datos. Todo pasa por las edge functions, que
+//   escriben con la cuenta de servicio (no sujeta a estas reglas).
+//     · Solicitar iconos  → POST /iconRequest   (7 validaciones + cuota)
+//     · Consultar cuota   → POST /iconStatus    (App Check)
+// ═════════════════════════════════════════════════════════════════════════════
+
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Info de versiones / changelog: lectura pública, sin escritura desde cliente
+    // ── Info de versiones / changelog ────────────────────────────────────────
+    // Contenido público por naturaleza: número de versión y texto del changelog.
+    // No hay nada que proteger, y exigir App Check aquí solo añadía un punto de
+    // fallo silencioso: si el token no llegaba, el changelog no se mostraba y
+    // nadie se enteraba de por qué.
+    //
+    // `list` sí queda cerrado: se leen documentos sueltos con .document(id).get()
+    // (MintChangelogDialog.kt y SettingsScreen.kt), nunca la colección entera.
     match /app_versions/{document} {
-      allow read: if true;
-      allow write: if false;
+      allow get:   if true;
+      allow list:  if false;
+      allow write: if false;   // solo el servidor, con la cuenta de servicio
     }
 
-    // Solicitudes de iconos: el cliente lee/escribe su propio documento (por ANDROID_ID)
-    match /icon_requests/{document} {
-      allow read, write: if true;
+    // ── Solicitudes de iconos ────────────────────────────────────────────────
+    // CERRADO AL CLIENTE POR COMPLETO. Ni lectura ni escritura.
+    //
+    // Cierra de una sola línea:
+    //   · enumerar los identificadores de todos los usuarios
+    //   · borrar la colección
+    //   · resetear la cuota gratuita reescribiendo el documento
+    //   · escribir campos arbitrarios para inflar costes
+    match /icon_requests/{installId} {
+      allow read, write: if false;
     }
 
-    // Todo lo demás: denegado (solo el servidor con la service account puede)
+    // ── Todo lo demás: denegado ──────────────────────────────────────────────
     match /{document=**} {
       allow read, write: if false;
     }
   }
 }
-
-// ─────────────────────────────────────────────────────────────────────────────
-// VERSIÓN B — ENDURECIDA (usar DESPUÉS de desplegar App Check)
-// Requisitos antes de activarla:
-//   1. Publicar la nueva librería (con MintAppCheck) y actualizar las apps.
-//   2. Registrar cada app en Firebase Console → App Check (proveedor Play Integrity).
-//   3. Confirmar en la consola que llegan tokens válidos (modo monitoreo).
-//   4. Recién entonces cambiar `if true` por `if request.app != null` aquí.
-//
-// service cloud.firestore {
-//   match /databases/{database}/documents {
-//     match /app_versions/{document} {
-//       allow read: if request.app != null;
-//       allow write: if false;
-//     }
-//     match /icon_requests/{document} {
-//       allow read, write: if request.app != null;
-//     }
-//     match /{document=**} { allow read, write: if false; }
-//   }
-// }

@@ -18,13 +18,14 @@ class LicenseChecker(
     companion object {
         private const val TAG = "LicenseChecker"
         private const val LUCKY_PATCHER_PACKAGE = "com.android.vending.billing.InAppBillingService.COIN"
-        
-        private val PIRATE_STORES = listOf(
-            "com.aptoide.app",
-            "com.blackmart.market",
-            "com.ac.market",
-            "com.blackmart.alpha"
-        )
+
+        // La lista de "tiendas piratas" se eliminó. Tres razones:
+        //  1. "com.aptoide.app" NO es el package real de Aptoide (es "cm.aptoide.pt"),
+        //     así que la comprobación no detectaba lo que creía detectar.
+        //  2. Aptoide es una tienda legítima: bloquear a un comprador por tenerla
+        //     instalada es un falso positivo que cuesta una reseña de 1 estrella.
+        //  3. Una lista de 4 packages se esquiva renombrando el package.
+        // La titularidad la valida el servidor al solicitar iconos.
     }
 
     private val _licenseState = MutableStateFlow<LicenseState>(LicenseState.Checking)
@@ -97,22 +98,6 @@ class LicenseChecker(
             true
         } catch (e: PackageManager.NameNotFoundException) {
             false
-        }
-    }
-
-    /**
-     * Verifica si hay tiendas de terceros instaladas
-     */
-    private fun checkPirateStores(): Boolean {
-        val packageManager = context.packageManager
-        return Companion.PIRATE_STORES.any { packageName ->
-            try {
-                packageManager.getPackageInfo(packageName, 0) // Usar 0 si solo se necesita saber si está instalado
-                Log.w(TAG, "Tienda no oficial detectada: $packageName")
-                true
-            } catch (e: PackageManager.NameNotFoundException) {
-                false
-            }
         }
     }
 
@@ -242,16 +227,10 @@ class LicenseChecker(
             return
         }
 
-        // Verificar tiendas no oficiales
-        if (checkPirateStores()) {
-            _licenseState.value = LicenseState.Invalid("Detectada tienda no oficial", isPiracyRelated = true)
-            return
-        }
-
         // NOTA: la comprobación de titularidad de una app de PAGO NO se hace aquí.
         // queryPurchasesAsync(INAPP) solo lista compras dentro de la app, no la
         // propiedad de la app pagada, así que declinaría a compradores legítimos.
-        // Esa verificación la hace MintLicenseVerifier (Play Integrity + servidor).
+        // Esa verificación la hace MintIconRequestGate contra el servidor.
         // Este checker solo aporta señales de piratería (Lucky Patcher / tiendas).
         _licenseState.value = LicenseState.Valid
     }

@@ -1,81 +1,62 @@
-import { GoogleAuth } from "npm:google-auth-library@9.0.0";
+import { verifyAppCheck, json } from "../_shared/appcheck.ts";
+import { consumeNonce, validateIntegrity } from "../_shared/integrity.ts";
+import { decodeIntegrityToken } from "../_shared/google.ts";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
+/**
+ * POST /verifyAppLicense — OBSOLETO
+ *
+ * Este endpoint existía para comprobar la licencia AL ARRANCAR la app. Ya no se
+ * usa: la verificación se movió a /iconRequest, que es donde de verdad importa
+ * (ver 03_PRIORIDAD_solicitudes_de_iconos.md). Dejar la comprobación en el
+ * arranque gastaba ~4.000 llamadas diarias de una cuota de 10.000, sin proteger
+ * nada, porque el cliente fallaba en abierto igualmente.
+ *
+ * Se mantiene por dos razones:
+ *  1. Las versiones ya instaladas (librería 1.0.62) siguen llamándolo. Como
+ *     hacen fail-open, un 401 no las rompe: la app abre igual.
+ *  2. Cerrarlo elimina el hallazgo A-1 — hasta hoy era público y cualquiera
+ *     podía agotar tu cuota de Play Integrity desde internet.
+ *
+ * Se puede borrar cuando ya no queden instalaciones de 1.0.62 o anteriores.
+ */
+
+const PACKAGE_NAME  = Deno.env.get("APP_PACKAGE_NAME") ?? "com.akustom15.glasswave";
+const EXPECTED_CERT = Deno.env.get("EXPECTED_CERT_SHA256") ?? "";
+const REQUIRE_DEVICE_INTEGRITY =
+  (Deno.env.get("REQUIRE_DEVICE_INTEGRITY") ?? "false") === "true";
 
 Deno.serve(async (req) => {
-  if (req.method === "OPTIONS") {
-    return new Response("ok", { headers: corsHeaders });
-  }
+  if (req.method !== "POST") return json({ error: "method_not_allowed" }, 405);
+
+  // Puerta que faltaba: sin App Check no se gasta cuota de Play Integrity.
+  const appId = await verifyAppCheck(req.headers.get("X-Firebase-AppCheck"));
+  if (!appId) return json({ licensed: false, verdict: "UNKNOWN" }, 401);
 
   try {
-    const bodyText = await req.text();
-    let integrityToken = "";
-    if (bodyText) {
-        const bodyJson = JSON.parse(bodyText);
-        integrityToken = bodyJson.integrityToken;
+    const { integrityToken, nonce } = await req.json().catch(() => ({}));
+    if (!integrityToken || !nonce) {
+      return json({ licensed: false, verdict: "UNKNOWN" }, 400);
     }
 
-    if (!integrityToken) {
-      return new Response(JSON.stringify({ error: "Missing integrityToken" }), {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+    if (!await consumeNonce(nonce)) {
+      return json({ licensed: false, verdict: "REJECTED" }, 403);
     }
 
-    const packageName = Deno.env.get("APP_PACKAGE_NAME") || "com.akustom15.glasswave";
-    const serviceAccountJsonStr = Deno.env.get("GOOGLE_SERVICE_ACCOUNT_JSON");
-    
-    if (!serviceAccountJsonStr) {
-       console.error("Missing GOOGLE_SERVICE_ACCOUNT_JSON in environment variables");
-       return new Response(JSON.stringify({ 
-           licensed: false, 
-           verdict: "UNKNOWN", 
-           error: "Server configuration error" 
-       }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
-    }
-
-    const credentials = JSON.parse(serviceAccountJsonStr);
-    
-    const auth = new GoogleAuth({
-      credentials,
-      scopes: ["https://www.googleapis.com/auth/playintegrity"],
-    });
-
-    const authClient = await auth.getClient();
-    const token = await authClient.getAccessToken();
-
-    const url = `https://playintegrity.googleapis.com/v1/${packageName}:decodeIntegrityToken`;
-    
-    const res = await fetch(url, {
-        method: "POST",
-        headers: {
-            "Authorization": `Bearer ${token.token}`,
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ integrityToken: integrityToken })
-    });
-
-    const resJson = await res.json();
-    const payload = resJson.tokenPayloadExternal || {};
-    const verdict = (payload.accountDetails && payload.accountDetails.appLicensingVerdict) || "UNEVALUATED";
-
-    console.log("appLicensingVerdict:", verdict);
-    
-    return new Response(
-      JSON.stringify({ licensed: verdict === "LICENSED", verdict: verdict }),
-      {
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      }
+    const payload = await decodeIntegrityToken(PACKAGE_NAME, integrityToken);
+    const check = validateIntegrity(
+      payload, nonce, PACKAGE_NAME, EXPECTED_CERT, REQUIRE_DEVICE_INTEGRITY,
     );
 
-  } catch (error) {
-    console.error("verify failed:", error.message || error);
-    return new Response(
-      JSON.stringify({ licensed: false, verdict: "UNKNOWN", error: String(error) }),
-      { headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
+    if (!check.ok) {
+      console.warn("verifyAppLicense rejected:", check.reason);
+      return json({ licensed: false, verdict: check.verdict }, 403);
+    }
+
+    return json({ licensed: true, verdict: check.verdict });
+
+  } catch (e) {
+    console.error("verifyAppLicense failed:", e instanceof Error ? e.message : e);
+    // Mensaje genérico: no filtrar internals al cliente (hallazgo B-2).
+    return json({ licensed: false, verdict: "UNKNOWN" }, 500);
   }
 });

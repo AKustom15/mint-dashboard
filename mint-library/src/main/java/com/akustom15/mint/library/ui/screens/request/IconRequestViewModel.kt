@@ -8,7 +8,6 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
 import androidx.core.content.FileProvider
@@ -16,6 +15,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.akustom15.mint.library.billing.MintPremiumPreferences
 import com.akustom15.mint.library.data.AppFilterCache
+import com.akustom15.mint.library.data.MintInstallId
+import com.akustom15.mint.library.security.MintIconRequestGate
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -73,32 +74,70 @@ class IconRequestViewModel : ViewModel() {
     private var appName: String = "Mint Icons"
     private var emailAddress: String = "akustom15help@gmail.com"
     private var firestoreCollection: String = "icon_requests"
+    private var nonceUrl: String = ""
+    private var iconRequestUrl: String = ""
+    private var iconStatusUrl: String = ""
+    private var appVersionName: String = ""
 
-    fun configure(appName: String, email: String, collection: String) {
+    /** Identificador firmado por el servidor de la última solicitud aceptada. */
+    private var lastRequestId: String? = null
+
+    fun configure(
+        appName: String,
+        email: String,
+        collection: String,
+        nonceUrl: String = "",
+        iconRequestUrl: String = "",
+        iconStatusUrl: String = "",
+        appVersionName: String = ""
+    ) {
         this.appName = appName
         this.emailAddress = email
         this.firestoreCollection = collection
+        this.nonceUrl = nonceUrl
+        this.iconRequestUrl = iconRequestUrl
+        this.iconStatusUrl = iconStatusUrl
+        this.appVersionName = appVersionName
     }
 
     fun loadMissingIcons(context: Context) {
         viewModelScope.launch {
-            _uiState.value = _uiState.value.copy(isLoading = true)
+            _uiState.value = _uiState.value.copy(isLoading = true, error = null)
 
-            // Load already requested icons from Firestore
-            val requestedIcons = loadRequestedFromFirestore(context)
+            // La cuenta la lleva el SERVIDOR, así que se le pregunta a él.
+            // Antes esto se leía directamente de Firestore desde el cliente y,
+            // si la lectura fallaba, el catch devolvía una lista vacía: la app
+            // mostraba la cuota entera disponible aunque estuviera agotada.
+            val status = MintIconRequestGate(
+                context, nonceUrl, iconRequestUrl, iconStatusUrl
+            ).status()
+
+            val requestedIcons = status?.requested ?: emptySet()
 
             val missing = withContext(Dispatchers.IO) {
                 findMissingIcons(context, requestedIcons)
             }
 
-            val freeUsed = min(requestedIcons.size, _uiState.value.freeLimit)
-            val freeRemaining = max(0, _uiState.value.freeLimit - freeUsed)
+            if (status == null) {
+                // Fail-closed también aquí: si no sabemos cuántas lleva, NO se
+                // le ofrece la cuota completa. Mostrar 10 disponibles sin
+                // haberlo comprobado es lo que causaba el fallo anterior.
+                _uiState.value = _uiState.value.copy(
+                    missingApps = missing,
+                    isLoading = false,
+                    requestedIcons = emptySet(),
+                    totalAvailable = 0,
+                    error = "No se pudieron comprobar tus solicitudes disponibles. " +
+                            "Revisa tu conexión e inténtalo de nuevo."
+                )
+                return@launch
+            }
 
             _uiState.value = _uiState.value.copy(
                 missingApps = missing,
                 isLoading = false,
                 requestedIcons = requestedIcons,
-                totalAvailable = freeRemaining + premiumAvailableCount
+                totalAvailable = status.freeRemaining + premiumAvailableCount
             )
         }
     }
@@ -132,22 +171,6 @@ class IconRequestViewModel : ViewModel() {
             } catch (e: Exception) {
                 Log.e("IconRequest", "Error loading remote config: ${e.message}")
             }
-        }
-    }
-
-    private suspend fun loadRequestedFromFirestore(context: Context): Set<String> {
-        return try {
-            val androidId = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
-            val db = FirebaseFirestore.getInstance()
-            val document = withContext(Dispatchers.IO) {
-                db.collection(firestoreCollection).document(androidId).get().await()
-            }
-            @Suppress("UNCHECKED_CAST")
-            val icons = document.get("icons") as? List<String> ?: emptyList()
-            icons.toSet()
-        } catch (e: Exception) {
-            Log.e("IconRequest", "Error fetching from Firestore", e)
-            emptySet()
         }
     }
 
@@ -235,10 +258,15 @@ class IconRequestViewModel : ViewModel() {
                     return@launch
                 }
 
-                // FIRST: Save to Firestore to consume credits and verify App Check
-                saveToFirestore(context, selectedApps.map { it.packageName }.toSet())
+                // PRIMERO: el servidor valida y registra. Si dice que no, no hay
+                // email. Fail-closed: sin confirmación no se entrega el servicio.
+                val ok = submitToServer(context, selectedApps.map { it.packageName }.toSet())
+                if (!ok) {
+                    _uiState.value = _uiState.value.copy(isSending = false)
+                    return@launch
+                }
 
-                // THEN: If it succeeds, generate the zip and open email
+                // DESPUÉS: si aceptó, se genera el ZIP y se abre el email
                 withContext(Dispatchers.IO) {
                     shareIconRequests(context, selectedApps, antiPiracyStatus)
                 }
@@ -248,66 +276,106 @@ class IconRequestViewModel : ViewModel() {
                     requestSent = true
                 )
             } catch (e: Exception) {
-                Log.e("IconRequest", "Error sending request", e)
+                Log.e("IconRequest", "Error sending request")
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(context, "Error verificando solicitud. Revisa tu conexión a internet.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        context,
+                        "No se pudo completar la solicitud. Revisa tu conexión e inténtalo de nuevo.",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
                 _uiState.value = _uiState.value.copy(isSending = false)
             }
         }
     }
 
-    private suspend fun saveToFirestore(context: Context, newPackages: Set<String>) {
-        try {
-            val androidId = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
-            val db = FirebaseFirestore.getInstance()
-            val allRequested = _uiState.value.requestedIcons + newPackages
+    /**
+     * Pide permiso al servidor y deja que sea él quien escriba en Firestore.
+     *
+     * Antes esto lo hacía el cliente: leía su propio documento, contaba su
+     * cuota y la escribía. Cualquiera con el APK podía resetearla o pedir
+     * iconos ilimitados sin haber comprado la app.
+     *
+     * @return true si el servidor aceptó la solicitud.
+     */
+    private suspend fun submitToServer(context: Context, newPackages: Set<String>): Boolean {
+        val gate = MintIconRequestGate(context, nonceUrl, iconRequestUrl, iconStatusUrl)
 
-            withContext(Dispatchers.IO) {
-                val data = mapOf("icons" to allRequested.toList())
-                db.collection(firestoreCollection).document(androidId).set(data).await()
-            }
+        val result = gate.request(
+            packages = newPackages,
+            premiumCredits = premiumAvailableCount,
+            appVersion = appVersionName
+        )
 
-            // Calculate premium consumption for this batch
-            val freeRequestsAlreadyUsed = min(_uiState.value.requestedIcons.size, _uiState.value.freeLimit)
-            val freeRequestsAvailableForBatch = max(0, _uiState.value.freeLimit - freeRequestsAlreadyUsed)
-            val premiumConsumedInBatch = max(0, newPackages.size - freeRequestsAvailableForBatch)
+        return when (result) {
+            is MintIconRequestGate.Result.Accepted -> {
+                lastRequestId = result.requestId
 
-            if (premiumConsumedInBatch > 0) {
-                MintPremiumPreferences.consumePremiumRequests(context, premiumConsumedInBatch)
-                premiumAvailableCount = MintPremiumPreferences.getPremiumRequestCount(context)
-            }
-
-            // Update local state
-            val freeUsed = min(allRequested.size, _uiState.value.freeLimit)
-            val freeRemaining = max(0, _uiState.value.freeLimit - freeUsed)
-
-            _uiState.value = _uiState.value.copy(
-                requestedIcons = allRequested,
-                totalAvailable = freeRemaining + premiumAvailableCount,
-                selectedCount = 0,
-                missingApps = _uiState.value.missingApps.map { app ->
-                    if (newPackages.contains(app.packageName)) {
-                        app.copy(isSelected = false, alreadyRequested = true)
-                    } else {
-                        app.copy(isSelected = false)
-                    }
+                // Los créditos premium que el servidor dice haber consumido.
+                if (result.premiumConsumed > 0) {
+                    MintPremiumPreferences.consumePremiumRequests(context, result.premiumConsumed)
+                    premiumAvailableCount = MintPremiumPreferences.getPremiumRequestCount(context)
                 }
-            )
 
-            withContext(Dispatchers.Main) {
-                Toast.makeText(context, "Solicitud verificada: ${newPackages.size} iconos", Toast.LENGTH_SHORT).show()
+                val allRequested = _uiState.value.requestedIcons + newPackages
+                _uiState.value = _uiState.value.copy(
+                    requestedIcons = allRequested,
+                    totalAvailable = result.freeRemaining + premiumAvailableCount,
+                    selectedCount = 0,
+                    missingApps = _uiState.value.missingApps.map { app ->
+                        if (newPackages.contains(app.packageName)) {
+                            app.copy(isSelected = false, alreadyRequested = true)
+                        } else {
+                            app.copy(isSelected = false)
+                        }
+                    }
+                )
+
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(
+                        context,
+                        "Solicitud verificada: ${newPackages.size} iconos",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                true
             }
-        } catch (e: Exception) {
-            Log.e("IconRequest", "Error saving to Firestore", e)
-            throw e // MUST throw so sendIconRequest can catch it and abort sending the email
+
+            is MintIconRequestGate.Result.QuotaExceeded -> {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(
+                        context,
+                        "No te quedan solicitudes disponibles.",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                false
+            }
+
+            is MintIconRequestGate.Result.Unavailable -> {
+                // Mensaje NEUTRO a propósito. No se acusa a nadie de piratería:
+                // a un comprador con mala conexión sería un falso positivo caro,
+                // y a un atacante no se le dice qué comprobación falló.
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(
+                        context,
+                        "No se pudo verificar la solicitud en este momento. Inténtalo más tarde.",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                false
+            }
         }
     }
 
     private fun shareIconRequests(context: Context, selectedApps: List<MissingIconApp>, antiPiracyStatus: String?) {
         // 1) Prepare temp payload directory
-        val cacheDir = context.cacheDir
-        val payloadDir = File(cacheDir, "icon_request_payload").apply {
+        //
+        // Todo vive bajo cacheDir/icon_request/, que es la ÚNICA ruta que el
+        // FileProvider expone (file_paths.xml). Antes el provider podía generar
+        // URIs para cualquier archivo del almacenamiento externo.
+        val shareDir = File(context.cacheDir, "icon_request").apply { mkdirs() }
+        val payloadDir = File(shareDir, "payload").apply {
             if (exists()) deleteRecursively()
             mkdirs()
         }
@@ -325,7 +393,7 @@ class IconRequestViewModel : ViewModel() {
 
         // 4) Compress to ZIP
         val timestamp = SimpleDateFormat("yyyyMMdd_HHmm", Locale.getDefault()).format(Date())
-        val zipFile = File(cacheDir, "${appName.replace(" ", "_")}_icon_request_${timestamp}.zip")
+        val zipFile = File(shareDir, "${appName.replace(" ", "_")}_icon_request_${timestamp}.zip")
         createZipFromDirectory(payloadDir, zipFile)
 
         if (!zipFile.exists() || zipFile.length() == 0L) {
@@ -338,7 +406,7 @@ class IconRequestViewModel : ViewModel() {
             zipFile
         )
         
-        val androidId = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID) ?: "Unknown"
+        val installId = MintInstallId.get(context)
         val model = android.os.Build.MODEL
         val androidVersion = "Android ${android.os.Build.VERSION.RELEASE} (SDK ${android.os.Build.VERSION.SDK_INT})"
         val orderId = MintPremiumPreferences.getLastProcessedOrderId(context)
@@ -369,12 +437,12 @@ class IconRequestViewModel : ViewModel() {
             if (orderId != null) {
                 append("Order ID: $orderId\n")
             }
-            append("Device ID: $androidId\n")
+            append("Install ID: $installId\n")
             append("License Status: ${antiPiracyStatus ?: "Unknown"}\n")
+            // Identificador firmado por el servidor. Si falta o está vacío, la
+            // solicitud NO pasó por la verificación y se puede ignorar.
+            append("Request ID: ${lastRequestId ?: "SIN VERIFICAR"}\n")
         }
-
-        Log.d("IconRequest", "Email Subject: $subject")
-        Log.d("IconRequest", "Email Body:\n$emailBody")
 
         // Create share intent with ZIP attachment
         val shareIntent = Intent(Intent.ACTION_SEND).apply {

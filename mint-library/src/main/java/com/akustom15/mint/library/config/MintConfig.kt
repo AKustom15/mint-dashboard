@@ -64,7 +64,21 @@ data class MintConfig(
     val requireValidLicense: Boolean = false,
     val base64LicenseKey: String = "",
     val gcpProjectNumber: Long = 0L,
+
+    // ── Backend de seguridad (fase 2) ──────────────────────────────────────
+    // Verificación de titularidad AL ARRANCAR. Cacheada 7 días; solo bloquea
+    // con un UNLICENSED explícito del servidor (ver MintLicenseGate).
+    // Requiere requireValidLicense = true.
     val licenseVerificationUrl: String = "",
+
+    // Endpoint que emite el nonce de un solo uso. Lo usan las DOS puertas.
+    val nonceUrl: String = "",
+    // Endpoint que valida y registra la solicitud de iconos. SIN ESTO, las
+    // solicitudes quedan deshabilitadas: es fail-closed a propósito.
+    val iconRequestUrl: String = "",
+    // Endpoint que informa de cuántas solicitudes lleva la instalación. El
+    // cliente ya NO lee Firestore para esto: la cuenta la lleva el servidor.
+    val iconStatusUrl: String = "",
 
     // Feature Toggles
     val showWidgets: Boolean = true,
