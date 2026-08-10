@@ -380,12 +380,15 @@ class IconRequestViewModel : ViewModel() {
             mkdirs()
         }
 
-        // 2) Generate appfilter.xml and appmap.xml
+        // 2) Generate appfilter.xml, appmap.xml and drawable.xml
         val appfilterXml = generateAppfilterXml(selectedApps)
         File(payloadDir, "appfilter.xml").writeText(appfilterXml)
 
         val appmapXml = generateAppmapXml(selectedApps)
         File(payloadDir, "appmap.xml").writeText(appmapXml)
+
+        val drawableXml = generateDrawableXml(selectedApps)
+        File(payloadDir, "drawable.xml").writeText(drawableXml)
 
         // 3) Export app icons as PNG
         val iconsDir = File(payloadDir, "icons").apply { mkdirs() }
@@ -450,7 +453,7 @@ class IconRequestViewModel : ViewModel() {
             putExtra(Intent.EXTRA_STREAM, fileUri)
             putExtra(Intent.EXTRA_SUBJECT, subject)
             putExtra(Intent.EXTRA_TEXT, emailBody +
-                "\nSe adjunta ZIP con: appfilter.xml, appmap.xml e iconos PNG de las apps seleccionadas.")
+                "\nSe adjunta ZIP con: appfilter.xml, appmap.xml, drawable.xml e iconos PNG de las apps seleccionadas.")
             putExtra(Intent.EXTRA_EMAIL, arrayOf(emailAddress))
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
@@ -468,7 +471,7 @@ class IconRequestViewModel : ViewModel() {
             append("<resources>\n")
             append("<!-- Icon requests: appfilter.xml generado automáticamente -->\n")
             apps.forEach { app ->
-                val drawableName = "icon_${normalizeName(app.appName)}"
+                val drawableName = drawableNameFor(app)
                 val componentInfo = "ComponentInfo{${app.packageName}/${app.activityName}}"
                 val escapedName = escapeXml(app.appName)
 
@@ -489,11 +492,43 @@ class IconRequestViewModel : ViewModel() {
             append("<appmap>\n")
             append("    <!-- Icon requests: appmap.xml generado automáticamente -->\n")
             apps.forEach { app ->
-                val drawableName = "icon_${normalizeName(app.appName)}"
+                val drawableName = drawableNameFor(app)
                 val escapedName = escapeXml(app.appName)
                 append("    <item class=\"$escapedName\" name=\"$escapedName\" drawable=\"$drawableName\" />\n")
             }
             append("</appmap>\n")
+        }
+    }
+
+    /**
+     * drawable.xml — la lista que hace que los iconos aparezcan en la cuadrícula
+     * del pack (el selector de iconos del launcher).
+     *
+     * Es el tercer archivo que hace falta al incorporar un icono nuevo:
+     *   · appfilter.xml → asocia el icono a la app (ComponentInfo)
+     *   · appmap.xml    → lo mismo para Kustom (KWGT/KLWP)
+     *   · drawable.xml  → lo muestra en la cuadrícula del pack
+     *
+     * Sin este último el icono funciona, pero no se ve al navegar el pack.
+     *
+     * Se genera como fragmento listo para copiar y pegar dentro de la categoría
+     * que corresponda del drawable.xml de la app.
+     */
+    private fun generateDrawableXml(apps: List<MissingIconApp>): String {
+        return buildString {
+            append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n")
+            append("<resources>\n\n")
+            append("    <!-- Icon requests: drawable.xml generado automáticamente -->\n")
+            append("    <!-- Copia estos <item> dentro de la categoría que quieras\n")
+            append("         del drawable.xml de tu pack. La categoría de abajo es\n")
+            append("         solo orientativa: bórrala si vas a usar otra. -->\n\n")
+            append("    <category title=\"Requested\" />\n")
+            apps.forEach { app ->
+                val drawableName = drawableNameFor(app)
+                append("    <item drawable=\"$drawableName\" />")
+                append("  <!-- ${escapeXml(app.appName)} -->\n")
+            }
+            append("\n</resources>\n")
         }
     }
 
@@ -507,7 +542,7 @@ class IconRequestViewModel : ViewModel() {
                     Bitmap.createScaledBitmap(baseBitmap, targetSize, targetSize, true)
                 } else baseBitmap
 
-                val fileName = "icon_${normalizeName(app.appName)}.png"
+                val fileName = "${drawableNameFor(app)}.png"
                 val outFile = File(outputDir, fileName)
                 FileOutputStream(outFile).use { fos ->
                     BufferedOutputStream(fos).use { bos ->
@@ -561,8 +596,55 @@ class IconRequestViewModel : ViewModel() {
         return bitmap
     }
 
+    /**
+     * Nombre del drawable de una app. **Única fuente de este nombre.**
+     *
+     * Los cuatro archivos de una solicitud tienen que coincidir carácter a
+     * carácter, o el icono no se asocia:
+     *
+     *   appfilter.xml  →  drawable="icon_the_grand_mafia"
+     *   appmap.xml     →  drawable="icon_the_grand_mafia"
+     *   drawable.xml   →  drawable="icon_the_grand_mafia"
+     *   icons/            icon_the_grand_mafia.png
+     *
+     * Antes cada generador construía el nombre por su cuenta con la misma
+     * expresión repetida. Coincidían por casualidad: bastaba tocar uno para
+     * desincronizarlos sin que nada avisara. Ahora salen todos de aquí.
+     */
+    private fun drawableNameFor(app: MissingIconApp): String =
+        "icon_${normalizeName(app.appName)}"
+
+    /**
+     * Convierte el nombre de una app en un nombre de drawable válido.
+     *
+     * El resultado solo puede contener [a-z0-9_], que es lo que admite Android
+     * como nombre de recurso.
+     *
+     * **Translitera antes de filtrar.** Sin eso, los acentos y caracteres
+     * especiales simplemente se borraban y quedaban nombres mutilados:
+     *
+     *   Café Móvil  →  icon_caf_mvil     (antes)  →  icon_cafe_movil  (ahora)
+     *   Español     →  icon_espaol       (antes)  →  icon_espanol     (ahora)
+     *   Über        →  icon_ber          (antes)  →  icon_uber        (ahora)
+     *
+     * Cómo funciona: NFD descompone "á" en "a" + tilde combinante, y luego se
+     * eliminan las marcas (categoría Unicode Mn). Las letras que NO se
+     * descomponen —ß, ø, æ, ł…— se mapean a mano antes, porque NFD no las toca.
+     */
     private fun normalizeName(name: String): String {
-        return name.lowercase()
+        val transliterado = name.lowercase()
+            .replace("ß", "ss")
+            .replace("æ", "ae")
+            .replace("œ", "oe")
+            .replace("ø", "o")
+            .replace("ł", "l")
+            .replace("đ", "d")
+            .replace("ð", "d")
+            .replace("þ", "th")
+
+        return java.text.Normalizer
+            .normalize(transliterado, java.text.Normalizer.Form.NFD)
+            .replace("\\p{Mn}+".toRegex(), "")   // quita tildes, diéresis, cedillas…
             .replace("\\s+".toRegex(), "_")
             .replace("[^a-z0-9_]".toRegex(), "")
     }
