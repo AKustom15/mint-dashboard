@@ -21,6 +21,8 @@ fun LiquidGlassCard(
     cornerRadiusPx: Float = 50f,
     blurRadius: Int = 80,
     onClick: (() -> Unit)? = null,
+    /** Ver RealBlurCard.usePreviewTint. Solo lo usan iconos y widgets. */
+    usePreviewTint: Boolean = false,
     content: @Composable BoxScope.() -> Unit
 ) {
     val cardModifier = if (onClick != null) {
@@ -34,7 +36,8 @@ fun LiquidGlassCard(
         cornerRadius = cornerRadiusPx,
         blurRadius = blurRadius,
         blurPasses = 3,
-        addOuterShadow = true
+        addOuterShadow = true,
+        usePreviewTint = usePreviewTint
     ) {
         Box(contentAlignment = Alignment.Center) {
             content()

@@ -175,7 +175,8 @@ private fun WidgetCard(
         cornerRadius = 40f,
         blurRadius = 80,
         blurPasses = 3,
-        addOuterShadow = true
+        addOuterShadow = true,
+        usePreviewTint = true   // color configurable desde MintColorConfig
     ) {
         Column(
             modifier = Modifier

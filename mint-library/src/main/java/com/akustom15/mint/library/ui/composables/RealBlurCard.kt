@@ -42,6 +42,15 @@ fun RealBlurCard(
     blurRadius: Int = 80,
     @Suppress("UNUSED_PARAMETER") blurPasses: Int = 3,
     @Suppress("UNUSED_PARAMETER") addOuterShadow: Boolean = true,
+    /**
+     * Si es true, la tarjeta usa el tinte configurable de las pantallas de
+     * vista previa (MintColorConfig.previewCardLight / previewCardDark) en
+     * lugar del cristal por defecto.
+     *
+     * Solo lo activan las tarjetas de iconos y widgets. El resto de la app
+     * —navegación, botones, Ajustes, Acerca de…— no se ve afectado.
+     */
+    usePreviewTint: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val density = LocalDensity.current
@@ -58,7 +67,13 @@ fun RealBlurCard(
     // Glass tint applied over the blur. Kept translucent (especially in light
     // mode) so the blurred background shows through as glass rather than a flat
     // solid fill.
-    val tintColor = if (isDark) Color(0x591A1A2E) else Color(0x40FFFFFF)
+    val defaultTint = if (isDark) Color(0x591A1A2E) else Color(0x40FFFFFF)
+    val previewTint = LocalLiquidGlassColors.current.previewCardTint
+    val tintColor = if (usePreviewTint && previewTint != Color.Unspecified) {
+        previewTint
+    } else {
+        defaultTint
+    }
     val blurDp = with(density) { (blurRadius / 4).coerceIn(12, 30).dp }
 
     // Subtle top-to-bottom gloss for the liquid-glass sheen
@@ -101,7 +116,10 @@ fun RealBlurCard(
         // Fallback (no blur source available, e.g. Dialog window)
         Modifier
             .clip(shape)
-            .background(if (isDark) Color(0xCC1A1A2E) else Color(0xCCFFFFFF))
+            .background(
+                if (usePreviewTint && previewTint != Color.Unspecified) previewTint
+                else if (isDark) Color(0xCC1A1A2E) else Color(0xCCFFFFFF)
+            )
             .background(glossOverlay)
             .border(width = 0.5.dp, color = borderColor, shape = shape)
     }

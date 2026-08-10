@@ -398,12 +398,19 @@ private fun IconGridItem(
         modifier = Modifier.aspectRatio(1f),
         shape = RoundedCornerShape(12.dp),
         cornerRadiusPx = 36f,
-        onClick = onClick
+        onClick = onClick,
+        usePreviewTint = true   // color configurable desde MintColorConfig
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(cardBg)
+                // En modo CLARO no se pinta relleno interior: la tarjeta ya
+                // aporta su tinte configurable (previewCardLight) y este relleno
+                // —blanco al 60%— lo tapaba por completo. Era la razón de que el
+                // color se aplicara en los widgets pero no en los iconos.
+                //
+                // En modo OSCURO se conserva tal cual estaba, para no alterarlo.
+                .then(if (isDark) Modifier.background(cardBg) else Modifier)
                 .padding(8.dp),
             contentAlignment = Alignment.Center
         ) {

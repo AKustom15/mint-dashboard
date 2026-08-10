@@ -29,6 +29,21 @@ data class MintColorConfig(
     val surfaceDark: Color = Color(0xFF161B2B),
     val surfaceLight: Color = Color(0xFFFFFFFF),
 
+    // ── Tarjetas de vista previa (iconos y widgets) ───────────────────────
+    // Tinte SOLO de esas dos pantallas, para poder darles contraste sin
+    // tocar el resto de la app. Las demás tarjetas —navegación, botones,
+    // Ajustes, Acerca de…— siguen usando el cristal por defecto.
+    //
+    // Los DOS PRIMEROS dígitos son la transparencia, no el color:
+    //   0x40 ≈ 25%  (muy translúcido, se ve el desenfoque del fondo)
+    //   0x99 ≈ 60%
+    //   0xE6 ≈ 90%  (casi sólido, el color se ve tal cual)
+    //
+    // Sube la transparencia si quieres que el color se note más; bájala si
+    // prefieres conservar el efecto de cristal.
+    val previewCardLight: Color = Color(0x40FFFFFF),
+    val previewCardDark: Color = Color(0x591A1A2E),
+
     // Text
     val textOnDark: Color = Color(0xFFF0F4F8),
     val textOnDarkMuted: Color = Color(0xFF9BA4B5),

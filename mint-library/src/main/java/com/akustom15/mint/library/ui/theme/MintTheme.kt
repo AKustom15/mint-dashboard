@@ -24,7 +24,17 @@ data class LiquidGlassColors(
     val glassSurface: Color,
     val textPrimary: Color,
     val textSecondary: Color,
-    val isDark: Boolean
+    val isDark: Boolean,
+    /**
+     * Tinte de las tarjetas de vista previa (iconos y widgets).
+     *
+     * Viaja por el tema para que las pantallas no tengan que recibir el
+     * MintConfig entero: IconsPreviewScreen no lo recibe y no merecía la pena
+     * cambiar su firma solo por un color.
+     *
+     * Solo lo usan las tarjetas que lo piden con usePreviewTint = true.
+     */
+    val previewCardTint: Color = Color.Unspecified
 )
 
 val LocalLiquidGlassColors = staticCompositionLocalOf {
@@ -97,7 +107,8 @@ fun MintTheme(
             glassSurface = colorConfig.surfaceDark.copy(alpha = 0.5f),
             textPrimary = colorConfig.textOnDark,
             textSecondary = colorConfig.textOnDarkMuted,
-            isDark = true
+            isDark = true,
+            previewCardTint = colorConfig.previewCardDark
         )
     } else {
         LiquidGlassColors(
@@ -105,7 +116,8 @@ fun MintTheme(
             glassSurface = Color(0xFFFFFFFF).copy(alpha = 0.6f),
             textPrimary = colorConfig.textOnLight,
             textSecondary = colorConfig.textOnLightMuted,
-            isDark = false
+            isDark = false,
+            previewCardTint = colorConfig.previewCardLight
         )
     }
 
