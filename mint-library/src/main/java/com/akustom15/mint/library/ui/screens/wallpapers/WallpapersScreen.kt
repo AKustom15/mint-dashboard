@@ -677,11 +677,58 @@ private fun ZoomableWallpaper(
     }
 }
 
+/**
+ * Descarga el fondo y lo decodifica al tamaño que el sistema va a usar.
+ *
+ * Antes se hacía `BitmapFactory.decodeStream(stream)` sin más: un fondo 4K se
+ * decodificaba entero, y son 3840x2160x4 = ~33 MB en memoria de una sentada.
+ * En un móvil de gama baja eso puede tumbar la app.
+ *
+ * **No se pierde calidad.** La reducción solo entra si la imagen es MAYOR que
+ * lo que WallpaperManager va a mostrar; decodificar por encima de ese tamaño
+ * es memoria tirada, porque el sistema la reescala igualmente.
+ */
+private fun decodeWallpaperScaled(context: Context, imageUrl: String): Bitmap? {
+    var connection: java.net.HttpURLConnection? = null
+    return try {
+        connection = (java.net.URL(imageUrl).openConnection() as java.net.HttpURLConnection).apply {
+            connectTimeout = 15_000
+            readTimeout = 30_000
+            doInput = true
+        }
+        val bytes = connection.inputStream.use { it.readBytes() }
+
+        // 1ª pasada: medir sin reservar memoria de píxeles.
+        val bounds = android.graphics.BitmapFactory.Options().apply { inJustDecodeBounds = true }
+        android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.size, bounds)
+
+        // Tamaño que el sistema quiere para el fondo. Si no lo informa, se usa
+        // la pantalla como referencia.
+        val wm = WallpaperManager.getInstance(context)
+        val metrics = context.resources.displayMetrics
+        val targetW = wm.desiredMinimumWidth.takeIf { it > 0 } ?: metrics.widthPixels
+        val targetH = wm.desiredMinimumHeight.takeIf { it > 0 } ?: metrics.heightPixels
+
+        var sampleSize = 1
+        while (bounds.outWidth / (sampleSize * 2) >= targetW &&
+               bounds.outHeight / (sampleSize * 2) >= targetH
+        ) {
+            sampleSize *= 2
+        }
+
+        val options = android.graphics.BitmapFactory.Options().apply { inSampleSize = sampleSize }
+        android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.size, options)
+    } catch (e: Exception) {
+        null
+    } finally {
+        connection?.disconnect()
+    }
+}
+
 private suspend fun applyWallpaper(context: Context, imageUrl: String, which: Int) {
     try {
         val bitmap = withContext(Dispatchers.IO) {
-            val stream = java.net.URL(imageUrl).openStream()
-            android.graphics.BitmapFactory.decodeStream(stream)
+            decodeWallpaperScaled(context, imageUrl)
         }
         if (bitmap != null) {
             WallpaperManager.getInstance(context).setBitmap(bitmap, null, true, which)

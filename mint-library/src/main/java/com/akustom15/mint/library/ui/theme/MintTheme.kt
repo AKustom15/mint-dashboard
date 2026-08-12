@@ -125,8 +125,18 @@ fun MintTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = Color.Transparent.toArgb()
-            window.navigationBarColor = Color.Transparent.toArgb()
+
+            // Aquí se ponían a mano statusBarColor y navigationBarColor en
+            // transparente. Ambas quedaron OBSOLETAS en Android 15 (API 35) y
+            // Play lo señala en "Calidad técnica".
+            //
+            // Además eran redundantes: enableEdgeToEdge(), que la app llama en
+            // su Activity, ya deja las barras transparentes y dibuja de borde a
+            // borde. Quitarlas no cambia nada visualmente.
+            //
+            // Lo que SÍ hay que conservar es esto: controla si los iconos de las
+            // barras se pintan oscuros o claros. No está obsoleto y sin ello los
+            // iconos se volverían ilegibles según el tema.
             WindowCompat.getInsetsController(window, view).apply {
                 isAppearanceLightStatusBars = !darkTheme
                 isAppearanceLightNavigationBars = !darkTheme

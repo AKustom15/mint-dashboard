@@ -111,19 +111,8 @@ object MintNotificationHelper {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        var bitmap: Bitmap? = null
-        if (!imageUrl.isNullOrBlank()) {
-            try {
-                val url = URL(imageUrl)
-                val connection = url.openConnection() as java.net.HttpURLConnection
-                connection.doInput = true
-                connection.connect()
-                val input = connection.inputStream
-                bitmap = BitmapFactory.decodeStream(input)
-            } catch (e: Exception) {
-                Log.e(TAG, "Failed to download notification image", e)
-            }
-        }
+        val bitmap: Bitmap? =
+            if (!imageUrl.isNullOrBlank()) downloadScaledBitmap(imageUrl) else null
 
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.mint_ic_notification)
@@ -145,5 +134,67 @@ object MintNotificationHelper {
 
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         manager.notify(System.currentTimeMillis().toInt(), builder.build())
+    }
+
+    /**
+     * Ancho/alto máximo del bitmap de la notificación, en píxeles.
+     *
+     * Una notificación con imagen grande se muestra a unos 2:1 y como mucho al
+     * ancho de la pantalla. 1024 px cubre de sobra incluso pantallas grandes.
+     */
+    private const val MAX_NOTIFICATION_IMAGE_PX = 1024
+
+    /**
+     * Descarga la imagen de la notificación y la decodifica REDUCIDA.
+     *
+     * Antes se hacía `BitmapFactory.decodeStream(input)` a secas: la imagen se
+     * decodificaba a resolución completa. Una foto de 4000x3000 ocupa ~48 MB en
+     * memoria (ARGB_8888, 4 bytes por píxel), lo bastante para tumbar la app en
+     * gama baja. Google Play lo señalaba en "Calidad técnica".
+     *
+     * Ahora se decodifica en dos pasadas:
+     *   1. `inJustDecodeBounds` mide la imagen SIN reservar memoria de píxeles.
+     *   2. Se calcula `inSampleSize` y se decodifica ya reducida.
+     *
+     * Esa foto de 4000x3000 pasa a decodificarse a 1000x750 → ~3 MB. Y como la
+     * notificación no la muestra más grande, no se pierde nada visible.
+     */
+    private fun downloadScaledBitmap(imageUrl: String): Bitmap? {
+        var connection: java.net.HttpURLConnection? = null
+        return try {
+            connection = (URL(imageUrl).openConnection() as java.net.HttpURLConnection).apply {
+                doInput = true
+                connectTimeout = 10_000
+                readTimeout = 15_000
+            }
+            // Se lee a memoria porque hacen falta DOS pasadas y un flujo de red
+            // no se puede rebobinar. Son los bytes comprimidos: unos cientos de KB.
+            val bytes = connection.inputStream.use { it.readBytes() }
+
+            val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+            BitmapFactory.decodeByteArray(bytes, 0, bytes.size, bounds)
+
+            val options = BitmapFactory.Options().apply {
+                inSampleSize = calculateInSampleSize(bounds.outWidth, bounds.outHeight)
+            }
+            BitmapFactory.decodeByteArray(bytes, 0, bytes.size, options)
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to download notification image", e)
+            null
+        } finally {
+            connection?.disconnect()
+        }
+    }
+
+    /** Potencia de 2 más pequeña que deja la imagen por debajo del máximo. */
+    private fun calculateInSampleSize(width: Int, height: Int): Int {
+        if (width <= 0 || height <= 0) return 1
+        var sampleSize = 1
+        while (width / sampleSize > MAX_NOTIFICATION_IMAGE_PX ||
+               height / sampleSize > MAX_NOTIFICATION_IMAGE_PX
+        ) {
+            sampleSize *= 2
+        }
+        return sampleSize
     }
 }

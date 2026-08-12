@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    NOTA SOBRE BORDE A BORDE (Android 15 / API 35)
+
+    Aquí se declaraban android:statusBarColor y android:navigationBarColor.
+    Ambos quedaron OBSOLETOS en API 35 y Google Play los marca en la sección
+    "Calidad técnica" de cualquier app que los use.
+
+    No hacen falta: la Activity llama a enableEdgeToEdge(), que ya deja las
+    barras transparentes y dibuja el contenido por debajo. Lo que se ve tras
+    las barras es el fondo de la ventana.
+
+    El color de los ICONOS de las barras (claros u oscuros) lo controla
+    MintTheme con WindowInsetsControllerCompat, que no está obsoleto.
+
+    ⚠️ Esta es la PLANTILLA de la que salen los packs nuevos: si vuelves a
+    añadir esos atributos aquí, el aviso de Play reaparece en todos ellos.
+-->
 <resources>
-    <style name="Theme.Mint" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-    </style>
+    <style name="Theme.Mint" parent="android:Theme.Material.Light.NoActionBar" />
 
     <style name="Theme.Mint.Splash" parent="Theme.Mint">
-        <!-- Establece el fondo negro desde el inicio para evitar el pantallazo blanco de Android -->
+        <!-- Fondo negro desde el primer frame para evitar el destello blanco
+             de Android al arrancar. Con borde a borde, este color es también
+             el que se ve tras las barras del sistema. -->
         <item name="android:windowBackground">@color/black</item>
-        <item name="android:statusBarColor">@color/black</item>
-        <item name="android:navigationBarColor">@color/black</item>
     </style>
 </resources>
