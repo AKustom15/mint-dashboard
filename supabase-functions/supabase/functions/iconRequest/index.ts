@@ -1,4 +1,5 @@
 import { verifyAppCheck, json, b64url } from "../_shared/appcheck.ts";
+import { requestsOpen } from "../_shared/killswitch.ts";
 import { consumeNonce, validateIntegrity, db } from "../_shared/integrity.ts";
 import {
   decodeIntegrityToken,
@@ -72,6 +73,20 @@ Deno.serve(async (req) => {
   const appId = await verifyAppCheck(req.headers.get("X-Firebase-AppCheck"));
   if (!appId) return json({ ok: false, reason: "unauthorized" }, 401);
 
+  // ── Puerta 2: ¿están abiertas las solicitudes?
+  //
+  // Se comprueba AQUÍ, en el servidor, y no solo en el cliente. El interruptor
+  // del cliente falla en abierto (valor por defecto true + errores ignorados),
+  // así que se podía saltar sin piratear nada: bastaba mala conexión o abrir la
+  // pantalla antes de que llegara el JSON.
+  //
+  // Va antes de consumir el nonce y antes de llamar a Google: si está en pausa
+  // no gastamos ni nonce ni cuota de Play Integrity.
+  const gate = await requestsOpen();
+  if (!gate.open) {
+    return json({ ok: false, reason: "paused", message: gate.message }, 403);
+  }
+
   // Fuera del try para que el catch pueda registrar de quién era la petición.
   let installIdForLog = "desconocido";
 
@@ -90,13 +105,13 @@ Deno.serve(async (req) => {
       return json({ ok: false, reason: "too_many" }, 400);
     }
 
-    // ── Puerta 2: el nonce lo emitimos nosotros, está fresco y sin usar.
+    // ── Puerta 3: el nonce lo emitimos nosotros, está fresco y sin usar.
     if (!await consumeNonce(nonce)) {
       console.warn("nonce rejected for install", installId);
       return json({ ok: false, reason: "unavailable" }, 403);
     }
 
-    // ── Puerta 3: las siete validaciones del token, decodificado por Google.
+    // ── Puerta 4: las siete validaciones del token, decodificado por Google.
     const payload = await decodeIntegrityToken(PACKAGE_NAME, integrityToken);
     const check = validateIntegrity(
       payload, nonce, PACKAGE_NAME, EXPECTED_CERT, REQUIRE_DEVICE_INTEGRITY,
@@ -123,7 +138,7 @@ Deno.serve(async (req) => {
       return json({ ok: false, reason: "unavailable" }, 403);
     }
 
-    // ── Puerta 4: cuota, contada EN SERVIDOR sobre el documento real.
+    // ── Puerta 5: cuota, contada EN SERVIDOR sobre el documento real.
     const already = await readRequestedIcons(COLLECTION, installId);
     const alreadySet = new Set(already);
     const newPackages = packages.filter((p) => p && !alreadySet.has(p));

@@ -341,6 +341,19 @@ class IconRequestViewModel : ViewModel() {
                 true
             }
 
+            is MintIconRequestGate.Result.Paused -> {
+                // El SERVIDOR dice que las solicitudes están en pausa. Se muestra
+                // el mensaje que hayas puesto en el interruptor; si está vacío,
+                // uno genérico para que el usuario no se quede sin explicación.
+                val texto = result.message.takeIf { it.isNotBlank() }
+                    ?: "Las solicitudes de iconos están en pausa temporalmente."
+                _uiState.value = _uiState.value.copy(error = texto)
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(context, texto, Toast.LENGTH_LONG).show()
+                }
+                false
+            }
+
             is MintIconRequestGate.Result.QuotaExceeded -> {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(

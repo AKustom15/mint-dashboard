@@ -57,6 +57,16 @@ class MintIconRequestGate(
         data class QuotaExceeded(val freeRemaining: Int) : Result()
 
         /**
+         * Las solicitudes están en pausa. Lo decide el SERVIDOR, no el cliente.
+         *
+         * El interruptor del cliente falla en abierto (valor por defecto true y
+         * errores ignorados al descargar el JSON), así que se podía saltar sin
+         * piratear nada: bastaba mala conexión o abrir la pantalla antes de que
+         * llegara la configuración. Ahora el servidor tiene la última palabra.
+         */
+        data class Paused(val message: String) : Result()
+
+        /**
          * No se pudo verificar: sin red, servidor caído, o la cuenta no tiene
          * la app comprada. Deliberadamente NO se distingue el caso: al usuario
          * se le muestra un mensaje neutro y a un atacante no se le dice qué
@@ -196,10 +206,10 @@ class MintIconRequestGate(
                 )
             }
 
-            if (json.optString("reason") == "quota_exceeded") {
-                Result.QuotaExceeded(json.optInt("freeRemaining", 0))
-            } else {
-                Result.Unavailable(json.optString("reason", "rejected"))
+            when (json.optString("reason")) {
+                "quota_exceeded" -> Result.QuotaExceeded(json.optInt("freeRemaining", 0))
+                "paused" -> Result.Paused(json.optString("message", ""))
+                else -> Result.Unavailable(json.optString("reason", "rejected"))
             }
         } catch (e: Exception) {
             Result.Unavailable("error")
