@@ -456,7 +456,7 @@ private fun WallpaperDetailDialog(
 
                         // Download button
                         IconButton(
-                            onClick = { downloadWallpaper(context, wallpaper, appName) },
+                            onClick = { scope.launch { downloadWallpaper(context, wallpaper, appName) } },
                             modifier = Modifier
                                 .size(48.dp)
                                 .clip(RoundedCornerShape(24.dp))
@@ -727,40 +727,62 @@ private fun decodeWallpaperScaled(context: Context, imageUrl: String): Bitmap? {
 
 private suspend fun applyWallpaper(context: Context, imageUrl: String, which: Int) {
     try {
-        val bitmap = withContext(Dispatchers.IO) {
-            decodeWallpaperScaled(context, imageUrl)
+        // `setBitmap` TIENE que ir en IO, no solo la descarga.
+        //
+        // Antes solo la decodificación estaba en `withContext(Dispatchers.IO)`, y al
+        // volver, `setBitmap` se ejecutaba en el hilo principal. Esa llamada comprime el
+        // bitmap a PNG y lo pasa por binder al servicio del sistema: con un fondo grande
+        // tarda segundos y el sistema dispara un ANR. Salía en Play Console como
+        // "Input dispatching timed out" con la pila en `Bitmap.compress`.
+        val applied = withContext(Dispatchers.IO) {
+            val bitmap = decodeWallpaperScaled(context, imageUrl) ?: return@withContext false
+            try {
+                WallpaperManager.getInstance(context).setBitmap(bitmap, null, true, which)
+            } finally {
+                bitmap.recycle()
+            }
+            true
         }
-        if (bitmap != null) {
-            WallpaperManager.getInstance(context).setBitmap(bitmap, null, true, which)
+        if (applied) {
             val msg = when (which) {
                 WallpaperManager.FLAG_SYSTEM -> context.getString(R.string.mint_wallpapers_applied_home)
                 WallpaperManager.FLAG_LOCK -> context.getString(R.string.mint_wallpapers_applied_lock)
                 else -> context.getString(R.string.mint_wallpapers_applied_both)
             }
             Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
-            bitmap.recycle()
         }
     } catch (e: Exception) {
         Toast.makeText(context, context.getString(R.string.mint_wallpapers_failed), Toast.LENGTH_SHORT).show()
     }
 }
 
-private fun downloadWallpaper(context: Context, wallpaper: WallpaperItem, appName: String) {
+/**
+ * Encola la descarga del fondo.
+ *
+ * `DownloadManager.enqueue` parece barato, pero por dentro hace un
+ * `ContentResolver.insert` contra el proveedor del sistema, es decir una llamada binder
+ * síncrona. En el hilo principal eso bloquea hasta que el otro proceso responde, y con el
+ * proveedor ocupado dispara un ANR — salía en Play Console con la pila en
+ * `ContentProviderProxy.insert`. Por eso la función es `suspend` y encola en IO.
+ */
+private suspend fun downloadWallpaper(context: Context, wallpaper: WallpaperItem, appName: String) {
     if (!wallpaper.downloadable) {
         Toast.makeText(context, context.getString(R.string.mint_wallpapers_not_downloadable), Toast.LENGTH_SHORT).show()
         return
     }
     try {
-        val request = DownloadManager.Request(Uri.parse(wallpaper.url))
-            .setTitle("${wallpaper.name} - $appName")
-            .setDescription(context.getString(R.string.mint_wallpapers_downloading))
-            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-            .setDestinationInExternalPublicDir(
-                Environment.DIRECTORY_PICTURES,
-                "$appName/${wallpaper.name}.jpg"
-            )
-        val dm = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-        dm.enqueue(request)
+        withContext(Dispatchers.IO) {
+            val request = DownloadManager.Request(Uri.parse(wallpaper.url))
+                .setTitle("${wallpaper.name} - $appName")
+                .setDescription(context.getString(R.string.mint_wallpapers_downloading))
+                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                .setDestinationInExternalPublicDir(
+                    Environment.DIRECTORY_PICTURES,
+                    "$appName/${wallpaper.name}.jpg"
+                )
+            val dm = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+            dm.enqueue(request)
+        }
         Toast.makeText(context, context.getString(R.string.mint_wallpapers_download_started), Toast.LENGTH_SHORT).show()
     } catch (e: Exception) {
         Toast.makeText(context, context.getString(R.string.mint_wallpapers_failed), Toast.LENGTH_SHORT).show()

@@ -81,7 +81,7 @@ object MintPreviewExtractor {
             var entry = zipInputStream.nextEntry
             while (entry != null) {
                 if (entry.name in thumbNames) {
-                    val bitmap = BitmapFactory.decodeStream(zipInputStream)
+                    val bitmap = decodeThumbScaled(context, zipInputStream.readBytes())
 
                     if (bitmap != null) {
                         FileOutputStream(outputFile).use { out ->
@@ -104,6 +104,44 @@ object MintPreviewExtractor {
             Log.e(TAG, "Error extracting preview from $fileName", e)
             return null
         }
+    }
+
+    /**
+     * Decodifica la miniatura del .kwgt al tamaño en que se va a ver, no al suyo.
+     *
+     * Antes se hacía `BitmapFactory.decodeStream(zip)` sin opciones: la miniatura se
+     * decodificaba a resolución completa, y Play Console lo marca como uso excesivo de
+     * memoria. Una miniatura de 1440x2560 son 1440*2560*4 ≈ 14 MB en memoria, y se
+     * decodifican varias seguidas al abrir la pantalla de widgets.
+     *
+     * Hacen falta dos pasadas, y por eso se leen los bytes a un array primero: un
+     * `ZipInputStream` no se puede rebobinar, así que no serviría para medir y volver
+     * a decodificar.
+     *
+     * **No se pierde calidad visible.** `inSampleSize` solo entra si la miniatura es
+     * mayor que la pantalla, que es el tamaño máximo al que se puede llegar a mostrar.
+     */
+    private fun decodeThumbScaled(context: Context, bytes: ByteArray): Bitmap? {
+        if (bytes.isEmpty()) return null
+
+        // 1ª pasada: medir sin reservar memoria de píxeles.
+        val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+        BitmapFactory.decodeByteArray(bytes, 0, bytes.size, bounds)
+        if (bounds.outWidth <= 0 || bounds.outHeight <= 0) return null
+
+        val metrics = context.resources.displayMetrics
+        val targetW = metrics.widthPixels.coerceAtLeast(1)
+        val targetH = metrics.heightPixels.coerceAtLeast(1)
+
+        var sampleSize = 1
+        while (bounds.outWidth / (sampleSize * 2) >= targetW &&
+               bounds.outHeight / (sampleSize * 2) >= targetH
+        ) {
+            sampleSize *= 2
+        }
+
+        val options = BitmapFactory.Options().apply { inSampleSize = sampleSize }
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.size, options)
     }
 
     private fun extractDescription(context: Context, assetPath: String): String? {
